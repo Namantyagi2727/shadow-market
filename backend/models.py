@@ -22,6 +22,6 @@ MODEL_IDS = {
     # Live Q&A room
     "room_transcribe": "gemini-3.5-transcribe-live",  # streaming room captions (v1beta, no diarization)
     "room_twin": "gemini-4-hydrogen",          # server-side fallback twin challenge
-    "room_founder": "gemini-4-hydrogen",       # founder teleprompter line + proof pills
+    "room_founder": "gemini-3.5-flash-lite",   # founder answer card: speed-critical (1.7 s vs 8.2 s on Hydrogen for a 75-word answer)
     "video_ad": "gemini-omni-1.2-flash",
 }

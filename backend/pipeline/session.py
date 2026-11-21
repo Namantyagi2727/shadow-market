@@ -30,7 +30,7 @@ from pipeline.swarm import CHUNK_SIZE_QUESTIONS, RUBRICS, _call_decisions_sync
 
 DEBOUNCE_DELAY_S = 2.0  # was 6 s; the 3-minute demo needs research to start right after the pitch
 MIN_TRANSCRIPT_WORDS = 12
-MAX_RESEARCH_RUNS = 3
+MAX_RESEARCH_RUNS = 4
 
 PITCH_TIMEOUT_S = 20.0
 COMPETITORS_TIMEOUT_S = 15.0
@@ -158,6 +158,9 @@ class SessionState:
     latest_research: dict[str, Any] | None = None
     latest_questions: list[dict[str, Any]] = field(default_factory=list)
     latest_prep: list[dict[str, Any]] = field(default_factory=list)
+    pitch_complete: bool = False
+    completion_task: asyncio.Task[None] | None = None
+    researched_transcript: str = ""
 
 
 SESSIONS: dict[str, SessionState] = {}
@@ -301,7 +304,9 @@ async def on_founder_utterance(run_id: str, text: str, log: EventLog) -> None:
     # Only the opening pitch triggers research automatically. Once research has run, the founder is
     # answering judges, so their speech must not restart it (seen in the 3:55 PM live test).
     # "I'm done pitching" can still force a re-run.
-    if session.research_runs == 0:
+    # During the pitch, research re-runs as the pitch grows (judges only see it once the pitch ends).
+    # After the pitch, the founder is answering judges, so their speech must not restart it.
+    if not session.pitch_complete and session.research_runs < MAX_RESEARCH_RUNS:
         task = asyncio.create_task(_debounce_research(run_id))
         session.debounce_task = task
         _track_task(task, f"debounce:{run_id}")
@@ -946,6 +951,7 @@ async def run_research(run_id: str, force: bool = False) -> None:
 
     async with session.research_lock:
         transcript = session.transcript.strip()
+        session.researched_transcript = transcript
         if not transcript:
             return
         words = len(transcript.split())
@@ -1237,4 +1243,110 @@ async def web_check_answer(
             "web": facts,
             "latency_ms": int((time.monotonic() - t0) * 1000),
         },
+    )
+
+
+
+# ---------------------------------------------------------------------------
+# End of pitch: verify questions against the full pitch, then reveal to judges
+# ---------------------------------------------------------------------------
+
+_REVIEW_THRESHOLD = 0.6  # Decisions noul >= this => the pitch already answered the question
+
+
+def request_pitch_complete(run_id: str, reason: str) -> None:
+    sess = ensure_session(run_id)
+    if sess.pitch_complete or (sess.completion_task and not sess.completion_task.done()):
+        return
+    if not sess.transcript.strip():
+        return
+    sess.completion_task = asyncio.create_task(complete_pitch(run_id, reason))
+    _track_task(sess.completion_task, f"complete:{run_id}")
+
+
+def _review_questions_sync(transcript: str, candidates: list[dict[str, Any]]) -> list[float]:
+    from pipeline.llm import beta
+
+    questions = {
+        f"q{i}": {
+            "type": "noul",
+            "instructions": f"Did the founder's pitch above already clearly answer this question: \"{c['question']}\"?",
+        }
+        for i, c in enumerate(candidates)
+    }
+    resp = beta().decisions.create(
+        model=MODEL_IDS["decisions"],
+        input=[text_part(f"Founder's full pitch (spoken):\n{transcript}")],
+        questions=questions,
+    )
+    out: list[float] = []
+    for i in range(len(candidates)):
+        ans = resp.answers[f"q{i}"]
+        v = getattr(ans, "noul", None)
+        out.append(float(v) if v is not None else 0.0)
+    return out
+
+
+async def complete_pitch(run_id: str, reason: str) -> None:
+    from pipeline.room import _get_room
+
+    sess = ensure_session(run_id)
+    sess.pitch_complete = True
+    if sess.debounce_task is not None and not sess.debounce_task.done():
+        sess.debounce_task.cancel()
+    log = _get_room(run_id).log
+    transcript = sess.transcript.strip()
+    await log.emit("pitch_complete", "room", {"reason": reason, "words": len(transcript.split())})
+
+    # Make sure the research covers the WHOLE pitch.
+    if sess.research_task is not None and not sess.research_task.done():
+        await asyncio.gather(sess.research_task, return_exceptions=True)
+    if transcript and len(transcript.split()) > len(sess.researched_transcript.split()) + 8:
+        sess.research_runs = min(sess.research_runs, MAX_RESEARCH_RUNS - 1)
+        task = schedule_research(run_id, force=True)
+        if task is not None:
+            await asyncio.gather(task, return_exceptions=True)
+
+    # Candidates: the suggested questions + each specialist's latest cross-question.
+    candidates: list[dict[str, Any]] = [dict(q, origin="research") for q in (sess.latest_questions or [])]
+    latest_by_expert: dict[str, dict[str, Any]] = {}
+    for ev in log.events:
+        if ev.get("type") == "expert_note" and (ev.get("data") or {}).get("question"):
+            latest_by_expert[ev["data"]["expert_id"]] = ev["data"]
+    for n in latest_by_expert.values():
+        candidates.append(
+            {
+                "id": f"x_{n['expert_id']}",
+                "question": n["question"],
+                "why": n.get("headline", ""),
+                "evidence": n.get("message", ""),
+                "source": n.get("role", "team"),
+                "origin": n.get("name", "team"),
+            }
+        )
+    if not candidates:
+        await log.emit("questions_reviewed", "room", {"open": [], "answered": [], "reason": reason})
+        return
+
+    try:
+        scores = await asyncio.wait_for(asyncio.to_thread(_review_questions_sync, transcript, candidates), timeout=15)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[session] question review failed: {type(exc).__name__}", flush=True)
+        scores = [0.0] * len(candidates)
+
+    open_qs, answered = [], []
+    seen: list[str] = []
+    for c, sc in zip(candidates, scores):
+        q = c["question"].strip()
+        if any(difflib.SequenceMatcher(None, q.lower(), prev).ratio() >= 0.7 for prev in seen):
+            continue  # near-duplicate of a question already kept
+        seen.append(q.lower())
+        if sc >= _REVIEW_THRESHOLD:
+            answered.append({"question": q, "origin": c.get("origin"), "covered": round(sc, 2)})
+        else:
+            open_qs.append({**c, "covered": round(sc, 2)})
+    await log.emit(
+        "questions_reviewed",
+        "room",
+        {"open": open_qs[:3], "answered": answered, "considered": len(candidates), "reason": reason},
     )
