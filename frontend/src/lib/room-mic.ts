@@ -19,6 +19,8 @@ export interface RoomMicStats {
 
 export interface RoomMicOptions {
   runId: string;
+  /** Who this mic belongs to in a live pitch session ("founder" = Laptop A, "judge" = Laptop B). */
+  role?: "founder" | "judge";
   onStatus: (status: RoomMicStatus, detail?: string) => void;
   onStats: (stats: RoomMicStats) => void;
 }
@@ -380,7 +382,8 @@ export class RoomMicStreamer {
 
     let ws: WebSocket;
     try {
-      const url = getRoomAudioWebSocketUrl(this.opts.runId);
+      const base = getRoomAudioWebSocketUrl(this.opts.runId);
+      const url = this.opts.role ? `${base}?role=${this.opts.role}` : base;
       ws = new WebSocket(url);
       ws.binaryType = "arraybuffer";
     } catch (err) {

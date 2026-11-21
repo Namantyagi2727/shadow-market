@@ -1,0 +1,802 @@
+[
+  {
+    "id": "p001",
+    "summary": "24, $38k, junior graphic designer in Austin; early adopter of quirky desk gadgets, low skepticism, impulse backs under $50."
+  },
+  {
+    "id": "p002",
+    "summary": "58, $115k, suburban Ohio accountant; cautious mainstream buyer, high skepticism toward crowdfunding delays, prefers established retail brands."
+  },
+  {
+    "id": "p003",
+    "summary": "31, $62k, Seattle barista and tabletop gamer; niche hobbyist who backs board games frequently, moderate skepticism, checks creator history."
+  },
+  {
+    "id": "p004",
+    "summary": "67, $45k, retired Florida teacher; budget-constrained shopper, very high skepticism of online preorders, rarely buys without phone support."
+  },
+  {
+    "id": "p005",
+    "summary": "42, $210k, New York corporate attorney; time-poor pragmatic buyer, moderate skepticism, backs sleek productivity tech if shipping looks reliable."
+  },
+  {
+    "id": "p006",
+    "summary": "19, $26k, college student in Michigan; deal hunter seeking cheap dorm upgrades, low skepticism on viral TikTok products, tight budget."
+  },
+  {
+    "id": "p007",
+    "summary": "51, $88k, Texas HVAC technician; skeptical pragmatist, dislikes flashy marketing, only considers rugged tools with clear real-world utility."
+  },
+  {
+    "id": "p008",
+    "summary": "36, $145k, San Francisco product manager; enthusiastic early adopter, low skepticism, enjoys funding indie hardware and wearable tech."
+  },
+  {
+    "id": "p009",
+    "summary": "29, $52k, Denver nurse; cautious mainstream shopper, moderate skepticism, reads comments closely before backing wellness or kitchen items."
+  },
+  {
+    "id": "p010",
+    "summary": "73, $78k, retired Virginia engineer; highly skeptical pragmatist, scrutinizes mechanical specs and BOMs, avoids unproven prototypes."
+  },
+  {
+    "id": "p011",
+    "summary": "45, $95k, Atlanta elementary principal; deal hunter for family gear, moderate skepticism, prefers discounted bundles with clear delivery dates."
+  },
+  {
+    "id": "p012",
+    "summary": "22, $31k, retail clerk in Phoenix; budget-constrained hobbyist, low skepticism for indie art and pins, caps pledges at $30."
+  },
+  {
+    "id": "p013",
+    "summary": "61, $180k, Chicago dentist; cautious mainstream buyer, high skepticism of startups, occasionally backs luxury travel bags if well-reviewed."
+  },
+  {
+    "id": "p014",
+    "summary": "34, $74k, Portland freelance writer; niche hobbyist into analog photography, moderate skepticism, supports small indie creators over corporations."
+  },
+  {
+    "id": "p015",
+    "summary": "49, $58k, rural Iowa farmer; skeptical pragmatist, very high skepticism of tech gimmicks, buys durable outdoor gear only."
+  },
+  {
+    "id": "p016",
+    "summary": "27, $110k, Boston software developer; early adopter and deal hunter, moderate skepticism, backs smart home devices with open APIs."
+  },
+  {
+    "id": "p017",
+    "summary": "55, $41k, Cleveland warehouse supervisor; budget-constrained pragmatist, high skepticism of waiting months for delivery, prefers Amazon Prime."
+  },
+  {
+    "id": "p018",
+    "summary": "39, $165k, Los Angeles film editor; niche hobbyist for audio gear, low skepticism if prototype demos look authentic."
+  },
+  {
+    "id": "p019",
+    "summary": "64, $130k, retired New Jersey executive; cautious mainstream buyer, high skepticism of crowdfunding scams, rarely backs anything."
+  },
+  {
+    "id": "p020",
+    "summary": "21, $28k, community college student in Tampa; deal hunter, moderate skepticism, backs affordable phone accessories and backpacks."
+  },
+  {
+    "id": "p021",
+    "summary": "47, $82k, Minneapolis high school coach; pragmatic shopper, moderate skepticism, likes innovative fitness equipment with solid warranties."
+  },
+  {
+    "id": "p022",
+    "summary": "33, $240k, Miami cardiologist; time-poor early adopter, low skepticism, backs premium espresso machines and luxury EDC gear."
+  },
+  {
+    "id": "p023",
+    "summary": "70, $36k, retired waitress in Maine; budget-constrained buyer, very high skepticism of online startups, sticks to catalog brands."
+  },
+  {
+    "id": "p024",
+    "summary": "26, $68k, Nashville marketing coordinator; trend-driven shopper, low skepticism, backs aesthetic home decor and pet gadgets."
+  },
+  {
+    "id": "p025",
+    "summary": "53, $105k, Pittsburgh civil engineer; skeptical pragmatist, high skepticism of physics-defying claims, loves well-documented DIY tools."
+  },
+  {
+    "id": "p026",
+    "summary": "40, $54k, Las Vegas hospitality manager; deal hunter, moderate skepticism, looks for early-bird discounts on travel and luggage."
+  },
+  {
+    "id": "p027",
+    "summary": "18, $25k, fast-food worker in Oklahoma; budget-constrained gamer, low skepticism for indie video games, avoids expensive hardware."
+  },
+  {
+    "id": "p028",
+    "summary": "62, $92k, North Carolina real estate agent; cautious mainstream buyer, moderate skepticism, backs practical kitchen gadgets for gifting."
+  },
+  {
+    "id": "p029",
+    "summary": "35, $125k, Washington DC policy analyst; pragmatic buyer, moderate skepticism, backs sustainable apparel if supply chain is transparent."
+  },
+  {
+    "id": "p030",
+    "summary": "48, $66k, Salt Lake City electrician; niche hobbyist into camping, moderate skepticism, backs ultralight tents and portable power."
+  },
+  {
+    "id": "p031",
+    "summary": "25, $48k, Philadelphia paralegal; cautious mainstream shopper, moderate skepticism, waits for retail release unless discount is steep."
+  },
+  {
+    "id": "p032",
+    "summary": "59, $260k, Dallas oil executive; skeptical pragmatist, high skepticism of unproven brands, backs high-end watches occasionally."
+  },
+  {
+    "id": "p033",
+    "summary": "30, $85k, Raleigh UX designer; early adopter, low skepticism, loves minimalist wallets, notebooks, and ergonomic desk setups."
+  },
+  {
+    "id": "p034",
+    "summary": "75, $50k, retired postal worker in Oregon; budget-constrained pragmatist, very high skepticism of crowdfunding, prefers brick-and-mortar stores."
+  },
+  {
+    "id": "p035",
+    "summary": "44, $135k, San Diego biotech researcher; analytical buyer, high skepticism of wellness pseudoscience, backs verified lab-grade gadgets."
+  },
+  {
+    "id": "p036",
+    "summary": "28, $42k, Indianapolis veterinary tech; budget-constrained pet lover, moderate skepticism, backs clever dog toys under $40."
+  },
+  {
+    "id": "p037",
+    "summary": "56, $79k, Kansas City truck driver; pragmatic shopper, high skepticism of fragile tech, values ruggedness and simple returns."
+  },
+  {
+    "id": "p038",
+    "summary": "37, $190k, Chicago management consultant; early adopter, moderate skepticism, backs compact travel tech and noise-canceling gear."
+  },
+  {
+    "id": "p039",
+    "summary": "66, $112k, retired Arizona nurse; cautious mainstream buyer, high skepticism of shipping delays, prefers established e-commerce sites."
+  },
+  {
+    "id": "p040",
+    "summary": "23, $35k, Brooklyn art school grad; niche hobbyist, low skepticism for indie comics, zines, and creative stationery."
+  },
+  {
+    "id": "p041",
+    "summary": "50, $98k, Detroit auto plant manager; skeptical pragmatist, high skepticism of overseas manufacturing claims, checks tooling updates."
+  },
+  {
+    "id": "p042",
+    "summary": "32, $60k, New Orleans chef; niche hobbyist for culinary gear, moderate skepticism, backs carbon steel knives and cast iron."
+  },
+  {
+    "id": "p043",
+    "summary": "69, $84k, retired Colorado professor; cautious mainstream shopper, moderate skepticism, supports educational toys for grandchildren."
+  },
+  {
+    "id": "p044",
+    "summary": "20, $27k, Ohio State sophomore; deal hunter, low skepticism, backs trendy LED lights and cheap wireless earbuds."
+  },
+  {
+    "id": "p045",
+    "summary": "41, $155k, Seattle cloud architect; early adopter, moderate skepticism, backs mechanical keyboards and modular PC accessories."
+  },
+  {
+    "id": "p046",
+    "summary": "54, $49k, rural Kentucky home health aide; budget-constrained buyer, very high skepticism of prepaying for unmade products."
+  },
+  {
+    "id": "p047",
+    "summary": "38, $108k, Charlotte financial advisor; cautious mainstream buyer, high skepticism, only backs campaigns from repeat creators."
+  },
+  {
+    "id": "p048",
+    "summary": "29, $72k, Minneapolis bicycle mechanic; niche hobbyist, moderate skepticism, backs innovative bike lights, locks, and commuter bags."
+  },
+  {
+    "id": "p049",
+    "summary": "63, $220k, Connecticut hedge fund partner; skeptical pragmatist, high skepticism, rarely uses crowdfunding unless for niche wine gear."
+  },
+  {
+    "id": "p050",
+    "summary": "46, $64k, Sacramento state clerk; deal hunter, moderate skepticism, loves bundle deals on organizational and storage products."
+  },
+  {
+    "id": "p051",
+    "summary": "24, $55k, Atlanta junior developer; early adopter, low skepticism, backs smart rings, sleep trackers, and productivity apps."
+  },
+  {
+    "id": "p052",
+    "summary": "71, $43k, retired Alabama factory worker; budget-constrained pragmatist, very high skepticism of internet preorders."
+  },
+  {
+    "id": "p053",
+    "summary": "36, $120k, Houston petroleum engineer; pragmatic shopper, moderate skepticism, backs heavy-duty flashlights and multi-tools."
+  },
+  {
+    "id": "p054",
+    "summary": "52, $86k, Maryland librarian; niche hobbyist, low skepticism for indie books, bookish merch, and cozy board games."
+  },
+  {
+    "id": "p055",
+    "summary": "27, $39k, Austin server and musician; budget-constrained hobbyist, moderate skepticism, backs affordable guitar pedals and synth kits."
+  },
+  {
+    "id": "p056",
+    "summary": "60, $140k, suburban Boston pharmacist; cautious mainstream buyer, high skepticism of health claims, sticks to proven brands."
+  },
+  {
+    "id": "p057",
+    "summary": "43, $76k, Milwaukee plumber; skeptical pragmatist, high skepticism of plastic gimmicks, backs durable workwear and organizers."
+  },
+  {
+    "id": "p058",
+    "summary": "19, $25k, retail associate in Fresno; budget-constrained deal hunter, low skepticism for cheap gaming peripherals."
+  },
+  {
+    "id": "p059",
+    "summary": "31, $175k, San Francisco startup founder; enthusiastic early adopter, low skepticism, backs novel AI hardware and mobility tech."
+  },
+  {
+    "id": "p060",
+    "summary": "68, $95k, retired Texas military officer; skeptical pragmatist, high skepticism of hype, values clear timelines and US-based support."
+  },
+  {
+    "id": "p061",
+    "summary": "49, $118k, Virginia IT director; cautious mainstream buyer, moderate skepticism, backs backup batteries and networking gear."
+  },
+  {
+    "id": "p062",
+    "summary": "26, $46k, Chicago preschool teacher; budget-constrained shopper, moderate skepticism, backs practical lunchboxes and classroom organizers."
+  },
+  {
+    "id": "p063",
+    "summary": "57, $67k, rural Montana rancher; skeptical pragmatist, very high skepticism of city-designed gear, buys proven outdoor tools."
+  },
+  {
+    "id": "p064",
+    "summary": "34, $94k, Denver interior designer; aesthetic early adopter, moderate skepticism, backs minimalist lamps and eco-friendly home goods."
+  },
+  {
+    "id": "p065",
+    "summary": "74, $62k, retired New York bookkeeper; cautious mainstream buyer, very high skepticism of crowdfunding, dislikes waiting for delivery."
+  },
+  {
+    "id": "p066",
+    "summary": "22, $33k, Boise warehouse worker; deal hunter, moderate skepticism, backs affordable tactical gear and rugged phone cases."
+  },
+  {
+    "id": "p067",
+    "summary": "45, $230k, Los Angeles plastic surgeon; time-poor early adopter, low skepticism, backs luxury skincare devices and smart home tech."
+  },
+  {
+    "id": "p068",
+    "summary": "39, $59k, St. Louis paralegal; cautious mainstream shopper, moderate skepticism, reads negative reviews first, avoids first-time creators."
+  },
+  {
+    "id": "p069",
+    "summary": "65, $104k, retired Michigan auto engineer; skeptical pragmatist, high skepticism of electronics campaigns, loves well-machined hardware."
+  },
+  {
+    "id": "p070",
+    "summary": "28, $81k, Portland software QA tester; analytical buyer, high skepticism, spots red flags in render-only campaign videos."
+  },
+  {
+    "id": "p071",
+    "summary": "51, $44k, Memphis call center rep; budget-constrained deal hunter, high skepticism, cannot afford to lose money on failed projects."
+  },
+  {
+    "id": "p072",
+    "summary": "33, $132k, New York advertising director; early adopter, low skepticism, backs stylish luggage, sunglasses, and coffee gear."
+  },
+  {
+    "id": "p073",
+    "summary": "61, $73k, Oregon small business owner; pragmatic buyer, moderate skepticism, backs practical office supplies and shipping tools."
+  },
+  {
+    "id": "p074",
+    "summary": "25, $64k, Dallas financial analyst; deal hunter, moderate skepticism, backs discounted dress shirts and commuter backpacks."
+  },
+  {
+    "id": "p075",
+    "summary": "47, $150k, suburban Chicago pediatrician; cautious mainstream buyer, high skepticism of unregulated baby gadgets, prioritizes safety."
+  },
+  {
+    "id": "p076",
+    "summary": "72, $38k, retired Georgia seamstress; budget-constrained hobbyist, high skepticism of online startups, rarely shops outside major sites."
+  },
+  {
+    "id": "p077",
+    "summary": "30, $51k, Albuquerque photographer; niche hobbyist, moderate skepticism, backs camera straps, tripods, and lens filters."
+  },
+  {
+    "id": "p078",
+    "summary": "58, $195k, San Jose hardware VP; deeply skeptical pragmatist, very high skepticism of hardware timelines, knows manufacturing pitfalls."
+  },
+  {
+    "id": "p079",
+    "summary": "21, $29k, Arizona State student; budget-constrained trend shopper, low skepticism, backs affordable dorm tech and water bottles."
+  },
+  {
+    "id": "p080",
+    "summary": "42, $89k, Baltimore high school teacher; cautious mainstream shopper, moderate skepticism, backs board games and family camping gear."
+  },
+  {
+    "id": "p081",
+    "summary": "64, $56k, retired Ohio bus driver; skeptical pragmatist, very high skepticism of crowdfunding, prefers buying in-person."
+  },
+  {
+    "id": "p082",
+    "summary": "35, $112k, Austin product designer; early adopter, moderate skepticism, appreciates strong industrial design and transparent prototyping."
+  },
+  {
+    "id": "p083",
+    "summary": "50, $71k, Tampa insurance adjuster; deal hunter, moderate skepticism, backs car accessories and hurricane prep gear."
+  },
+  {
+    "id": "p084",
+    "summary": "27, $96k, Seattle data scientist; analytical early adopter, moderate skepticism, backs smart home sensors and ergonomic chairs."
+  },
+  {
+    "id": "p085",
+    "summary": "69, $145k, retired California lawyer; cautious mainstream buyer, high skepticism, only backs documentary films or books."
+  },
+  {
+    "id": "p086",
+    "summary": "40, $47k, rural Pennsylvania mechanic; budget-constrained pragmatist, high skepticism of flashy tools, prefers Snap-on or Harbor Freight."
+  },
+  {
+    "id": "p087",
+    "summary": "23, $41k, Nashville graphic artist; niche hobbyist, low skepticism for enamel pins, art books, and indie apparel."
+  },
+  {
+    "id": "p088",
+    "summary": "55, $128k, Minneapolis supply chain manager; skeptical pragmatist, high skepticism of overseas shipping estimates and tariff risks."
+  },
+  {
+    "id": "p089",
+    "summary": "31, $67k, Philadelphia physical therapist; cautious mainstream buyer, moderate skepticism, backs recovery tools if clinically sound."
+  },
+  {
+    "id": "p090",
+    "summary": "75, $88k, retired Florida banker; very high skepticism of online crowdfunding, prefers established luxury and retail brands."
+  },
+  {
+    "id": "p091",
+    "summary": "46, $255k, Boston biotech CEO; time-poor early adopter, low skepticism, backs high-end fitness tech and travel gear."
+  },
+  {
+    "id": "p092",
+    "summary": "29, $37k, Tucson grocery clerk; budget-constrained hobbyist, moderate skepticism, backs indie tabletop RPG PDFs under $25."
+  },
+  {
+    "id": "p093",
+    "summary": "59, $83k, Kansas City realtor; cautious mainstream buyer, moderate skepticism, backs smart locks and home staging gadgets."
+  },
+  {
+    "id": "p094",
+    "summary": "37, $102k, Denver environmental consultant; values-driven buyer, moderate skepticism, backs zero-waste and solar-powered products."
+  },
+  {
+    "id": "p095",
+    "summary": "20, $26k, community college student in Newark; budget-constrained deal hunter, high skepticism after one bad online order."
+  },
+  {
+    "id": "p096",
+    "summary": "62, $160k, Atlanta surgeon; cautious mainstream buyer, high skepticism of gadgets, occasionally backs golf accessories."
+  },
+  {
+    "id": "p097",
+    "summary": "44, $63k, Columbus warehouse manager; pragmatic buyer, moderate skepticism, backs durable work boots and insulated mugs."
+  },
+  {
+    "id": "p098",
+    "summary": "26, $78k, San Diego aerospace engineer; niche hobbyist, moderate skepticism, backs 3D printer upgrades and RC drones."
+  },
+  {
+    "id": "p099",
+    "summary": "53, $52k, rural Arkansas school secretary; budget-constrained cautious buyer, high skepticism of unproven online brands."
+  },
+  {
+    "id": "p100",
+    "summary": "32, $140k, New York investment banker; time-poor deal hunter, moderate skepticism, backs sleek everyday carry and minimalist tech."
+  },
+  {
+    "id": "p101",
+    "summary": "67, $74k, retired Illinois firefighter; skeptical pragmatist, high skepticism of crowdfunding, values American-made durability."
+  },
+  {
+    "id": "p102",
+    "summary": "24, $49k, Portland social media manager; early adopter, low skepticism, backs viral beauty tools and aesthetic kitchenware."
+  },
+  {
+    "id": "p103",
+    "summary": "48, $114k, Houston project manager; cautious mainstream buyer, moderate skepticism, backs backyard grilling and smoker accessories."
+  },
+  {
+    "id": "p104",
+    "summary": "70, $34k, retired Mississippi retail worker; budget-constrained shopper, very high skepticism of paying upfront for future delivery."
+  },
+  {
+    "id": "p105",
+    "summary": "38, $87k, Raleigh technical writer; analytical buyer, high skepticism of vague specs, loves well-written campaign pages."
+  },
+  {
+    "id": "p106",
+    "summary": "19, $25k, Utah college freshman; budget-constrained hobbyist, low skepticism for outdoor stickers, hammocks, and cheap gear."
+  },
+  {
+    "id": "p107",
+    "summary": "56, $170k, Washington DC lobbyist; cautious mainstream buyer, moderate skepticism, backs premium travel organizers and apparel."
+  },
+  {
+    "id": "p108",
+    "summary": "33, $58k, Cincinnati dental hygienist; deal hunter, moderate skepticism, backs family kitchen tools and pet grooming gadgets."
+  },
+  {
+    "id": "p109",
+    "summary": "61, $46k, rural Maine lobster fisherman; skeptical pragmatist, very high skepticism of tech startups, buys proven marine gear."
+  },
+  {
+    "id": "p110",
+    "summary": "28, $115k, Los Angeles software engineer; early adopter, low skepticism, backs smart home hubs, projectors, and audio gear."
+  },
+  {
+    "id": "p111",
+    "summary": "45, $91k, Phoenix middle school teacher; cautious mainstream shopper, moderate skepticism, backs practical travel and classroom gear."
+  },
+  {
+    "id": "p112",
+    "summary": "73, $125k, retired Connecticut professor; skeptical pragmatist, high skepticism of tech hype, supports indie publishing occasionally."
+  },
+  {
+    "id": "p113",
+    "summary": "22, $32k, Orlando theme park worker; budget-constrained hobbyist, low skepticism for cosplay props and indie pins."
+  },
+  {
+    "id": "p114",
+    "summary": "51, $205k, Dallas corporate VP; pragmatic buyer, high skepticism of delays, prefers paying retail once products actually ship."
+  },
+  {
+    "id": "p115",
+    "summary": "35, $69k, Minneapolis graphic designer; niche hobbyist, moderate skepticism, backs fountain pens, notebooks, and desk mats."
+  },
+  {
+    "id": "p116",
+    "summary": "64, $53k, retired Indiana factory supervisor; budget-constrained pragmatist, very high skepticism of online preorders."
+  },
+  {
+    "id": "p117",
+    "summary": "29, $99k, Boston biotech analyst; cautious mainstream buyer, moderate skepticism, backs ergonomic home office accessories."
+  },
+  {
+    "id": "p118",
+    "summary": "41, $48k, rural Texas diner manager; budget-constrained deal hunter, high skepticism, sticks to Walmart and Amazon."
+  },
+  {
+    "id": "p119",
+    "summary": "57, $138k, Seattle architect; design-focused early adopter, moderate skepticism, backs minimalist lighting and precision tools."
+  },
+  {
+    "id": "p120",
+    "summary": "25, $36k, Buffalo grad student; budget-constrained hobbyist, moderate skepticism, backs affordable board games and coffee gear."
+  },
+  {
+    "id": "p121",
+    "summary": "68, $89k, retired Virginia accountant; high skepticism of crowdfunding financials, rarely backs anything without a money-back guarantee."
+  },
+  {
+    "id": "p122",
+    "summary": "34, $160k, San Francisco UX researcher; early adopter, moderate skepticism, critiques usability claims before backing smart devices."
+  },
+  {
+    "id": "p123",
+    "summary": "49, $77k, Pittsburgh police officer; skeptical pragmatist, high skepticism of gimmicks, backs tactical flashlights and rugged bags."
+  },
+  {
+    "id": "p124",
+    "summary": "21, $28k, Florida State junior; deal hunter, low skepticism, backs trendy sunglasses, portable chargers, and party games."
+  },
+  {
+    "id": "p125",
+    "summary": "60, $110k, suburban Denver nurse practitioner; cautious mainstream buyer, moderate skepticism, backs gardening tools and outdoor gear."
+  },
+  {
+    "id": "p126",
+    "summary": "39, $65k, Sacramento paralegal; pragmatic buyer, moderate skepticism, backs practical car organizers and commuter mugs."
+  },
+  {
+    "id": "p127",
+    "summary": "74, $42k, retired Ohio librarian; budget-constrained cautious shopper, very high skepticism of unproven online sellers."
+  },
+  {
+    "id": "p128",
+    "summary": "27, $125k, New York software developer; early adopter, low skepticism, backs mechanical keyboards, e-ink tablets, and smart lights."
+  },
+  {
+    "id": "p129",
+    "summary": "52, $94k, Charlotte operations manager; skeptical pragmatist, high skepticism of supply chain timelines, checks creator track record."
+  },
+  {
+    "id": "p130",
+    "summary": "43, $55k, Las Vegas casino dealer; deal hunter, moderate skepticism, backs discounted watches and travel accessories."
+  },
+  {
+    "id": "p131",
+    "summary": "18, $25k, high school senior in Georgia; budget-constrained gamer, low skepticism for indie game keys and cheap desk mats."
+  },
+  {
+    "id": "p132",
+    "summary": "65, $185k, retired Chicago surgeon; cautious mainstream buyer, high skepticism of startups, occasionally backs woodworking tools."
+  },
+  {
+    "id": "p133",
+    "summary": "31, $73k, Austin elementary teacher; budget-constrained pragmatic buyer, moderate skepticism, backs durable water bottles and bags."
+  },
+  {
+    "id": "p134",
+    "summary": "58, $61k, rural Nebraska mail carrier; skeptical pragmatist, high skepticism of flashy ads, values simple, repairable products."
+  },
+  {
+    "id": "p135",
+    "summary": "36, $215k, Miami real estate developer; early adopter, low skepticism, backs luxury smart home tech and electric bikes."
+  },
+  {
+    "id": "p136",
+    "summary": "24, $44k, Chicago junior accountant; cautious mainstream buyer, moderate skepticism, prefers waiting for Amazon reviews."
+  },
+  {
+    "id": "p137",
+    "summary": "47, $103k, Portland civil servant; niche hobbyist, moderate skepticism, backs sustainable apparel and indie board games."
+  },
+  {
+    "id": "p138",
+    "summary": "71, $68k, retired Arizona teacher; cautious mainstream shopper, high skepticism of crowdfunding, dislikes complex pledge tiers."
+  },
+  {
+    "id": "p139",
+    "summary": "28, $57k, Nashville audio engineer; niche hobbyist, moderate skepticism, backs portable recorders, mics, and studio cables."
+  },
+  {
+    "id": "p140",
+    "summary": "54, $148k, New Jersey pharma manager; skeptical pragmatist, high skepticism of unverified health tech, backs kitchen gear."
+  },
+  {
+    "id": "p141",
+    "summary": "40, $82k, Salt Lake City dental lab tech; pragmatic buyer, moderate skepticism, backs precision hand tools and ski gear."
+  },
+  {
+    "id": "p142",
+    "summary": "22, $30k, Detroit barista; budget-constrained hobbyist, low skepticism for indie comics, zines, and affordable fashion."
+  },
+  {
+    "id": "p143",
+    "summary": "63, $97k, retired Texas engineer; skeptical pragmatist, high skepticism of battery capacity claims, backs solid mechanical gear."
+  },
+  {
+    "id": "p144",
+    "summary": "32, $118k, Washington DC attorney; cautious mainstream buyer, moderate skepticism, backs sleek work bags and travel tech."
+  },
+  {
+    "id": "p145",
+    "summary": "46, $45k, rural West Virginia retail manager; budget-constrained shopper, very high skepticism of prepaying for products."
+  },
+  {
+    "id": "p146",
+    "summary": "26, $88k, Seattle product marketer; early adopter, low skepticism, studies campaign pages professionally and backs clever gadgets."
+  },
+  {
+    "id": "p147",
+    "summary": "69, $115k, retired Massachusetts professor; cautious mainstream buyer, high skepticism, backs independent journalism or books."
+  },
+  {
+    "id": "p148",
+    "summary": "37, $71k, Indianapolis logistics coordinator; deal hunter, moderate skepticism, backs early-bird discounts on home gym gear."
+  },
+  {
+    "id": "p149",
+    "summary": "55, $245k, San Francisco venture partner; early adopter, moderate skepticism, backs novel consumer hardware to track trends."
+  },
+  {
+    "id": "p150",
+    "summary": "20, $27k, Texas Tech student; budget-constrained deal hunter, low skepticism, backs cheap dorm gadgets and phone stands."
+  },
+  {
+    "id": "p151",
+    "summary": "44, $126k, Atlanta IT consultant; pragmatic early adopter, moderate skepticism, backs multi-port chargers and travel routers."
+  },
+  {
+    "id": "p152",
+    "summary": "62, $51k, retired Florida bus driver; budget-constrained cautious buyer, very high skepticism of crowdfunding platforms."
+  },
+  {
+    "id": "p153",
+    "summary": "30, $64k, Denver veterinary nurse; niche hobbyist, moderate skepticism, backs eco-friendly pet gear and hiking accessories."
+  },
+  {
+    "id": "p154",
+    "summary": "50, $134k, suburban Philadelphia CPA; skeptical pragmatist, high skepticism of shipping delays, rarely backs first-time creators."
+  },
+  {
+    "id": "p155",
+    "summary": "25, $53k, Minneapolis junior architect; design-conscious buyer, moderate skepticism, backs minimalist desk lamps and stationery."
+  },
+  {
+    "id": "p156",
+    "summary": "72, $79k, retired California nurse; cautious mainstream buyer, high skepticism of online startups, prefers trusted catalogs."
+  },
+  {
+    "id": "p157",
+    "summary": "38, $93k, Columbus manufacturing engineer; skeptical pragmatist, high skepticism of render-only hardware, checks prototype videos."
+  },
+  {
+    "id": "p158",
+    "summary": "23, $34k, Phoenix restaurant server; budget-constrained deal hunter, moderate skepticism, backs affordable beauty and fitness items."
+  },
+  {
+    "id": "p159",
+    "summary": "59, $158k, Boston corporate lawyer; cautious mainstream buyer, high skepticism, prefers buying finished goods at retail."
+  },
+  {
+    "id": "p160",
+    "summary": "33, $84k, New Orleans web developer; early adopter, low skepticism, backs indie video games, retro handhelds, and coffee tools."
+  },
+  {
+    "id": "p161",
+    "summary": "48, $62k, rural Idaho timber worker; skeptical pragmatist, very high skepticism of city tech, buys rugged outdoor gear."
+  },
+  {
+    "id": "p162",
+    "summary": "29, $106k, Chicago management analyst; cautious mainstream buyer, moderate skepticism, backs stylish commuter gear and home goods."
+  },
+  {
+    "id": "p163",
+    "summary": "66, $48k, retired Michigan retail clerk; budget-constrained shopper, very high skepticism of online crowdfunding."
+  },
+  {
+    "id": "p164",
+    "summary": "41, $175k, Los Angeles TV producer; early adopter, low skepticism, backs camera accessories, smart home tech, and luxury bags."
+  },
+  {
+    "id": "p165",
+    "summary": "19, $26k, community college student in Oregon; budget-constrained hobbyist, low skepticism for indie tabletop RPGs."
+  },
+  {
+    "id": "p166",
+    "summary": "53, $101k, Houston industrial designer; analytical buyer, high skepticism of poor ergonomics, backs well-crafted everyday carry."
+  },
+  {
+    "id": "p167",
+    "summary": "35, $49k, Baltimore social worker; budget-constrained pragmatic buyer, moderate skepticism, backs practical meal-prep containers."
+  },
+  {
+    "id": "p168",
+    "summary": "61, $132k, Virginia defense contractor; skeptical pragmatist, high skepticism of overseas electronics, values security and durability."
+  },
+  {
+    "id": "p169",
+    "summary": "27, $75k, Raleigh digital marketer; deal hunter, low skepticism, backs viral kitchen gadgets and portable blenders."
+  },
+  {
+    "id": "p170",
+    "summary": "75, $58k, retired Pennsylvania steelworker; budget-constrained pragmatist, very high skepticism of internet preorders."
+  },
+  {
+    "id": "p171",
+    "summary": "42, $116k, San Diego Navy officer; pragmatic buyer, moderate skepticism, backs durable luggage, watches, and fitness gear."
+  },
+  {
+    "id": "p172",
+    "summary": "24, $39k, St. Louis museum assistant; niche hobbyist, low skepticism for art prints, enamel pins, and indie books."
+  },
+  {
+    "id": "p173",
+    "summary": "56, $88k, Kansas City insurance broker; cautious mainstream buyer, high skepticism of unproven brands, waits for retail."
+  },
+  {
+    "id": "p174",
+    "summary": "31, $152k, Seattle machine learning engineer; early adopter, moderate skepticism, backs developer tools, keyboards, and smart home tech."
+  },
+  {
+    "id": "p175",
+    "summary": "68, $91k, retired North Carolina principal; cautious mainstream shopper, high skepticism of delays, backs grandchildren's STEM toys."
+  },
+  {
+    "id": "p176",
+    "summary": "45, $57k, Memphis delivery driver; budget-constrained deal hunter, high skepticism, needs reliable, immediate utility."
+  },
+  {
+    "id": "p177",
+    "summary": "28, $66k, Austin fitness instructor; early adopter, low skepticism, backs innovative workout gear, recovery tools, and athleisure."
+  },
+  {
+    "id": "p178",
+    "summary": "60, $210k, New York finance director; skeptical pragmatist, high skepticism of crowdfunding, occasionally backs luxury espresso gear."
+  },
+  {
+    "id": "p179",
+    "summary": "36, $79k, Portland high school science teacher; niche hobbyist, moderate skepticism, backs astronomy gear and strategy board games."
+  },
+  {
+    "id": "p180",
+    "summary": "21, $29k, Ohio retail worker; budget-constrained shopper, moderate skepticism, backs cheap phone cases and gaming merch."
+  },
+  {
+    "id": "p181",
+    "summary": "49, $122k, Denver commercial pilot; pragmatic buyer, moderate skepticism, backs compact travel gear, headphones, and luggage."
+  },
+  {
+    "id": "p182",
+    "summary": "70, $44k, retired South Carolina waitress; budget-constrained buyer, very high skepticism of online startups."
+  },
+  {
+    "id": "p183",
+    "summary": "34, $97k, Dallas nurse anesthetist; cautious mainstream buyer, moderate skepticism, backs practical home organization and kitchen tech."
+  },
+  {
+    "id": "p184",
+    "summary": "57, $72k, rural Wisconsin dairy farmer; skeptical pragmatist, very high skepticism of tech gimmicks, buys heavy-duty tools."
+  },
+  {
+    "id": "p185",
+    "summary": "26, $108k, San Francisco product designer; early adopter, low skepticism, loves backing aesthetic desk accessories and indie tech."
+  },
+  {
+    "id": "p186",
+    "summary": "43, $68k, Cleveland firefighter; pragmatic buyer, moderate skepticism, backs rugged flashlights, coolers, and camping gear."
+  },
+  {
+    "id": "p187",
+    "summary": "64, $142k, retired Georgia attorney; cautious mainstream buyer, high skepticism of crowdfunding scams, rarely backs campaigns."
+  },
+  {
+    "id": "p188",
+    "summary": "22, $35k, Boston lab technician; budget-constrained hobbyist, moderate skepticism, backs indie board games and coffee drippers."
+  },
+  {
+    "id": "p189",
+    "summary": "51, $85k, Phoenix real estate broker; deal hunter, moderate skepticism, backs smart home gadgets and car accessories."
+  },
+  {
+    "id": "p190",
+    "summary": "39, $195k, Chicago corporate consultant; time-poor early adopter, moderate skepticism, backs premium travel tech and minimalist wallets."
+  },
+  {
+    "id": "p191",
+    "summary": "73, $65k, retired Oregon postal worker; cautious mainstream shopper, very high skepticism of prepaying for unmanufactured items."
+  },
+  {
+    "id": "p192",
+    "summary": "29, $54k, Pittsburgh graphic designer; niche hobbyist, low skepticism for indie stationery, art books, and creative tools."
+  },
+  {
+    "id": "p193",
+    "summary": "47, $138k, Washington DC cybersecurity analyst; deeply skeptical pragmatist, very high skepticism of IoT privacy and cheap electronics."
+  },
+  {
+    "id": "p194",
+    "summary": "18, $25k, fast-food cashier in Indiana; budget-constrained deal hunter, low skepticism for cheap viral gadgets under $20."
+  },
+  {
+    "id": "p195",
+    "summary": "62, $109k, suburban Atlanta pharmacist; cautious mainstream buyer, high skepticism of health gadgets, sticks to established brands."
+  },
+  {
+    "id": "p196",
+    "summary": "32, $76k, Minneapolis mechanical engineer; analytical hobbyist, moderate skepticism, backs 3D printing tools and clever hardware."
+  },
+  {
+    "id": "p197",
+    "summary": "54, $47k, rural Tennessee grocery manager; budget-constrained pragmatist, high skepticism of online preorders."
+  },
+  {
+    "id": "p198",
+    "summary": "25, $82k, Los Angeles junior architect; aesthetic early adopter, moderate skepticism, backs minimalist home goods and bags."
+  },
+  {
+    "id": "p199",
+    "summary": "67, $165k, retired New York executive; cautious mainstream buyer, high skepticism, occasionally backs documentary films."
+  },
+  {
+    "id": "p200",
+    "summary": "40, $92k, Seattle elementary counselor; pragmatic buyer, moderate skepticism, backs eco-friendly kitchenware and family board games."
+  }
+]
