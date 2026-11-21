@@ -5,6 +5,7 @@ export type Stage =
   | "lab"
   | "swarm"
   | "verdict"
+  | "iterate"
   | "room"
   | "reality";
 
@@ -15,8 +16,9 @@ export const STAGES: { id: Stage; label: string; shortLabel: string; step: numbe
   { id: "lab", label: "Usability Lab", shortLabel: "Lab", step: 4 },
   { id: "swarm", label: "Market Swarm", shortLabel: "Swarm", step: 5 },
   { id: "verdict", label: "Verdict", shortLabel: "Verdict", step: 6 },
-  { id: "room", label: "Q&A Room", shortLabel: "Room", step: 7 },
-  { id: "reality", label: "Reality Check", shortLabel: "Reality", step: 8 },
+  { id: "iterate", label: "V2 Iterate", shortLabel: "V2", step: 7 },
+  { id: "room", label: "Q&A Room", shortLabel: "Room", step: 8 },
+  { id: "reality", label: "Reality Check", shortLabel: "Reality", step: 9 },
 ];
 
 export interface EventEnvelope<TType extends string, TData> {
@@ -132,6 +134,52 @@ export interface VerdictData {
   probability_source?: "analyst";
 }
 
+export interface V2Fix {
+  issue: string;
+  change: string;
+  evidence: string;
+}
+
+export interface V2PlanData {
+  fixes: V2Fix[];
+  founder_todo: string[];
+}
+
+export interface V2BuildProgressData {
+  message: string;
+}
+
+export interface V2ReadyData {
+  url: string;
+  screenshot_url: string;
+  v1_screenshot_url: string;
+  reused_sandbox: boolean;
+}
+
+export type V2Version = "v1" | "v2";
+
+export interface V2PanelFinishedData {
+  persona_id: string;
+  name: string;
+  version: V2Version;
+  outcome: "converted" | "quit";
+  quit_reason: string | null;
+  video_url: string;
+}
+
+export interface V2HoldoutResult {
+  n: number;
+  v1_converted: number;
+  v2_converted: number;
+}
+
+export interface V2ResultData {
+  holdout: V2HoldoutResult;
+  rubrics_v1: Record<string, number>;
+  rubrics_v2: Record<string, number>;
+  summary: string;
+}
+
 export interface RoomCaptionData {
   text: string;
 }
@@ -222,6 +270,11 @@ export type KnownRunEvent =
   | EventEnvelope<"swarm_progress", SwarmProgressData>
   | EventEnvelope<"swarm_result", SwarmResultData>
   | EventEnvelope<"verdict", VerdictData>
+  | EventEnvelope<"v2_plan", V2PlanData>
+  | EventEnvelope<"v2_build_progress", V2BuildProgressData>
+  | EventEnvelope<"v2_ready", V2ReadyData>
+  | EventEnvelope<"v2_panel_finished", V2PanelFinishedData>
+  | EventEnvelope<"v2_result", V2ResultData>
   | EventEnvelope<"room_caption", RoomCaptionData>
   | EventEnvelope<"room_utterance", RoomUtteranceData>
   | EventEnvelope<"room_gate", RoomGateData>
@@ -322,6 +375,7 @@ export function isValidStage(value: unknown): value is Stage {
     value === "lab" ||
     value === "swarm" ||
     value === "verdict" ||
+    value === "iterate" ||
     value === "room" ||
     value === "reality"
   );
