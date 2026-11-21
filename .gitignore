@@ -16,3 +16,5 @@ __pycache__/
 .claude/settings.local.json
 .claude/skills/opencrawl/
 CLAUDE.local.md
+eval/data/
+eval/results/
