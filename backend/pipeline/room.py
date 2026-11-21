@@ -33,7 +33,7 @@ VALID_PROOF_SOURCES: set[str] = {"swarm", "lab", "analyst", "competitors", "boar
 
 ECHO_WINDOW_S = 45.0
 ECHO_RATIO_THRESHOLD = 0.6
-SESSION_DEDUPE_WINDOW_S = 8.0
+SESSION_DEDUPE_WINDOW_S = 90.0  # both mics hear the same sentence; repeats can land up to a minute apart
 SESSION_DEDUPE_RATIO = 0.8
 CAPTION_MIN_INTERVAL_S = 0.25  # <= 4/s
 GATE_TRIGGER_THRESHOLD = 0.7
@@ -872,10 +872,24 @@ def _is_recent_duplicate(room: RoomState, text: str) -> bool:
     probe = " ".join(text.lower().split())
     if not probe:
         return False
+    def _words(t: str) -> list[str]:
+        return [w.strip(".,!?\"'") for w in t.split() if w.strip(".,!?\"'")]
+
+    pw = _words(probe)
     for _, prev in room.recent_utterances:
         ref = " ".join(prev.lower().split())
-        if ref and difflib.SequenceMatcher(None, probe, ref).ratio() >= SESSION_DEDUPE_RATIO:
+        if not ref:
+            continue
+        if difflib.SequenceMatcher(None, probe, ref).ratio() >= SESSION_DEDUPE_RATIO:
             return True
+        # Both mics in one room transcribe the same sentence with different lengths: treat a line whose
+        # words are mostly contained in a recent line (either way round) as the same sentence.
+        rw = _words(ref)
+        short, long_ = (pw, rw) if len(pw) <= len(rw) else (rw, pw)
+        if len(short) >= 4 and len(pw) <= 1.4 * len(rw):  # a much longer new line carries new content: keep it
+            long_set = set(long_)
+            if sum(1 for w in short if w in long_set) / len(short) >= 0.8:
+                return True
     room.recent_utterances.append((now, text))
     return False
 
