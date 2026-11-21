@@ -1,0 +1,49 @@
+{
+  "persona_id": "holdout_04",
+  "outcome": "quit",
+  "quit_reason": "There's no Apple Pay or fast checkout option, and it's a multi-step form without any clear shipping cost shown upfront. Not worth my time.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/v2/lab_v1/holdout_04.webm",
+  "duration_s": 13.87,
+  "name": "Tyler Brooks",
+  "role": "College student on a tight budget",
+  "device": "mobile",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 5.11,
+      "action": "click",
+      "target": "Buy now \u2014 $24",
+      "target_index": 2,
+      "text": null,
+      "thought": "Price is $24 and no subscription, which is cheap. Let's click Buy now to see if there's Apple Pay and what the shipping cost is.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 8.23,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Clicking Buy now didn't take me straight to checkout, just scrolled to a section about school mode. Let me scroll down to find the actual checkout form.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 13.58,
+      "action": "quit",
+      "target": "",
+      "target_index": null,
+      "text": null,
+      "thought": "There's no Apple Pay or fast checkout option, and it's a multi-step form without any clear shipping cost shown upfront. Not worth my time.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

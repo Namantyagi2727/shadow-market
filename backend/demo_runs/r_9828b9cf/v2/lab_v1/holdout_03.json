@@ -1,0 +1,148 @@
+{
+  "persona_id": "holdout_03",
+  "outcome": "quit",
+  "quit_reason": "I've scrolled all the way to the bottom of the page and there is no phone number, physical address, or real company name\u2014only an email address. I prefer to buy from companies I can actually call if something goes wrong, so I'm going to leave this site.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/v2/lab_v1/holdout_03.webm",
+  "duration_s": 48.74,
+  "name": "Gloria Mensah",
+  "role": "Retired teacher shopping for grandchildren",
+  "device": "tablet",
+  "viewport": {
+    "width": 768,
+    "height": 1024
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 5.73,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Let me scroll down to see more details about how it works and check if there is a phone number or company address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 11.51,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I see the bottle fit checker, which is nice. Let me scroll down further to check the FAQ and footer for a phone number or company address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 15.6,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Let me scroll down further to see the rest of the page and check the footer for a phone number or company address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 18.63,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Let me keep scrolling down to check the FAQ and the bottom of the page for a phone number or company address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 5,
+      "t": 21.46,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Let me keep scrolling down to check the FAQ and footer for a phone number or company address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 6,
+      "t": 25.16,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Let me keep scrolling down to see the School Mode section, FAQ, and the bottom of the page for a phone number or company address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 7,
+      "t": 29.88,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "As a retired teacher, I really appreciate the School Mode feature. Let me scroll down further to check the FAQ and the bottom of the page for a phone number or company address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 8,
+      "t": 34.46,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I see an email address for support, but I really want to see if there is a phone number or physical company address in the footer. Let me scroll down further.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 9,
+      "t": 38.4,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Let me scroll down to the very bottom of the page to see if there is a phone number or physical company address in the footer.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 10,
+      "t": 41.28,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Let me scroll down one more time to see the checkout section and the very bottom footer for a phone number or company address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 11,
+      "t": 45.12,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Let me scroll down to the very bottom of the page to see if there is a phone number or physical company address in the footer.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 12,
+      "t": 48.39,
+      "action": "quit",
+      "target": "",
+      "target_index": null,
+      "text": null,
+      "thought": "I've scrolled all the way to the bottom of the page and there is no phone number, physical address, or real company name\u2014only an email address. I prefer to buy from companies I can actually call if something goes wrong, so I'm going to leave this site.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

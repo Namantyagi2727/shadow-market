@@ -1,0 +1,93 @@
+{
+  "persona_id": "holdout_05",
+  "outcome": "quit",
+  "quit_reason": "I've scrolled through most of the page and checked the available links. There is no privacy policy, no terms of service, no bulk or business pricing, and no way to contact sales or request an invoice. This is a consumer-only pre-order page that doesn't meet our procurement requirements.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/v2/lab_v1/holdout_05.webm",
+  "duration_s": 31.29,
+  "name": "Amara Okafor",
+  "role": "Procurement lead at a mid-size company",
+  "device": "desktop",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 6.23,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I need to scroll down to see if there is any vendor information, social proof, bulk pricing, or a footer with privacy policy and terms.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 9.98,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "This section is just about bottle compatibility for kids. I need to scroll down further to see if there's any bulk pricing, business contact, social proof, or privacy policy/terms in the footer.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 14.24,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I still don't see any bulk pricing, business contact, or footer with privacy policy and terms. Let me scroll down further to check the rest of the page.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 18.06,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Let me scroll down to the footer to verify if there is a privacy policy, terms of service, or any business/bulk contact information.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 5,
+      "t": 22.86,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Let me scroll down further to reach the bottom of the page and check if there is any privacy policy, terms, or business/bulk pricing information.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 6,
+      "t": 26.78,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Let me scroll down further to see the checkout area and footer to confirm if there is any privacy policy, terms, or bulk/business pricing.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 7,
+      "t": 30.77,
+      "action": "quit",
+      "target": "",
+      "target_index": null,
+      "text": null,
+      "thought": "I've scrolled through most of the page and checked the available links. There is no privacy policy, no terms of service, no bulk or business pricing, and no way to contact sales or request an invoice. This is a consumer-only pre-order page that doesn't meet our procurement requirements.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

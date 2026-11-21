@@ -1,0 +1,60 @@
+{
+  "persona_id": "holdout_04",
+  "outcome": "converted",
+  "quit_reason": null,
+  "video_url": "/api/runs/r_9828b9cf/artifacts/v2/lab_v2/holdout_04.webm",
+  "duration_s": 18.24,
+  "name": "Tyler Brooks",
+  "role": "College student on a tight budget",
+  "device": "mobile",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 5.39,
+      "action": "click",
+      "target": "Buy now \u2014 $24",
+      "target_index": 1,
+      "text": null,
+      "thought": "Price ($24) and shipping ($4.95) are right there, so I'll click Buy now to see if they have Apple Pay or a fast checkout.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 9.95,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Clicking Buy now didn't take me straight to checkout, so I'll scroll down to find the payment options.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 14.28,
+      "action": "type",
+      "target": "e.g., jordan@example.com",
+      "target_index": 21,
+      "text": "tyler.brooks@example.com",
+      "thought": "No Apple Pay, but it's just a single email field for a fast checkout, so I'll enter my email.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 18.17,
+      "action": "click",
+      "target": "Complete Pre-Order \u2014 $24",
+      "target_index": 22,
+      "text": null,
+      "thought": "I've entered my email, so I'll click Complete Pre-Order \u2014 $24 to finish this fast checkout.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

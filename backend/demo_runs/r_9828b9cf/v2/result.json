@@ -1,0 +1,22 @@
+{
+  "holdout": {
+    "n": 6,
+    "v1_converted": 0,
+    "v2_converted": 1
+  },
+  "rubrics_v1": {
+    "value_clarity": 0.8873,
+    "pain_urgency": 0.2917,
+    "price_value_fit": 0.5303,
+    "credibility_trust": 0.3484,
+    "beat_competitors": 0.322
+  },
+  "rubrics_v2": {
+    "value_clarity": 0.88,
+    "pain_urgency": 0.3163,
+    "price_value_fit": 0.5312,
+    "credibility_trust": 0.2616,
+    "beat_competitors": 0.292
+  },
+  "summary": "Held-out conversions ticked up from 0/6 to 1/6, but V2 regressed overall. Credibility trust dropped sharply from 0.35 to 0.26, and beating competitors fell to 0.29, showing the fixes failed to build buyer confidence."
+}

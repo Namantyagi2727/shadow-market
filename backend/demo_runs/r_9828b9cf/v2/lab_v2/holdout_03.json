@@ -1,0 +1,148 @@
+{
+  "persona_id": "holdout_03",
+  "outcome": "quit",
+  "quit_reason": "I've reached the very bottom of the page and there is no phone number, no physical address, and no real company name\u2014just an email address. I only buy from companies I can call if something goes wrong, so I'm going to leave this site.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/v2/lab_v2/holdout_03.webm",
+  "duration_s": 50.86,
+  "name": "Gloria Mensah",
+  "role": "Retired teacher shopping for grandchildren",
+  "device": "tablet",
+  "viewport": {
+    "width": 768,
+    "height": 1024
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 5.35,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "This looks like a thoughtful gift for my grandchildren, but I want to read more about how it works and check for a phone number or company address in case something goes wrong.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 10.16,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The price and guarantee look nice, and I like that there is no monthly fee. Let me keep scrolling down to see the rest of the details and look for a company phone number or address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 14.58,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I like that it fits most kids' bottles and has a 100% fit guarantee, though I notice it says to email them. Let me scroll down further to see how it works and check if there is a phone number or company address at the bottom.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 18.91,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The comparison is helpful and the text is easy to read, but I still haven't seen a phone number or company address. Let me scroll down to the bottom of the page to check.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 5,
+      "t": 23.35,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The sensor explanation is clear, and I like that it's simple. Let me keep scrolling down to the bottom of the page to see if there is a phone number or company address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 6,
+      "t": 26.86,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The parent summary and durability details look good, but I still need to scroll down to the bottom to see if there is a phone number or company address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 7,
+      "t": 30.68,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "As a retired teacher, I really appreciate the 'No Classroom Distractions' school mode. Let me keep scrolling down to the bottom of the page to see if there is a phone number or company address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 8,
+      "t": 34.43,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I'm almost at the bottom now\u2014I see 'HONEST DETAILS & FAQ' peeking out. Let me scroll down to check the FAQ and footer for a phone number or company address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 9,
+      "t": 38.0,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Under 'Real Human Support' I only see an email address, no phone number. Let me scroll down to the very bottom of the page to see if there is a phone number or company address in the footer.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 10,
+      "t": 41.66,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I'm still not at the very bottom. Let me scroll down one more time to check the footer for a phone number or company address.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 11,
+      "t": 46.73,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I'm almost at the very bottom now. Let me scroll down one more time to see if there is a phone number or company address in the footer.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 12,
+      "t": 50.5,
+      "action": "quit",
+      "target": "",
+      "target_index": null,
+      "text": null,
+      "thought": "I've reached the very bottom of the page and there is no phone number, no physical address, and no real company name\u2014just an email address. I only buy from companies I can call if something goes wrong, so I'm going to leave this site.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}
