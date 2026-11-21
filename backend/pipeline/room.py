@@ -856,6 +856,13 @@ async def post_challenge(
     room.recent_challenges = [
         (ts, ch_text) for ts, ch_text in room.recent_challenges if now - ts <= ECHO_WINDOW_S
     ]
+    # Duplicate guard: a Live twin sometimes calls challenge_founder twice with the same text
+    # (seen in the 3:14 PM hotspot test). Drop near-identical challenges within 20 s.
+    if any(
+        now - ts <= 20 and difflib.SequenceMatcher(None, cleaned.lower(), ch_text.lower()).ratio() >= 0.85
+        for ts, ch_text in room.recent_challenges
+    ):
+        return
     room.recent_challenges.append((now, cleaned))
 
     cid = challenge_id or f"c_{secrets.token_hex(4)}"
