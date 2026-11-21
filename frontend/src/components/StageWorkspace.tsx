@@ -28,7 +28,7 @@ import { SwarmStage } from "./SwarmStage";
 import { VerdictStage } from "./VerdictStage";
 import { V2Card } from "./V2Card";
 import { HotseatModal } from "./HotseatModal";
-import { OfficeScene } from "./office/OfficeScene";
+import { Office3D } from "./office3d";
 import { TeleprompterCard } from "./TeleprompterCard";
 
 export interface StageWorkspaceProps {
@@ -62,7 +62,7 @@ export function StageWorkspace({
   const [showDevSample, setShowDevSample] = useState(
     !presentationMode && process.env.NODE_ENV === "development"
   );
-  const [viewMode, setViewMode] = useState<ViewMode>("classic");
+  const [viewMode, setViewMode] = useState<ViewMode>("office");
   const [showDetailPanel, setShowDetailPanel] = useState(true);
 
   const [connectionStatus, setConnectionStatus] = useState<
@@ -598,12 +598,14 @@ export function StageWorkspace({
           </section>
         ) : viewMode === "office" ? (
           <>
-            <OfficeScene
-              runState={runState}
-              activeStage={selectedStage}
-              isSampleData={isSampleData}
-              onOpenHotseat={(persona) => setHotseatPersonaId(persona.persona_id)}
-            />
+            <div className="h-[calc(100vh-150px)] min-h-[560px] w-full">
+              <Office3D
+                runState={runState}
+                activeStage={selectedStage}
+                isSampleData={isSampleData}
+                onOpenHotseat={(persona) => setHotseatPersonaId(persona.persona_id)}
+              />
+            </div>
 
             {/* Existing stage components preserved below Office view as the live Detail Panel */}
             <div className="space-y-3">

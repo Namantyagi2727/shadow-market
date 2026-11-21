@@ -185,7 +185,7 @@ export function TopStageBar({
                 }`}
               >
                 <Building2 className="h-3.5 w-3.5" />
-                <span>Office</span>
+                <span>3D Office</span>
               </button>
               <button
                 onClick={() => onChangeViewMode("classic")}
