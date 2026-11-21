@@ -1,5 +1,5 @@
-import { StageWorkspace } from "@/components/StageWorkspace";
+import { StartPitch } from "@/components/live/StartPitch";
 
 export default function HomePage() {
-  return <StageWorkspace />;
+  return <StartPitch />;
 }
