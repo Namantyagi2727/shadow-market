@@ -10,6 +10,7 @@ import {
 } from "@/lib/room-mic";
 import { FindingsSection } from "./FindingsSection";
 import { JudgeTopBar } from "./JudgeTopBar";
+import { PitchSnapshot } from "./PitchSnapshot";
 import { QuestionsPanel } from "./QuestionsPanel";
 import { ResearchStrip } from "./ResearchStrip";
 import { TeamChannel } from "./TeamChannel";
@@ -300,6 +301,7 @@ export function JudgeAssistantWorkspace({
 
         {/* Middle column (36%): the expert team channel */}
         <section className="flex min-h-0 w-[36%] shrink-0 flex-col border-r border-[#2A2B30] bg-[#0E0F11] px-5 py-5">
+          <PitchSnapshot research={research} events={events} reveal={pitchComplete} />
           <TeamChannel events={events} reveal={pitchComplete} />
         </section>
 
