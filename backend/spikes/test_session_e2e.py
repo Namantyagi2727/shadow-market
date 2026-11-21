@@ -65,13 +65,15 @@ async def main() -> None:
         async with websockets.connect(f"ws://localhost:8000/ws/runs/{run_id}") as ws:
             async for raw in ws:
                 ev = json.loads(raw)
-                if ev["type"] in SKIP:
+                if ev["type"] in SKIP or ev["type"] == "expert_status":
                     continue
                 d = ev["data"]
                 if ev["type"] == "research_status":
                     msg = f"{d.get('step')} {d.get('state')}"
                 elif ev["type"] == "judge_questions":
                     msg = " | ".join(q["question"] for q in d.get("questions", []))
+                elif ev["type"] == "expert_note":
+                    msg = f"{d.get('name')} ({d.get('role')}): {d.get('headline')} — ask: {d.get('question')}"
                 elif ev["type"] == "founder_prep":
                     msg = f"{len(d.get('answers', []))} prepared answers"
                 elif ev["type"] == "pitch_research":
