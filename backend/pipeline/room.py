@@ -33,6 +33,8 @@ VALID_PROOF_SOURCES: set[str] = {"swarm", "lab", "analyst", "competitors", "boar
 
 ECHO_WINDOW_S = 45.0
 ECHO_RATIO_THRESHOLD = 0.6
+SESSION_DEDUPE_WINDOW_S = 8.0
+SESSION_DEDUPE_RATIO = 0.8
 CAPTION_MIN_INTERVAL_S = 0.25  # <= 4/s
 GATE_TRIGGER_THRESHOLD = 0.7
 FALLBACK_DELAY_S = 4.0  # Live twin normally answers in ~1-2 s
@@ -142,10 +144,12 @@ class RoomState:
     log: EventLog
     seats: dict[int, str] = field(default_factory=lambda: dict(DEFAULT_SEAT_ROLES))
     recent_challenges: list[tuple[float, str]] = field(default_factory=list)
+    recent_utterances: list[tuple[float, str]] = field(default_factory=list)
     pending: dict[str, PendingUtterance] = field(default_factory=dict)
     room_start: float = field(default_factory=time.monotonic)
     stage_changed_emitted: bool = False
     next_seat_idx: int = 0
+    is_session: bool = False
 
 
 ROOMS: dict[str, RoomState] = {}
@@ -159,7 +163,7 @@ def _alpha_client() -> genai.Client:
 def ensure_room(run_id: str, ctx: RunContext, log: EventLog) -> RoomState:
     state = ROOMS.get(run_id)
     if state is None:
-        state = RoomState(run_id=run_id, ctx=ctx, log=log)
+        state = RoomState(run_id=run_id, ctx=ctx, log=log, is_session=run_id.startswith("s_"))
         ROOMS[run_id] = state
     else:
         state.ctx = ctx
@@ -256,11 +260,13 @@ def build_evidence(events: list[dict[str, Any]]) -> dict[str, Any]:
     pitch: dict[str, Any] = {}
     spec: dict[str, Any] = {}
     competitors: list[dict[str, Any]] = []
+    web_facts: list[dict[str, Any]] = []
     persona_names: dict[str, str] = {}
     lab_by_persona: dict[str, dict[str, Any]] = {}
     swarm_rubrics: dict[str, float] = {}
     swarm_personas: int = 0
     swarm_intent_mean: float | None = None
+    swarm_weakest: str | None = None
     verdict: dict[str, Any] = {}
 
     for ev in events:
@@ -276,6 +282,65 @@ def build_evidence(events: list[dict[str, Any]]) -> dict[str, Any]:
                 "target_user": str(data.get("target_user") or "").strip(),
                 "price_usd": _as_float(data.get("price_usd")),
             }
+        elif etype == "pitch_research":
+            pr_pitch = data.get("pitch")
+            if isinstance(pr_pitch, dict) and (pr_pitch.get("title") or pr_pitch.get("one_liner")):
+                pitch = {
+                    "title": str(pr_pitch.get("title") or "").strip(),
+                    "one_liner": str(pr_pitch.get("one_liner") or "").strip(),
+                    "target_user": str(pr_pitch.get("target_user") or "").strip(),
+                    "price_usd": _as_float(pr_pitch.get("price_usd")),
+                    "location": str(pr_pitch.get("location") or "").strip() or None,
+                    "claims": [str(c).strip() for c in (pr_pitch.get("claims") or []) if str(c).strip()],
+                }
+            pr_comps = data.get("competitors")
+            if isinstance(pr_comps, list) and pr_comps:
+                competitors = []
+                for item in pr_comps:
+                    if not isinstance(item, dict):
+                        continue
+                    title = str(item.get("title") or "").strip()
+                    if title:
+                        competitors.append({"title": title, "price_usd": _as_float(item.get("price_usd"))})
+            pr_web = data.get("web")
+            if isinstance(pr_web, list) and pr_web:
+                web_facts = []
+                for item in pr_web:
+                    if not isinstance(item, dict):
+                        continue
+                    fact = str(item.get("fact") or "").strip()
+                    if fact:
+                        web_facts.append({"fact": fact, "url": item.get("url")})
+            pr_analyst = data.get("analyst")
+            if isinstance(pr_analyst, dict):
+                ap = _as_float(pr_analyst.get("probability"))
+                if ap is not None:
+                    verdict = {
+                        **verdict,
+                        "launch_probability": ap,
+                        "analyst_reason": str(pr_analyst.get("reason") or "").strip()
+                        or str(verdict.get("analyst_reason") or "").strip(),
+                        "framing": str(pr_analyst.get("framing") or "").strip()
+                        or str(verdict.get("framing") or "").strip(),
+                    }
+            pr_buyers = data.get("buyers")
+            if isinstance(pr_buyers, dict) and (pr_buyers.get("rubrics") or pr_buyers.get("n")):
+                raw_n = _as_float(pr_buyers.get("n"))
+                if raw_n is not None:
+                    swarm_personas = int(raw_n)
+                im = _as_float(pr_buyers.get("intent_mean"))
+                if im is not None:
+                    swarm_intent_mean = im
+                raw_rubrics = pr_buyers.get("rubrics") or {}
+                if isinstance(raw_rubrics, dict) and raw_rubrics:
+                    swarm_rubrics = {}
+                    for k, v in raw_rubrics.items():
+                        fv = _as_float(v)
+                        if fv is not None:
+                            swarm_rubrics[str(k)] = fv
+                w = str(pr_buyers.get("weakest") or "").strip()
+                if w:
+                    swarm_weakest = w
         elif etype == "spec_ready":
             spec = {
                 "headline": str(data.get("headline") or "").strip(),
@@ -316,6 +381,8 @@ def build_evidence(events: list[dict[str, Any]]) -> dict[str, Any]:
                     fv = _as_float(v)
                     if fv is not None:
                         swarm_rubrics[str(k)] = fv
+                if swarm_rubrics:
+                    swarm_weakest = min(swarm_rubrics, key=lambda k: swarm_rubrics[k])
         elif etype == "verdict":
             verdict = {
                 "launch_probability": _as_float(data.get("launch_probability")),
@@ -339,6 +406,7 @@ def build_evidence(events: list[dict[str, Any]]) -> dict[str, Any]:
         "pitch": pitch,
         "spec": spec,
         "competitors": competitors,
+        "web": web_facts,
         "lab": {
             "total": len(lab_entries),
             "converted": converted,
@@ -349,6 +417,7 @@ def build_evidence(events: list[dict[str, Any]]) -> dict[str, Any]:
             "personas": swarm_personas,
             "rubrics": swarm_rubrics,
             "intent_mean": swarm_intent_mean,
+            "weakest": swarm_weakest,
         },
         "verdict": verdict,
     }
@@ -367,9 +436,13 @@ def evidence_text(evidence: dict[str, Any]) -> str:
             pitch_line += f" — {one_liner}"
         if pitch.get("target_user"):
             pitch_line += f" (target: {pitch['target_user']})"
+        if pitch.get("location"):
+            pitch_line += f"; location {pitch['location']}"
         if pitch.get("price_usd") is not None:
             pitch_line += f"; pitched price {_fmt_price(pitch['price_usd'])}"
         lines.append(pitch_line)
+        for claim in (pitch.get("claims") or [])[:5]:
+            lines.append(f"- Pitch claim: {claim}")
 
     spec = evidence.get("spec") or {}
     if spec.get("headline") or spec.get("price_usd") is not None or spec.get("risks"):
@@ -393,6 +466,8 @@ def evidence_text(evidence: dict[str, Any]) -> str:
         lines.append("Analyst verdict: " + ", ".join(verdict_parts))
     if verdict.get("analyst_reason"):
         lines.append(f"Analyst reason: {verdict['analyst_reason']}")
+    if verdict.get("framing"):
+        lines.append(f"Analyst framing: {verdict['framing']}")
     for mode in (verdict.get("failure_modes") or [])[:5]:
         lines.append(f"- Failure mode: {mode}")
 
@@ -403,6 +478,8 @@ def evidence_text(evidence: dict[str, Any]) -> str:
         rubric_bits = [f"{k} {_fmt_prob(v)}" for k, v in rubrics.items()]
         if swarm.get("intent_mean") is not None:
             rubric_bits.append(f"intent_mean {_fmt_prob(swarm['intent_mean'])}")
+        if swarm.get("weakest"):
+            rubric_bits.append(f"weakest {swarm['weakest']}")
         lines.append(f"{header}: " + ", ".join(rubric_bits))
 
     lab = evidence.get("lab") or {}
@@ -423,6 +500,13 @@ def evidence_text(evidence: dict[str, Any]) -> str:
             else:
                 comp_bits.append(str(c["title"]))
         lines.append("Competitors: " + "; ".join(comp_bits))
+
+    web_facts = evidence.get("web") or []
+    if web_facts:
+        for w in web_facts[:5]:
+            fact = str(w.get("fact") or "").strip()
+            if fact:
+                lines.append(f"- Web fact: {fact}")
 
     return chr(10).join(lines) if lines else "No prior pipeline evidence available."
 
@@ -465,18 +549,24 @@ def _extract_interim_text(msg: Any, sc: Any) -> str | None:
     return None
 
 
-async def stream_audio(run_id: str, websocket: WebSocket) -> None:
+async def stream_audio(run_id: str, websocket: WebSocket, role: str | None = None) -> None:
     """Stream 16 kHz mono PCM16 frames from browser mic into Gemini live transcription."""
     room = _get_room(run_id)
     await _ensure_room_stage(room)
+    effective_role = role if role in ("founder", "judge") else None
 
     audio_queue: asyncio.Queue[bytes | None] = asyncio.Queue(maxsize=100)
     client_disconnected = asyncio.Event()
     utterance_tasks: set[asyncio.Task[None]] = set()
     last_caption_ts = 0.0
 
+    def _caption_payload(text: str) -> dict[str, Any]:
+        if effective_role is not None:
+            return {"text": text, "role": effective_role}
+        return {"text": text}
+
     def _spawn_utterance(text: str) -> None:
-        task = asyncio.create_task(handle_utterance(run_id, text))
+        task = asyncio.create_task(handle_utterance(run_id, text, role=effective_role))
         utterance_tasks.add(task)
 
         def _done(t: asyncio.Task[None]) -> None:
@@ -555,7 +645,7 @@ async def stream_audio(run_id: str, websocket: WebSocket) -> None:
                                         await room.log.emit(
                                             "room_caption",
                                             "room",
-                                            {"text": interim_text.strip()},
+                                            _caption_payload(interim_text.strip()),
                                         )
 
                                 final_tr = getattr(sc, "input_transcription", None)
@@ -567,7 +657,11 @@ async def stream_audio(run_id: str, websocket: WebSocket) -> None:
                                         now = time.monotonic()
                                         if now - last_caption_ts >= CAPTION_MIN_INTERVAL_S:
                                             last_caption_ts = now
-                                            await room.log.emit("room_caption", "room", {"text": cleaned})
+                                            await room.log.emit(
+                                                "room_caption",
+                                                "room",
+                                                _caption_payload(cleaned),
+                                            )
                                     else:
                                         _spawn_utterance(cleaned)
                             if not got_msg:
@@ -684,11 +778,28 @@ def _gate_utterance_sync(pitch_line: str, utterance: str) -> tuple[float, str]:
     return prob, topic
 
 
+def _is_recent_duplicate(room: RoomState, text: str) -> bool:
+    now = time.monotonic()
+    room.recent_utterances = [
+        (ts, prev) for ts, prev in room.recent_utterances if now - ts <= SESSION_DEDUPE_WINDOW_S
+    ]
+    probe = " ".join(text.lower().split())
+    if not probe:
+        return False
+    for _, prev in room.recent_utterances:
+        ref = " ".join(prev.lower().split())
+        if ref and difflib.SequenceMatcher(None, probe, ref).ratio() >= SESSION_DEDUPE_RATIO:
+            return True
+    room.recent_utterances.append((now, text))
+    return False
+
+
 async def handle_utterance(
     run_id: str,
     text: str,
     forced: bool = False,
     seat: int | None = None,
+    role: str | None = None,
 ) -> None:
     """Emit room_utterance, run echo filter + Decisions gate, and schedule fallback if triggered."""
     cleaned = " ".join(str(text or "").split()).strip()
@@ -697,6 +808,83 @@ async def handle_utterance(
 
     room = _get_room(run_id)
     await _ensure_room_stage(room)
+
+    if room.is_session:
+        from pipeline import session as session_mod
+
+        if not forced:
+            if _is_recent_duplicate(room, cleaned):
+                return
+        else:
+            now = time.monotonic()
+            room.recent_utterances = [
+                (ts, prev) for ts, prev in room.recent_utterances if now - ts <= SESSION_DEDUPE_WINDOW_S
+            ]
+            room.recent_utterances.append((now, cleaned))
+
+        t_utterance_start = time.monotonic()
+        utterance_id = f"u_{secrets.token_hex(4)}"
+        t_since_start = round(max(0.0, t_utterance_start - room.room_start), 2)
+        speaker = role if role in ("founder", "judge") else "judge"
+
+        await room.log.emit(
+            "room_utterance",
+            "room",
+            {
+                "utterance_id": utterance_id,
+                "speaker": speaker,
+                "speaker_label": "",
+                "text": cleaned,
+                "t": t_since_start,
+            },
+        )
+
+        if speaker == "founder":
+            await session_mod.on_founder_utterance(run_id, cleaned, room.log)
+            return
+
+        evidence = build_evidence(room.log.events)
+        pitch_line = _pitch_summary_line(evidence)
+
+        t_gate_start = time.monotonic()
+        try:
+            is_challenge, topic = await asyncio.to_thread(_gate_utterance_sync, pitch_line, cleaned)
+        except Exception as exc:  # noqa: BLE001
+            await room.log.emit(
+                "error",
+                "room",
+                {"message": f"Room gate failed ({type(exc).__name__})", "recoverable": True},
+            )
+            is_challenge = 1.0 if forced else 0.0
+            topic = "other"
+
+        latency_ms = int(round(max(0.0, time.monotonic() - t_gate_start) * 1000))
+        _GATE_LATENCIES_MS.append(latency_ms)
+
+        triggered = bool(forced or is_challenge >= GATE_TRIGGER_THRESHOLD)
+        await room.log.emit(
+            "room_gate",
+            "room",
+            {
+                "utterance_id": utterance_id,
+                "is_challenge": round(is_challenge, 4),
+                "topic": topic,
+                "triggered": triggered,
+                "latency_ms": latency_ms,
+            },
+        )
+
+        if triggered:
+            matched_question_id, prep_hint = session_mod.match_prepared_question(run_id, cleaned)
+            await founder_brief(
+                run_id=run_id,
+                challenge_id=utterance_id,
+                challenge_text=cleaned,
+                t_start=t_utterance_start,
+                matched_question_id=matched_question_id,
+                prep_hint=prep_hint,
+            )
+        return
 
     t_utterance_start = time.monotonic()
     utterance_id = f"u_{secrets.token_hex(4)}"
@@ -1154,7 +1342,21 @@ JUDGE CHALLENGE:
     return badge, conf
 
 
-def _generate_founder_brief_sync(ev_text: str, challenge_text: str) -> dict[str, Any]:
+def _generate_founder_brief_sync(
+    ev_text: str,
+    challenge_text: str,
+    prep_hint: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    hint_section = ""
+    if isinstance(prep_hint, dict) and (prep_hint.get("line") or prep_hint.get("points")):
+        pts = "; ".join(str(p) for p in (prep_hint.get("points") or []) if p)
+        hint_section = f"""
+Prepared answer hint for a closely matching question (adapt tightly to what the judge actually asked, keeping <= 14 words):
+- Suggested line: {prep_hint.get("line") or ""}
+- Points: {pts}
+- Evidence: {prep_hint.get("evidence") or ""}
+"""
+
     prompt = f"""You are a live teleprompter coaching a startup founder answering a judge on stage.
 
 Judge challenge:
@@ -1162,7 +1364,7 @@ Judge challenge:
 
 Evidence from our analysis (ONLY use facts and exact numbers from here):
 {ev_text}
-
+{hint_section}
 Return ONLY JSON matching the schema:
 - "line": ONE sharp, speakable first-person sentence ("We ...", "Our ..."), STRICTLY 14 words or fewer, that directly answers or concedes and names the fix. No quotes, no markdown.
 - "proof": 1 to 2 short proof pills backed by the evidence above:
@@ -1184,6 +1386,8 @@ async def founder_brief(
     challenge_id: str,
     challenge_text: str,
     t_start: float,
+    matched_question_id: str | None = None,
+    prep_hint: dict[str, Any] | None = None,
 ) -> None:
     """Compute evidence-support badge + 14-word teleprompter line + code-verified proof pills."""
     room = _get_room(run_id)
@@ -1204,7 +1408,7 @@ async def founder_brief(
 
     async def _get_copy() -> dict[str, Any]:
         try:
-            return await asyncio.to_thread(_generate_founder_brief_sync, ev_text, challenge_text)
+            return await asyncio.to_thread(_generate_founder_brief_sync, ev_text, challenge_text, prep_hint)
         except Exception as exc:  # noqa: BLE001
             await room.log.emit(
                 "error",
@@ -1224,15 +1428,15 @@ async def founder_brief(
     latency_ms = int(round(max(0.0, time.monotonic() - t_start) * 1000))
     _BRIEF_LATENCIES_MS.append(latency_ms)
 
-    await room.log.emit(
-        "founder_brief",
-        "room",
-        {
-            "challenge_id": challenge_id,
-            "badge": badge,
-            "badge_confidence": round(badge_confidence, 4),
-            "line": line,
-            "proof": proof,
-            "latency_ms": latency_ms,
-        },
-    )
+    payload: dict[str, Any] = {
+        "challenge_id": challenge_id,
+        "badge": badge,
+        "badge_confidence": round(badge_confidence, 4),
+        "line": line,
+        "proof": proof,
+        "latency_ms": latency_ms,
+    }
+    if room.is_session:
+        payload["matched_question_id"] = matched_question_id
+
+    await room.log.emit("founder_brief", "room", payload)
