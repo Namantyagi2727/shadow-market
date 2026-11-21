@@ -1,0 +1,279 @@
+{
+  "run_id": "r_dev_v2",
+  "note": "hand-written dev sample",
+  "events": [
+    {
+      "type": "stage_changed",
+      "seq": 300,
+      "ts": "2026-11-21T17:20:00.000Z",
+      "stage": "iterate",
+      "data": {
+        "stage": "iterate"
+      }
+    },
+    {
+      "type": "v2_plan",
+      "seq": 301,
+      "ts": "2026-11-21T17:20:01.200Z",
+      "stage": "iterate",
+      "data": {
+        "fixes": [
+          {
+            "issue": "Shoppers hesitated at checkout due to missing warranty, return policy, and shipping expectations.",
+            "change": "Add a clear 30-day return guarantee, plain-language shipping window, and honest pre-order disclosure next to the primary CTA.",
+            "evidence": "Swarm trust rubric scored 0.34 and 4 of 6 lab personas cited missing return terms before quitting."
+          },
+          {
+            "issue": "Tool-free mounting compatibility for shared commuter bikes was buried below the fold.",
+            "change": "Lead the hero headline and top three bullets with 3-second clip-on attachment for Citi Bike and standard commuter frames.",
+            "evidence": "Swarm clarity scored 0.48; 3 lab shoppers scrolled twice trying to confirm handlebar fit."
+          },
+          {
+            "issue": "Price felt unanchored against $29-$39 tail lights on Amazon.",
+            "change": "Add a compact spec comparison table highlighting USB-C recharge time, battery hours, and clip-on portability.",
+            "evidence": "Price-fair rubric was 0.44 and verdict flagged commodity laser-light comparison risk."
+          }
+        ],
+        "founder_todo": [
+          "Add a real product photo mounted on a commuter bike at dusk",
+          "Add your company address and real support email to the footer"
+        ]
+      }
+    },
+    {
+      "type": "v2_build_progress",
+      "seq": 302,
+      "ts": "2026-11-21T17:20:02.600Z",
+      "stage": "iterate",
+      "data": {
+        "message": "Resuming V1 sandbox session and loading existing landing page files..."
+      }
+    },
+    {
+      "type": "v2_build_progress",
+      "seq": 303,
+      "ts": "2026-11-21T17:20:04.100Z",
+      "stage": "iterate",
+      "data": {
+        "message": "Applying 3 targeted trust, hero-clarity, and spec-table fixes without inventing facts..."
+      }
+    },
+    {
+      "type": "v2_build_progress",
+      "seq": 304,
+      "ts": "2026-11-21T17:20:05.500Z",
+      "stage": "iterate",
+      "data": {
+        "message": "Capturing V1 vs V2 desktop screenshots and launching held-out buyer panel..."
+      }
+    },
+    {
+      "type": "v2_ready",
+      "seq": 305,
+      "ts": "2026-11-21T17:20:06.800Z",
+      "stage": "iterate",
+      "data": {
+        "url": "/api/runs/r_dev_v2/artifacts/v2/index.html",
+        "screenshot_url": "/api/runs/r_dev_v2/artifacts/v2_screenshot.png",
+        "v1_screenshot_url": "/api/runs/r_dev_v2/artifacts/v1_screenshot.png",
+        "reused_sandbox": true
+      }
+    },
+    {
+      "type": "v2_panel_finished",
+      "seq": 306,
+      "ts": "2026-11-21T17:20:07.400Z",
+      "stage": "iterate",
+      "data": {
+        "persona_id": "h1",
+        "name": "Elena Park",
+        "version": "v1",
+        "outcome": "quit",
+        "quit_reason": "No return policy or warranty details near checkout.",
+        "video_url": "/api/runs/r_dev_v2/artifacts/v2_panel_h1_v1.webm"
+      }
+    },
+    {
+      "type": "v2_panel_finished",
+      "seq": 307,
+      "ts": "2026-11-21T17:20:07.900Z",
+      "stage": "iterate",
+      "data": {
+        "persona_id": "h1",
+        "name": "Elena Park",
+        "version": "v2",
+        "outcome": "converted",
+        "quit_reason": null,
+        "video_url": "/api/runs/r_dev_v2/artifacts/v2_panel_h1_v2.webm"
+      }
+    },
+    {
+      "type": "v2_panel_finished",
+      "seq": 308,
+      "ts": "2026-11-21T17:20:08.400Z",
+      "stage": "iterate",
+      "data": {
+        "persona_id": "h2",
+        "name": "Devon Brooks",
+        "version": "v1",
+        "outcome": "quit",
+        "quit_reason": "Couldn't tell if it fits rental commuter handlebars.",
+        "video_url": "/api/runs/r_dev_v2/artifacts/v2_panel_h2_v1.webm"
+      }
+    },
+    {
+      "type": "v2_panel_finished",
+      "seq": 309,
+      "ts": "2026-11-21T17:20:08.900Z",
+      "stage": "iterate",
+      "data": {
+        "persona_id": "h2",
+        "name": "Devon Brooks",
+        "version": "v2",
+        "outcome": "quit",
+        "quit_reason": "Still wanted to see real night-riding street photos before paying.",
+        "video_url": "/api/runs/r_dev_v2/artifacts/v2_panel_h2_v2.webm"
+      }
+    },
+    {
+      "type": "v2_panel_finished",
+      "seq": 310,
+      "ts": "2026-11-21T17:20:09.400Z",
+      "stage": "iterate",
+      "data": {
+        "persona_id": "h3",
+        "name": "Nadia Al-Mansoor",
+        "version": "v1",
+        "outcome": "quit",
+        "quit_reason": "Unclear why it costs more than a basic Amazon tail light.",
+        "video_url": "/api/runs/r_dev_v2/artifacts/v2_panel_h3_v1.webm"
+      }
+    },
+    {
+      "type": "v2_panel_finished",
+      "seq": 311,
+      "ts": "2026-11-21T17:20:09.900Z",
+      "stage": "iterate",
+      "data": {
+        "persona_id": "h3",
+        "name": "Nadia Al-Mansoor",
+        "version": "v2",
+        "outcome": "converted",
+        "quit_reason": null,
+        "video_url": "/api/runs/r_dev_v2/artifacts/v2_panel_h3_v2.webm"
+      }
+    },
+    {
+      "type": "v2_panel_finished",
+      "seq": 312,
+      "ts": "2026-11-21T17:20:10.400Z",
+      "stage": "iterate",
+      "data": {
+        "persona_id": "h4",
+        "name": "Tomasz Kowalski",
+        "version": "v1",
+        "outcome": "quit",
+        "quit_reason": "Page felt thin on hardware specs and battery runtime.",
+        "video_url": "/api/runs/r_dev_v2/artifacts/v2_panel_h4_v1.webm"
+      }
+    },
+    {
+      "type": "v2_panel_finished",
+      "seq": 313,
+      "ts": "2026-11-21T17:20:10.900Z",
+      "stage": "iterate",
+      "data": {
+        "persona_id": "h4",
+        "name": "Tomasz Kowalski",
+        "version": "v2",
+        "outcome": "quit",
+        "quit_reason": "Prefers buying after first batch ships with real customer photos.",
+        "video_url": "/api/runs/r_dev_v2/artifacts/v2_panel_h4_v2.webm"
+      }
+    },
+    {
+      "type": "v2_panel_finished",
+      "seq": 314,
+      "ts": "2026-11-21T17:20:11.400Z",
+      "stage": "iterate",
+      "data": {
+        "persona_id": "h5",
+        "name": "Priya Subramanian",
+        "version": "v1",
+        "outcome": "quit",
+        "quit_reason": "No company identity or shipping timeline listed.",
+        "video_url": "/api/runs/r_dev_v2/artifacts/v2_panel_h5_v1.webm"
+      }
+    },
+    {
+      "type": "v2_panel_finished",
+      "seq": 315,
+      "ts": "2026-11-21T17:20:11.900Z",
+      "stage": "iterate",
+      "data": {
+        "persona_id": "h5",
+        "name": "Priya Subramanian",
+        "version": "v2",
+        "outcome": "quit",
+        "quit_reason": "Footer still missing a real company address and support contact.",
+        "video_url": "/api/runs/r_dev_v2/artifacts/v2_panel_h5_v2.webm"
+      }
+    },
+    {
+      "type": "v2_panel_finished",
+      "seq": 316,
+      "ts": "2026-11-21T17:20:12.400Z",
+      "stage": "iterate",
+      "data": {
+        "persona_id": "h6",
+        "name": "Caleb Ortiz",
+        "version": "v1",
+        "outcome": "quit",
+        "quit_reason": "Skeptical of pre-ordering without return protection.",
+        "video_url": "/api/runs/r_dev_v2/artifacts/v2_panel_h6_v1.webm"
+      }
+    },
+    {
+      "type": "v2_panel_finished",
+      "seq": 317,
+      "ts": "2026-11-21T17:20:12.900Z",
+      "stage": "iterate",
+      "data": {
+        "persona_id": "h6",
+        "name": "Caleb Ortiz",
+        "version": "v2",
+        "outcome": "quit",
+        "quit_reason": "Needs a lower $25 entry price for a seasonal commuter accessory.",
+        "video_url": "/api/runs/r_dev_v2/artifacts/v2_panel_h6_v2.webm"
+      }
+    },
+    {
+      "type": "v2_result",
+      "seq": 318,
+      "ts": "2026-11-21T17:20:14.000Z",
+      "stage": "iterate",
+      "data": {
+        "holdout": {
+          "n": 6,
+          "v1_converted": 0,
+          "v2_converted": 2
+        },
+        "rubrics_v1": {
+          "trust": 0.34,
+          "clarity": 0.48,
+          "price_fair": 0.44,
+          "would_click": 0.51,
+          "would_buy": 0.29
+        },
+        "rubrics_v2": {
+          "trust": 0.52,
+          "clarity": 0.61,
+          "price_fair": 0.52,
+          "would_click": 0.58,
+          "would_buy": 0.39
+        },
+        "summary": "Clear return terms, tool-free commuter framing, and a compact spec table lifted held-out conversions from 0/6 to 2/6 and raised buyer trust by +0.18."
+      }
+    }
+  ]
+}

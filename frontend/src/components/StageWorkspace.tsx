@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, FlaskConical } from "lucide-react";
 import { DemoRunSummary, RunEvent, Stage } from "@/lib/contracts";
 import { connectRunStream, fetchDemoRuns, fetchRunEvents } from "@/lib/api";
 import { ReplayController, startEventReplay } from "@/lib/replay-engine";
@@ -12,6 +12,7 @@ import {
   RunState,
 } from "@/lib/run-store";
 import devSampleRun from "@/dev/sample-run.json";
+import devV2Sample from "@/dev/v2-sample.json";
 import { TopStageBar, ViewMode } from "./TopStageBar";
 import { PitchStage } from "./PitchStage";
 import { BoardroomStage } from "./BoardroomStage";
@@ -19,6 +20,7 @@ import { BuildStage } from "./BuildStage";
 import { UsabilityLabStage } from "./UsabilityLabStage";
 import { SwarmStage } from "./SwarmStage";
 import { VerdictStage } from "./VerdictStage";
+import { V2Card } from "./V2Card";
 import { HotseatModal } from "./HotseatModal";
 import { OfficeScene } from "./office/OfficeScene";
 import { TeleprompterCard } from "./TeleprompterCard";
@@ -167,6 +169,31 @@ export function StageWorkspace() {
 
     replayCtrlRef.current = startEventReplay(
       devSampleRun.events as RunEvent[],
+      (evt) => {
+        setRunState((prev) => applyRunEvent(prev, evt));
+      },
+      () => {
+        // Keep Replay + Sample data labels visible
+      },
+      1
+    );
+  }, [stopActiveStreams]);
+
+  const startDevV2SampleReplay = useCallback(() => {
+    stopActiveStreams();
+    setMode("replay");
+    setIsSampleData(true);
+    setConnectionStatus("disconnected");
+    setAutoFollow(true);
+    setDismissedErrors([]);
+    setHotseatPersonaId(null);
+    setDismissedBriefChallengeId(null);
+    setReplaySpeed(1);
+    setRunState(createInitialRunState(devV2Sample.run_id));
+    setSelectedStage("iterate");
+
+    replayCtrlRef.current = startEventReplay(
+      devV2Sample.events as RunEvent[],
       (evt) => {
         setRunState((prev) => applyRunEvent(prev, evt));
       },
@@ -369,15 +396,20 @@ export function StageWorkspace() {
           </section>
         );
       }
+      case "iterate":
+        return <V2Card runState={runState} />;
       case "verdict":
       case "reality":
         return (
-          <VerdictStage
-            runId={runState.runId}
-            verdict={runState.verdict}
-            voteTally={runState.voteTally}
-            focusReality={selectedStage === "reality"}
-          />
+          <div className="space-y-6">
+            <VerdictStage
+              runId={runState.runId}
+              verdict={runState.verdict}
+              voteTally={runState.voteTally}
+              focusReality={selectedStage === "reality"}
+            />
+            {runState.v2Plan && <V2Card runState={runState} />}
+          </div>
         );
     }
   };
@@ -415,6 +447,35 @@ export function StageWorkspace() {
         errors={visibleErrors}
         onDismissError={(seq) => setDismissedErrors((prev) => [...prev, seq])}
       />
+
+      {showDevSample && (
+        <div className="border-b border-purple-500/20 bg-purple-950/20">
+          <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-2 px-4 py-1.5 sm:px-6">
+            <span className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-purple-300">
+              <FlaskConical className="h-3.5 w-3.5" />
+              <span>Dev samples</span>
+            </span>
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                onClick={startDevSampleReplay}
+                className="inline-flex items-center gap-1.5 rounded-md border border-purple-400/30 bg-purple-500/10 px-2.5 py-1 font-mono text-[11px] font-medium text-purple-100 transition hover:bg-purple-500/20"
+              >
+                <FlaskConical className="h-3 w-3 text-purple-300" />
+                <span>Sample run (dev)</span>
+              </button>
+              <button
+                type="button"
+                onClick={startDevV2SampleReplay}
+                className="inline-flex items-center gap-1.5 rounded-md border border-amber-400/30 bg-amber-500/10 px-2.5 py-1 font-mono text-[11px] font-medium text-amber-100 transition hover:bg-amber-500/20"
+              >
+                <FlaskConical className="h-3 w-3 text-amber-300" />
+                <span>V2 sample (dev)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <main className="mx-auto w-full max-w-[1440px] flex-1 space-y-6 px-4 py-6 sm:px-6">
         {viewMode === "office" ? (

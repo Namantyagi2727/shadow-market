@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import sampleRun from "../src/dev/sample-run.json";
 import roomSample from "../src/dev/room-sample.json";
+import v2Sample from "../src/dev/v2-sample.json";
 import { applyRunEvent, createInitialRunState } from "../src/lib/run-store";
 import type {
   BoardroomTurnData,
@@ -223,6 +224,39 @@ assert.equal(
 );
 assert.equal(state.twinChallenges[0].text, firstChallenge.text);
 
+// Apply v2-sample.json events on top (contract v3)
+const v1PersonaOrderLengthBeforeV2 = state.personaOrder.length;
+const v2Events = v2Sample.events as RunEvent[];
+const maxSeenSeqBeforeV2 = Math.max(...state.seenSeqs);
+const minV2Seq = Math.min(...v2Events.map((e) => e.seq));
+const v2SeqOffset =
+  minV2Seq <= maxSeenSeqBeforeV2 ? maxSeenSeqBeforeV2 + 1 - minV2Seq : 0;
+
+for (const rawEvt of v2Events) {
+  const evt: RunEvent =
+    v2SeqOffset === 0 ? rawEvt : { ...rawEvt, seq: rawEvt.seq + v2SeqOffset };
+  state = applyRunEvent(state, evt);
+}
+
+assert.equal(state.currentStage, "iterate");
+assert.equal(state.v2Plan?.fixes.length, 3, "v2Plan has 3 fixes");
+assert.equal(state.v2Plan?.founder_todo.length, 2, "v2Plan has 2 founder_todo items");
+assert.equal(state.v2BuildMessages.length, 3, "3 v2 build progress messages recorded");
+assert.equal(state.v2Ready?.reused_sandbox, true, "v2Ready records reused_sandbox");
+assert.equal(
+  Object.keys(state.v2Panel).length,
+  12,
+  "v2Panel has 12 entries (6 holdout personas x v1/v2)"
+);
+assert.equal(state.v2Result?.holdout.n, 6, "v2Result holdout n is 6");
+assert.equal(state.v2Result?.holdout.v1_converted, 0, "v2Result holdout v1_converted is 0");
+assert.equal(state.v2Result?.holdout.v2_converted, 2, "v2Result holdout v2_converted is 2");
+assert.equal(
+  state.personaOrder.length,
+  v1PersonaOrderLengthBeforeV2,
+  "V1 personaOrder length is unchanged by v2 events"
+);
+
 console.log(
-  `All ${uniqueSampleEvents.length} sample-run + ${roomEvents.length} room-sample + unknown-event + dedup assertions PASSED.`
+  `All ${uniqueSampleEvents.length} sample-run + ${roomEvents.length} room-sample + ${v2Events.length} v2-sample + unknown-event + dedup assertions PASSED.`
 );

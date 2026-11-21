@@ -22,6 +22,11 @@ import {
   SwarmProgressData,
   SwarmResultData,
   TwinChallengeData,
+  V2Fix,
+  V2PanelFinishedData,
+  V2PlanData,
+  V2ReadyData,
+  V2ResultData,
   VerdictData,
   VoteTallyData,
 } from "./contracts";
@@ -69,6 +74,11 @@ export interface RunState {
   swarmProgress: SwarmProgressData | null;
   swarmResult: SwarmResultData | null;
   verdict: VerdictData | null;
+  v2Plan: V2PlanData | null;
+  v2BuildMessages: BuildLogEntry[];
+  v2Ready: V2ReadyData | null;
+  v2Panel: Record<string, V2PanelFinishedData>;
+  v2Result: V2ResultData | null;
   roomCaption: string | null;
   roomUtterances: RoomUtteranceData[];
   roomGates: Record<string, RoomGateData>;
@@ -98,6 +108,11 @@ export function createInitialRunState(runId: string | null = null): RunState {
     swarmProgress: null,
     swarmResult: null,
     verdict: null,
+    v2Plan: null,
+    v2BuildMessages: [],
+    v2Ready: null,
+    v2Panel: {},
+    v2Result: null,
     roomCaption: null,
     roomUtterances: [],
     roomGates: {},
@@ -134,6 +149,19 @@ function isFounderBriefProofSource(value: unknown): value is FounderBriefProofSo
     value === "competitors" ||
     value === "boardroom"
   );
+}
+
+function parseNumericRecord(value: unknown): Record<string, number> {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return {};
+  }
+  const result: Record<string, number> = {};
+  for (const [key, val] of Object.entries(value as Record<string, unknown>)) {
+    if (typeof val === "number" && Number.isFinite(val)) {
+      result[key] = val;
+    }
+  }
+  return result;
 }
 
 function stageIndex(stage: Stage): number {
@@ -454,6 +482,114 @@ export function applyRunEvent(state: RunState, event: RunEvent): RunState {
           ...(verdict.probability_source === "analyst"
             ? { probability_source: "analyst" as const }
             : {}),
+        },
+      };
+    }
+
+    case "v2_plan": {
+      const rawFixes: unknown[] = Array.isArray(data.fixes) ? data.fixes : [];
+      const fixes: V2Fix[] = rawFixes
+        .filter(
+          (item): item is Record<string, unknown> =>
+            Boolean(item && typeof item === "object")
+        )
+        .map((item) => ({
+          issue: typeof item.issue === "string" ? item.issue : "",
+          change: typeof item.change === "string" ? item.change : "",
+          evidence: typeof item.evidence === "string" ? item.evidence : "",
+        }));
+      const founder_todo = Array.isArray(data.founder_todo)
+        ? data.founder_todo.map(String)
+        : [];
+      return {
+        ...baseNext,
+        v2Plan: {
+          fixes,
+          founder_todo,
+        },
+      };
+    }
+
+    case "v2_build_progress": {
+      const message = typeof data.message === "string" ? data.message : "";
+      if (!message) return baseNext;
+      return {
+        ...baseNext,
+        v2BuildMessages: [
+          ...baseNext.v2BuildMessages,
+          {
+            seq: event.seq ?? baseNext.v2BuildMessages.length,
+            ts: event.ts ?? new Date().toISOString(),
+            message,
+          },
+        ],
+      };
+    }
+
+    case "v2_ready": {
+      const ready = data as unknown as V2ReadyData;
+      return {
+        ...baseNext,
+        v2Ready: {
+          url: typeof ready.url === "string" ? ready.url : "",
+          screenshot_url:
+            typeof ready.screenshot_url === "string" ? ready.screenshot_url : "",
+          v1_screenshot_url:
+            typeof ready.v1_screenshot_url === "string"
+              ? ready.v1_screenshot_url
+              : "",
+          reused_sandbox: Boolean(ready.reused_sandbox),
+        },
+      };
+    }
+
+    case "v2_panel_finished": {
+      const panel = data as unknown as V2PanelFinishedData;
+      const personaId =
+        typeof panel.persona_id === "string" ? panel.persona_id : "";
+      if (!personaId) return baseNext;
+      const version = panel.version === "v2" ? "v2" : "v1";
+      const key = `${personaId}:${version}`;
+      return {
+        ...baseNext,
+        v2Panel: {
+          ...baseNext.v2Panel,
+          [key]: {
+            persona_id: personaId,
+            name: typeof panel.name === "string" ? panel.name : personaId,
+            version,
+            outcome: panel.outcome === "converted" ? "converted" : "quit",
+            quit_reason:
+              typeof panel.quit_reason === "string" ? panel.quit_reason : null,
+            video_url:
+              typeof panel.video_url === "string" ? panel.video_url : "",
+          },
+        },
+      };
+    }
+
+    case "v2_result": {
+      const rawHoldout =
+        data.holdout && typeof data.holdout === "object"
+          ? (data.holdout as Record<string, unknown>)
+          : {};
+      return {
+        ...baseNext,
+        v2Result: {
+          holdout: {
+            n: typeof rawHoldout.n === "number" ? rawHoldout.n : 0,
+            v1_converted:
+              typeof rawHoldout.v1_converted === "number"
+                ? rawHoldout.v1_converted
+                : 0,
+            v2_converted:
+              typeof rawHoldout.v2_converted === "number"
+                ? rawHoldout.v2_converted
+                : 0,
+          },
+          rubrics_v1: parseNumericRecord(data.rubrics_v1),
+          rubrics_v2: parseNumericRecord(data.rubrics_v2),
+          summary: typeof data.summary === "string" ? data.summary : "",
         },
       };
     }
