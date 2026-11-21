@@ -30,10 +30,16 @@ The blueprint has 9 phases. That is ~3 days of work. We build the demo spine fir
 
 Rule to respect: *evaluations made up entirely of examples the team wrote are not allowed.*
 
-1. **Main eval: historical backtest on real launches.** N ≥ 100 public product launches with known outcomes (data source TBD, must be licensed for our use). Three arms on the same inputs:
-   a. base-rate heuristic, b. single `gemini-4-neon` call ("will this succeed?"), c. our swarm + verdict.
-   Report ROC-AUC, Brier score, and the share of "yes" from the single-model baseline (sycophancy).
-   Honest caveat in the README: the backtest covers the swarm/verdict stage, not the browser lab.
+1. **Main eval: historical backtest on real Kickstarter launches.**
+   - **Data:** Web Robots monthly crawl, latest file `Kickstarter_2026-11-16…json.gz` (https://webrobots.io/kickstarter-datasets/). Use **campaigns whose deadline is in 2026**, so the models can't have memorized the outcome. Do *not* use the old 2021–22 Hugging Face mirror (memorization risk, no license on the card).
+   - **Rights:** Web Robots offers the crawls for research use; there's no formal license. So: don't commit the dataset or images; commit only a list of campaign IDs + the download/sample script, and credit Web Robots in the README.
+   - **Sample:** `state ∈ {successful, failed}`, `currency == USD`, ~150 campaigns, stratified by category, natural success rate. Split 30 calibration / 120 test, fixed seed.
+   - **Inputs (all arms):** `name`, `blurb`, `category`, `goal`, hero image `photo.full`. **Never** `pledged`, `backers_count`, `staff_pick`, `spotlight` (leak the answer).
+   - **Arms:** (a) category base rate from the calibration split; (b) one `gemini-4-neon` call returning a probability; (c) our swarm: Shopify competitors for the blurb + 200 personas × 5 Decisions rubrics → aggregated probability. Arm (c) does **not** build an MVP or run browsers per campaign (150 full runs won't fit the day); the README says so.
+   - **Fairness:** fit the same 2-parameter logistic calibration on the 30-campaign split for **both** (b) and (c), and report raw and calibrated numbers for each.
+   - **Report:** Brier, ROC-AUC, reliability diagram (10 bins), mean predicted vs actual success rate (shows sycophancy), and a small ablation (no competitors / fewer personas) if time allows.
+   - **Decisions API schema:** use the guide's question types (`noul` for yes/no, `choice`, `score`), not "boolean". Pack 200 personas × 5 questions into one 1,000-question call per campaign.
+   - **Aggregation:** per persona, weighted geometric mean of the 5 probabilities (weights .15/.20/.25/.20/.20); average over personas; then the calibration above.
 2. **UX-friction detection:** our browser panel vs a single model looking at static screenshots, on a mix of real public pages and a few seeded-trap pages. Report recall.
 3. **Failure frontier:** a short list of where it breaks, with examples, and what we changed after seeing it.
 
@@ -51,9 +57,10 @@ Rule to respect: *evaluations made up entirely of examples the team wrote are no
 
 | Area | Owner | Branch |
 |---|---|---|
-| `frontend/` | Builder 1 (with Antigravity) | `<name>-frontend` |
-| `backend/`, `contracts/events.md` | Builder 2 (with Antigravity) | `<name>-backend` |
-| `eval/` | Builder 2 writes the runner; Claude Code reviews the method and numbers | `<name>-eval` |
+| `frontend/` | **Arnab** (with Antigravity) | `arnab-frontend` |
+| `backend/`, `contracts/events.md` | **Naman** (with Antigravity) | `naman-backend` |
+| `eval/` | **Naman**; Claude Code writes/reviews the runner and checks the numbers | `naman-eval` |
+| `docs/` | Naman + Claude Code (`docs/shopify-mcp.md` has the verified Shopify call) | `naman-*` |
 | `README.md`, `.gitignore`, `.env.example`, `AGENTS.md`, merges to `main` | Naman + Claude Code | `naman-*` |
 
 Naman's branches: `naman-*`. Arnab's: `arnab-*`. Merge to `main` only after `git pull origin main`, with Naman's OK.
@@ -71,6 +78,4 @@ Naman's branches: `naman-*`. Arnab's: `arnab-*`. Merge to `main` only after `git
 
 ## Open questions
 
-- Data source for the backtest (see the question list sent to the idea generator).
-- Who is Builder 1 and Builder 2?
-- Repo name.
+- None blocking. Personas JSON from the idea generator goes in `backend/personas.json`.
