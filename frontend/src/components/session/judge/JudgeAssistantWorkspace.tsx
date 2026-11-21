@@ -12,6 +12,7 @@ import { FindingsSection } from "./FindingsSection";
 import { JudgeTopBar } from "./JudgeTopBar";
 import { QuestionsPanel } from "./QuestionsPanel";
 import { ResearchStrip } from "./ResearchStrip";
+import { TeamChannel } from "./TeamChannel";
 import { TranscriptPanel } from "./TranscriptPanel";
 import { TypedAskBar } from "./TypedAskBar";
 import {
@@ -281,8 +282,8 @@ export function JudgeAssistantWorkspace({
       )}
 
       <div className="flex min-h-0 flex-1 overflow-hidden">
-        {/* Left column (40%): Live transcript + compact research strip */}
-        <aside className="flex min-h-0 w-[40%] shrink-0 flex-col border-r border-[#2A2B30] bg-[#0E0F11]">
+        {/* Left column (28%): Live transcript + compact research strip */}
+        <aside className="flex min-h-0 w-[28%] shrink-0 flex-col border-r border-[#2A2B30] bg-[#0E0F11]">
           <TranscriptPanel
             utterances={utterances}
             interimCaptions={interimCaptions}
@@ -290,8 +291,13 @@ export function JudgeAssistantWorkspace({
           <ResearchStrip steps={researchSteps} />
         </aside>
 
-        {/* Right column (60%): Questions + What we found + Typed fallback */}
-        <main className="flex min-h-0 w-[60%] flex-1 flex-col overflow-hidden bg-[#0E0F11] px-8 py-5">
+        {/* Middle column (36%): the expert team channel */}
+        <section className="flex min-h-0 w-[36%] shrink-0 flex-col border-r border-[#2A2B30] bg-[#0E0F11] px-5 py-5">
+          <TeamChannel events={events} />
+        </section>
+
+        {/* Right column: Questions + What we found + Typed fallback */}
+        <main className="flex min-h-0 flex-1 flex-col overflow-hidden bg-[#0E0F11] px-6 py-5">
           <QuestionsPanel
             questions={questions}
             researchSteps={researchSteps}

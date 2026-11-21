@@ -1095,45 +1095,53 @@ async def run_research(run_id: str, force: bool = False) -> None:
                 await _emit_status("buyers", "failed", _sanitize_error(f"Buyer panel failed ({type(exc).__name__})"))
                 return None
 
+        # The expert team (market, rivals, history, GTM, social, sales) starts as soon as the pitch is understood.
+        from pipeline import experts as _experts
+
+        _track_task(asyncio.create_task(_experts.run_experts(pitch, transcript, log)), f"experts:{run_id}")
+
         comp_task = asyncio.create_task(_step_competitors())
         web_task = asyncio.create_task(_step_web())
         analyst_task = asyncio.create_task(_step_analyst())
         buyers_task = asyncio.create_task(_step_buyers(comp_task))
 
-        await asyncio.gather(comp_task, web_task, analyst_task, buyers_task)
-        final_research = await _emit_research()
+        # Questions + prep go out as soon as the FAST checks land (competitors, analyst, buyers);
+        # the slower web search refreshes them a second time when it finishes.
+        async def _questions_and_prep(final_research: dict[str, Any], label: str) -> None:
+            await _emit_status("questions", "running", f"Drafting top 3 judge questions{label}")
+            try:
+                questions = await asyncio.wait_for(
+                    asyncio.to_thread(_generate_questions_sync, final_research),
+                    timeout=QUESTIONS_TIMEOUT_S,
+                )
+                await _emit_status("questions", "done", f"3 judge questions ready{label}")
+            except Exception as exc:  # noqa: BLE001
+                questions = _fallback_questions(final_research)
+                await _emit_status(
+                    "questions",
+                    "failed",
+                    _sanitize_error(f"Question generation failed ({type(exc).__name__}); using fallback"),
+                )
+            session.latest_questions = questions
+            await log.emit("judge_questions", "room", {"questions": questions})
 
-        # 3. Judge questions (Neon, low)
-        await _emit_status("questions", "running", "Drafting top 3 judge questions")
-        try:
-            questions = await asyncio.wait_for(
-                asyncio.to_thread(_generate_questions_sync, final_research),
-                timeout=QUESTIONS_TIMEOUT_S,
-            )
-            await _emit_status("questions", "done", "3 judge questions ready")
-        except Exception as exc:  # noqa: BLE001
-            questions = _fallback_questions(final_research)
-            await _emit_status(
-                "questions",
-                "failed",
-                _sanitize_error(f"Question generation failed ({type(exc).__name__}); using fallback"),
-            )
+            await _emit_status("prep", "running", f"Preparing founder answer cards{label}")
+            try:
+                answers = await asyncio.wait_for(
+                    asyncio.to_thread(_generate_prep_sync, final_research, questions),
+                    timeout=PREP_TIMEOUT_S,
+                )
+                session.latest_prep = answers
+                await log.emit("founder_prep", "room", {"answers": answers})
+                await _emit_status("prep", "done", f"Prepared 3 founder answers{label}")
+            except Exception as exc:  # noqa: BLE001
+                await _emit_status("prep", "failed", _sanitize_error(f"Founder prep failed ({type(exc).__name__})"))
 
-        session.latest_questions = questions
-        await log.emit("judge_questions", "room", {"questions": questions})
-
-        # 4. Founder prep (Hydrogen, low)
-        await _emit_status("prep", "running", "Preparing founder answer cards")
-        try:
-            answers = await asyncio.wait_for(
-                asyncio.to_thread(_generate_prep_sync, final_research, questions),
-                timeout=PREP_TIMEOUT_S,
-            )
-            session.latest_prep = answers
-            await log.emit("founder_prep", "room", {"answers": answers})
-            await _emit_status("prep", "done", "Prepared 3 founder answers")
-        except Exception as exc:  # noqa: BLE001
-            await _emit_status("prep", "failed", _sanitize_error(f"Founder prep failed ({type(exc).__name__})"))
+        await asyncio.gather(comp_task, analyst_task, buyers_task)
+        await _questions_and_prep(await _emit_research(), "")
+        await web_task
+        if web_res:
+            await _questions_and_prep(await _emit_research(), " (with web facts)")
 
 
 # ---------------------------------------------------------------------------
