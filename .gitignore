@@ -1,0 +1,18 @@
+# Secrets: never commit. Only the placeholder file is tracked.
+.env
+.env.*
+!.env.example
+
+# Dependencies and virtual envs
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# Local-only agent config (OpenCrawl board wiring, personal notes)
+.claude/settings.local.json
+.claude/skills/opencrawl/
+CLAUDE.local.md
