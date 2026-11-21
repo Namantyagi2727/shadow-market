@@ -177,6 +177,8 @@ async def run(ctx: RunContext, emit: Emit) -> None:
         "failure_modes": failure_modes,
         "summary": summary,
         "analyst_reason": analysis["reason"],
+        # Transparency: the analyst frames the pitch as a campaign (category + assumed goal) before scoring.
+        "analyst_framing": analysis.get("campaign_text", ""),
         "market_intent": market_intent,
         "probability_source": "analyst",
     }

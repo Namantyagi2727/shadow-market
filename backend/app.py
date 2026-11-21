@@ -21,7 +21,7 @@ from pydantic import BaseModel
 from pipeline.context import REPO_ROOT, RUNS_DIR, EventLog, RunContext
 from pipeline.hotseat import create_hotseat_session
 from pipeline.orchestrator import run_pipeline
-from pipeline import room
+from pipeline import iterate, room
 
 load_dotenv(REPO_ROOT / ".env")
 os.environ["PUBLIC_BASE_URL"] = os.environ.get("PUBLIC_BASE_URL", "http://localhost:8000").rstrip("/")
@@ -82,7 +82,10 @@ def _hydrate_context(ctx: RunContext, events: list[dict[str, Any]]) -> None:
 
 def _load_existing_runs() -> None:
     RUNS_DIR.mkdir(parents=True, exist_ok=True)
-    for events_file in sorted(RUNS_DIR.glob("r_*/events.jsonl")):
+    # backend/demo_runs/ holds committed golden runs: replay works on any machine, no API key needed.
+    demo_dir = Path(__file__).resolve().parent / "demo_runs"
+    files = sorted(RUNS_DIR.glob("r_*/events.jsonl")) + sorted(demo_dir.glob("r_*/events.jsonl"))
+    for events_file in files:
         run_dir = events_file.parent
         run_id = run_dir.name
         if run_id in RUNS:
@@ -104,6 +107,35 @@ async def lifespan(_app: FastAPI):
 
 app = FastAPI(title="Shadow Market Backend", lifespan=lifespan)
 
+
+class ClientAllowlist:
+    """Only our own devices may call the API (HTTP and WebSocket).
+
+    Localhost is always allowed. Other machines must be listed in ALLOWED_CLIENT_IPS
+    (comma-separated, e.g. Laptop B and the iPad). ALLOWED_CLIENT_IPS=* allows everyone.
+    Without this, anyone on shared venue Wi-Fi could start runs on our Gemini key or mint Live tokens.
+    """
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] in ("http", "websocket"):
+            client = (scope.get("client") or ("", 0))[0]
+            allowed = {"127.0.0.1", "::1", "localhost"} | {
+                ip.strip() for ip in os.environ.get("ALLOWED_CLIENT_IPS", "").split(",") if ip.strip()
+            }
+            if "*" not in allowed and client not in allowed:
+                if scope["type"] == "websocket":
+                    await send({"type": "websocket.close", "code": 1008})
+                    return
+                await send({"type": "http.response.start", "status": 403, "headers": [(b"content-type", b"application/json")]})
+                await send({"type": "http.response.body", "body": b'{"detail":"client not allowed"}'})
+                return
+        await self.app(scope, receive, send)
+
+
+app.add_middleware(ClientAllowlist)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -222,6 +254,34 @@ async def post_vote(run_id: str, body: VoteRequest) -> dict[str, bool]:
                 "ai_probability": ai_probability,
             },
         )
+    return {"ok": True}
+
+
+@app.post("/api/runs/{run_id}/iterate")
+async def post_iterate(run_id: str) -> dict[str, bool]:
+    ctx, log, _ = _get_run(run_id)
+    if not (ctx.run_dir / "mvp" / "index.html").is_file():
+        raise HTTPException(status_code=400, detail="Run has no V1 MVP to iterate on.")
+    if run_id in iterate.ACTIVE_RUNS:
+        return {"ok": True}
+
+    async def _run_v2() -> None:
+        if run_id in iterate.ACTIVE_RUNS:
+            return
+        await log.emit("stage_changed", "iterate", {"stage": "iterate"})
+        try:
+            await iterate.run(ctx, log.emit)
+        except Exception as exc:  # noqa: BLE001
+            msg = f"iterate failed: {type(exc).__name__}: {exc}"
+            for env_name in ("GEMINI_API_KEY", "GOOGLE_API_KEY"):
+                secret = os.environ.get(env_name)
+                if secret and len(secret) >= 8:
+                    msg = msg.replace(secret, "[REDACTED]")
+            await log.emit("error", "iterate", {"message": msg, "recoverable": True})
+
+    task = asyncio.create_task(_run_v2())
+    _BACKGROUND.add(task)
+    task.add_done_callback(_BACKGROUND.discard)
     return {"ok": True}
 
 

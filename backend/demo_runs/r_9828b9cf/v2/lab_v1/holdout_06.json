@@ -1,0 +1,71 @@
+{
+  "persona_id": "holdout_06",
+  "outcome": "quit",
+  "quit_reason": "I've scrolled through most of the page and there are still zero real-world product photos or video demos\u2014just text, an interactive fit checker, and illustrations earlier. As a gear reviewer, I need to see actual photos of the product in use, so I'm leaving.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/v2/lab_v1/holdout_06.webm",
+  "duration_s": 23.54,
+  "name": "Lucas Ferreira",
+  "role": "Outdoor enthusiast and gear reviewer",
+  "device": "mobile",
+  "viewport": {
+    "width": 412,
+    "height": 915
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 6.22,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "No product photos are visible at the top. Let me scroll down to see real-world photos, durability details, and how it actually looks.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 12.02,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Still just an illustration/diagram here, though it mentions 6 ft TPU bumper and IPX7 waterproof. Let me scroll down further to see if there are any real-world product photos or a video demo.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 17.66,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Still only seeing illustrations and no real-world product photos or video demos yet. Let me scroll down further to check the rest of the page for actual photos or warranty details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 21.19,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Still no real-world product photos or demo, just an interactive fit checker. Let me scroll down one more time to see if there are any actual photos or solid warranty details below.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 5,
+      "t": 23.39,
+      "action": "quit",
+      "target": "",
+      "target_index": null,
+      "text": null,
+      "thought": "I've scrolled through most of the page and there are still zero real-world product photos or video demos\u2014just text, an interactive fit checker, and illustrations earlier. As a gear reviewer, I need to see actual photos of the product in use, so I'm leaving.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

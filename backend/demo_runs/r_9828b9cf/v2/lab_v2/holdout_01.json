@@ -1,0 +1,148 @@
+{
+  "persona_id": "holdout_01",
+  "outcome": "quit",
+  "quit_reason": "I've scrolled through most of the page and even checked the FAQ questions, and I still don't see any clear information about BPA-free materials, age range, how to clean the cap, or how charging works. I'm going to leave the site.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/v2/lab_v2/holdout_01.webm",
+  "duration_s": 51.76,
+  "name": "Rosa Delgado",
+  "role": "School nurse and parent of three",
+  "device": "mobile",
+  "viewport": {
+    "width": 375,
+    "height": 812
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 4.85,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The price is reasonable and it mentions 6-10 year olds, which is good. I need to scroll down to check for safety/materials info, how easy it is to clean, and battery life.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 9.16,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Still no mention of materials, cleaning instructions, or battery life/charging. I'll scroll down further to see if that information is listed below.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 13.23,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Great, 30 days per USB-C charge means I won't be constantly charging it, and IPX7 waterproof is good for kids. I still need to check if it's BPA-free/safe materials and how to clean it, so I'll scroll down.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 18.43,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The wide-mouth fit guarantee is nice, especially for $24. I still haven't seen anything about BPA-free/safe materials or how easy it is to clean, so I'll keep scrolling.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 5,
+      "t": 21.93,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The bottle fit checker is helpful, and it's good to know it fits Hydro Flask Kids. I still haven't seen anything about BPA-free materials or how to clean it, so I'll scroll down.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 6,
+      "t": 26.68,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The 100% Fit Guarantee and 30-day return policy are reassuring. I still need to find out if the materials are BPA-free and safe for kids, as well as how easy it is to clean, so I'll scroll down further.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 7,
+      "t": 31.08,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The price comparison is helpful, but I still haven't seen anything about BPA-free materials, age-range, or how to clean it. I'll scroll down further to check the rest of the page.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 8,
+      "t": 35.1,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I'm now at the 'How It Works & Daily Parent Summary' section. I'll scroll down to see if it explains how to clean the cap and whether the materials are BPA-free and safe for kids.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 9,
+      "t": 39.48,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "It mentions a 'food-grade' micro-turbine, which is good, but I still need to see if it's BPA-free, how easy it is to clean, and how long the battery lasts. I'll keep scrolling.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 10,
+      "t": 43.1,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I see it has a shock-absorbing TPU bumper, which is good for durability, but I still haven't seen anything about battery life, charging, or how to clean it. I'll scroll down to check the rest of the page.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 11,
+      "t": 47.65,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I still haven't seen anything about battery life, charging, or how to clean it. I'll scroll down to check the FAQ and the rest of the page.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 12,
+      "t": 51.55,
+      "action": "quit",
+      "target": "",
+      "target_index": null,
+      "text": null,
+      "thought": "I've scrolled through most of the page and even checked the FAQ questions, and I still don't see any clear information about BPA-free materials, age range, how to clean the cap, or how charging works. I'm going to leave the site.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

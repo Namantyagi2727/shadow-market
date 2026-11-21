@@ -1,0 +1,82 @@
+{
+  "persona_id": "holdout_06",
+  "outcome": "quit",
+  "quit_reason": "I've scrolled through most of the page and still haven't seen a single real-world product photo or demo\u2014just a pre-production diagram and text cards. As a gear reviewer, I don't trust products without real photos.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/v2/lab_v2/holdout_06.webm",
+  "duration_s": 26.89,
+  "name": "Lucas Ferreira",
+  "role": "Outdoor enthusiast and gear reviewer",
+  "device": "mobile",
+  "viewport": {
+    "width": 412,
+    "height": 915
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 5.52,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "No product photos or durability details visible yet at the top of the page. Let's scroll down to see if there are real-world photos or just renders/text.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 9.5,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I see a 'Pre-Production Hardware Diagram' illustration, which makes me skeptical. Let's scroll down to check if there are any real-world product photos or durability details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 13.62,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Still only seeing a pre-production diagram illustration, no real product photos yet. Let's scroll down further to see if there are any real-world photos, a demo, or warranty details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 18.12,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I see a 'Drop-tested: 6 ft TPU bumper + IPX7 waterproof' claim, which is decent, but still no real product photos or demo\u2014only illustrations. Let's scroll down further to see if there's an actual demo, real-world photos, or warranty details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 5,
+      "t": 22.59,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The bottle fit checker and 30-day fit guarantee are clear, but I still haven't seen a single real-world product photo or demo. Let's scroll down to see if there's anything below before I decide to bounce.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 6,
+      "t": 26.64,
+      "action": "quit",
+      "target": "",
+      "target_index": null,
+      "text": null,
+      "thought": "I've scrolled through most of the page and still haven't seen a single real-world product photo or demo\u2014just a pre-production diagram and text cards. As a gear reviewer, I don't trust products without real photos.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}
