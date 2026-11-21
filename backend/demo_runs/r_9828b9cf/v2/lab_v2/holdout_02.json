@@ -1,0 +1,137 @@
+{
+  "persona_id": "holdout_02",
+  "outcome": "quit",
+  "quit_reason": "I've reached the bottom of the page and still haven't seen exact dimensions, full technical specs, or a clear list of what's included in the box. Since those details are missing, I'm not comfortable pre-ordering.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/v2/lab_v2/holdout_02.webm",
+  "duration_s": 47.04,
+  "name": "Kenji Watanabe",
+  "role": "Product manager who reads every spec",
+  "device": "desktop",
+  "viewport": {
+    "width": 1366,
+    "height": 768
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 5.44,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Price is clear ($24), and I see basic specs like 58-63mm fit and IPX7 waterproof. I'll scroll down to check for full dimensions, what's in the box, and how it compares to alternatives.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 9.19,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I see the $24 price, universal adapter ring, and basic durability/battery specs. I'll scroll down to check the bottle fit details, full specs, what's in the box, and any comparison with alternatives.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 14.03,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Good to see the 63mm thread and 58mm step-down ring are included, plus a quick price comparison ($24 vs $45-$46). I'll scroll down to check the remaining specs, how it works, and full box contents.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 17.68,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The comparison against $45-$46 all-in-one smart bottles and ~$35 custom bottles is clear, and I know it includes both 63mm and 58mm rings. Let's scroll down to see 'How It Works & Daily Parent Summary' and check for full specs or dimensions.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 5,
+      "t": 21.91,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The anti-fake flow sensor and parent summary look solid. I'll keep scrolling down to check the remaining specs, dimensions, and what's included in the box.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 6,
+      "t": 26.26,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Good details on the flow sensor, 1-hour nudge, and 6 ft drop durability. I'll scroll down further to see the full specs, dimensions, and what's included in the box.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 7,
+      "t": 30.82,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "School Mode and the included $0/mo parent app are clear. I'll scroll down further to find the full specs, dimensions, and what's included in the box.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 8,
+      "t": 34.07,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Good to see the 30-day guarantee and shipping timeline. I'll scroll down to check the FAQ and pre-order section for any remaining specs or what's included in the box.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 9,
+      "t": 38.99,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I'll scroll down to the pre-order section to check the final details and see if there's a summary of what's included in the box.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 10,
+      "t": 42.99,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I'll scroll down to the bottom of the pre-order section to see the checkout options and check if there's a final list of what's included in the box.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 11,
+      "t": 46.6,
+      "action": "quit",
+      "target": "",
+      "target_index": null,
+      "text": null,
+      "thought": "I've reached the bottom of the page and still haven't seen exact dimensions, full technical specs, or a clear list of what's included in the box. Since those details are missing, I'm not comfortable pre-ordering.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

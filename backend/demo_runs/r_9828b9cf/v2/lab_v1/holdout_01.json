@@ -1,0 +1,148 @@
+{
+  "persona_id": "holdout_01",
+  "outcome": "quit",
+  "quit_reason": "Ran out of patience after 12 steps without finishing checkout. Last thought: School mode is a nice feature, but I still need to see how it is charged, how to clean it, and what age range it is for. Let me scroll down to check the FAQ.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/v2/lab_v1/holdout_01.webm",
+  "duration_s": 50.79,
+  "name": "Rosa Delgado",
+  "role": "School nurse and parent of three",
+  "device": "mobile",
+  "viewport": {
+    "width": 375,
+    "height": 812
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 6.28,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The price is reasonable and it mentions 6-10 year olds, but I need to scroll down to check on materials, cleaning, safety, and battery life.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 9.84,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I see the basic features and price, but I still need to find information about materials, cleaning, and battery life.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 14.36,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "30 days per USB-C charge is great! Now I need to scroll down further to check on materials, safety, and how easy it is to clean.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 18.88,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The bottle fit checker is nice, but I still need to find information about materials, safety, and how easy it is to clean.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 5,
+      "t": 22.85,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The 100% Fit Guarantee is reassuring, but I still haven't seen anything about materials, safety, or how easy it is to clean. Let me keep scrolling.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 6,
+      "t": 27.43,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Still no mention of materials, safety, or how easy it is to clean. Let me scroll down further to see the rest of the comparison and the FAQ.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 7,
+      "t": 32.76,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The comparison is helpful, but I still need to see if there is any information about materials, safety, age-range, or cleaning in the FAQ or further down the page.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 8,
+      "t": 36.16,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "It mentions a food-grade micro-turbine, which is good, but I still need to see how to clean it, if it's BPA-free, and what age range it's for. Let me scroll down.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 9,
+      "t": 39.26,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I see 'Playground & Bus-Proof' at the bottom, which might mention materials or battery life. Let me scroll down to check.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 10,
+      "t": 43.36,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "It mentions TPU and Tritan, which is helpful, and IPX7 waterproof electronics, but I still haven't seen anything about battery life, charging, or age range. Let me scroll down to check the rest of the page.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 11,
+      "t": 46.96,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The parent summary shows 88% battery with 26 days left, which is promising, but I still need to see how it's charged, how to clean it, and if there's any age-range info. Let me scroll down.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 12,
+      "t": 50.73,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "School mode is a nice feature, but I still need to see how it is charged, how to clean it, and what age range it is for. Let me scroll down to check the FAQ.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

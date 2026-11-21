@@ -1,0 +1,148 @@
+{
+  "persona_id": "persona_05",
+  "outcome": "quit",
+  "quit_reason": "Ran out of patience after 12 steps without finishing checkout. Last thought: No hidden subscription and they have a real support email. Since this is a no-payment MVP preview, let's enter my name to see how the pre-order review looks.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/lab/persona_05.webm",
+  "duration_s": 62.68,
+  "name": "Arthur Pendelton",
+  "role": "Small business owner and pragmatic skeptic",
+  "device": "desktop",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 5.22,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The hero says $24 with no subscription required, which is good, but I'm skeptical of startups. Let's scroll down to see who's behind this and if there are any hidden catches.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 10.5,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The pricing and durability claims look straightforward so far, and there's no AI hype. Let's keep scrolling down to see the FAQ, warranty details, and who actually runs this company.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 16.3,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The fit guarantee and 30-day refund policy sound reasonable, but I still want to see the comparison table, the FAQ about subscriptions, and who is actually behind this company.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 23.13,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The comparison shows $0/mo for the app, which is what I want to see. Let's keep scrolling down to check the FAQ, support contact, and who is actually behind this company.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 5,
+      "t": 27.56,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The mechanical flow sensor and suction check make sense\u2014no 'AI-powered' magic nonsense here. Let's keep scrolling down to check the FAQ, support contact, and who actually runs this company.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 6,
+      "t": 32.58,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "School Mode makes sense, but I'm still looking for the FAQ about subscriptions, support contact, and who actually runs this company.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 7,
+      "t": 36.81,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Good, no subscription mentioned here either ($0/mo). Let's keep scrolling down to check the FAQ, support contact, and who actually runs this company.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 8,
+      "t": 43.01,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Good, they have a real support email (support@smartcapkids.com) and a 30-day guarantee. Let's scroll down to read the FAQ on subscriptions and check the footer for company details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 9,
+      "t": 48.82,
+      "action": "click",
+      "target": "Is there a monthly app subscription? +",
+      "target_index": 19,
+      "text": null,
+      "thought": "Let's click 'Is there a monthly app subscription?' to make sure there are no hidden recurring fees.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 10,
+      "t": 53.25,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "100% free forever with the $24 cap\u2014that's what I like to hear. Let's scroll down to check the footer for company details and the pre-order section.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 11,
+      "t": 57.05,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Let's scroll down to see the rest of the checkout form and the footer for any company details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 12,
+      "t": 62.43,
+      "action": "type",
+      "target": "e.g., Jordan Taylor",
+      "target_index": 25,
+      "text": "Arthur Pendelton",
+      "thought": "No hidden subscription and they have a real support email. Since this is a no-payment MVP preview, let's enter my name to see how the pre-order review looks.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

@@ -36,7 +36,7 @@ Every event: `{ "type": string, "seq": int, "ts": ISO-8601, "stage": Stage, "dat
 | `quit_markers` | `{ "persona_id", "markers": [{ "t": seconds, "kind": "confusion" \| "quit", "note": string }] }` |
 | `swarm_progress` | `{ "done": int, "total": int }` |
 | `swarm_result` | `{ "personas": 200, "rubrics": { "<rubric_id>": mean_probability }, "intent_mean": number }` |
-| `verdict` | `{ "launch_probability": number, "confidence": number, "failure_modes": [string], "summary": string, "analyst_reason": string, "market_intent": number, "probability_source": "analyst" }` — **v1 (1:05 PM):** `launch_probability` comes from the backtested analyst (Neon, AUC 0.88 on 120 real 2026 Kickstarter campaigns); `market_intent` is the buyer swarm's calibrated signal, shown as a secondary "market pull" gauge; `confidence` = mean Decisions confidence of the swarm. |
+| `verdict` | `{ "launch_probability": number, "confidence": number, "failure_modes": [string], "summary": string, "analyst_reason": string, "analyst_framing": string, "market_intent": number, "probability_source": "analyst" }` (`analyst_framing` = the campaign framing the analyst scored, incl. assumed funding goal — show it small under the number) — **v1 (1:05 PM):** `launch_probability` comes from the backtested analyst (Neon, AUC 0.88 on 120 real 2026 Kickstarter campaigns); `market_intent` is the buyer swarm's calibrated signal, shown as a secondary "market pull" gauge; `confidence` = mean Decisions confidence of the swarm. |
 | `vote_tally` | `{ "buy": int, "bounce": int, "ai_probability": number }` |
 | `error` | `{ "message": string, "recoverable": bool }` |
 

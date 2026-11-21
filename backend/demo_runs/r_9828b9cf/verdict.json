@@ -1,0 +1,14 @@
+{
+  "launch_probability": 0.28,
+  "confidence": 0.7798,
+  "failure_modes": [
+    "Vaporware trust deficit: Using flat vector diagrams with zero real prototype photography or founder transparency tanks credibility (0.35 score) and triggers fast bounces.",
+    "Broken UX and checkout bloat: Warm leads quit in frustration after 12 steps without completing pre-orders, while the bottle fit-checker hides results below the fold.",
+    "Weak urgency and poor competitive value: Hydration tracking scores a dismal 0.29 in pain urgency, and a $24-$29 standalone cap loses to complete smart bottles like WaterH ($45.99) that carry zero thread-fit anxiety.",
+    "Classroom and kid-proof vulnerabilities: Sound and light alerts risk teacher bans despite 'school mode' claims, while cap hardware faces playground drops, lost bottles, and kids faking sips."
+  ],
+  "summary": "At a 28.0% launch probability, this campaign stalls because parents understand the pitch (0.89 clarity) but lack urgent pain (0.29) and distrust vector-diagram vaporware (0.35 trust). Worse, hidden fit-checker outputs and a bloated 12-step checkout kill warm leads. Fix first: show real working prototype photos with founder credentials, display bottle-fit confirmation instantly, and slash checkout to one step.",
+  "analyst_reason": "Technology and gadgets campaigns historically have a lower base success rate (around 20-25%), especially at a moderate hardware goal of $25,000. While the value proposition is clear and targets a motivated parent demographic, hardware complexity, bottle compatibility concerns, and the lack of established creator traction keep the likelihood of full funding modest.",
+  "market_intent": 0.7859,
+  "probability_source": "analyst"
+}

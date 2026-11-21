@@ -1,0 +1,60 @@
+{
+  "persona_id": "holdout_05",
+  "outcome": "quit",
+  "quit_reason": "Looking at the page elements, there is no privacy policy, no terms of service, no social proof or testimonials, no bulk/business pricing, and no way to contact sales or get an invoice. This does not meet our procurement requirements, so I am leaving.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/v2/lab_v2/holdout_05.webm",
+  "duration_s": 18.99,
+  "name": "Amara Okafor",
+  "role": "Procurement lead at a mid-size company",
+  "device": "desktop",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 5.23,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "This looks like a consumer pre-order page. I need to scroll down to check for bulk/business pricing, social proof, privacy policy/terms, and a way to contact sales or get an invoice.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 10.45,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I still don't see any bulk pricing, social proof, privacy policy, terms, or sales contact. Let me scroll down further to check the rest of the page and the footer.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 14.83,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I still don't see any bulk pricing, social proof, privacy policy, or terms. Let me scroll down to the footer to verify if any of those exist.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 18.46,
+      "action": "quit",
+      "target": "",
+      "target_index": null,
+      "text": null,
+      "thought": "Looking at the page elements, there is no privacy policy, no terms of service, no social proof or testimonials, no bulk/business pricing, and no way to contact sales or get an invoice. This does not meet our procurement requirements, so I am leaving.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

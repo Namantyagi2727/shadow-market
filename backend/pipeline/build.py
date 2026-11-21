@@ -87,7 +87,11 @@ def _extract_html(raw_text: str, require_markers: bool) -> str | None:
     return None
 
 
-def _run_managed_agent(prompt: str) -> str:
+# run_dir -> {"interaction_id", "environment_id"} of the V1 build, so V2 can continue the same sandbox session.
+AGENT_SESSIONS: dict[str, dict[str, str]] = {}
+
+
+def _run_managed_agent(prompt: str, session_key: str | None = None) -> str:
     resp = beta().interactions.create(
         agent=MODEL_IDS["builder_agent"],
         environment="remote",
@@ -98,6 +102,11 @@ def _run_managed_agent(prompt: str) -> str:
         },
         input=prompt,
     )
+    if session_key:
+        AGENT_SESSIONS[session_key] = {
+            "interaction_id": str(getattr(resp, "id", "") or ""),
+            "environment_id": str(getattr(resp, "environment_id", "") or ""),
+        }
     return output_text(resp)
 
 
@@ -135,7 +144,7 @@ async def run(ctx: RunContext, emit: Emit) -> None:
     start = time.monotonic()
     deadline = start + MANAGED_AGENT_TIMEOUT_S
 
-    agent_task: asyncio.Task[str] = asyncio.create_task(asyncio.to_thread(_run_managed_agent, prompt))
+    agent_task: asyncio.Task[str] = asyncio.create_task(asyncio.to_thread(_run_managed_agent, prompt, str(ctx.run_dir)))
     while not agent_task.done():
         remaining = deadline - time.monotonic()
         if remaining <= 0:

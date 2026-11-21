@@ -1,0 +1,148 @@
+{
+  "persona_id": "holdout_02",
+  "outcome": "quit",
+  "quit_reason": "Ran out of patience after 12 steps without finishing checkout. Last thought: Everything looks solid\u2014specs, bottle compatibility, and free shipping on 2+ units are clear. Let's enter my name to test the pre-order review flow.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/v2/lab_v1/holdout_02.webm",
+  "duration_s": 49.34,
+  "name": "Kenji Watanabe",
+  "role": "Product manager who reads every spec",
+  "device": "desktop",
+  "viewport": {
+    "width": 1366,
+    "height": 768
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 5.52,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Price and basic specs are clear above the fold ($24, 58-63mm fit, IPX7, 30 days battery). Scrolling down to check detailed specs, what's in the box, and any comparison with alternatives.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 10.06,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Good differentiator mentioned ($24 cap vs $35-$46 full smart bottle), and it includes a universal adapter ring + 1-year drop warranty. Scrolling down to check the Interactive Bottle Fit Checker and see if there are exact dimensions or a full 'what's in the box' list.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 14.0,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I see what's in the box (63mm thread + 58mm silicone step-down ring). Now I want to scroll down to see the 'How It Compares to Buying a New Bottle' section to compare options.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 18.3,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The comparison is clear ($24 vs ~$46 full smart bottle or ~$35 custom bottle, with $0/mo app). Scrolling down to read the 'How It Works' and 'School Mode' specs.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 5,
+      "t": 22.48,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Good technical details on the micro-turbine and suction check. Scrolling down to check the remaining specs, School Mode, and shipping/box details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 6,
+      "t": 26.26,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "IPX7, TPU bumper, and Bluetooth ping are solid specs. Scrolling down to check the School Mode details, FAQ, and shipping/checkout section.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 7,
+      "t": 29.63,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "School Mode and Parent App ($0/mo) specs are clear. Scrolling down to check the Honest Details & FAQ and shipping/box details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 8,
+      "t": 35.23,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Shipping ($4.95 for 1, free for 2+) and 30-day return/1-year warranty are clear. Scrolling down to check the FAQ and the pre-order/checkout options.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 9,
+      "t": 38.73,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The FAQ answers are clear, and I see the Pre-Order Checkout section just below. Scrolling down to inspect the checkout options and see if there's any final 'what's in the box' summary.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 10,
+      "t": 42.18,
+      "action": "click",
+      "target": "+",
+      "target_index": 24,
+      "text": null,
+      "thought": "Since shipping is free for 2+ caps, let's click '+' to see the total update for 2 units and evaluate the checkout flow.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 11,
+      "t": 45.86,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Total updated to $48 for 2 units. Scrolling down to see the rest of the checkout form and the review button.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 12,
+      "t": 49.12,
+      "action": "type",
+      "target": "e.g., Jordan Taylor",
+      "target_index": 25,
+      "text": "Kenji Watanabe",
+      "thought": "Everything looks solid\u2014specs, bottle compatibility, and free shipping on 2+ units are clear. Let's enter my name to test the pre-order review flow.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

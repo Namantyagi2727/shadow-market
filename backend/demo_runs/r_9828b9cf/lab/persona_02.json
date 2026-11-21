@@ -1,0 +1,27 @@
+{
+  "persona_id": "persona_02",
+  "outcome": "quit",
+  "quit_reason": "This is a smart hydration cap built for parents of 6-10 year olds. I'm a 22-year-old grad student trying to save money and avoid impulse purchases, so this product is completely irrelevant to me.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/lab/persona_02.webm",
+  "duration_s": 4.75,
+  "name": "Priya Nair",
+  "role": "Grad student and part-time barista",
+  "device": "mobile",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 4.54,
+      "action": "quit",
+      "target": "",
+      "target_index": null,
+      "text": null,
+      "thought": "This is a smart hydration cap built for parents of 6-10 year olds. I'm a 22-year-old grad student trying to save money and avoid impulse purchases, so this product is completely irrelevant to me.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

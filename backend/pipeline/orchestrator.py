@@ -7,7 +7,7 @@ import os
 import time
 from typing import Awaitable, Callable
 
-from pipeline import analyst, boardroom, build, competitors, lab, pitch, quit_analysis, swarm, verdict
+from pipeline import analyst, boardroom, build, competitors, iterate, lab, pitch, quit_analysis, swarm, verdict
 from pipeline.context import Emit, EventLog, RunContext, Stage
 
 StageFn = Callable[[RunContext, Emit], Awaitable[None]]
@@ -81,6 +81,11 @@ async def run_pipeline(ctx: RunContext, log: EventLog) -> None:
     # 7. Final calibrated verdict
     await log.emit("stage_changed", "verdict", {"stage": "verdict"})
     await _run_stage("verdict", verdict.run, "verdict", ctx, log, recoverable=True)
+
+    # 8. V2 fix-and-prove loop (runs after verdict unless disabled)
+    if os.environ.get("ENABLE_V2") != "0":
+        await log.emit("stage_changed", "iterate", {"stage": "iterate"})
+        await _run_stage("iterate", iterate.run, "iterate", ctx, log, recoverable=True)
 
     total_elapsed = time.perf_counter() - run_start
     print(f"[{ctx.run_id}] pipeline finished in {total_elapsed:.2f}s", flush=True)

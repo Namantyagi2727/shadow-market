@@ -19,5 +19,9 @@ MODEL_IDS = {
     "live_voice": "gemini-3.8-live",          # hot-seat interview (bidi WebSocket)
     "tts": "gemini-3.8-flash-tts",
     "hero_image": "gemini-nano-banana-2.1",
+    # Live Q&A room
+    "room_transcribe": "gemini-3.5-transcribe-live",  # streaming room captions (v1beta, no diarization)
+    "room_twin": "gemini-4-hydrogen",          # server-side fallback twin challenge
+    "room_founder": "gemini-4-hydrogen",       # founder teleprompter line + proof pills
     "video_ad": "gemini-omni-1.2-flash",
 }
