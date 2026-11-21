@@ -45,6 +45,9 @@ from pipeline.swarm import (  # noqa: E402
 EVAL_DIR = REPO_ROOT / "eval"
 DATA_DIR = EVAL_DIR / "data"
 RESULTS_DIR = EVAL_DIR / "results"
+# Campaign photos leak the outcome: successful creators add "FUNDED IN 14 HOURS!" banners after the
+# fact (found in run 1: single-Neon AUC 0.96 came from reading those banners). Text only by default.
+USE_IMAGES = os.environ.get("EVAL_USE_IMAGES", "0") == "1"
 IMAGES_DIR = DATA_DIR / "images"
 SAMPLE_JSONL_PATH = DATA_DIR / "sample.jsonl"
 PANEL_PATH = DATA_DIR / "panel.json"
@@ -260,7 +263,7 @@ def _eval_single_sync(
     prompt = f"{SINGLE_PROMPT_INSTRUCTION}\n\n{_format_campaign_text(campaign)}"
     parsed = generate_json(
         model=MODEL_IDS["strategist"],
-        parts=[image_part(img_bytes, img_mime), text_part(prompt)],
+        parts=([image_part(img_bytes, img_mime)] if USE_IMAGES else []) + [text_part(prompt)],
         schema=SINGLE_SCHEMA,
         thinking="medium",
     )
@@ -440,7 +443,7 @@ async def _eval_swarm_async(
 ) -> dict[str, Any]:
     competitors = await _search_shopify_competitors(http, campaign)
     eval_text = _build_swarm_eval_text(campaign, competitors)
-    input_parts = [image_part(img_bytes, img_mime), text_part(eval_text)]
+    input_parts = ([image_part(img_bytes, img_mime)] if USE_IMAGES else []) + [text_part(eval_text)]
 
     questions: dict[str, dict[str, Any]] = {}
     for persona in panel:

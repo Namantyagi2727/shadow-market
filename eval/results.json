@@ -1,0 +1,164 @@
+{
+  "dataset": {
+    "n_total": 150,
+    "n_calib": 30,
+    "n_test": 120,
+    "calib_success_rate": 0.5,
+    "test_success_rate": 0.5
+  },
+  "arms": {
+    "base": {
+      "n_test": 120,
+      "raw": {
+        "n": 120,
+        "brier": 0.2428,
+        "brier_ci": [
+          0.221,
+          0.2636
+        ],
+        "auc": 0.5683,
+        "auc_ci": [
+          0.4688,
+          0.6721
+        ],
+        "mean_pred": 0.4748,
+        "actual_rate": 0.5,
+        "share_gt_0_5": 0.1667
+      },
+      "note": "already calibrated on calib split"
+    },
+    "single": {
+      "n_test": 120,
+      "raw": {
+        "n": 120,
+        "brier": 0.1463,
+        "brier_ci": [
+          0.1186,
+          0.1753
+        ],
+        "auc": 0.8775,
+        "auc_ci": [
+          0.8121,
+          0.9289
+        ],
+        "mean_pred": 0.4897,
+        "actual_rate": 0.5,
+        "share_gt_0_5": 0.4917
+      },
+      "n_calib": 30,
+      "calibration": {
+        "alpha": -0.03961,
+        "beta": 0.772737
+      },
+      "calibrated": {
+        "n": 120,
+        "brier": 0.153,
+        "brier_ci": [
+          0.1294,
+          0.1773
+        ],
+        "auc": 0.8775,
+        "auc_ci": [
+          0.8121,
+          0.9289
+        ],
+        "mean_pred": 0.4814,
+        "actual_rate": 0.5,
+        "share_gt_0_5": 0.4917
+      }
+    },
+    "swarm": {
+      "n_test": 120,
+      "raw": {
+        "n": 120,
+        "brier": 0.3544,
+        "brier_ci": [
+          0.2968,
+          0.4113
+        ],
+        "auc": 0.7011,
+        "auc_ci": [
+          0.6035,
+          0.7961
+        ],
+        "mean_pred": 0.161,
+        "actual_rate": 0.5,
+        "share_gt_0_5": 0.0
+      },
+      "n_calib": 30,
+      "calibration": {
+        "alpha": 1.706396,
+        "beta": 1.036171
+      },
+      "calibrated": {
+        "n": 120,
+        "brier": 0.2317,
+        "brier_ci": [
+          0.2182,
+          0.2441
+        ],
+        "auc": 0.7011,
+        "auc_ci": [
+          0.6035,
+          0.7961
+        ],
+        "mean_pred": 0.4915,
+        "actual_rate": 0.5,
+        "share_gt_0_5": 0.475
+      }
+    }
+  },
+  "worst_swarm_campaigns": [
+    {
+      "id": 506656976,
+      "name": "AUTUMN STAY : HUNTED",
+      "category": "music",
+      "goal": 3000.0,
+      "p": 0.0922,
+      "p_cal": 0.3401,
+      "label": 1,
+      "abs_error": 0.9078
+    },
+    {
+      "id": 1632833710,
+      "name": "lamp: the feature film",
+      "category": "film & video",
+      "goal": 12000.0,
+      "p": 0.1015,
+      "p_cal": 0.365,
+      "label": 1,
+      "abs_error": 0.8985
+    },
+    {
+      "id": 510838538,
+      "name": "Sonatas of the Nations",
+      "category": "music",
+      "goal": 2500.0,
+      "p": 0.1098,
+      "p_cal": 0.3864,
+      "label": 1,
+      "abs_error": 0.8902
+    },
+    {
+      "id": 10320872,
+      "name": "pocket soda",
+      "category": "food",
+      "goal": 20.0,
+      "p": 0.1117,
+      "p_cal": 0.3913,
+      "label": 1,
+      "abs_error": 0.8883
+    },
+    {
+      "id": 549470769,
+      "name": "Celestial Pirouette: A Sci-Fi Dance Short",
+      "category": "film & video",
+      "goal": 18000.0,
+      "p": 0.1128,
+      "p_cal": 0.394,
+      "label": 1,
+      "abs_error": 0.8872
+    }
+  ],
+  "reading": "On the test split, **single (calibrated)** achieves the lowest Brier score at 0.1530, beating runner-up **swarm (calibrated)** (0.2317) by 0.0787; on discrimination, **single (calibrated)** leads with ROC-AUC 0.8775 (+0.1764 over swarm at 0.7011). Statistical uncertainty: Brier 95% CIs between single (0.129–0.177) and swarm (0.218–0.244) do not overlap; and AUC 95% CIs between single (0.812–0.929) and swarm (0.604–0.796) do not overlap. Against the 0.500 actual test success rate, single raw mean=0.490 (bias -0.010, 49% > 0.5) -> calibrated Brier 0.1530 (+0.0067); swarm raw mean=0.161 (bias -0.339, 0% > 0.5) -> calibrated Brier 0.2317 (-0.1227)."
+}
