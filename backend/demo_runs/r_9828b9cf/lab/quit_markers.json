@@ -1,0 +1,67 @@
+{
+  "persona_02": [
+    {
+      "t": 4.54,
+      "kind": "quit",
+      "note": "Visitor quits because the product is for parents of 6-10 year olds and irrelevant to a 22-year-old grad student."
+    }
+  ],
+  "persona_04": [
+    {
+      "t": 10.27,
+      "kind": "confusion",
+      "note": "No product photo in the hero, scrolls down to check"
+    },
+    {
+      "t": 16.01,
+      "kind": "quit",
+      "note": "Only a flat vector diagram, no real product photos"
+    }
+  ],
+  "persona_05": [
+    {
+      "t": 5.22,
+      "kind": "confusion",
+      "note": "Skeptical of startup, scrolling to find company details and hidden catches"
+    },
+    {
+      "t": 27.56,
+      "kind": "confusion",
+      "note": "Repeatedly scrolling to find who runs the company"
+    },
+    {
+      "t": 48.82,
+      "kind": "confusion",
+      "note": "Checking FAQ to verify no hidden recurring fees"
+    },
+    {
+      "t": 62.68,
+      "kind": "quit",
+      "note": "Ran out of patience after 12 steps without finishing checkout"
+    }
+  ],
+  "persona_01": [
+    {
+      "t": 16.65,
+      "kind": "confusion",
+      "note": "Clicked Nalgene Wide Mouth but the fit checker output was hidden below the fold"
+    },
+    {
+      "t": 62.55,
+      "kind": "quit",
+      "note": "Ran out of patience after 12 steps without finishing checkout"
+    }
+  ],
+  "persona_06": [
+    {
+      "t": 45.85,
+      "kind": "confusion",
+      "note": "Scrolled to checkout still searching for packaging details and real product photography"
+    },
+    {
+      "t": 62.09,
+      "kind": "quit",
+      "note": "Ran out of patience after reaching the order review step without completing checkout"
+    }
+  ]
+}

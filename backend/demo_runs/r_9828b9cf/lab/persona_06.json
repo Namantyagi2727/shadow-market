@@ -1,0 +1,148 @@
+{
+  "persona_id": "persona_06",
+  "outcome": "quit",
+  "quit_reason": "Ran out of patience after 12 steps without finishing checkout. Last thought: I've entered my name and email. I'll click 'Continue to review' to inspect the order review step and see if there are any final details.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/lab/persona_06.webm",
+  "duration_s": 62.09,
+  "name": "Chloe Kim",
+  "role": "Industrial designer and sustainability advocate",
+  "device": "desktop",
+  "viewport": {
+    "width": 1512,
+    "height": 982
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 6.83,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The hero section is clean and reusing existing bottles is a smart sustainability angle. I'll scroll down to check for material details, packaging info, and real product photography.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 12.03,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The bottle fit checker and 58mm silicone step-down ring are practical, low-waste design choices. I'll scroll down further to look for more material specifications, packaging details, and real product photography.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 18.82,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The hierarchy and typography are clean, and the modular cap concept is genuinely low-waste. I'll scroll down to check for actual product photography, material specifications, and packaging details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 22.93,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The comparison makes a solid case for reducing waste by reusing existing bottles. I'll scroll down further to see the rest of the 'How It Works' section and check for material specifications or packaging details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 5,
+      "t": 27.75,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The material callouts like food-grade micro-turbine, TPU bumper, and Tritan body are specific and reassuring. I'll scroll down further to check the School Mode, FAQ, and any packaging or end-of-life details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 6,
+      "t": 31.68,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The School Mode details are clear and well-structured. I'll scroll down further to check the Shipping & FAQ section for packaging, battery life/replacement, and end-of-life sustainability info.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 7,
+      "t": 35.87,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I can see the top of the Transparent Shipping, Returns & Support section. I'll scroll down to read the shipping, guarantee, and FAQ details for any mention of packaging or product longevity.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 8,
+      "t": 40.82,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The shipping and return policies are transparent, and offering a custom adapter ring instead of forcing a full return is a smart, low-waste approach. I'll scroll down to check the remaining FAQ items and the pre-order section.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 9,
+      "t": 45.85,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I'll scroll down to inspect the Pre-Order Checkout section and see if there are any additional details about materials, packaging, or final pricing.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 10,
+      "t": 52.33,
+      "action": "type",
+      "target": "e.g., Jordan Taylor",
+      "target_index": 25,
+      "text": "Chloe Kim",
+      "thought": "The checkout is a clean, no-risk MVP pre-order preview. I'll fill in my name and email to see the review step and check if there are any final shipping or packaging details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 11,
+      "t": 57.1,
+      "action": "type",
+      "target": "e.g., jordan@example.com",
+      "target_index": 26,
+      "text": "chloe.kim@example.com",
+      "thought": "I'll enter my email address next so I can click 'Continue to review' and check the order review step.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 12,
+      "t": 61.95,
+      "action": "click",
+      "target": "Continue to review",
+      "target_index": 27,
+      "text": null,
+      "thought": "I've entered my name and email. I'll click 'Continue to review' to inspect the order review step and see if there are any final details.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

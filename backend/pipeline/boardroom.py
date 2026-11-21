@@ -169,6 +169,7 @@ async def run(ctx: RunContext, emit: Emit) -> None:
         ),
     ]
 
+    prev_emit: asyncio.Task | None = None
     for turn_idx, (speaker, model_id, directive) in enumerate(turn_plan, start=1):
         competitors_block = _format_competitors(ctx.competitors)
         transcript_block = _format_transcript(ctx.boardroom)
@@ -202,23 +203,28 @@ Your task for turn {turn_idx}: {directive}"""
                 else "Buyers will still question price, delivery reliability, and why this beats existing options."
             )
 
+        # Voice is generated in the background while the next turn is written; events still go out in order.
         wav_path = boardroom_dir / f"turn_{turn_idx}.wav"
-        audio_url: str | None = None
-        try:
-            ok = await asyncio.to_thread(_synthesize_wav, text, VOICES[speaker], wav_path)
-            if ok:
-                audio_url = ctx.artifact_url(wav_path)
-        except Exception:  # noqa: BLE001
-            audio_url = None
-
         turn_data: dict[str, Any] = {
             "speaker": speaker,
             "model": model_id,
             "text": text,
-            "audio_url": audio_url,
+            "audio_url": None,
         }
         ctx.boardroom.append(turn_data)
-        await emit("boardroom_turn", "boardroom", turn_data)
+        tts_task = asyncio.create_task(asyncio.to_thread(_synthesize_wav, text, VOICES[speaker], wav_path))
+
+        async def _emit_in_order(prev, tts_task=tts_task, turn_data=turn_data, wav_path=wav_path):
+            if prev is not None:
+                await prev
+            try:
+                if await tts_task:
+                    turn_data["audio_url"] = ctx.artifact_url(wav_path)
+            except Exception:  # noqa: BLE001
+                turn_data["audio_url"] = None
+            await emit("boardroom_turn", "boardroom", turn_data)
+
+        prev_emit = asyncio.create_task(_emit_in_order(prev_emit))
 
     spec_prompt = f"""You are the strategist finalizing the V1 landing-page launch spec after the boardroom debate.
 Return ONLY valid JSON matching the schema:
@@ -254,4 +260,6 @@ Boardroom transcript:
 
     spec = _normalize_spec(raw_spec, pitch)
     ctx.spec = spec
+    if prev_emit is not None:
+        await prev_emit  # all turns emitted before the spec
     await emit("spec_ready", "boardroom", spec)

@@ -63,7 +63,7 @@ Measured end to end with spoken audio streamed into the room endpoint (`backend/
 
 | Step | Measured |
 |---|---|
-| Decisions gate (is this a real challenge?) | 6/6 correct on test lines; small talk and the founder's own statements score 0.01–0.11, challenges 0.92–0.99; **0.2–0.9 s** |
+| Decisions gate (is this a real challenge?) | **0.2–0.9 s** per utterance. Smoke test only (6 lines we wrote, not an evaluation): small talk and the founder's own statements scored 0.01–0.11, real challenges 0.92–0.99 |
 | Gemini Live twin: challenge (tool call) after the gate | **~1.2 s**; first spoken audio ~1.8 s |
 | Founder teleprompter card after the judge stops talking | **~6.6 s** (Live twin path) |
 | Proof pills blocked by the number checker | live counter at `GET /api/room/stats` |

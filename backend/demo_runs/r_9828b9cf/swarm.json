@@ -1,0 +1,1014 @@
+{
+  "personas": 200,
+  "rubrics": {
+    "value_clarity": 0.8873,
+    "pain_urgency": 0.2917,
+    "price_value_fit": 0.5303,
+    "credibility_trust": 0.3484,
+    "beat_competitors": 0.322
+  },
+  "intent_mean": 0.4033,
+  "mean_confidence": 0.7798,
+  "per_persona": [
+    {
+      "id": "p001",
+      "summary": "34, nurse, moderate budget, anxious mom of 7yo; would buy to track water intake during hot soccer practices.",
+      "intent": 0.6732
+    },
+    {
+      "id": "p002",
+      "summary": "38, accountant, tight budget, skeptical dad of 8yo; wouldn't buy, thinks $29 for a cap is unnecessary.",
+      "intent": 0.1756
+    },
+    {
+      "id": "p003",
+      "summary": "31, teacher, moderate budget, pragmatic mom of 6yo; would buy if it fits existing bottles and isn't distracting.",
+      "intent": 0.6921
+    },
+    {
+      "id": "p004",
+      "summary": "42, software engineer, high budget, tech-savvy dad of 9yo; would buy to gamify hydration and review app data.",
+      "intent": 0.6932
+    },
+    {
+      "id": "p005",
+      "summary": "29, retail manager, tight budget, stressed mom of 6yo; wouldn't buy, fears her kid will lose the expensive cap.",
+      "intent": 0.2429
+    },
+    {
+      "id": "p006",
+      "summary": "36, marketing director, high budget, health-conscious mom of 8yo; would buy to prevent afternoon headaches at school.",
+      "intent": 0.7436
+    },
+    {
+      "id": "p007",
+      "summary": "40, plumber, moderate budget, traditional dad of 10yo; wouldn't buy, believes kids should just drink when thirsty.",
+      "intent": 0.1795
+    },
+    {
+      "id": "p008",
+      "summary": "33, graphic designer, moderate budget, eco-conscious mom of 7yo; would buy if rechargeable and durable, hates disposable batteries.",
+      "intent": 0.6451
+    },
+    {
+      "id": "p009",
+      "summary": "37, lawyer, high budget, busy dad of 9yo; would buy for peace of mind while working long hours.",
+      "intent": 0.634
+    },
+    {
+      "id": "p010",
+      "summary": "35, stay-at-home mom, tight budget, frugal parent of 6yo and 8yo; wouldn't buy, buying two costs too much.",
+      "intent": 0.2179
+    },
+    {
+      "id": "p011",
+      "summary": "41, physical therapist, moderate budget, health-focused mom of 10yo; would buy to support her kid's swim team training.",
+      "intent": 0.6427
+    },
+    {
+      "id": "p012",
+      "summary": "32, barista, tight budget, skeptical dad of 6yo; wouldn't buy, dislikes tracking apps and kids' screen dependency.",
+      "intent": 0.1769
+    },
+    {
+      "id": "p013",
+      "summary": "39, pharmacist, high budget, data-driven mom of 8yo; would buy to monitor hydration after kid's past kidney stone.",
+      "intent": 0.7395
+    },
+    {
+      "id": "p014",
+      "summary": "44, truck driver, moderate budget, practical dad of 9yo; wouldn't buy, doubts it survives being dropped on concrete.",
+      "intent": 0.2216
+    },
+    {
+      "id": "p015",
+      "summary": "30, dental hygienist, moderate budget, attentive mom of 6yo; would buy to encourage water over sugary juice boxes.",
+      "intent": 0.677
+    },
+    {
+      "id": "p016",
+      "summary": "36, sales rep, high budget, impulse-buying dad of 7yo; would buy as a cool gadget gift for his son.",
+      "intent": 0.7035
+    },
+    {
+      "id": "p017",
+      "summary": "43, librarian, tight budget, minimalist mom of 10yo; wouldn't buy, prefers simple low-tech habits over smart gadgets.",
+      "intent": 0.1691
+    },
+    {
+      "id": "p018",
+      "summary": "34, HR manager, moderate budget, organized mom of 8yo; would buy to get daily summaries without nagging her kid.",
+      "intent": 0.7216
+    },
+    {
+      "id": "p019",
+      "summary": "38, mechanic, moderate budget, skeptical dad of 7yo; wouldn't buy, worried about water damage ruining the electronics.",
+      "intent": 0.2262
+    },
+    {
+      "id": "p020",
+      "summary": "35, pediatrician, high budget, cautious mom of 6yo; would buy to test if gentle reminders actually build habits.",
+      "intent": 0.6666
+    },
+    {
+      "id": "p021",
+      "summary": "28, waitress, tight budget, overwhelmed mom of 6yo; wouldn't buy, $29 is too steep for a water bottle accessory.",
+      "intent": 0.2129
+    },
+    {
+      "id": "p022",
+      "summary": "40, architect, high budget, design-focused dad of 9yo; would buy only if it looks sleek and fits standard bottles.",
+      "intent": 0.5169
+    },
+    {
+      "id": "p023",
+      "summary": "33, social worker, tight budget, practical mom of 8yo; wouldn't buy, kids trade or lose bottles at school constantly.",
+      "intent": 0.2104
+    },
+    {
+      "id": "p024",
+      "summary": "37, real estate agent, high budget, busy mom of 7yo; would buy to outsource hydration reminders during hectic days.",
+      "intent": 0.7065
+    },
+    {
+      "id": "p025",
+      "summary": "45, high school coach, moderate budget, athletic dad of 10yo; would buy to ensure proper hydration before games.",
+      "intent": 0.5889
+    },
+    {
+      "id": "p026",
+      "summary": "31, paralegal, moderate budget, privacy-conscious mom of 6yo; wouldn't buy, uncomfortable with apps collecting child health data.",
+      "intent": 0.2263
+    },
+    {
+      "id": "p027",
+      "summary": "39, chef, moderate budget, tired dad of 8yo; would buy if it's dishwasher safe and requires zero daily fuss.",
+      "intent": 0.5584
+    },
+    {
+      "id": "p028",
+      "summary": "34, freelance writer, tight budget, skeptical mom of 7yo; wouldn't buy, thinks it's a gimmick that loses novelty fast.",
+      "intent": 0.1913
+    },
+    {
+      "id": "p029",
+      "summary": "41, dentist, high budget, meticulous dad of 9yo; would buy to track exact daily ounces for his picky drinker.",
+      "intent": 0.6596
+    },
+    {
+      "id": "p030",
+      "summary": "36, bank teller, tight budget, careful mom of 8yo; wouldn't buy, prefers using a $5 bottle with time markings.",
+      "intent": 0.2017
+    },
+    {
+      "id": "p031",
+      "summary": "32, UX designer, high budget, tech-optimist mom of 6yo; would buy to see if friendly lights motivate her daughter.",
+      "intent": 0.7128
+    },
+    {
+      "id": "p032",
+      "summary": "42, electrician, moderate budget, no-nonsense dad of 10yo; wouldn't buy, hates charging yet another household device.",
+      "intent": 0.1989
+    },
+    {
+      "id": "p033",
+      "summary": "35, occupational therapist, moderate budget, supportive mom of 7yo with ADHD; would buy for external sensory reminders.",
+      "intent": 0.7388
+    },
+    {
+      "id": "p034",
+      "summary": "38, product manager, high budget, analytical dad of 8yo; would buy if app integrates well and has strong reviews.",
+      "intent": 0.5505
+    },
+    {
+      "id": "p035",
+      "summary": "29, preschool aide, tight budget, stressed mom of 6yo; wouldn't buy, can't justify $29 when groceries are expensive.",
+      "intent": 0.2047
+    },
+    {
+      "id": "p036",
+      "summary": "40, veterinarian, high budget, caring mom of 9yo; would buy because her son forgets to drink all school day.",
+      "intent": 0.7485
+    },
+    {
+      "id": "p037",
+      "summary": "37, warehouse supervisor, moderate budget, skeptical dad of 8yo; wouldn't buy, thinks school teachers will ban glowing caps.",
+      "intent": 0.2282
+    },
+    {
+      "id": "p038",
+      "summary": "33, event planner, moderate budget, energetic mom of 7yo; would buy as a fun back-to-school upgrade for her kid.",
+      "intent": 0.6485
+    },
+    {
+      "id": "p039",
+      "summary": "44, professor, moderate budget, critical dad of 10yo; wouldn't buy, views smart caps as over-parenting surveillance.",
+      "intent": 0.1913
+    },
+    {
+      "id": "p040",
+      "summary": "31, nurse practitioner, high budget, health-driven mom of 6yo; would buy to prevent chronic constipation in her child.",
+      "intent": 0.7201
+    },
+    {
+      "id": "p041",
+      "summary": "36, delivery driver, tight budget, pragmatic dad of 7yo; wouldn't buy, too expensive to replace if broken.",
+      "intent": 0.1742
+    },
+    {
+      "id": "p042",
+      "summary": "39, interior designer, high budget, aesthetic mom of 8yo; would buy if available in cute colors her daughter loves.",
+      "intent": 0.4392
+    },
+    {
+      "id": "p043",
+      "summary": "34, customer service rep, tight budget, cautious mom of 9yo; wouldn't buy, waits for deep discounts on non-essentials.",
+      "intent": 0.2631
+    },
+    {
+      "id": "p044",
+      "summary": "41, IT consultant, high budget, gadget-loving dad of 10yo; would buy to test the sensor accuracy with his son.",
+      "intent": 0.6817
+    },
+    {
+      "id": "p045",
+      "summary": "30, hair stylist, moderate budget, social mom of 6yo; would buy if other moms on Instagram recommend it.",
+      "intent": 0.526
+    },
+    {
+      "id": "p046",
+      "summary": "38, firefighter, moderate budget, tough dad of 8yo; wouldn't buy, doubts the cap seals tightly in backpacks.",
+      "intent": 0.2136
+    },
+    {
+      "id": "p047",
+      "summary": "35, dietitian, high budget, wellness-focused mom of 7yo; would buy to build lifelong hydration habits early.",
+      "intent": 0.6857
+    },
+    {
+      "id": "p048",
+      "summary": "43, postal worker, tight budget, frugal dad of 9yo; wouldn't buy, taps on a regular bottle work fine.",
+      "intent": 0.1685
+    },
+    {
+      "id": "p049",
+      "summary": "32, speech therapist, moderate budget, patient mom of 6yo; would buy to help her distracted child remember water.",
+      "intent": 0.7159
+    },
+    {
+      "id": "p050",
+      "summary": "37, financial advisor, high budget, efficient dad of 8yo; would buy if $29 saves him from nagging every evening.",
+      "intent": 0.6808
+    },
+    {
+      "id": "p051",
+      "summary": "40, receptionist, tight budget, skeptical mom of 10yo; wouldn't buy, thinks her 10yo will find it babyish.",
+      "intent": 0.2077
+    },
+    {
+      "id": "p052",
+      "summary": "34, photographer, moderate budget, creative mom of 7yo; would buy to make drinking water feel like a game.",
+      "intent": 0.59
+    },
+    {
+      "id": "p053",
+      "summary": "39, police officer, moderate budget, protective dad of 9yo; wouldn't buy, dislikes Bluetooth gadgets on kids.",
+      "intent": 0.2076
+    },
+    {
+      "id": "p054",
+      "summary": "36, biotech researcher, high budget, curious mom of 8yo; would buy to see real data on school-day dehydration.",
+      "intent": 0.6836
+    },
+    {
+      "id": "p055",
+      "summary": "28, cashier, tight budget, practical mom of 6yo; wouldn't buy, needs money for clothes and school supplies.",
+      "intent": 0.1721
+    },
+    {
+      "id": "p056",
+      "summary": "42, executive assistant, moderate budget, organized mom of 10yo; would buy for summer camp hydration tracking.",
+      "intent": 0.6581
+    },
+    {
+      "id": "p057",
+      "summary": "35, carpenter, moderate budget, hands-on dad of 7yo; wouldn't buy, thinks electronics and water don't mix well.",
+      "intent": 0.2093
+    },
+    {
+      "id": "p058",
+      "summary": "31, digital marketer, high budget, trend-aware mom of 6yo; would buy after seeing a compelling video ad.",
+      "intent": 0.5769
+    },
+    {
+      "id": "p059",
+      "summary": "44, CPA, high budget, skeptical dad of 9yo; wouldn't buy, questions ROI of a $29 cap with short lifespan.",
+      "intent": 0.2105
+    },
+    {
+      "id": "p060",
+      "summary": "33, special ed teacher, moderate budget, empathetic mom of 8yo; would buy for kids who miss internal thirst cues.",
+      "intent": 0.7249
+    },
+    {
+      "id": "p061",
+      "summary": "38, lab technician, moderate budget, detail-oriented mom of 7yo; would buy if sensor accuracy is clinically proven.",
+      "intent": 0.3569
+    },
+    {
+      "id": "p062",
+      "summary": "41, landscaper, tight budget, rugged dad of 10yo; wouldn't buy, his kid destroys regular water bottles monthly.",
+      "intent": 0.1913
+    },
+    {
+      "id": "p063",
+      "summary": "36, corporate recruiter, high budget, busy mom of 8yo; would buy for effortless daily peace of mind.",
+      "intent": 0.7197
+    },
+    {
+      "id": "p064",
+      "summary": "30, pharmacy tech, tight budget, cautious mom of 6yo; wouldn't buy, worried about hidden app subscription fees.",
+      "intent": 0.321
+    },
+    {
+      "id": "p065",
+      "summary": "39, civil engineer, high budget, logical dad of 9yo; would buy if it uses USB-C and has long battery life.",
+      "intent": 0.6726
+    },
+    {
+      "id": "p066",
+      "summary": "34, fitness instructor, moderate budget, energetic mom of 7yo; would buy to model good hydration for her kid.",
+      "intent": 0.6486
+    },
+    {
+      "id": "p067",
+      "summary": "43, bus driver, tight budget, traditional dad of 8yo; wouldn't buy, sees it as another useless modern gadget.",
+      "intent": 0.1359
+    },
+    {
+      "id": "p068",
+      "summary": "32, copywriter, moderate budget, witty mom of 6yo; would buy if reminders are gentle and not annoying.",
+      "intent": 0.6405
+    },
+    {
+      "id": "p069",
+      "summary": "37, surgeon, high budget, time-poor dad of 10yo; would buy immediately to delegate hydration tracking to tech.",
+      "intent": 0.6424
+    },
+    {
+      "id": "p070",
+      "summary": "35, nanny, tight budget, practical mom of 7yo; wouldn't buy, knows kids ignore reminders after a week.",
+      "intent": 0.2393
+    },
+    {
+      "id": "p071",
+      "summary": "40, museum curator, moderate budget, thoughtful mom of 9yo; wouldn't buy, prefers teaching self-reliance over apps.",
+      "intent": 0.2376
+    },
+    {
+      "id": "p072",
+      "summary": "33, sales manager, high budget, competitive dad of 8yo; would buy to turn hydration into a daily streak challenge.",
+      "intent": 0.7236
+    },
+    {
+      "id": "p073",
+      "summary": "38, medical biller, tight budget, stressed mom of 6yo; wouldn't buy, can't afford replacing lost smart caps.",
+      "intent": 0.2483
+    },
+    {
+      "id": "p074",
+      "summary": "36, chiropractor, high budget, holistic mom of 7yo; would buy to keep her child hydrated without nagging.",
+      "intent": 0.7063
+    },
+    {
+      "id": "p075",
+      "summary": "42, auto body tech, moderate budget, skeptical dad of 10yo; wouldn't buy, thinks it's overpriced plastic.",
+      "intent": 0.1506
+    },
+    {
+      "id": "p076",
+      "summary": "31, elementary counselor, moderate budget, caring mom of 6yo; would buy to help anxious kids build routines.",
+      "intent": 0.6039
+    },
+    {
+      "id": "p077",
+      "summary": "39, operations manager, high budget, efficiency-driven dad of 8yo; would buy for the automated evening summary.",
+      "intent": 0.6959
+    },
+    {
+      "id": "p078",
+      "summary": "29, hotel front desk, tight budget, young mom of 6yo; wouldn't buy, $29 is too much for a cap.",
+      "intent": 0.2224
+    },
+    {
+      "id": "p079",
+      "summary": "41, journalist, moderate budget, skeptical mom of 9yo; wouldn't buy, worried about data privacy and battery waste.",
+      "intent": 0.2076
+    },
+    {
+      "id": "p080",
+      "summary": "35, personal trainer, moderate budget, health-obsessed dad of 7yo; would buy to track his kid's sports hydration.",
+      "intent": 0.669
+    },
+    {
+      "id": "p081",
+      "summary": "37, dental assistant, tight budget, pragmatic mom of 8yo; wouldn't buy, just checks how full the bottle comes home.",
+      "intent": 0.2199
+    },
+    {
+      "id": "p082",
+      "summary": "44, investment banker, high budget, demanding dad of 10yo; would buy if it works seamlessly with Apple Health.",
+      "intent": 0.3617
+    },
+    {
+      "id": "p083",
+      "summary": "33, florist, moderate budget, warm mom of 6yo; would buy because her daughter loves glowing interactive toys.",
+      "intent": 0.5959
+    },
+    {
+      "id": "p084",
+      "summary": "38, factory worker, tight budget, frugal dad of 9yo; wouldn't buy, thinks smart water bottles are ridiculous.",
+      "intent": 0.1335
+    },
+    {
+      "id": "p085",
+      "summary": "36, school nurse, moderate budget, experienced mom of 7yo; would buy, sees dehydrated kids in her office daily.",
+      "intent": 0.7773
+    },
+    {
+      "id": "p086",
+      "summary": "40, PR director, high budget, image-conscious mom of 8yo; would buy if it looks trendy on her kid's Hydro Flask.",
+      "intent": 0.4367
+    },
+    {
+      "id": "p087",
+      "summary": "32, veterinary tech, tight budget, tired mom of 6yo; wouldn't buy, too many things to charge already.",
+      "intent": 0.2669
+    },
+    {
+      "id": "p088",
+      "summary": "39, aerospace engineer, high budget, analytical dad of 10yo; would buy out of curiosity about the flow sensor.",
+      "intent": 0.5804
+    },
+    {
+      "id": "p089",
+      "summary": "34, bookkeeper, moderate budget, careful mom of 7yo; wouldn't buy without a 1-year warranty against drops.",
+      "intent": 0.6338
+    },
+    {
+      "id": "p090",
+      "summary": "41, restaurant manager, moderate budget, busy dad of 8yo; would buy to know his kid drank water at school.",
+      "intent": 0.6836
+    },
+    {
+      "id": "p091",
+      "summary": "30, esthetician, moderate budget, wellness-loving mom of 6yo; would buy to encourage glowing skin and good habits.",
+      "intent": 0.6191
+    },
+    {
+      "id": "p092",
+      "summary": "37, HVAC tech, moderate budget, practical dad of 9yo; wouldn't buy, kids just dump water out to cheat sensors.",
+      "intent": 0.2314
+    },
+    {
+      "id": "p093",
+      "summary": "35, optometrist, high budget, attentive mom of 8yo; would buy for her son who forgets to drink during recess.",
+      "intent": 0.7331
+    },
+    {
+      "id": "p094",
+      "summary": "43, janitor, tight budget, humble dad of 10yo; wouldn't buy, regular reusable bottles do the job for less.",
+      "intent": 0.1519
+    },
+    {
+      "id": "p095",
+      "summary": "32, paralegal, moderate budget, anxious mom of 6yo; would buy to ease worry about her kid's hot summer camp.",
+      "intent": 0.7099
+    },
+    {
+      "id": "p096",
+      "summary": "38, software architect, high budget, privacy-focused dad of 7yo; wouldn't buy unless data stays local without cloud accounts.",
+      "intent": 0.2606
+    },
+    {
+      "id": "p097",
+      "summary": "36, middle school teacher, moderate budget, realistic mom of 9yo; wouldn't buy, knows glowing caps distract classrooms.",
+      "intent": 0.2219
+    },
+    {
+      "id": "p098",
+      "summary": "40, mortgage broker, high budget, busy dad of 8yo; would buy at $29 as a low-risk experiment.",
+      "intent": 0.6596
+    },
+    {
+      "id": "p099",
+      "summary": "31, call center agent, tight budget, budget-conscious mom of 6yo; wouldn't buy, $29 exceeds her discretionary spending.",
+      "intent": 0.2152
+    },
+    {
+      "id": "p100",
+      "summary": "39, physical therapist, high budget, proactive mom of 10yo; would buy to help her athletic daughter avoid cramps.",
+      "intent": 0.6778
+    },
+    {
+      "id": "p101",
+      "summary": "34, baker, tight budget, hands-on mom of 7yo; wouldn't buy, hates washing intricate bottle lids with electronics.",
+      "intent": 0.2189
+    },
+    {
+      "id": "p102",
+      "summary": "42, logistics manager, moderate budget, pragmatic dad of 8yo; would buy if it fits wide-mouth bottles we already own.",
+      "intent": 0.6872
+    },
+    {
+      "id": "p103",
+      "summary": "33, social media manager, moderate budget, trend-driven mom of 6yo; would buy to make hydration fun and shareable.",
+      "intent": 0.4981
+    },
+    {
+      "id": "p104",
+      "summary": "37, welder, moderate budget, traditional dad of 9yo; wouldn't buy, doesn't want his kid relying on gadgets.",
+      "intent": 0.1661
+    },
+    {
+      "id": "p105",
+      "summary": "35, clinical psychologist, high budget, mindful mom of 7yo; would buy if reminders are non-shaming and positive.",
+      "intent": 0.6222
+    },
+    {
+      "id": "p106",
+      "summary": "41, retail buyer, moderate budget, value-focused mom of 10yo; wouldn't buy at $29, thinks $19 is the sweet spot.",
+      "intent": 0.4758
+    },
+    {
+      "id": "p107",
+      "summary": "29, security guard, tight budget, skeptical dad of 6yo; wouldn't buy, doesn't trust cheap Bluetooth connections.",
+      "intent": 0.1886
+    },
+    {
+      "id": "p108",
+      "summary": "38, art director, high budget, creative mom of 8yo; would buy if the app interface is clean and kid-friendly.",
+      "intent": 0.5233
+    },
+    {
+      "id": "p109",
+      "summary": "36, mail carrier, moderate budget, active dad of 7yo; would buy because he knows firsthand how easy dehydration is.",
+      "intent": 0.6757
+    },
+    {
+      "id": "p110",
+      "summary": "40, church secretary, tight budget, frugal mom of 9yo; wouldn't buy, prefers writing encouraging notes on lunchboxes.",
+      "intent": 0.1868
+    },
+    {
+      "id": "p111",
+      "summary": "32, data analyst, high budget, metrics-loving dad of 6yo; would buy to track daily hydration trends over time.",
+      "intent": 0.6601
+    },
+    {
+      "id": "p112",
+      "summary": "39, dental hygienist, moderate budget, health-conscious mom of 8yo; would buy to replace afternoon soda cravings.",
+      "intent": 0.6217
+    },
+    {
+      "id": "p113",
+      "summary": "34, Uber driver, tight budget, tired dad of 7yo; wouldn't buy, can't justify spending $29 on a lid.",
+      "intent": 0.1839
+    },
+    {
+      "id": "p114",
+      "summary": "43, corporate lawyer, high budget, perfectionist mom of 10yo; would buy to ensure optimal focus during school.",
+      "intent": 0.6413
+    },
+    {
+      "id": "p115",
+      "summary": "31, kindergarten teacher, moderate budget, practical mom of 6yo; would buy if it has a silent school-day mode.",
+      "intent": 0.7168
+    },
+    {
+      "id": "p116",
+      "summary": "37, machinist, moderate budget, skeptical dad of 8yo; wouldn't buy, thinks it will break in two weeks.",
+      "intent": 0.2044
+    },
+    {
+      "id": "p117",
+      "summary": "35, travel agent, moderate budget, organized mom of 9yo; would buy for keeping kids hydrated on flights.",
+      "intent": 0.6141
+    },
+    {
+      "id": "p118",
+      "summary": "41, tech recruiter, high budget, busy dad of 7yo; would buy because $29 is cheap for a helpful gadget.",
+      "intent": 0.7147
+    },
+    {
+      "id": "p119",
+      "summary": "30, daycare worker, tight budget, realistic mom of 6yo; wouldn't buy, kids lose bottle caps constantly.",
+      "intent": 0.207
+    },
+    {
+      "id": "p120",
+      "summary": "38, dermatologist, high budget, wellness-focused mom of 8yo; would buy to build healthy daily water habits.",
+      "intent": 0.6748
+    },
+    {
+      "id": "p121",
+      "summary": "36, store manager, moderate budget, pragmatic dad of 10yo; wouldn't buy, his 10yo already drinks plenty of water.",
+      "intent": 0.2705
+    },
+    {
+      "id": "p122",
+      "summary": "33, wedding planner, moderate budget, detail-oriented mom of 7yo; would buy to reduce daily parenting mental load.",
+      "intent": 0.7054
+    },
+    {
+      "id": "p123",
+      "summary": "44, high school teacher, moderate budget, skeptical dad of 9yo; wouldn't buy, dislikes gamifying basic biological needs.",
+      "intent": 0.1968
+    },
+    {
+      "id": "p124",
+      "summary": "32, radiologic tech, moderate budget, caring mom of 6yo; would buy for her son who refuses to drink water.",
+      "intent": 0.7381
+    },
+    {
+      "id": "p125",
+      "summary": "39, financial controller, high budget, analytical mom of 8yo; would buy if battery lasts at least a month.",
+      "intent": 0.6719
+    },
+    {
+      "id": "p126",
+      "summary": "35, roofer, tight budget, no-nonsense dad of 7yo; wouldn't buy, thinks it's a waste of money.",
+      "intent": 0.131
+    },
+    {
+      "id": "p127",
+      "summary": "40, yoga instructor, moderate budget, holistic mom of 9yo; wouldn't buy, prefers teaching kids to listen to their bodies.",
+      "intent": 0.201
+    },
+    {
+      "id": "p128",
+      "summary": "37, project manager, high budget, structured dad of 8yo; would buy for the automated daily compliance report.",
+      "intent": 0.7148
+    },
+    {
+      "id": "p129",
+      "summary": "31, medical assistant, tight budget, stressed mom of 6yo; wouldn't buy, worried about paying for replacement parts.",
+      "intent": 0.2969
+    },
+    {
+      "id": "p130",
+      "summary": "42, university admin, moderate budget, organized mom of 10yo; would buy if her kid actually wants to use it.",
+      "intent": 0.5884
+    },
+    {
+      "id": "p131",
+      "summary": "34, bartender, tight budget, skeptical dad of 7yo; wouldn't buy, seems like a solution looking for a problem.",
+      "intent": 0.1942
+    },
+    {
+      "id": "p132",
+      "summary": "38, brand manager, high budget, savvy mom of 8yo; would buy if reviews confirm it doesn't leak in backpacks.",
+      "intent": 0.5603
+    },
+    {
+      "id": "p133",
+      "summary": "36, paramedic, moderate budget, practical dad of 6yo; would buy to prevent dehydration during hot summer sports.",
+      "intent": 0.5954
+    },
+    {
+      "id": "p134",
+      "summary": "41, paralegal, moderate budget, cautious mom of 9yo; wouldn't buy, doubts her son will remember to charge it.",
+      "intent": 0.2885
+    },
+    {
+      "id": "p135",
+      "summary": "33, UX researcher, high budget, curious mom of 7yo; would buy to see if nudges genuinely change kid behavior.",
+      "intent": 0.6992
+    },
+    {
+      "id": "p136",
+      "summary": "39, construction foreman, moderate budget, traditional dad of 10yo; wouldn't buy, thinks $29 for a cap is crazy.",
+      "intent": 0.1301
+    },
+    {
+      "id": "p137",
+      "summary": "35, speech pathologist, moderate budget, supportive mom of 6yo; would buy to reinforce routines for her distracted kid.",
+      "intent": 0.6966
+    },
+    {
+      "id": "p138",
+      "summary": "40, SaaS sales exec, high budget, gadget-friendly dad of 8yo; would buy as an easy win for kid health.",
+      "intent": 0.721
+    },
+    {
+      "id": "p139",
+      "summary": "32, library assistant, tight budget, minimalist mom of 7yo; wouldn't buy, avoids single-purpose electronic clutter.",
+      "intent": 0.1726
+    },
+    {
+      "id": "p140",
+      "summary": "37, pediatric nurse, high budget, proactive mom of 9yo; would buy to help her sports-loving kid stay hydrated.",
+      "intent": 0.6956
+    },
+    {
+      "id": "p141",
+      "summary": "64, retired teacher, moderate budget, doting grandma of 7yo; would buy as a practical birthday gift for grandson.",
+      "intent": 0.6351
+    },
+    {
+      "id": "p142",
+      "summary": "24, grad student, tight budget, childfree adult; wouldn't buy, has no kids and doesn't need parent summaries.",
+      "intent": 0.1336
+    },
+    {
+      "id": "p143",
+      "summary": "47, accountant, high budget, dad of 15yo; wouldn't buy, his teenager would be mortified by a kid hydration cap.",
+      "intent": 0.2074
+    },
+    {
+      "id": "p144",
+      "summary": "27, nurse, moderate budget, mom of 2yo toddler; wouldn't buy yet, toddler uses sippy cups and can't read reminders.",
+      "intent": 0.2656
+    },
+    {
+      "id": "p145",
+      "summary": "52, fitness coach, high budget, childfree adult; wouldn't buy, wants an adult smart bottle without parent-focused features.",
+      "intent": 0.1635
+    },
+    {
+      "id": "p146",
+      "summary": "68, retiree, tight budget, frugal grandpa of 8yo; wouldn't buy, thinks $29 for a bottle cap is absurd.",
+      "intent": 0.1194
+    },
+    {
+      "id": "p147",
+      "summary": "22, college senior, tight budget, bargain hunter; wouldn't buy, has no kids and only buys steep clearance items.",
+      "intent": 0.1234
+    },
+    {
+      "id": "p148",
+      "summary": "31, aunt and graphic designer, moderate budget, fun gift-giver; would buy for her 7yo nephew who hates drinking water.",
+      "intent": 0.5528
+    },
+    {
+      "id": "p149",
+      "summary": "49, high school principal, high budget, parent of 17yo; wouldn't buy, kids are too old for hydration tracking.",
+      "intent": 0.2072
+    },
+    {
+      "id": "p150",
+      "summary": "29, software dev, high budget, childfree biohacker; wouldn't buy, prefers advanced adult hydration trackers over kid caps.",
+      "intent": 0.1782
+    },
+    {
+      "id": "p151",
+      "summary": "61, nurse, moderate budget, grandma of 6yo; would buy to help her busy daughter monitor the grandkid's water.",
+      "intent": 0.6295
+    },
+    {
+      "id": "p152",
+      "summary": "35, elementary teacher, tight budget, childfree educator; wouldn't buy, worries glowing caps will disrupt her classroom.",
+      "intent": 0.1548
+    },
+    {
+      "id": "p153",
+      "summary": "46, mom of 13yo, moderate budget, pragmatic parent; wouldn't buy, her middle schooler manages their own water intake.",
+      "intent": 0.2303
+    },
+    {
+      "id": "p154",
+      "summary": "26, marketing coordinator, moderate budget, mom of newborn; wouldn't buy, completely irrelevant for an infant.",
+      "intent": 0.1889
+    },
+    {
+      "id": "p155",
+      "summary": "55, corporate exec, high budget, childfree skeptic; wouldn't buy, views smart caps as unnecessary consumer e-waste.",
+      "intent": 0.1242
+    },
+    {
+      "id": "p156",
+      "summary": "70, retired engineer, moderate budget, tech-curious grandpa; would buy for his 8yo granddaughter just to test the tech.",
+      "intent": 0.5508
+    },
+    {
+      "id": "p157",
+      "summary": "25, barista, tight budget, childfree minimalist; wouldn't buy, no kids and dislikes Bluetooth-enabled everyday items.",
+      "intent": 0.1223
+    },
+    {
+      "id": "p158",
+      "summary": "48, dad of 14yo, moderate budget, skeptical parent; wouldn't buy, teen would refuse to let dad track water.",
+      "intent": 0.2161
+    },
+    {
+      "id": "p159",
+      "summary": "33, pediatric occupational therapist, moderate budget, childfree clinician; would buy one as a demo tool for client families.",
+      "intent": 0.5936
+    },
+    {
+      "id": "p160",
+      "summary": "58, small business owner, high budget, empty nester; wouldn't buy, has no young children or grandchildren.",
+      "intent": 0.1618
+    },
+    {
+      "id": "p161",
+      "summary": "28, uncle and sales rep, high budget, generous gift-giver; would buy as a cool Christmas gift for his 6yo niece.",
+      "intent": 0.4148
+    },
+    {
+      "id": "p162",
+      "summary": "45, mom of 12yo, tight budget, frugal shopper; wouldn't buy, kid is too old and $29 is too pricey.",
+      "intent": 0.1535
+    },
+    {
+      "id": "p163",
+      "summary": "66, retired nurse, moderate budget, caregiver for 90yo mom; would buy if it works to track elderly mother's hydration.",
+      "intent": 0.3528
+    },
+    {
+      "id": "p164",
+      "summary": "21, retail worker, tight budget, childfree student; wouldn't buy, has zero need for a children's water cap.",
+      "intent": 0.1357
+    },
+    {
+      "id": "p165",
+      "summary": "30, mom of 3yo, moderate budget, proactive parent; wouldn't buy now, might reconsider when child starts elementary school.",
+      "intent": 0.3976
+    },
+    {
+      "id": "p166",
+      "summary": "53, IT director, high budget, privacy skeptic with teens; wouldn't buy, opposes connected devices for kids.",
+      "intent": 0.1654
+    },
+    {
+      "id": "p167",
+      "summary": "62, retired librarian, tight budget, grandma of 9yo; wouldn't buy, prefers buying books instead of tech gadgets.",
+      "intent": 0.1804
+    },
+    {
+      "id": "p168",
+      "summary": "29, personal trainer, moderate budget, childfree athlete; wouldn't buy, already tracks his own water intake effortlessly.",
+      "intent": 0.184
+    },
+    {
+      "id": "p169",
+      "summary": "44, youth soccer coach, moderate budget, childfree volunteer; wouldn't buy personally, might recommend to parents on his team.",
+      "intent": 0.3771
+    },
+    {
+      "id": "p170",
+      "summary": "34, mom of 4yo, tight budget, bargain hunter; wouldn't buy, child is too young and $29 is too much.",
+      "intent": 0.1683
+    },
+    {
+      "id": "p171",
+      "summary": "50, dad of 16yo, high budget, busy lawyer; wouldn't buy, totally outside his family's current life stage.",
+      "intent": 0.1765
+    },
+    {
+      "id": "p172",
+      "summary": "67, retired mechanic, tight budget, skeptical grandpa; wouldn't buy, thinks modern parents rely too much on apps.",
+      "intent": 0.1295
+    },
+    {
+      "id": "p173",
+      "summary": "23, junior analyst, moderate budget, childfree tech enthusiast; wouldn't buy, no kids to use it on.",
+      "intent": 0.1824
+    },
+    {
+      "id": "p174",
+      "summary": "36, aunt and pharmacist, high budget, health-conscious relative; would buy for her 8yo nephew who gets frequent headaches.",
+      "intent": 0.6743
+    },
+    {
+      "id": "p175",
+      "summary": "49, mom of 15yo, moderate budget, skeptical shopper; wouldn't buy, thinks kids should learn thirst cues naturally.",
+      "intent": 0.2003
+    },
+    {
+      "id": "p176",
+      "summary": "28, dad of 1yo, tight budget, tired new parent; wouldn't buy, way too early for a smart bottle cap.",
+      "intent": 0.1781
+    },
+    {
+      "id": "p177",
+      "summary": "59, hospital admin, high budget, childfree caregiver for aging dad; would buy to monitor her dad's daily hydration remotely.",
+      "intent": 0.3357
+    },
+    {
+      "id": "p178",
+      "summary": "19, college freshman, tight budget, childfree student; wouldn't buy, not the target demographic at all.",
+      "intent": 0.1354
+    },
+    {
+      "id": "p179",
+      "summary": "65, retired teacher, moderate budget, grandma of 8yo; would buy if it's easy for her daughter to set up.",
+      "intent": 0.553
+    },
+    {
+      "id": "p180",
+      "summary": "41, childfree lawyer, high budget, minimalist skeptic; wouldn't buy, sees no value in smart water bottle caps.",
+      "intent": 0.1397
+    },
+    {
+      "id": "p181",
+      "summary": "32, mom of 2yo, moderate budget, anxious parent; wouldn't buy yet, toddler would just chew on the cap.",
+      "intent": 0.2684
+    },
+    {
+      "id": "p182",
+      "summary": "54, dad of 18yo, moderate budget, practical empty nester; wouldn't buy, son is heading off to college.",
+      "intent": 0.1858
+    },
+    {
+      "id": "p183",
+      "summary": "27, elementary aide, tight budget, childfree worker; wouldn't buy, sees kids lose expensive gear every single day.",
+      "intent": 0.1529
+    },
+    {
+      "id": "p184",
+      "summary": "63, retired accountant, high budget, frugal grandpa of 7yo; wouldn't buy, thinks $29 for a lid is poor value.",
+      "intent": 0.1876
+    },
+    {
+      "id": "p185",
+      "summary": "30, childfree designer, high budget, eco-conscious buyer; wouldn't buy, dislikes adding lithium batteries to simple bottle caps.",
+      "intent": 0.1511
+    },
+    {
+      "id": "p186",
+      "summary": "47, mom of 13yo, high budget, busy executive; wouldn't buy, her preteen would find parent tracking intrusive.",
+      "intent": 0.241
+    },
+    {
+      "id": "p187",
+      "summary": "26, nanny for 7yo, tight budget, practical caregiver; wouldn't buy herself, might suggest the parents buy it.",
+      "intent": 0.4168
+    },
+    {
+      "id": "p188",
+      "summary": "56, uncle and dentist, high budget, generous relative; would buy for his 6yo niece to encourage water over juice.",
+      "intent": 0.5561
+    },
+    {
+      "id": "p189",
+      "summary": "24, warehouse worker, tight budget, childfree bargain hunter; wouldn't buy, has no kids and avoids $29 gadgets.",
+      "intent": 0.1109
+    },
+    {
+      "id": "p190",
+      "summary": "69, retired nurse, moderate budget, grandma of 10yo; would buy to help her athletic grandson stay hydrated.",
+      "intent": 0.6157
+    },
+    {
+      "id": "p191",
+      "summary": "35, childfree software engineer, high budget, tech skeptic; wouldn't buy, thinks IoT bottle caps are over-engineered.",
+      "intent": 0.1497
+    },
+    {
+      "id": "p192",
+      "summary": "48, dad of 14yo, tight budget, traditional parent; wouldn't buy, kids are too old and don't need apps.",
+      "intent": 0.1673
+    },
+    {
+      "id": "p193",
+      "summary": "29, mom of 3yo, moderate budget, trend-follower; wouldn't buy now, might bookmark it for a few years later.",
+      "intent": 0.3744
+    },
+    {
+      "id": "p194",
+      "summary": "60, retired professor, moderate budget, childfree minimalist; wouldn't buy, has no children and dislikes smart gadgets.",
+      "intent": 0.1347
+    },
+    {
+      "id": "p195",
+      "summary": "33, aunt and teacher, tight budget, practical relative; wouldn't buy, knows her 8yo nephew loses everything.",
+      "intent": 0.2119
+    },
+    {
+      "id": "p196",
+      "summary": "51, mom of 17yo, high budget, health-focused parent; wouldn't buy, teenager already carries a giant Stanley cup.",
+      "intent": 0.2371
+    },
+    {
+      "id": "p197",
+      "summary": "25, freelance illustrator, tight budget, childfree adult; wouldn't buy, completely irrelevant to her daily life.",
+      "intent": 0.1468
+    },
+    {
+      "id": "p198",
+      "summary": "64, retired firefighter, moderate budget, grandpa of 6yo; would buy as a fun gadget gift for his grandson.",
+      "intent": 0.4706
+    },
+    {
+      "id": "p199",
+      "summary": "43, childfree accountant, moderate budget, bargain hunter; wouldn't buy, no kids and finds $29 steep for a cap.",
+      "intent": 0.1271
+    },
+    {
+      "id": "p200",
+      "summary": "28, dad of 4yo, moderate budget, tech-savvy parent; wouldn't buy yet, waiting until his son is older for school.",
+      "intent": 0.3546
+    }
+  ]
+}

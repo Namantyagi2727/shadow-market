@@ -82,7 +82,10 @@ def _hydrate_context(ctx: RunContext, events: list[dict[str, Any]]) -> None:
 
 def _load_existing_runs() -> None:
     RUNS_DIR.mkdir(parents=True, exist_ok=True)
-    for events_file in sorted(RUNS_DIR.glob("r_*/events.jsonl")):
+    # backend/demo_runs/ holds committed golden runs: replay works on any machine, no API key needed.
+    demo_dir = Path(__file__).resolve().parent / "demo_runs"
+    files = sorted(RUNS_DIR.glob("r_*/events.jsonl")) + sorted(demo_dir.glob("r_*/events.jsonl"))
+    for events_file in files:
         run_dir = events_file.parent
         run_id = run_dir.name
         if run_id in RUNS:
@@ -104,6 +107,35 @@ async def lifespan(_app: FastAPI):
 
 app = FastAPI(title="Shadow Market Backend", lifespan=lifespan)
 
+
+class ClientAllowlist:
+    """Only our own devices may call the API (HTTP and WebSocket).
+
+    Localhost is always allowed. Other machines must be listed in ALLOWED_CLIENT_IPS
+    (comma-separated, e.g. Laptop B and the iPad). ALLOWED_CLIENT_IPS=* allows everyone.
+    Without this, anyone on shared venue Wi-Fi could start runs on our Gemini key or mint Live tokens.
+    """
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] in ("http", "websocket"):
+            client = (scope.get("client") or ("", 0))[0]
+            allowed = {"127.0.0.1", "::1", "localhost"} | {
+                ip.strip() for ip in os.environ.get("ALLOWED_CLIENT_IPS", "").split(",") if ip.strip()
+            }
+            if "*" not in allowed and client not in allowed:
+                if scope["type"] == "websocket":
+                    await send({"type": "websocket.close", "code": 1008})
+                    return
+                await send({"type": "http.response.start", "status": 403, "headers": [(b"content-type", b"application/json")]})
+                await send({"type": "http.response.body", "body": b'{"detail":"client not allowed"}'})
+                return
+        await self.app(scope, receive, send)
+
+
+app.add_middleware(ClientAllowlist)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

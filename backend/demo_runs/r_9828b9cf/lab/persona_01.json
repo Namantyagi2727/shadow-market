@@ -1,0 +1,148 @@
+{
+  "persona_id": "persona_01",
+  "outcome": "quit",
+  "quit_reason": "Ran out of patience after 12 steps without finishing checkout. Last thought: The checkout flow is clean and upfront about being a demo/pre-order with no credit card required. Let's fill in my name to test out the review step.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/lab/persona_01.webm",
+  "duration_s": 62.55,
+  "name": "Marcus Vance",
+  "role": "Senior backend engineer, Brooklyn",
+  "device": "desktop",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 7.17,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "This is pitched at parents of 6-10 year olds, which isn't me, though the hardware specs (IPX7, USB-C, 30-day battery) are intriguing. Let's scroll down to see how it actually works and if there's any real technical substance.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 12.1,
+      "action": "click",
+      "target": "Nalgene Wide Mouth",
+      "target_index": 10,
+      "text": null,
+      "thought": "Standard 63mm wide-mouth thread with a 58mm step-down ring is actually a solid mechanical design. Let's click Nalgene Wide Mouth to see if it fits a standard adult Nalgene, since I'm not buying a kids' bottle.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 16.65,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "I clicked Nalgene Wide Mouth, but the fit checker output is below the fold. Let's scroll down to see the result and check out the sensor specs.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 22.02,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Nice, it's a direct 63mm fit for a standard 32oz Nalgene, and $0/mo for the app is a good sign. Let's scroll down to see how the 'anti-fake sip sensor' actually works and check out the technical details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 5,
+      "t": 26.5,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "A sealed micro-turbine paired with a suction check is actually a legitimate hardware solution compared to a cheap tilt switch. Let's scroll down to see the rest of how it works and what the app/data side looks like.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 6,
+      "t": 31.27,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The Parent Summary UI is clean, and 26 days left at 88% battery tracks with the 30-day claim. Let's scroll down to see the rest of the hardware specs, School Mode details, and the FAQ.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 7,
+      "t": 35.28,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "IPX7 waterproof electronics and a TPU bumper are solid durability specs. Let's scroll down to see the rest of the School Mode details, the FAQ, and the checkout flow.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 8,
+      "t": 44.0,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "No Wi-Fi required at school and no screen on the cap is good, low-bloat design. Let's scroll down to check out the shipping, returns, and FAQ section.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 9,
+      "t": 49.15,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "Transparent shipping, 30-day return, and a 1-year drop warranty are all solid. Let's scroll down to check the rest of the FAQ and see the pre-order checkout flow.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 10,
+      "t": 54.1,
+      "action": "click",
+      "target": "Is there a monthly app subscription? +",
+      "target_index": 19,
+      "text": null,
+      "thought": "Let's check if there's any hidden monthly app subscription bloat before looking at the checkout.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 11,
+      "t": 58.46,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "No monthly subscription bloat, which is a huge plus. Let's scroll down to inspect the pre-order checkout flow.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 12,
+      "t": 62.23,
+      "action": "type",
+      "target": "e.g., Jordan Taylor",
+      "target_index": 25,
+      "text": "Marcus Vance",
+      "thought": "The checkout flow is clean and upfront about being a demo/pre-order with no credit card required. Let's fill in my name to test out the review step.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "persona_id": "persona_04",
+  "outcome": "quit",
+  "quit_reason": "It's just a flat vector diagram of a kids' water bottle cap for parents. No real product photos, nothing camera-ready or viral-worthy here. Total pass.",
+  "video_url": "/api/runs/r_9828b9cf/artifacts/lab/persona_04.webm",
+  "duration_s": 16.3,
+  "name": "Devon Brooks",
+  "role": "Micro-creator and early adopter",
+  "device": "mobile",
+  "viewport": {
+    "width": 393,
+    "height": 852
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 10.27,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "There's no product photo in the hero at all, just text for parents. Let me scroll down quickly to see if this thing actually looks cool on camera or if it's a pass.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 16.01,
+      "action": "quit",
+      "target": "",
+      "target_index": null,
+      "text": null,
+      "thought": "It's just a flat vector diagram of a kids' water bottle cap for parents. No real product photos, nothing camera-ready or viral-worthy here. Total pass.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}

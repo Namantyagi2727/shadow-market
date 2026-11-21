@@ -1,0 +1,104 @@
+{
+  "persona_id": "persona_03",
+  "outcome": "converted",
+  "quit_reason": null,
+  "video_url": "/api/runs/r_9828b9cf/artifacts/lab/persona_03.webm",
+  "duration_s": 40.5,
+  "name": "Elena Rostova",
+  "role": "Working parent and operations manager",
+  "device": "tablet",
+  "viewport": {
+    "width": 820,
+    "height": 1180
+  },
+  "actions": [
+    {
+      "step": 1,
+      "t": 5.59,
+      "action": "click",
+      "target": "Shipping & FAQ",
+      "target_index": 4,
+      "text": null,
+      "thought": "I want to quickly check the shipping timeline, refund terms, and whether a companion app is required before spending more time on this.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 2,
+      "t": 11.5,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The shipping timeline (4-6 weeks) and 30-day refund with free return label are clear, and I can use it without the parent app by holding the button. Let me scroll down to see the rest of the FAQ and the pre-order section.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 3,
+      "t": 16.87,
+      "action": "click",
+      "target": "Will teachers ban it for making noise in class? +",
+      "target_index": 18,
+      "text": null,
+      "thought": "Before pre-ordering, I want to make sure it won't be a distraction in class and get banned by teachers.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 4,
+      "t": 21.15,
+      "action": "scroll",
+      "target": "down",
+      "target_index": null,
+      "text": "down",
+      "thought": "The School Mode answer is reassuring. Let me scroll down to fill out the pre-order form.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 5,
+      "t": 26.14,
+      "action": "type",
+      "target": "e.g., Jordan Taylor",
+      "target_index": 25,
+      "text": "Elena Rostova",
+      "thought": "I'll enter my full name to start the pre-order.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 6,
+      "t": 30.59,
+      "action": "type",
+      "target": "e.g., jordan@example.com",
+      "target_index": 26,
+      "text": "elena.rostova@example.com",
+      "thought": "Next, I'll enter my shipping email address so I can continue to review my pre-order.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 7,
+      "t": 35.87,
+      "action": "click",
+      "target": "Continue to review",
+      "target_index": 27,
+      "text": null,
+      "thought": "I've entered my name and email. Now I'll click 'Continue to review' to check the order details.",
+      "executed_ok": true,
+      "error": null
+    },
+    {
+      "step": 8,
+      "t": 40.21,
+      "action": "click",
+      "target": "Complete order",
+      "target_index": 23,
+      "text": null,
+      "thought": "Everything in the order summary looks accurate\u2014quantity 1 for $24. I'll click 'Complete order' to finish my pre-order.",
+      "executed_ok": true,
+      "error": null
+    }
+  ]
+}
