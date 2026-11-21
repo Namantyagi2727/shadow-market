@@ -256,6 +256,7 @@ export function JudgeAssistantWorkspace({
   );
 
   const research = useMemo(() => extractPitchResearch(events), [events]);
+  const [showAllQuestions, setShowAllQuestions] = useState(false);
 
   return (
     <div
@@ -320,7 +321,12 @@ export function JudgeAssistantWorkspace({
               {!reviewed && (
                 <p className="pb-3 text-[13px] text-[#9AA0A6]">Pitch complete. Checking which questions the pitch already answered…</p>
               )}
-              <QuestionsPanel questions={questions} researchSteps={researchSteps} />
+              <QuestionsPanel
+                questions={questions}
+                researchSteps={researchSteps}
+                showAll={showAllQuestions}
+                onToggleShowAll={() => setShowAllQuestions((v) => !v)}
+              />
               {reviewed && reviewed.answered.length > 0 && (
                 <details className="mb-3 rounded-[12px] border border-[#2A2B30] bg-[#16171A] px-4 py-2.5 text-[13px] text-[#9AA0A6]">
                   <summary className="cursor-pointer">Already covered in the pitch ✓ ({reviewed.answered.length})</summary>
@@ -331,7 +337,7 @@ export function JudgeAssistantWorkspace({
                   </ul>
                 </details>
               )}
-              <FindingsSection research={research} />
+              {!showAllQuestions && <FindingsSection research={research} />}
             </>
           )}
           <TypedAskBar runId={runId} />
