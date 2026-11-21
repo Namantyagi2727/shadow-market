@@ -1,0 +1,22 @@
+{
+  "holdout": {
+    "n": 6,
+    "v1_converted": 0,
+    "v2_converted": 1
+  },
+  "rubrics_v1": {
+    "value_clarity": 0.8873,
+    "pain_urgency": 0.2917,
+    "price_value_fit": 0.5303,
+    "credibility_trust": 0.3484,
+    "beat_competitors": 0.322
+  },
+  "rubrics_v2": {
+    "value_clarity": 0.8824,
+    "pain_urgency": 0.292,
+    "price_value_fit": 0.5035,
+    "credibility_trust": 0.2468,
+    "beat_competitors": 0.2832
+  },
+  "summary": "Held-out buyer conversions rose slightly from 0/6 in V1 to 1/6 in V2, but overall V2 regressed. Credibility and trust dropped sharply by 0.10, and competitive differentiation and price-value fit also declined."
+}

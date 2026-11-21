@@ -221,6 +221,7 @@ async def _run_persona(
     emit: Emit,
     lab_dir: Path,
     model_sem: asyncio.Semaphore,
+    url: str | None = None,
 ) -> dict[str, Any]:
     persona_id = str(persona["id"])
     viewport = persona["viewport"]
@@ -255,7 +256,7 @@ async def _run_persona(
 
     recorded_video_raw: Path | None = None
     try:
-        await page.goto(str(ctx.mvp_url), wait_until="load", timeout=15000)
+        await page.goto(str(url or ctx.mvp_url), wait_until="load", timeout=15000)
         await page.wait_for_timeout(300)
 
         consecutive_errors = 0
@@ -429,20 +430,23 @@ async def run(ctx: RunContext, emit: Emit) -> None:
         return
 
     personas = json.loads(PERSONAS_PATH.read_text(encoding="utf-8"))
-    lab_dir = ctx.run_dir / "lab"
+    results = await run_panel(ctx, emit, personas, str(ctx.mvp_url), ctx.run_dir / "lab")
+    ctx.lab_results.extend(results)
+
+
+async def run_panel(
+    ctx: RunContext, emit: Emit, personas: list[dict[str, Any]], url: str, lab_dir: Path
+) -> list[dict[str, Any]]:
+    """Run a persona panel against any URL; reused by the V2 fix-and-prove loop (held-out panel)."""
     lab_dir.mkdir(parents=True, exist_ok=True)
     model_sem = asyncio.Semaphore(6)
-
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         try:
-            results = await asyncio.gather(
-                *[
-                    _run_persona(browser, persona, ctx, emit, lab_dir, model_sem)
-                    for persona in personas
-                ]
+            return list(
+                await asyncio.gather(
+                    *[_run_persona(browser, persona, ctx, emit, lab_dir, model_sem, url) for persona in personas]
+                )
             )
         finally:
             await browser.close()
-
-    ctx.lab_results.extend(results)

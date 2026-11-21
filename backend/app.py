@@ -21,7 +21,7 @@ from pydantic import BaseModel
 from pipeline.context import REPO_ROOT, RUNS_DIR, EventLog, RunContext
 from pipeline.hotseat import create_hotseat_session
 from pipeline.orchestrator import run_pipeline
-from pipeline import room
+from pipeline import iterate, room
 
 load_dotenv(REPO_ROOT / ".env")
 os.environ["PUBLIC_BASE_URL"] = os.environ.get("PUBLIC_BASE_URL", "http://localhost:8000").rstrip("/")
@@ -254,6 +254,34 @@ async def post_vote(run_id: str, body: VoteRequest) -> dict[str, bool]:
                 "ai_probability": ai_probability,
             },
         )
+    return {"ok": True}
+
+
+@app.post("/api/runs/{run_id}/iterate")
+async def post_iterate(run_id: str) -> dict[str, bool]:
+    ctx, log, _ = _get_run(run_id)
+    if not (ctx.run_dir / "mvp" / "index.html").is_file():
+        raise HTTPException(status_code=400, detail="Run has no V1 MVP to iterate on.")
+    if run_id in iterate.ACTIVE_RUNS:
+        return {"ok": True}
+
+    async def _run_v2() -> None:
+        if run_id in iterate.ACTIVE_RUNS:
+            return
+        await log.emit("stage_changed", "iterate", {"stage": "iterate"})
+        try:
+            await iterate.run(ctx, log.emit)
+        except Exception as exc:  # noqa: BLE001
+            msg = f"iterate failed: {type(exc).__name__}: {exc}"
+            for env_name in ("GEMINI_API_KEY", "GOOGLE_API_KEY"):
+                secret = os.environ.get(env_name)
+                if secret and len(secret) >= 8:
+                    msg = msg.replace(secret, "[REDACTED]")
+            await log.emit("error", "iterate", {"message": msg, "recoverable": True})
+
+    task = asyncio.create_task(_run_v2())
+    _BACKGROUND.add(task)
+    task.add_done_callback(_BACKGROUND.discard)
     return {"ok": True}
 
 
