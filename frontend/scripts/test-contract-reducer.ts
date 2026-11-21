@@ -1,204 +1,65 @@
 import assert from "node:assert/strict";
+import sampleRun from "../src/dev/sample-run.json";
+import roomSample from "../src/dev/room-sample.json";
 import { applyRunEvent, createInitialRunState } from "../src/lib/run-store";
-import type { RunEvent } from "../src/lib/contracts";
+import type {
+  BoardroomTurnData,
+  BuildProgressData,
+  CompetitorsData,
+  MvpReadyData,
+  PersonaFinishedData,
+  PersonaStartedData,
+  PitchParsedData,
+  QuitMarkersData,
+  RunEvent,
+  SpecReadyData,
+  SwarmResultData,
+  TwinChallengeData,
+  VerdictData,
+  VoteTallyData,
+} from "../src/lib/contracts";
 
-const sampleEvents: RunEvent[] = [
-  {
-    type: "stage_changed",
-    seq: 1,
-    ts: "2026-11-21T12:15:00Z",
-    stage: "pitch",
-    data: { stage: "pitch" },
-  },
-  {
-    type: "pitch_parsed",
-    seq: 2,
-    ts: "2026-11-21T12:15:05Z",
-    stage: "pitch",
-    data: {
-      title: "Pocket Barista",
-      one_liner: "Portable induction espresso mug with bean pods",
-      target_user: "Commuters & travelers",
-      price_usd: 89,
-      features: ["USB-C heating", "30-second brew", "Leak-proof lid"],
-      sketch_notes: "Cylinder mug with bottom battery puck",
-    },
-  },
-  {
-    type: "stage_changed",
-    seq: 3,
-    ts: "2026-11-21T12:15:06Z",
-    stage: "boardroom",
-    data: { stage: "boardroom" },
-  },
-  {
-    type: "boardroom_turn",
-    seq: 4,
-    ts: "2026-11-21T12:15:10Z",
-    stage: "boardroom",
-    data: {
-      speaker: "strategist",
-      model: "gemini-4-neon",
-      text: "Focus on frequent flyers tired of airport coffee.",
-      audio_url: "/api/runs/r_test/artifacts/turn1.wav",
-    },
-  },
-  {
-    type: "boardroom_turn",
-    seq: 5,
-    ts: "2026-11-21T12:15:14Z",
-    stage: "boardroom",
-    data: {
-      speaker: "skeptic",
-      model: "gemini-4-argon",
-      text: "USB-C cannot boil water fast enough without a heavy battery.",
-      audio_url: null,
-    },
-  },
-  {
-    type: "spec_ready",
-    seq: 6,
-    ts: "2026-11-21T12:15:18Z",
-    stage: "boardroom",
-    data: {
-      headline: "Real Espresso Anywhere in 90 Seconds",
-      price_usd: 99,
-      pages: ["Landing", "Specs", "Preorder Checkout"],
-      risks: ["Battery weight", "Cleaning friction"],
-    },
-  },
-  {
-    type: "build_progress",
-    seq: 7,
-    ts: "2026-11-21T12:15:25Z",
-    stage: "build",
-    data: { message: "Writing index.html and checkout flow..." },
-  },
-  {
-    type: "mvp_ready",
-    seq: 8,
-    ts: "2026-11-21T12:15:40Z",
-    stage: "build",
-    data: {
-      url: "/api/runs/r_test/artifacts/mvp/index.html",
-      screenshot_url: "/api/runs/r_test/artifacts/mvp.png",
-      hero_image_url: "/api/runs/r_test/artifacts/hero.png",
-    },
-  },
-  {
-    type: "competitors",
-    seq: 9,
-    ts: "2026-11-21T12:15:42Z",
-    stage: "build",
-    data: {
-      items: [
-        { title: "AeroPress Go", price_usd: 39.95, image_url: null, url: "https://example.com" },
-      ],
-    },
-  },
-  {
-    type: "persona_started",
-    seq: 10,
-    ts: "2026-11-21T12:15:45Z",
-    stage: "lab",
-    data: { persona_id: "p1", name: "Maya Lin", role: "Frequent Flyer", device: "mobile" },
-  },
-  {
-    type: "persona_action",
-    seq: 11,
-    ts: "2026-11-21T12:15:50Z",
-    stage: "lab",
-    data: {
-      persona_id: "p1",
-      t: 4.5,
-      action: "click",
-      target: "Preorder $99",
-      thought: "Wait, how heavy is this in my backpack?",
-    },
-  },
-  {
-    type: "persona_finished",
-    seq: 12,
-    ts: "2026-11-21T12:16:00Z",
-    stage: "lab",
-    data: {
-      persona_id: "p1",
-      outcome: "quit",
-      quit_reason: "No weight or TSA battery info on checkout",
-      video_url: "/api/runs/r_test/artifacts/p1.webm",
-      duration_s: 14.2,
-    },
-  },
-  {
-    type: "quit_markers",
-    seq: 13,
-    ts: "2026-11-21T12:16:05Z",
-    stage: "lab",
-    data: {
-      persona_id: "p1",
-      markers: [
-        { t: 4.5, kind: "confusion", note: "Scrolled looking for battery specs" },
-        { t: 13.8, kind: "quit", note: "Closed checkout modal without paying" },
-      ],
-    },
-  },
-  {
-    type: "swarm_progress",
-    seq: 14,
-    ts: "2026-11-21T12:16:10Z",
-    stage: "swarm",
-    data: { done: 100, total: 200 },
-  },
-  {
-    type: "swarm_result",
-    seq: 15,
-    ts: "2026-11-21T12:16:15Z",
-    stage: "swarm",
-    data: {
-      personas: 200,
-      rubrics: { clarity: 0.72, trust: 0.44, price_fit: 0.51, urgency: 0.39, intent: 0.48 },
-      intent_mean: 0.48,
-    },
-  },
-  {
-    type: "verdict",
-    seq: 16,
-    ts: "2026-11-21T12:16:20Z",
-    stage: "verdict",
-    data: {
-      launch_probability: 0.42,
-      confidence: 0.81,
-      failure_modes: ["Missing battery/TSA compliance details", "Price 2.5x AeroPress"],
-      summary: "Compelling hook, but checkout friction and unclear specs suppress conversion.",
-    },
-  },
-  {
-    type: "vote_tally",
-    seq: 17,
-    ts: "2026-11-21T12:16:30Z",
-    stage: "reality",
-    data: { buy: 12, bounce: 18, ai_probability: 0.42 },
-  },
-  {
-    type: "error",
-    seq: 18,
-    ts: "2026-11-21T12:16:31Z",
-    stage: "reality",
-    data: { message: "Optional video ad skipped", recoverable: true },
-  },
+function dedupeBySeq(events: RunEvent[]): RunEvent[] {
+  const seen = new Set<number>();
+  const unique: RunEvent[] = [];
+  for (const evt of events) {
+    if (typeof evt.seq === "number") {
+      if (seen.has(evt.seq)) continue;
+      seen.add(evt.seq);
+    }
+    unique.push(evt);
+  }
+  return unique;
+}
+
+function getEventDataByType<TData>(events: RunEvent[], type: string): TData[] {
+  return events
+    .filter((evt) => evt.type === type)
+    .map((evt) => evt.data as unknown as TData);
+}
+
+const sampleEvents = sampleRun.events as RunEvent[];
+const uniqueSampleEvents = dedupeBySeq(sampleEvents);
+const maxSampleSeq = Math.max(...uniqueSampleEvents.map((e) => e.seq));
+
+const firstBoardroomTurnEvent = uniqueSampleEvents.find((e) => e.type === "boardroom_turn");
+const duplicateSeq = firstBoardroomTurnEvent ? firstBoardroomTurnEvent.seq : uniqueSampleEvents[0].seq;
+
+const testEvents: RunEvent[] = [
+  ...sampleEvents,
   // Unknown event type — contract requires ignoring without crash
   {
     type: "future_experimental_event",
-    seq: 19,
-    ts: "2026-11-21T12:16:32Z",
+    seq: maxSampleSeq + 1,
+    ts: "2026-11-21T17:18:35.000Z",
     stage: "reality",
     data: { foo: "bar" },
   },
   // Duplicate seq — must be ignored
   {
     type: "boardroom_turn",
-    seq: 4,
-    ts: "2026-11-21T12:15:10Z",
+    seq: duplicateSeq,
+    ts: "2026-11-21T17:18:36.000Z",
     stage: "boardroom",
     data: {
       speaker: "strategist",
@@ -209,23 +70,159 @@ const sampleEvents: RunEvent[] = [
   },
 ];
 
-let state = createInitialRunState("r_test");
-for (const evt of sampleEvents) {
+let state = createInitialRunState(sampleRun.run_id);
+for (const evt of testEvents) {
   state = applyRunEvent(state, evt);
 }
 
-assert.equal(state.pitch?.title, "Pocket Barista");
-assert.equal(state.boardroomTurns.length, 2, "Duplicate seq should be deduplicated");
-assert.equal(state.spec?.price_usd, 99);
-assert.equal(state.buildMessages.length, 1);
-assert.equal(state.mvp?.url, "/api/runs/r_test/artifacts/mvp/index.html");
-assert.equal(state.competitors.length, 1);
-assert.equal(state.personas.p1.status, "quit");
-assert.equal(state.personas.p1.markers.length, 2);
-assert.equal(state.swarmResult?.intent_mean, 0.48);
-assert.equal(state.verdict?.launch_probability, 0.42);
-assert.equal(state.voteTally?.buy, 12);
-assert.equal(state.errors.length, 1);
-assert.equal(state.eventCount, 19, "19 unique events processed, 1 duplicate skipped");
+// Derived expectations from sample-run.json
+const expectedPitch = getEventDataByType<PitchParsedData>(uniqueSampleEvents, "pitch_parsed").at(-1);
+if (expectedPitch) {
+  assert.equal(state.pitch?.title, expectedPitch.title);
+  assert.equal(state.pitch?.price_usd, expectedPitch.price_usd);
+}
 
-console.log("All 16 contract events + unknown-event + dedup assertions PASSED.");
+const expectedBoardroomTurns = getEventDataByType<BoardroomTurnData>(
+  uniqueSampleEvents,
+  "boardroom_turn"
+);
+assert.equal(
+  state.boardroomTurns.length,
+  expectedBoardroomTurns.length,
+  "unique boardroom turns counted (duplicate seq skipped)"
+);
+assert.ok(
+  !state.boardroomTurns.some((t) => t.text === "DUPLICATE SHOULD NOT APPEAR"),
+  "duplicate seq payload must not appear"
+);
+
+const expectedSpec = getEventDataByType<SpecReadyData>(uniqueSampleEvents, "spec_ready").at(-1);
+if (expectedSpec) {
+  assert.equal(state.spec?.price_usd, expectedSpec.price_usd);
+  assert.equal(state.spec?.headline, expectedSpec.headline);
+}
+
+const expectedBuildMessages = getEventDataByType<BuildProgressData>(
+  uniqueSampleEvents,
+  "build_progress"
+).filter((m) => typeof m.message === "string" && m.message.length > 0);
+assert.equal(state.buildMessages.length, expectedBuildMessages.length);
+
+const expectedMvp = getEventDataByType<MvpReadyData>(uniqueSampleEvents, "mvp_ready").at(-1);
+if (expectedMvp) {
+  assert.equal(state.mvp?.url, expectedMvp.url);
+}
+
+const expectedCompetitors = getEventDataByType<CompetitorsData>(
+  uniqueSampleEvents,
+  "competitors"
+).at(-1);
+if (expectedCompetitors) {
+  assert.equal(state.competitors.length, expectedCompetitors.items.length);
+}
+
+const expectedPersonaIds = new Set(
+  getEventDataByType<PersonaStartedData>(uniqueSampleEvents, "persona_started").map(
+    (p) => p.persona_id
+  )
+);
+assert.equal(state.personaOrder.length, expectedPersonaIds.size, "All unique personas tracked");
+
+const expectedPersonaFinished = getEventDataByType<PersonaFinishedData>(
+  uniqueSampleEvents,
+  "persona_finished"
+);
+for (const finished of expectedPersonaFinished) {
+  assert.equal(state.personas[finished.persona_id]?.status, finished.outcome);
+}
+
+const expectedQuitMarkers = getEventDataByType<QuitMarkersData>(
+  uniqueSampleEvents,
+  "quit_markers"
+);
+for (const qm of expectedQuitMarkers) {
+  assert.equal(state.personas[qm.persona_id]?.markers.length, qm.markers.length);
+}
+
+const expectedSwarmResult = getEventDataByType<SwarmResultData>(
+  uniqueSampleEvents,
+  "swarm_result"
+).at(-1);
+if (expectedSwarmResult) {
+  assert.equal(state.swarmResult?.intent_mean, expectedSwarmResult.intent_mean);
+}
+
+const expectedVerdict = getEventDataByType<VerdictData>(uniqueSampleEvents, "verdict").at(-1);
+if (expectedVerdict) {
+  assert.equal(state.verdict?.launch_probability, expectedVerdict.launch_probability);
+  assert.equal(state.verdict?.confidence, expectedVerdict.confidence);
+}
+
+const expectedVoteTally = getEventDataByType<VoteTallyData>(
+  uniqueSampleEvents,
+  "vote_tally"
+).at(-1);
+if (expectedVoteTally) {
+  assert.equal(state.voteTally?.buy, expectedVoteTally.buy);
+} else {
+  assert.equal(state.voteTally, null);
+}
+
+const expectedErrors = uniqueSampleEvents.filter((e) => e.type === "error");
+assert.equal(state.errors.length, expectedErrors.length);
+
+assert.equal(
+  state.eventCount,
+  uniqueSampleEvents.length + 1,
+  "All unique sample events + 1 unknown event processed; duplicate seq skipped"
+);
+
+// Apply room-sample.json events on top (contract v2)
+const roomEvents = roomSample.events as RunEvent[];
+const maxSeenSeqBeforeRoom = Math.max(...state.seenSeqs);
+const minRoomSeq = Math.min(...roomEvents.map((e) => e.seq));
+const roomSeqOffset =
+  minRoomSeq <= maxSeenSeqBeforeRoom ? maxSeenSeqBeforeRoom + 1 - minRoomSeq : 0;
+
+for (const rawEvt of roomEvents) {
+  const evt: RunEvent =
+    roomSeqOffset === 0 ? rawEvt : { ...rawEvt, seq: rawEvt.seq + roomSeqOffset };
+  state = applyRunEvent(state, evt);
+  if (evt.type === "room_caption") {
+    assert.ok(state.roomCaption && state.roomCaption.length > 0, "room_caption sets roomCaption");
+  }
+  if (evt.type === "room_utterance") {
+    assert.equal(state.roomCaption, null, "room_utterance clears roomCaption");
+  }
+}
+
+assert.equal(state.currentStage, "room");
+assert.equal(state.roomUtterances.length, 3, "3 room utterances recorded");
+assert.equal(Object.keys(state.roomGates).length, 3, "3 room gates keyed by utterance_id");
+assert.equal(state.twinChallenges.length, 2, "2 twin challenges recorded");
+assert.equal(state.founderBriefs.length, 2, "2 founder briefs recorded");
+assert.equal(state.roomCaption, null, "roomCaption is null after the last utterance");
+
+// Duplicate twin_challenge with a new seq but the same challenge_id must not be added twice
+const firstChallenge: TwinChallengeData = state.twinChallenges[0];
+const duplicateChallengeEvent: RunEvent = {
+  type: "twin_challenge",
+  seq: Math.max(...state.seenSeqs) + 1,
+  ts: "2026-11-21T17:19:30.000Z",
+  stage: "room",
+  data: {
+    ...firstChallenge,
+    text: "DUPLICATE CHALLENGE SHOULD NOT BE ADDED",
+  },
+};
+state = applyRunEvent(state, duplicateChallengeEvent);
+assert.equal(
+  state.twinChallenges.length,
+  2,
+  "duplicated twin_challenge (same challenge_id) is not added twice"
+);
+assert.equal(state.twinChallenges[0].text, firstChallenge.text);
+
+console.log(
+  `All ${uniqueSampleEvents.length} sample-run + ${roomEvents.length} room-sample + unknown-event + dedup assertions PASSED.`
+);

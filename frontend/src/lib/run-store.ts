@@ -1,6 +1,10 @@
 import {
   BoardroomTurnData,
   CompetitorItem,
+  FounderBriefBadge,
+  FounderBriefData,
+  FounderBriefProof,
+  FounderBriefProofSource,
   isValidStage,
   MvpReadyData,
   PersonaActionData,
@@ -8,12 +12,16 @@ import {
   PersonaStartedData,
   PitchParsedData,
   QuitMarker,
+  RoomGateData,
+  RoomGateTopic,
+  RoomUtteranceData,
   RunEvent,
   SpecReadyData,
   Stage,
   STAGES,
   SwarmProgressData,
   SwarmResultData,
+  TwinChallengeData,
   VerdictData,
   VoteTallyData,
 } from "./contracts";
@@ -40,6 +48,7 @@ export interface BuildLogEntry {
 export interface RunErrorEntry {
   seq: number;
   ts: string;
+  stage: Stage;
   message: string;
   recoverable: boolean;
 }
@@ -60,6 +69,11 @@ export interface RunState {
   swarmProgress: SwarmProgressData | null;
   swarmResult: SwarmResultData | null;
   verdict: VerdictData | null;
+  roomCaption: string | null;
+  roomUtterances: RoomUtteranceData[];
+  roomGates: Record<string, RoomGateData>;
+  twinChallenges: TwinChallengeData[];
+  founderBriefs: FounderBriefData[];
   voteTally: VoteTallyData | null;
   errors: RunErrorEntry[];
   seenSeqs: number[];
@@ -84,12 +98,42 @@ export function createInitialRunState(runId: string | null = null): RunState {
     swarmProgress: null,
     swarmResult: null,
     verdict: null,
+    roomCaption: null,
+    roomUtterances: [],
+    roomGates: {},
+    twinChallenges: [],
+    founderBriefs: [],
     voteTally: null,
     errors: [],
     seenSeqs: [],
     eventCount: 0,
     lastEventTs: null,
   };
+}
+
+function isRoomGateTopic(value: unknown): value is RoomGateTopic {
+  return (
+    value === "market" ||
+    value === "price" ||
+    value === "competitors" ||
+    value === "tech" ||
+    value === "traction" ||
+    value === "other"
+  );
+}
+
+function isFounderBriefBadge(value: unknown): value is FounderBriefBadge {
+  return value === "VERIFIED" || value === "PARTIAL" || value === "PUSH_BACK";
+}
+
+function isFounderBriefProofSource(value: unknown): value is FounderBriefProofSource {
+  return (
+    value === "swarm" ||
+    value === "lab" ||
+    value === "analyst" ||
+    value === "competitors" ||
+    value === "boardroom"
+  );
 }
 
 function stageIndex(stage: Stage): number {
@@ -401,7 +445,140 @@ export function applyRunEvent(state: RunState, event: RunEvent): RunState {
             ? verdict.failure_modes.map(String)
             : [],
           summary: typeof verdict.summary === "string" ? verdict.summary : "",
+          ...(typeof verdict.analyst_reason === "string"
+            ? { analyst_reason: verdict.analyst_reason }
+            : {}),
+          ...(typeof verdict.market_intent === "number"
+            ? { market_intent: verdict.market_intent }
+            : {}),
+          ...(verdict.probability_source === "analyst"
+            ? { probability_source: "analyst" as const }
+            : {}),
         },
+      };
+    }
+
+    case "room_caption": {
+      const text = typeof data.text === "string" ? data.text : "";
+      return {
+        ...baseNext,
+        roomCaption: text.length > 0 ? text : null,
+      };
+    }
+
+    case "room_utterance": {
+      const utterance = data as unknown as RoomUtteranceData;
+      const utteranceId =
+        typeof utterance.utterance_id === "string" ? utterance.utterance_id : "";
+      if (!utteranceId) {
+        return {
+          ...baseNext,
+          roomCaption: null,
+        };
+      }
+      if (baseNext.roomUtterances.some((u) => u.utterance_id === utteranceId)) {
+        return {
+          ...baseNext,
+          roomCaption: null,
+        };
+      }
+      return {
+        ...baseNext,
+        roomCaption: null,
+        roomUtterances: [
+          ...baseNext.roomUtterances,
+          {
+            utterance_id: utteranceId,
+            speaker: typeof utterance.speaker === "string" ? utterance.speaker : "unknown",
+            speaker_label:
+              typeof utterance.speaker_label === "string" ? utterance.speaker_label : "",
+            text: typeof utterance.text === "string" ? utterance.text : "",
+            t: typeof utterance.t === "number" ? utterance.t : 0,
+          },
+        ],
+      };
+    }
+
+    case "room_gate": {
+      const gate = data as unknown as RoomGateData;
+      const utteranceId =
+        typeof gate.utterance_id === "string" ? gate.utterance_id : "";
+      if (!utteranceId) return baseNext;
+      return {
+        ...baseNext,
+        roomGates: {
+          ...baseNext.roomGates,
+          [utteranceId]: {
+            utterance_id: utteranceId,
+            is_challenge: typeof gate.is_challenge === "number" ? gate.is_challenge : 0,
+            topic: isRoomGateTopic(gate.topic) ? gate.topic : "other",
+            triggered: Boolean(gate.triggered),
+            latency_ms: typeof gate.latency_ms === "number" ? gate.latency_ms : 0,
+          },
+        },
+      };
+    }
+
+    case "twin_challenge": {
+      const challenge = data as unknown as TwinChallengeData;
+      const challengeId =
+        typeof challenge.challenge_id === "string" ? challenge.challenge_id : "";
+      if (!challengeId) return baseNext;
+      if (baseNext.twinChallenges.some((c) => c.challenge_id === challengeId)) {
+        return baseNext;
+      }
+      return {
+        ...baseNext,
+        twinChallenges: [
+          ...baseNext.twinChallenges,
+          {
+            challenge_id: challengeId,
+            utterance_id:
+              typeof challenge.utterance_id === "string" ? challenge.utterance_id : null,
+            seat: typeof challenge.seat === "number" ? challenge.seat : 1,
+            role: typeof challenge.role === "string" ? challenge.role : "",
+            text: typeof challenge.text === "string" ? challenge.text : "",
+            audio_url:
+              typeof challenge.audio_url === "string" ? challenge.audio_url : null,
+            source: challenge.source === "live" ? "live" : "server",
+          },
+        ],
+      };
+    }
+
+    case "founder_brief": {
+      const brief = data as unknown as FounderBriefData;
+      const challengeId =
+        typeof brief.challenge_id === "string" ? brief.challenge_id : "";
+      if (!challengeId) return baseNext;
+      if (baseNext.founderBriefs.some((b) => b.challenge_id === challengeId)) {
+        return baseNext;
+      }
+      const rawProof: unknown[] = Array.isArray(data.proof) ? data.proof : [];
+      const proof: FounderBriefProof[] = rawProof
+        .filter(
+          (item): item is Record<string, unknown> =>
+            Boolean(item && typeof item === "object")
+        )
+        .map((item) => ({
+          label: typeof item.label === "string" ? item.label : "",
+          value: typeof item.value === "string" ? item.value : "",
+          source: isFounderBriefProofSource(item.source) ? item.source : "analyst",
+        }));
+      return {
+        ...baseNext,
+        founderBriefs: [
+          ...baseNext.founderBriefs,
+          {
+            challenge_id: challengeId,
+            badge: isFounderBriefBadge(brief.badge) ? brief.badge : "PARTIAL",
+            badge_confidence:
+              typeof brief.badge_confidence === "number" ? brief.badge_confidence : 0,
+            line: typeof brief.line === "string" ? brief.line : "",
+            proof,
+            latency_ms: typeof brief.latency_ms === "number" ? brief.latency_ms : 0,
+          },
+        ],
       };
     }
 
@@ -421,6 +598,7 @@ export function applyRunEvent(state: RunState, event: RunEvent): RunState {
     case "error": {
       const message = typeof data.message === "string" ? data.message : "Unknown backend error";
       const recoverable = typeof data.recoverable === "boolean" ? data.recoverable : true;
+      const errorStage = isValidStage(event.stage) ? event.stage : baseNext.currentStage;
       return {
         ...baseNext,
         errors: [
@@ -428,6 +606,7 @@ export function applyRunEvent(state: RunState, event: RunEvent): RunState {
           {
             seq: event.seq ?? baseNext.errors.length,
             ts: event.ts ?? new Date().toISOString(),
+            stage: errorStage,
             message,
             recoverable,
           },

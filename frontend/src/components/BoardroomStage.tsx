@@ -18,10 +18,16 @@ interface BoardroomStageProps {
   runId: string | null;
   turns: (BoardroomTurnData & { seq: number; ts: string })[];
   spec: SpecReadyData | null;
+  defaultAutoPlay?: boolean;
 }
 
-export function BoardroomStage({ runId, turns, spec }: BoardroomStageProps) {
-  const [autoPlayAudio, setAutoPlayAudio] = useState(true);
+export function BoardroomStage({
+  runId,
+  turns,
+  spec,
+  defaultAutoPlay = true,
+}: BoardroomStageProps) {
+  const [autoPlayAudio, setAutoPlayAudio] = useState(defaultAutoPlay);
   const [playingSeq, setPlayingSeq] = useState<number | null>(null);
   const playedSeqsRef = useRef<Set<number>>(new Set());
   const queueRef = useRef<{ seq: number; url: string }[]>([]);

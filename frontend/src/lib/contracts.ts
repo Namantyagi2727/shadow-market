@@ -5,6 +5,7 @@ export type Stage =
   | "lab"
   | "swarm"
   | "verdict"
+  | "room"
   | "reality";
 
 export const STAGES: { id: Stage; label: string; shortLabel: string; step: number }[] = [
@@ -14,7 +15,8 @@ export const STAGES: { id: Stage; label: string; shortLabel: string; step: numbe
   { id: "lab", label: "Usability Lab", shortLabel: "Lab", step: 4 },
   { id: "swarm", label: "Market Swarm", shortLabel: "Swarm", step: 5 },
   { id: "verdict", label: "Verdict", shortLabel: "Verdict", step: 6 },
-  { id: "reality", label: "Reality Check", shortLabel: "Reality", step: 7 },
+  { id: "room", label: "Q&A Room", shortLabel: "Room", step: 7 },
+  { id: "reality", label: "Reality Check", shortLabel: "Reality", step: 8 },
 ];
 
 export interface EventEnvelope<TType extends string, TData> {
@@ -125,6 +127,73 @@ export interface VerdictData {
   confidence: number;
   failure_modes: string[];
   summary: string;
+  analyst_reason?: string;
+  market_intent?: number;
+  probability_source?: "analyst";
+}
+
+export interface RoomCaptionData {
+  text: string;
+}
+
+export interface RoomUtteranceData {
+  utterance_id: string;
+  speaker: string;
+  speaker_label: string;
+  text: string;
+  t: number;
+}
+
+export type RoomGateTopic =
+  | "market"
+  | "price"
+  | "competitors"
+  | "tech"
+  | "traction"
+  | "other";
+
+export interface RoomGateData {
+  utterance_id: string;
+  is_challenge: number;
+  topic: RoomGateTopic;
+  triggered: boolean;
+  latency_ms: number;
+}
+
+export type TwinChallengeSource = "live" | "server";
+
+export interface TwinChallengeData {
+  challenge_id: string;
+  utterance_id: string | null;
+  seat: number;
+  role: string;
+  text: string;
+  audio_url: string | null;
+  source: TwinChallengeSource;
+}
+
+export type FounderBriefBadge = "VERIFIED" | "PARTIAL" | "PUSH_BACK";
+
+export type FounderBriefProofSource =
+  | "swarm"
+  | "lab"
+  | "analyst"
+  | "competitors"
+  | "boardroom";
+
+export interface FounderBriefProof {
+  label: string;
+  value: string;
+  source: FounderBriefProofSource;
+}
+
+export interface FounderBriefData {
+  challenge_id: string;
+  badge: FounderBriefBadge;
+  badge_confidence: number;
+  line: string;
+  proof: FounderBriefProof[];
+  latency_ms: number;
 }
 
 export interface VoteTallyData {
@@ -153,6 +222,11 @@ export type KnownRunEvent =
   | EventEnvelope<"swarm_progress", SwarmProgressData>
   | EventEnvelope<"swarm_result", SwarmResultData>
   | EventEnvelope<"verdict", VerdictData>
+  | EventEnvelope<"room_caption", RoomCaptionData>
+  | EventEnvelope<"room_utterance", RoomUtteranceData>
+  | EventEnvelope<"room_gate", RoomGateData>
+  | EventEnvelope<"twin_challenge", TwinChallengeData>
+  | EventEnvelope<"founder_brief", FounderBriefData>
   | EventEnvelope<"vote_tally", VoteTallyData>
   | EventEnvelope<"error", ErrorEventData>;
 
@@ -189,6 +263,48 @@ export interface VoteResponse {
   ok: boolean;
 }
 
+export interface RoomSeatConfig {
+  seat: number;
+  role: string;
+}
+
+export interface RoomSeatsRequest {
+  seats: RoomSeatConfig[];
+}
+
+export interface RoomSeatsResponse {
+  ok: boolean;
+}
+
+export interface RoomTwinTokenRequest {
+  seat: number;
+}
+
+export interface RoomTwinTokenResponse {
+  ephemeral_token: string;
+  model: string;
+  system_instruction: string;
+}
+
+export interface RoomChallengeRequest {
+  seat: number;
+  text: string;
+  utterance_id: string | null;
+}
+
+export interface RoomChallengeResponse {
+  ok: boolean;
+}
+
+export interface RoomAskRequest {
+  text: string;
+  seat: number;
+}
+
+export interface RoomAskResponse {
+  ok: boolean;
+}
+
 export interface DemoRunSummary {
   run_id: string;
   title: string;
@@ -206,6 +322,7 @@ export function isValidStage(value: unknown): value is Stage {
     value === "lab" ||
     value === "swarm" ||
     value === "verdict" ||
+    value === "room" ||
     value === "reality"
   );
 }
