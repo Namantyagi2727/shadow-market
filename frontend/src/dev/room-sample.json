@@ -1,0 +1,191 @@
+{
+  "run_id": "r_dev_room",
+  "note": "Hand-written dev sample data for the Live Q&A room stage (contract v2). Not a live backend recording.",
+  "events": [
+    {
+      "type": "stage_changed",
+      "seq": 200,
+      "ts": "2026-11-21T17:19:00.000Z",
+      "stage": "room",
+      "data": {
+        "stage": "room"
+      }
+    },
+    {
+      "type": "room_utterance",
+      "seq": 201,
+      "ts": "2026-11-21T17:19:04.200Z",
+      "stage": "room",
+      "data": {
+        "utterance_id": "utt_1",
+        "speaker": "unknown",
+        "speaker_label": "",
+        "text": "Thanks everyone, we built the clip-on bike lane light for city commuters who ride home after dark.",
+        "t": 4.2
+      }
+    },
+    {
+      "type": "room_gate",
+      "seq": 202,
+      "ts": "2026-11-21T17:19:04.650Z",
+      "stage": "room",
+      "data": {
+        "utterance_id": "utt_1",
+        "is_challenge": 0.08,
+        "topic": "other",
+        "triggered": false,
+        "latency_ms": 450
+      }
+    },
+    {
+      "type": "room_caption",
+      "seq": 203,
+      "ts": "2026-11-21T17:19:10.100Z",
+      "stage": "room",
+      "data": {
+        "text": "At twenty-nine dollars how do you possibly protect margins..."
+      }
+    },
+    {
+      "type": "room_utterance",
+      "seq": 204,
+      "ts": "2026-11-21T17:19:12.400Z",
+      "stage": "room",
+      "data": {
+        "utterance_id": "utt_2",
+        "speaker": "unknown",
+        "speaker_label": "",
+        "text": "At twenty-nine dollars, how do you protect margins once paid acquisition costs hit?",
+        "t": 12.4
+      }
+    },
+    {
+      "type": "room_gate",
+      "seq": 205,
+      "ts": "2026-11-21T17:19:12.920Z",
+      "stage": "room",
+      "data": {
+        "utterance_id": "utt_2",
+        "is_challenge": 0.94,
+        "topic": "price",
+        "triggered": true,
+        "latency_ms": 520
+      }
+    },
+    {
+      "type": "twin_challenge",
+      "seq": 206,
+      "ts": "2026-11-21T17:19:14.100Z",
+      "stage": "room",
+      "data": {
+        "challenge_id": "ch_1",
+        "utterance_id": "utt_2",
+        "seat": 1,
+        "role": "VC partner",
+        "text": "Dropping to $29 squeezes unit economics once commuter ad CAC hits—why won't margins collapse?",
+        "audio_url": null,
+        "source": "live"
+      }
+    },
+    {
+      "type": "founder_brief",
+      "seq": 207,
+      "ts": "2026-11-21T17:19:14.880Z",
+      "stage": "room",
+      "data": {
+        "challenge_id": "ch_1",
+        "badge": "PUSH_BACK",
+        "badge_confidence": 0.84,
+        "line": "Hold $39 with real street footage; $29 kills paid ad margins.",
+        "proof": [
+          {
+            "label": "Price-value fit",
+            "value": "67% at $29",
+            "source": "swarm"
+          },
+          {
+            "label": "Margin risk",
+            "value": "Flagged by skeptic",
+            "source": "boardroom"
+          }
+        ],
+        "latency_ms": 780
+      }
+    },
+    {
+      "type": "room_caption",
+      "seq": 208,
+      "ts": "2026-11-21T17:19:21.500Z",
+      "stage": "room",
+      "data": {
+        "text": "Why wouldn't commuters just buy VeloFlare or one of the..."
+      }
+    },
+    {
+      "type": "room_utterance",
+      "seq": 209,
+      "ts": "2026-11-21T17:19:24.000Z",
+      "stage": "room",
+      "data": {
+        "utterance_id": "utt_3",
+        "speaker": "unknown",
+        "speaker_label": "",
+        "text": "Why wouldn't commuters just buy VeloFlare or a forty-dollar laser tail light already on the market?",
+        "t": 24.0
+      }
+    },
+    {
+      "type": "room_gate",
+      "seq": 210,
+      "ts": "2026-11-21T17:19:24.340Z",
+      "stage": "room",
+      "data": {
+        "utterance_id": "utt_3",
+        "is_challenge": 0.91,
+        "topic": "competitors",
+        "triggered": true,
+        "latency_ms": 340
+      }
+    },
+    {
+      "type": "twin_challenge",
+      "seq": 211,
+      "ts": "2026-11-21T17:19:26.150Z",
+      "stage": "room",
+      "data": {
+        "challenge_id": "ch_2",
+        "utterance_id": "utt_3",
+        "seat": 2,
+        "role": "Skeptical CFO",
+        "text": "VeloFlare sells for $29.99 and smart laser lights cost $39.99—what differentiates a basic clip-on?",
+        "audio_url": "/api/runs/r_dev_room/artifacts/twin_2.wav",
+        "source": "server"
+      }
+    },
+    {
+      "type": "founder_brief",
+      "seq": 212,
+      "ts": "2026-11-21T17:19:26.820Z",
+      "stage": "room",
+      "data": {
+        "challenge_id": "ch_2",
+        "badge": "VERIFIED",
+        "badge_confidence": 0.89,
+        "line": "Rivals need permanent mounts; our clip-on fits shared commuter bikes.",
+        "proof": [
+          {
+            "label": "Competitor range",
+            "value": "$29.99-$39.99",
+            "source": "competitors"
+          },
+          {
+            "label": "Beat competitors",
+            "value": "29% swarm score",
+            "source": "swarm"
+          }
+        ],
+        "latency_ms": 670
+      }
+    }
+  ]
+}

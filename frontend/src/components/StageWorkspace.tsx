@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { DemoRunSummary, Stage } from "@/lib/contracts";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { DemoRunSummary, RunEvent, Stage } from "@/lib/contracts";
 import { connectRunStream, fetchDemoRuns, fetchRunEvents } from "@/lib/api";
 import { ReplayController, startEventReplay } from "@/lib/replay-engine";
 import {
@@ -10,7 +11,8 @@ import {
   PersonaState,
   RunState,
 } from "@/lib/run-store";
-import { TopStageBar } from "./TopStageBar";
+import devSampleRun from "@/dev/sample-run.json";
+import { TopStageBar, ViewMode } from "./TopStageBar";
 import { PitchStage } from "./PitchStage";
 import { BoardroomStage } from "./BoardroomStage";
 import { BuildStage } from "./BuildStage";
@@ -18,10 +20,19 @@ import { UsabilityLabStage } from "./UsabilityLabStage";
 import { SwarmStage } from "./SwarmStage";
 import { VerdictStage } from "./VerdictStage";
 import { HotseatModal } from "./HotseatModal";
+import { OfficeScene } from "./office/OfficeScene";
+import { TeleprompterCard } from "./TeleprompterCard";
 
 export function StageWorkspace() {
   const [runState, setRunState] = useState<RunState>(() => createInitialRunState(null));
   const [mode, setMode] = useState<"idle" | "live" | "replay">("idle");
+  const [isSampleData, setIsSampleData] = useState(false);
+  const [showDevSample, setShowDevSample] = useState(
+    process.env.NODE_ENV === "development"
+  );
+  const [viewMode, setViewMode] = useState<ViewMode>("classic");
+  const [showDetailPanel, setShowDetailPanel] = useState(true);
+
   const [connectionStatus, setConnectionStatus] = useState<
     "disconnected" | "connecting" | "connected" | "reconnecting" | "error"
   >("disconnected");
@@ -34,6 +45,7 @@ export function StageWorkspace() {
   const [replaySpeed, setReplaySpeed] = useState(1);
 
   const [hotseatPersonaId, setHotseatPersonaId] = useState<string | null>(null);
+  const [dismissedBriefChallengeId, setDismissedBriefChallengeId] = useState<string | null>(null);
 
   const disconnectWsRef = useRef<(() => void) | null>(null);
   const replayCtrlRef = useRef<ReplayController | null>(null);
@@ -78,9 +90,11 @@ export function StageWorkspace() {
     (runId: string) => {
       stopActiveStreams();
       setMode("live");
+      setIsSampleData(false);
       setAutoFollow(true);
       setDismissedErrors([]);
       setHotseatPersonaId(null);
+      setDismissedBriefChallengeId(null);
       setRunState(createInitialRunState(runId));
       setSelectedStage("pitch");
 
@@ -100,10 +114,12 @@ export function StageWorkspace() {
     async (runId: string) => {
       stopActiveStreams();
       setMode("replay");
+      setIsSampleData(false);
       setConnectionStatus("disconnected");
       setAutoFollow(true);
       setDismissedErrors([]);
       setHotseatPersonaId(null);
+      setDismissedBriefChallengeId(null);
       setReplaySpeed(1);
       setRunState(createInitialRunState(runId));
       setSelectedStage("pitch");
@@ -116,7 +132,7 @@ export function StageWorkspace() {
             setRunState((prev) => applyRunEvent(prev, evt));
           },
           () => {
-            // Replay complete — keep Replay banner visible so audience always knows it's a replay
+            // Replay complete — keep Replay badge visible
           },
           1
         );
@@ -136,10 +152,42 @@ export function StageWorkspace() {
     [stopActiveStreams]
   );
 
-  // Support deep-linking ?run=<id> or ?replay=<id>
+  const startDevSampleReplay = useCallback(() => {
+    stopActiveStreams();
+    setMode("replay");
+    setIsSampleData(true);
+    setConnectionStatus("disconnected");
+    setAutoFollow(true);
+    setDismissedErrors([]);
+    setHotseatPersonaId(null);
+    setDismissedBriefChallengeId(null);
+    setReplaySpeed(1);
+    setRunState(createInitialRunState(devSampleRun.run_id));
+    setSelectedStage("pitch");
+
+    replayCtrlRef.current = startEventReplay(
+      devSampleRun.events as RunEvent[],
+      (evt) => {
+        setRunState((prev) => applyRunEvent(prev, evt));
+      },
+      () => {
+        // Keep Replay + Sample data labels visible
+      },
+      1
+    );
+  }, [stopActiveStreams]);
+
+  // Support deep-linking ?run=<id>, ?replay=<id>, ?dev=1, ?view=classic|office
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
+    if (params.get("dev") === "1") {
+      setShowDevSample(true);
+    }
+    const viewParam = params.get("view");
+    if (viewParam === "classic" || viewParam === "office") {
+      setViewMode(viewParam);
+    }
     const replayId = params.get("replay");
     const liveId = params.get("run");
     if (replayId) {
@@ -152,10 +200,12 @@ export function StageWorkspace() {
   const handleNewRun = () => {
     stopActiveStreams();
     setMode("idle");
+    setIsSampleData(false);
     setConnectionStatus("disconnected");
     setAutoFollow(true);
     setDismissedErrors([]);
     setHotseatPersonaId(null);
+    setDismissedBriefChallengeId(null);
     setRunState(createInitialRunState(null));
     setSelectedStage("pitch");
   };
@@ -181,11 +231,166 @@ export function StageWorkspace() {
       ? runState.personas[hotseatPersonaId]
       : null;
 
+  const latestFounderBrief =
+    runState.founderBriefs.length > 0
+      ? runState.founderBriefs[runState.founderBriefs.length - 1]
+      : null;
+  const activeFounderBrief =
+    latestFounderBrief &&
+    latestFounderBrief.challenge_id !== dismissedBriefChallengeId
+      ? latestFounderBrief
+      : null;
+
+  const renderStageDetail = () => {
+    switch (selectedStage) {
+      case "pitch":
+        return (
+          <PitchStage
+            runId={runState.runId}
+            pitch={runState.pitch}
+            isReplay={mode === "replay"}
+            onRunCreated={connectLiveRun}
+          />
+        );
+      case "boardroom":
+        return (
+          <BoardroomStage
+            runId={runState.runId}
+            turns={runState.boardroomTurns}
+            spec={runState.spec}
+            defaultAutoPlay={viewMode === "classic"}
+          />
+        );
+      case "build":
+        return (
+          <BuildStage
+            runId={runState.runId}
+            buildMessages={runState.buildMessages}
+            mvp={runState.mvp}
+            competitors={runState.competitors}
+          />
+        );
+      case "lab":
+        return (
+          <UsabilityLabStage
+            runId={runState.runId}
+            personas={runState.personas}
+            personaOrder={runState.personaOrder}
+            onOpenHotseat={(persona) => setHotseatPersonaId(persona.persona_id)}
+          />
+        );
+      case "swarm":
+        return (
+          <SwarmStage
+            progress={runState.swarmProgress}
+            result={runState.swarmResult}
+          />
+        );
+      case "room": {
+        const lastUtterances = runState.roomUtterances.slice(-3);
+        const latestChallenge =
+          runState.twinChallenges.length > 0
+            ? runState.twinChallenges[runState.twinChallenges.length - 1]
+            : null;
+
+        return (
+          <section className="rounded-2xl border border-white/10 bg-[#0d1018]/90 p-6 shadow-2xl space-y-6">
+            <div className="flex items-center justify-between border-b border-white/10 pb-4">
+              <div>
+                <div className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-emerald-400">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Stage 07 — Live Q&amp;A Room</span>
+                </div>
+                <h2
+                  className="mt-0.5 text-xl font-bold text-white"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  Q&amp;A room live on the judges&apos; laptop
+                </h2>
+              </div>
+              <span className="rounded bg-white/[0.06] px-2.5 py-1 font-mono text-xs text-zinc-300">
+                {runState.roomUtterances.length} utterances
+              </span>
+            </div>
+
+            {/* Latest Twin Challenge */}
+            <div className="rounded-xl border border-amber-500/30 bg-amber-500/[0.07] p-4">
+              <div className="font-mono text-[10px] uppercase tracking-wider text-amber-300">
+                Latest Twin Challenge
+              </div>
+              {latestChallenge ? (
+                <div className="mt-2 space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs font-semibold text-amber-400">
+                      {latestChallenge.role || `Seat ${latestChallenge.seat}`}
+                    </span>
+                    <span className="rounded bg-black/40 px-1.5 py-0.5 font-mono text-[10px] uppercase text-zinc-400">
+                      {latestChallenge.source}
+                    </span>
+                  </div>
+                  <p className="text-sm font-medium text-white leading-relaxed">
+                    {latestChallenge.text}
+                  </p>
+                </div>
+              ) : (
+                <p className="mt-1 text-xs text-zinc-400">
+                  No AI twin challenges triggered yet.
+                </p>
+              )}
+            </div>
+
+            {/* Last 3 Room Utterances */}
+            <div>
+              <div className="mb-3 font-mono text-[10px] uppercase tracking-wider text-zinc-400">
+                Recent Room Utterances (Last 3)
+              </div>
+              {lastUtterances.length === 0 ? (
+                <p className="text-xs text-zinc-500">
+                  Waiting for room audio / utterances...
+                </p>
+              ) : (
+                <div className="space-y-2">
+                  {lastUtterances.map((utt) => (
+                    <div
+                      key={utt.utterance_id}
+                      className="flex items-start gap-3 rounded-xl border border-white/10 bg-black/40 p-3"
+                    >
+                      <span className="rounded bg-white/[0.08] px-2 py-0.5 font-mono text-xs font-bold text-cyan-300 shrink-0">
+                        {utt.speaker_label || utt.speaker}
+                      </span>
+                      <p className="text-xs text-zinc-200 leading-relaxed">
+                        {utt.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        );
+      }
+      case "verdict":
+      case "reality":
+        return (
+          <VerdictStage
+            runId={runState.runId}
+            verdict={runState.verdict}
+            voteTally={runState.voteTally}
+            focusReality={selectedStage === "reality"}
+          />
+        );
+    }
+  };
+
   return (
     <div className="min-h-screen bg-stage-grid flex flex-col">
       <TopStageBar
         runId={runState.runId}
         mode={mode}
+        isSampleData={isSampleData}
+        showDevSample={showDevSample}
+        viewMode={viewMode}
+        onChangeViewMode={setViewMode}
         connectionStatus={connectionStatus}
         currentStage={runState.currentStage}
         selectedStage={selectedStage}
@@ -201,6 +406,7 @@ export function StageWorkspace() {
         demoRunsLoading={demoRunsLoading}
         onRefreshDemoRuns={loadDemoRuns}
         onStartReplay={(id) => void startReplayRun(id)}
+        onStartDevSampleReplay={startDevSampleReplay}
         onExitReplay={handleNewRun}
         replaySpeed={replaySpeed}
         onChangeReplaySpeed={handleChangeReplaySpeed}
@@ -210,56 +416,44 @@ export function StageWorkspace() {
         onDismissError={(seq) => setDismissedErrors((prev) => [...prev, seq])}
       />
 
-      <main className="mx-auto w-full max-w-[1440px] flex-1 px-4 py-6 sm:px-6">
-        {selectedStage === "pitch" && (
-          <PitchStage
-            runId={runState.runId}
-            pitch={runState.pitch}
-            isReplay={mode === "replay"}
-            onRunCreated={connectLiveRun}
-          />
-        )}
+      <main className="mx-auto w-full max-w-[1440px] flex-1 space-y-6 px-4 py-6 sm:px-6">
+        {viewMode === "office" ? (
+          <>
+            <OfficeScene
+              runState={runState}
+              activeStage={selectedStage}
+              isSampleData={isSampleData}
+              onOpenHotseat={(persona) => setHotseatPersonaId(persona.persona_id)}
+            />
 
-        {selectedStage === "boardroom" && (
-          <BoardroomStage
-            runId={runState.runId}
-            turns={runState.boardroomTurns}
-            spec={runState.spec}
-          />
-        )}
-
-        {selectedStage === "build" && (
-          <BuildStage
-            runId={runState.runId}
-            buildMessages={runState.buildMessages}
-            mvp={runState.mvp}
-            competitors={runState.competitors}
-          />
-        )}
-
-        {selectedStage === "lab" && (
-          <UsabilityLabStage
-            runId={runState.runId}
-            personas={runState.personas}
-            personaOrder={runState.personaOrder}
-            onOpenHotseat={(persona) => setHotseatPersonaId(persona.persona_id)}
-          />
-        )}
-
-        {selectedStage === "swarm" && (
-          <SwarmStage
-            progress={runState.swarmProgress}
-            result={runState.swarmResult}
-          />
-        )}
-
-        {(selectedStage === "verdict" || selectedStage === "reality") && (
-          <VerdictStage
-            runId={runState.runId}
-            verdict={runState.verdict}
-            voteTally={runState.voteTally}
-            focusReality={selectedStage === "reality"}
-          />
+            {/* Existing stage components preserved below Office view as the live Detail Panel */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-t border-white/10 pt-4">
+                <span className="font-mono text-xs uppercase tracking-widest text-zinc-400">
+                  Stage Detail Panel — {selectedStage}
+                </span>
+                <button
+                  onClick={() => setShowDetailPanel((v) => !v)}
+                  className="flex items-center gap-1 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[11px] text-zinc-300 hover:bg-white/[0.08]"
+                >
+                  {showDetailPanel ? (
+                    <>
+                      <ChevronUp className="h-3.5 w-3.5" />
+                      <span>Collapse Details</span>
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown className="h-3.5 w-3.5" />
+                      <span>Expand Details</span>
+                    </>
+                  )}
+                </button>
+              </div>
+              {showDetailPanel && renderStageDetail()}
+            </div>
+          </>
+        ) : (
+          renderStageDetail()
         )}
       </main>
 
@@ -297,6 +491,20 @@ export function StageWorkspace() {
           persona={activeHotseatPersona}
           onClose={() => setHotseatPersonaId(null)}
         />
+      )}
+
+      {/* Founder Co-Pilot Teleprompter Overlay */}
+      {activeFounderBrief && (
+        <div className="fixed inset-x-0 bottom-6 z-50 flex justify-center px-4 pointer-events-none">
+          <div className="pointer-events-auto w-full max-w-4xl">
+            <TeleprompterCard
+              brief={activeFounderBrief}
+              onDismiss={() =>
+                setDismissedBriefChallengeId(activeFounderBrief.challenge_id)
+              }
+            />
+          </div>
+        </div>
       )}
     </div>
   );

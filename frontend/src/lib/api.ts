@@ -4,6 +4,15 @@ import {
   DemoRunsResponse,
   getApiBase,
   HotseatResponse,
+  resolveArtifactUrl,
+  RoomAskRequest,
+  RoomAskResponse,
+  RoomChallengeRequest,
+  RoomChallengeResponse,
+  RoomSeatsRequest,
+  RoomSeatsResponse,
+  RoomTwinTokenRequest,
+  RoomTwinTokenResponse,
   RunEvent,
   RunEventsResponse,
   VoteRequest,
@@ -97,10 +106,87 @@ export async function submitVote(runId: string, payload: VoteRequest): Promise<V
   return parseJsonOrThrow<VoteResponse>(response);
 }
 
+export async function postRoomSeats(
+  runId: string,
+  payload: RoomSeatsRequest
+): Promise<RoomSeatsResponse> {
+  const response = await fetch(
+    `${getApiBase()}/api/runs/${encodeURIComponent(runId)}/room/seats`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    }
+  );
+  return parseJsonOrThrow<RoomSeatsResponse>(response);
+}
+
+export async function requestTwinToken(
+  runId: string,
+  seat: number
+): Promise<RoomTwinTokenResponse> {
+  const payload: RoomTwinTokenRequest = { seat };
+  const response = await fetch(
+    `${getApiBase()}/api/runs/${encodeURIComponent(runId)}/room/twin-token`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    }
+  );
+  return parseJsonOrThrow<RoomTwinTokenResponse>(response);
+}
+
+export async function postRoomChallenge(
+  runId: string,
+  payload: RoomChallengeRequest
+): Promise<RoomChallengeResponse> {
+  const response = await fetch(
+    `${getApiBase()}/api/runs/${encodeURIComponent(runId)}/room/challenge`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    }
+  );
+  return parseJsonOrThrow<RoomChallengeResponse>(response);
+}
+
+export async function postRoomAsk(
+  runId: string,
+  payload: RoomAskRequest
+): Promise<RoomAskResponse> {
+  const response = await fetch(
+    `${getApiBase()}/api/runs/${encodeURIComponent(runId)}/room/ask`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    }
+  );
+  return parseJsonOrThrow<RoomAskResponse>(response);
+}
+
+export function resolveApiUrl(path: string): string {
+  return resolveArtifactUrl(null, path) ?? path;
+}
+
 export function getRunWebSocketUrl(runId: string): string {
   const base = getApiBase();
   const wsBase = base.replace(/^http:/i, "ws:").replace(/^https:/i, "wss:");
   return `${wsBase}/ws/runs/${encodeURIComponent(runId)}`;
+}
+
+export function getRoomAudioWebSocketUrl(runId: string): string {
+  return `${getRunWebSocketUrl(runId)}/room-audio`;
 }
 
 export interface RunSocketHandlers {

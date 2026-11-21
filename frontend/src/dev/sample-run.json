@@ -1,0 +1,1420 @@
+{
+  "run_id": "r_35bf7899",
+  "note": "Real run from the backend (typed pitch). Artifact URLs need the backend running; use for UI structure and timing.",
+  "events": [
+    {
+      "type": "stage_changed",
+      "seq": 0,
+      "ts": "2026-11-21T17:10:50.381606+00:00",
+      "stage": "pitch",
+      "data": {
+        "stage": "pitch"
+      }
+    },
+    {
+      "type": "pitch_parsed",
+      "seq": 1,
+      "ts": "2026-11-21T17:10:56.342409+00:00",
+      "stage": "pitch",
+      "data": {
+        "title": "Clip-on Bike Lane Light",
+        "one_liner": "A clip-on bike light that projects a glowing lane onto the road to help drivers give cyclists space at night.",
+        "target_user": "City commuters who ride after dark",
+        "price_usd": 39,
+        "features": [
+          "Clip-on attachment",
+          "Projects a glowing lane onto the road",
+          "Designed for nighttime visibility",
+          "Encourages drivers to give space"
+        ],
+        "sketch_notes": ""
+      }
+    },
+    {
+      "type": "stage_changed",
+      "seq": 2,
+      "ts": "2026-11-21T17:10:56.342997+00:00",
+      "stage": "boardroom",
+      "data": {
+        "stage": "boardroom"
+      }
+    },
+    {
+      "type": "competitors",
+      "seq": 3,
+      "ts": "2026-11-21T17:10:56.789642+00:00",
+      "stage": "boardroom",
+      "data": {
+        "items": [
+          {
+            "title": "WingGlow™ Angel Wings Projector",
+            "price_usd": 39.99,
+            "image_url": "https://cdn.shopify.com/s/files/1/1065/7785/4805/files/hf_20261103_193251_73fdd98e-bbdb-4e9a-b823-e6de82e85b4b_1.png",
+            "url": null
+          },
+          {
+            "title": "VeloFlare™ Wing Projector Bike Light",
+            "price_usd": 29.99,
+            "image_url": "https://cdn.shopify.com/s/files/1/0773/7094/9710/files/vf-g1-main.jpg",
+            "url": null
+          },
+          {
+            "title": "Smart Brake-Sensing Bike Tail Light – Rechargeable Rear Light with Laser Lane Lines",
+            "price_usd": 39.99,
+            "image_url": "https://cdn.shopify.com/s/files/1/0622/5336/7381/files/S49eb43ecf93c47b1a15f47a0aecef207p.webp",
+            "url": null
+          }
+        ]
+      }
+    },
+    {
+      "type": "boardroom_turn",
+      "seq": 4,
+      "ts": "2026-11-21T17:11:17.517837+00:00",
+      "stage": "boardroom",
+      "data": {
+        "speaker": "strategist",
+        "model": "gemini-4-neon",
+        "text": "Let's position this as a portable bike lane for city commuters tired of close calls after dark. Thirty-nine dollars is the sweet spot for an impulse safety buy, so we hold that price. Today, we launch a single-page site with a ten-second video of the glowing lane on dark asphalt and the headline: Bring your own bike lane. Below that, we show the quick clip-on mount, nighttime visibility, and one pre-order button. Tonight, we run local commuter ads to measure real checkout intent.",
+        "audio_url": null
+      }
+    },
+    {
+      "type": "boardroom_turn",
+      "seq": 5,
+      "ts": "2026-11-21T17:11:31.135458+00:00",
+      "stage": "boardroom",
+      "data": {
+        "speaker": "skeptic",
+        "model": "gemini-4-argon",
+        "text": "Hold on. Thirty-nine dollars is not an impulse buy when VeloFlare sells a wing projector for thirty bucks and competitors bundle laser lanes with smart brake-sensing for forty. Ours is just a basic clip-on. And a single-page site with one pre-order button? That screams sketchy dropshipper. City commuters will not trust their lives to a ten-second video with zero lumen specs, battery life data, or waterproof ratings. Plus, well-lit city streets wash out laser projections anyway. Shoppers will bounce at checkout the second they realize we are hiding the specs.",
+        "audio_url": null
+      }
+    },
+    {
+      "type": "boardroom_turn",
+      "seq": 6,
+      "ts": "2026-11-21T17:11:52.514738+00:00",
+      "stage": "boardroom",
+      "data": {
+        "speaker": "strategist",
+        "model": "gemini-4-neon",
+        "text": "Fair point. We drop the price to twenty-nine dollars to match VeloFlare and undercut the smart lights, leaning hard into our clip-on mount for bike-share commuters. To kill the sketchy vibe, we replace the dark asphalt video with raw footage under bright city streetlights so buyers see the lane still cuts through glare. Right below that, we put the real specs front and center: lumen output, six-hour battery life, waterproof rating, and a thirty-day guarantee. Zero fluff, full transparency.",
+        "audio_url": null
+      }
+    },
+    {
+      "type": "boardroom_turn",
+      "seq": 7,
+      "ts": "2026-11-21T17:12:03.214788+00:00",
+      "stage": "boardroom",
+      "data": {
+        "speaker": "skeptic",
+        "model": "gemini-4-argon",
+        "text": "Dropping to twenty-nine dollars kills our margins once you factor in customer acquisition costs on commuter ads. And pivoting to bike-share riders brings a massive physical flaw: shared bikes have bulky, non-standard frames and rear fenders that will block the downward laser projection entirely. Even if the clip fits, city potholes will rattle a basic clip-on loose in minutes, turning a straight lane into a useless wobbling laser. If our raw streetlight footage shows even a flicker of instability, commuters will roast us in the ad comments and tank our conversion rate.",
+        "audio_url": null
+      }
+    },
+    {
+      "type": "spec_ready",
+      "seq": 8,
+      "ts": "2026-11-21T17:12:14.985018+00:00",
+      "stage": "boardroom",
+      "data": {
+        "headline": "Bring your own bike lane—clip on in seconds for safer night commutes.",
+        "price_usd": 29,
+        "pages": [
+          "Hero & Raw Streetlight Visibility Demo",
+          "Quick Clip-On Mount for Bike-Shares",
+          "Full Tech Specs (Lumens, 6-Hr Battery, Waterproofing)"
+        ],
+        "risks": [
+          "Dropping to $29 squeezes margins once commuter ad customer acquisition costs are included.",
+          "Bulky bike-share frames and rear fenders can block the downward laser projection.",
+          "City potholes may rattle the clip-on mount loose and cause wobbling laser lines."
+        ]
+      }
+    },
+    {
+      "type": "stage_changed",
+      "seq": 9,
+      "ts": "2026-11-21T17:12:14.986072+00:00",
+      "stage": "build",
+      "data": {
+        "stage": "build"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 10,
+      "ts": "2026-11-21T17:12:14.986422+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Starting managed agent build in Google sandbox…"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 11,
+      "ts": "2026-11-21T17:12:24.987700+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 10s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 12,
+      "ts": "2026-11-21T17:12:34.989239+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 20s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 13,
+      "ts": "2026-11-21T17:12:44.990123+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 30s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 14,
+      "ts": "2026-11-21T17:12:54.992389+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 40s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 15,
+      "ts": "2026-11-21T17:13:04.993291+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 50s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 16,
+      "ts": "2026-11-21T17:13:14.994874+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 60s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 17,
+      "ts": "2026-11-21T17:13:24.997581+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 70s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 18,
+      "ts": "2026-11-21T17:13:35.000194+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 80s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 19,
+      "ts": "2026-11-21T17:13:45.001242+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 90s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 20,
+      "ts": "2026-11-21T17:13:55.003355+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 100s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 21,
+      "ts": "2026-11-21T17:14:05.005279+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 110s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 22,
+      "ts": "2026-11-21T17:14:15.007131+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 120s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 23,
+      "ts": "2026-11-21T17:14:25.009392+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 130s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 24,
+      "ts": "2026-11-21T17:14:35.011388+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 140s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 25,
+      "ts": "2026-11-21T17:14:45.013114+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 150s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 26,
+      "ts": "2026-11-21T17:14:55.015531+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 160s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 27,
+      "ts": "2026-11-21T17:15:05.018023+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Managed agent building in Google sandbox… 170s"
+      }
+    },
+    {
+      "type": "build_progress",
+      "seq": 28,
+      "ts": "2026-11-21T17:15:09.360271+00:00",
+      "stage": "build",
+      "data": {
+        "message": "Capturing MVP screenshot…"
+      }
+    },
+    {
+      "type": "mvp_ready",
+      "seq": 29,
+      "ts": "2026-11-21T17:15:10.408890+00:00",
+      "stage": "build",
+      "data": {
+        "url": "/api/runs/r_35bf7899/artifacts/mvp/index.html",
+        "screenshot_url": "/api/runs/r_35bf7899/artifacts/mvp/screenshot.png",
+        "hero_image_url": null
+      }
+    },
+    {
+      "type": "stage_changed",
+      "seq": 30,
+      "ts": "2026-11-21T17:15:10.409029+00:00",
+      "stage": "lab",
+      "data": {
+        "stage": "lab"
+      }
+    },
+    {
+      "type": "persona_started",
+      "seq": 31,
+      "ts": "2026-11-21T17:15:10.647630+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "name": "Priya Nair",
+        "role": "Grad student and part-time barista",
+        "device": "mobile"
+      }
+    },
+    {
+      "type": "persona_started",
+      "seq": 32,
+      "ts": "2026-11-21T17:15:10.648378+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_01",
+        "name": "Marcus Vance",
+        "role": "Senior backend engineer, Brooklyn",
+        "device": "desktop"
+      }
+    },
+    {
+      "type": "persona_started",
+      "seq": 33,
+      "ts": "2026-11-21T17:15:10.648890+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_04",
+        "name": "Devon Brooks",
+        "role": "Micro-creator and early adopter",
+        "device": "mobile"
+      }
+    },
+    {
+      "type": "persona_started",
+      "seq": 34,
+      "ts": "2026-11-21T17:15:10.649300+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_03",
+        "name": "Elena Rostova",
+        "role": "Working parent and operations manager",
+        "device": "tablet"
+      }
+    },
+    {
+      "type": "persona_started",
+      "seq": 35,
+      "ts": "2026-11-21T17:15:10.649805+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "name": "Chloe Kim",
+        "role": "Industrial designer and sustainability advocate",
+        "device": "desktop"
+      }
+    },
+    {
+      "type": "persona_started",
+      "seq": 36,
+      "ts": "2026-11-21T17:15:10.650302+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "name": "Arthur Pendelton",
+        "role": "Small business owner and pragmatic skeptic",
+        "device": "desktop"
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 37,
+      "ts": "2026-11-21T17:15:16.046130+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_04",
+        "t": 5.4,
+        "action": "click",
+        "target": "See streetlight demo",
+        "thought": "I want to see what this actually looks like in action to know if it's camera-ready and cool enough to share. Let's check out the streetlight demo."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 38,
+      "ts": "2026-11-21T17:15:16.268195+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_03",
+        "t": 5.62,
+        "action": "click",
+        "target": "Shipping & FAQ",
+        "thought": "Let me check the Shipping & FAQ section first to see the delivery timeline and refund terms."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 39,
+      "ts": "2026-11-21T17:15:16.968386+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_01",
+        "t": 6.32,
+        "action": "click",
+        "target": "Tech Specs",
+        "thought": "500 lumens plus dual lasers for 6 hours in a compact clip-on for $29? Let's check the Tech Specs to see the actual battery capacity and laser class."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 40,
+      "ts": "2026-11-21T17:15:17.287831+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "t": 6.64,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Price is $29 upfront with no obvious subscription, which is good. Let's scroll down to see the actual demo, tech specs, and who is behind this company."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 41,
+      "ts": "2026-11-21T17:15:17.551685+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "t": 6.9,
+        "action": "scroll",
+        "target": "down",
+        "thought": "The hero section has clean typography and a decent diagram, but I need to see actual product photos, material specs, and whether there's any greenwashing or AI-generated imagery further down."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 42,
+      "ts": "2026-11-21T17:15:21.200417+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_03",
+        "t": 10.55,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Shipping timeline and 30-day return policy are very clear. Let me scroll down to read the rest of the FAQ or see the order section."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 43,
+      "ts": "2026-11-21T17:15:21.768479+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "t": 11.12,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Let's scroll down further to see the streetlight demo and check the technical specifications and company details."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 44,
+      "ts": "2026-11-21T17:15:22.618351+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_04",
+        "t": 11.97,
+        "action": "click",
+        "target": "Standard Tail Light Only",
+        "thought": "Let's toggle to 'Standard Tail Light Only' to see the before-and-after difference. Good visual contrast is great for a quick TikTok/Reels hook."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 45,
+      "ts": "2026-11-21T17:15:22.661187+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "t": 12.01,
+        "action": "click",
+        "target": "See streetlight demo",
+        "thought": "The price is $29 which isn't terrible, and the mobile layout is clean. I definitely want to see how it actually works before even considering buying it, so I'll check out the streetlight demo."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 46,
+      "ts": "2026-11-21T17:15:22.932861+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "t": 12.28,
+        "action": "scroll",
+        "target": "down",
+        "thought": "The streetlight demo is a nice clean illustration, but I still haven't seen any actual product photography, material breakdown, or sustainability/packaging details. Let's scroll down to Tech Specs."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 47,
+      "ts": "2026-11-21T17:15:23.334968+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_01",
+        "t": 12.69,
+        "action": "scroll",
+        "target": "down",
+        "thought": "1100mAh for 6 hours at 500lm + dual 532nm lasers is tight unless it's strictly flash mode. Let's scroll down to check shipping, returns, and support details."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 48,
+      "ts": "2026-11-21T17:15:26.071849+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "t": 15.42,
+        "action": "click",
+        "target": "Standard Tail Light Only",
+        "thought": "Let's toggle to 'Standard Tail Light Only' to see if this demo actually shows a meaningful difference or if it's just marketing fluff."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 49,
+      "ts": "2026-11-21T17:15:26.115205+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_03",
+        "t": 15.47,
+        "action": "scroll",
+        "target": "down",
+        "thought": "I see the pre-order checkout section starting at the bottom. Let me scroll down to see the full form and check if it's simple and straightforward."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 50,
+      "ts": "2026-11-21T17:15:26.645687+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "t": 16,
+        "action": "click",
+        "target": "Standard Tail Light Only",
+        "thought": "Okay, I see the green laser lines in this view, but I want to toggle to 'Standard Tail Light Only' to see if there's actually a meaningful difference or if it's just marketing."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 51,
+      "ts": "2026-11-21T17:15:26.917358+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_04",
+        "t": 16.27,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Okay, I see the before-and-after diagram. Now I want to scroll down to see if there are actual photos or videos of the light in action, and check out the 'Why $29 instead of $39+?' section to see if this looks legit and camera-ready."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 52,
+      "ts": "2026-11-21T17:15:27.033661+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "t": 16.38,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Still looking at the streetlight demo. Let's scroll down further to see the bike-share mount, actual product photos, and material specs."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 53,
+      "ts": "2026-11-21T17:15:30.298282+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_01",
+        "t": 19.65,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Shipping and return policy look straightforward. Let's scroll down further to see the rest of the page and checkout options."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 54,
+      "ts": "2026-11-21T17:15:30.919729+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_03",
+        "t": 20.27,
+        "action": "type",
+        "target": "Alex Rivera",
+        "thought": "The checkout form is simple and straightforward, no app or complicated onboarding required. Let me fill in my name to see the review step."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 55,
+      "ts": "2026-11-21T17:15:31.217652+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "t": 20.57,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Okay, it's just a basic diagram, not real-world footage. Let's scroll down to check the actual tech specs, battery life, and see if there's a real company or address behind this."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 56,
+      "ts": "2026-11-21T17:15:31.448122+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_04",
+        "t": 20.8,
+        "action": "scroll",
+        "target": "down",
+        "thought": "I want to see the rest of the 'Quick clip-on mount' section and check if there are any actual product photos or videos below, rather than just illustrations."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 57,
+      "ts": "2026-11-21T17:15:32.551136+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "t": 21.9,
+        "action": "scroll",
+        "target": "down",
+        "thought": "The bike-share mount section has clean diagrams and clear mechanical reasoning (32mm offset, cam clamp, silicone teeth), which I appreciate as an industrial designer. Still no actual product photos or material/packaging details yet, so let's keep scrolling down to Tech Specs."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 58,
+      "ts": "2026-11-21T17:15:32.759767+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "t": 22.11,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Okay, the difference is clear in the demo, though it's still just a graphic. I'll scroll down to see the actual specs, battery life, and if there's any catch before I even think about spending $29."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 59,
+      "ts": "2026-11-21T17:15:34.377251+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_03",
+        "t": 23.73,
+        "action": "type",
+        "target": "alex@example.com",
+        "thought": "Now let me enter my email address so I can continue to the review step."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 60,
+      "ts": "2026-11-21T17:15:34.731172+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_01",
+        "t": 24.08,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Let's scroll down to inspect the pre-order demo checkout section and see what details it asks for."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 61,
+      "ts": "2026-11-21T17:15:36.066673+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "t": 25.42,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Okay, 32mm offset for fenders. Let's keep scrolling down to see the actual tech specs, battery life, and who is behind this company."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 62,
+      "ts": "2026-11-21T17:15:36.781565+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_04",
+        "t": 26.13,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Still just seeing diagrams. I'll scroll down further to see if there's any real product photography or video, or if I'm just looking at a concept page."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 63,
+      "ts": "2026-11-21T17:15:36.866976+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "t": 26.22,
+        "action": "scroll",
+        "target": "down",
+        "thought": "We've reached the Full Tech Specs section. Let's scroll down to inspect the materials, battery specs, and see if there's any honest material breakdown or packaging info."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 64,
+      "ts": "2026-11-21T17:15:37.059198+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "t": 26.41,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Okay, they explain why it's $29, which is nice, but I still need to see the actual specs, battery life, and how it mounts. Let me scroll down to read about the quick clip-on mount."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 65,
+      "ts": "2026-11-21T17:15:38.753112+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_01",
+        "t": 28.1,
+        "action": "type",
+        "target": "Alex Rivera",
+        "thought": "Let's test the pre-order demo checkout form with my name and see how the review step looks."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 66,
+      "ts": "2026-11-21T17:15:41.116323+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "t": 30.47,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Okay, 32mm offset and cam clamp sound reasonable on paper. Let's scroll down to the tech specs and see if there's any real company info or address."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 67,
+      "ts": "2026-11-21T17:15:41.515951+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "t": 30.87,
+        "action": "scroll",
+        "target": "down",
+        "thought": "The tech specs are refreshingly honest—rechargeable 1100mAh Li-Po instead of coin cells, realistic lumen claims, and clean typography. Let's scroll down to check the shipping, packaging, and support details."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 68,
+      "ts": "2026-11-21T17:15:41.752751+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_03",
+        "t": 31.1,
+        "action": "click",
+        "target": "Continue to review",
+        "thought": "I've filled in my name and email. Let me click 'Continue to review' to see the order summary."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 69,
+      "ts": "2026-11-21T17:15:42.081138+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_04",
+        "t": 31.43,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Still only seeing diagrams and technical specs. I'll scroll down one more time to see if there are any real-life photos or videos before I give up on this."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 70,
+      "ts": "2026-11-21T17:15:42.399772+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_01",
+        "t": 31.75,
+        "action": "type",
+        "target": "alex@example.com",
+        "thought": "Now let's enter a shipping email so we can proceed to the review step."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 71,
+      "ts": "2026-11-21T17:15:45.006829+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "t": 34.36,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Okay, the clip-on mount looks decent for bike-shares, but I still need to see the battery life, waterproofing, and actual specs before I decide if it's worth $29."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 72,
+      "ts": "2026-11-21T17:15:45.835396+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_04",
+        "t": 35.19,
+        "action": "quit",
+        "target": "",
+        "thought": "Still just text and tech specs, no real-life photos or videos of the product in action. Not camera-ready at all, I'm out."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 73,
+      "ts": "2026-11-21T17:15:45.987107+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_03",
+        "t": 35.34,
+        "action": "click",
+        "target": "Complete order",
+        "thought": "Everything looks accurate and straightforward—$29 total, no hidden fees or app required. Let me click 'Complete order' to finish."
+      }
+    },
+    {
+      "type": "persona_finished",
+      "seq": 74,
+      "ts": "2026-11-21T17:15:46.028826+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_04",
+        "outcome": "quit",
+        "quit_reason": "Still just text and tech specs, no real-life photos or videos of the product in action. Not camera-ready at all, I'm out.",
+        "video_url": "/api/runs/r_35bf7899/artifacts/lab/persona_04.webm",
+        "duration_s": 35.38
+      }
+    },
+    {
+      "type": "persona_finished",
+      "seq": 75,
+      "ts": "2026-11-21T17:15:46.277955+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_03",
+        "outcome": "converted",
+        "quit_reason": null,
+        "video_url": "/api/runs/r_35bf7899/artifacts/lab/persona_03.webm",
+        "duration_s": 35.63
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 76,
+      "ts": "2026-11-21T17:15:46.969820+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "t": 36.32,
+        "action": "scroll",
+        "target": "down",
+        "thought": "The shipping and return policies are clear and straightforward, with no hidden fees. Let's scroll down to see the rest of the FAQ and the checkout/order section."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 77,
+      "ts": "2026-11-21T17:15:48.299606+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "t": 37.65,
+        "action": "scroll",
+        "target": "down",
+        "thought": "The tech specs look reasonable—500 lumens, 6 hours, IPX6, USB-C. No subscription nonsense so far. Let's scroll down to the FAQ and footer to see if there's a real company address, founder identity, or support contact."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 78,
+      "ts": "2026-11-21T17:15:49.656973+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "t": 39.01,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Okay, the fender clearance and pothole stability are nice, but I still haven't seen anything about battery life, charging, or waterproofing. Let me keep scrolling to find the actual specs."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 79,
+      "ts": "2026-11-21T17:15:50.169336+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_01",
+        "t": 39.52,
+        "action": "click",
+        "target": "Continue to review",
+        "thought": "Details are filled in. Let's click 'Continue to review' to inspect the review and confirmation step."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 80,
+      "ts": "2026-11-21T17:15:51.883353+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "t": 41.23,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Let's scroll down to the bottom to inspect the checkout/order section and see if there's any mention of packaging or anything else before deciding."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 81,
+      "ts": "2026-11-21T17:15:53.500255+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "t": 42.85,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Good, they have a support email and a 30-day return policy with no hidden fees mentioned. Let's scroll down to the checkout and footer to see if there's a physical address or any surprise recurring charges."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 82,
+      "ts": "2026-11-21T17:15:53.925229+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "t": 43.28,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Finally, the '03 / FULL TECH SPECS' section is right at the bottom. Let me scroll down to check the battery life, charging, and waterproofing."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 83,
+      "ts": "2026-11-21T17:15:54.975047+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_01",
+        "t": 44.33,
+        "action": "click",
+        "target": "Complete order",
+        "thought": "The review step looks clean and transparent, with no hidden fees or forced account creation. Let's click 'Complete order' to finish testing the demo checkout."
+      }
+    },
+    {
+      "type": "persona_finished",
+      "seq": 84,
+      "ts": "2026-11-21T17:15:55.496009+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_01",
+        "outcome": "converted",
+        "quit_reason": null,
+        "video_url": "/api/runs/r_35bf7899/artifacts/lab/persona_01.webm",
+        "duration_s": 44.85
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 85,
+      "ts": "2026-11-21T17:15:56.133981+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "t": 45.48,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Let's scroll down to see the rest of the checkout form and the footer."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 86,
+      "ts": "2026-11-21T17:15:57.334701+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "t": 46.68,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Alright, $4 shipping and a 30-day return policy are clear. Let's scroll down to the checkout and footer to see if there's an actual company address or any hidden subscription."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 87,
+      "ts": "2026-11-21T17:15:58.807959+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "t": 48.16,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Okay, 6 hours of runtime, USB-C charging in 1.5 hours, and IPX6 waterproofing are actually pretty solid for $29. Let me scroll down to see if there are any reviews, shipping costs, or hidden fees before I decide."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 88,
+      "ts": "2026-11-21T17:16:00.238702+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "t": 49.59,
+        "action": "type",
+        "target": "Alex Rivera",
+        "thought": "The page has clean typography, honest specs, and no greenwashing. Let's test the pre-order demo checkout by entering my name."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 89,
+      "ts": "2026-11-21T17:16:01.068032+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "t": 50.42,
+        "action": "scroll",
+        "target": "down",
+        "thought": "I'm not signing up for an email list yet. Let's scroll down to the checkout and footer to see if there's an actual company address or any hidden subscription."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 90,
+      "ts": "2026-11-21T17:16:03.725305+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "t": 53.08,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Let me scroll down to read the actual shipping, returns, and support details to make sure there are no hidden shipping fees that push this over $35."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 91,
+      "ts": "2026-11-21T17:16:05.998999+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "t": 55.35,
+        "action": "scroll",
+        "target": "down",
+        "thought": "Okay, this is just a demo pre-order checkout with no real payment collected. Let's scroll down to the footer to see if there's an actual company address or founder identity."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 92,
+      "ts": "2026-11-21T17:16:07.351860+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "t": 56.7,
+        "action": "type",
+        "target": "alex@example.com",
+        "thought": "Now let's enter my email address into the shipping email field so I can proceed to review the demo pre-order."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 93,
+      "ts": "2026-11-21T17:16:08.858093+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "t": 58.21,
+        "action": "scroll",
+        "target": "down",
+        "thought": "$4 flat-rate shipping brings the total to $33, which is still under $35, and 30-day free return shipping takes away the risk. Let me scroll down to check the rest of the page and see how checkout works."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 94,
+      "ts": "2026-11-21T17:16:09.962285+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "t": 59.31,
+        "action": "quit",
+        "target": "",
+        "thought": "There's a support email, but no founder identity or physical company address anywhere on the page, and it's just a demo pre-order checkout anyway. Not enough to build trust for a purchase."
+      }
+    },
+    {
+      "type": "persona_finished",
+      "seq": 95,
+      "ts": "2026-11-21T17:16:10.390274+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "outcome": "quit",
+        "quit_reason": "There's a support email, but no founder identity or physical company address anywhere on the page, and it's just a demo pre-order checkout anyway. Not enough to build trust for a purchase.",
+        "video_url": "/api/runs/r_35bf7899/artifacts/lab/persona_05.webm",
+        "duration_s": 59.74
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 96,
+      "ts": "2026-11-21T17:16:12.761055+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "t": 62.11,
+        "action": "click",
+        "target": "Continue to review",
+        "thought": "I've entered my name and email. Let's click 'Continue to review' to see the final step of the demo pre-order checkout."
+      }
+    },
+    {
+      "type": "persona_finished",
+      "seq": 97,
+      "ts": "2026-11-21T17:16:12.923784+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "outcome": "quit",
+        "quit_reason": "I've entered my name and email. Let's click 'Continue to review' to see the final step of the demo pre-order checkout.",
+        "video_url": "/api/runs/r_35bf7899/artifacts/lab/persona_06.webm",
+        "duration_s": 62.27
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 98,
+      "ts": "2026-11-21T17:16:14.408116+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "t": 63.76,
+        "action": "scroll",
+        "target": "down",
+        "thought": "The 30-day return and human support look reassuring. Let me scroll down past the FAQ to see the checkout section."
+      }
+    },
+    {
+      "type": "persona_action",
+      "seq": 99,
+      "ts": "2026-11-21T17:16:20.557916+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "t": 69.91,
+        "action": "scroll",
+        "target": "down",
+        "thought": "I see the 'Not ready to buy tonight?' list, but let me scroll down one more time to see the actual checkout section and make sure there are no surprise fees."
+      }
+    },
+    {
+      "type": "persona_finished",
+      "seq": 100,
+      "ts": "2026-11-21T17:16:20.651223+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "outcome": "quit",
+        "quit_reason": "I see the 'Not ready to buy tonight?' list, but let me scroll down one more time to see the actual checkout section and make sure there are no surprise fees.",
+        "video_url": "/api/runs/r_35bf7899/artifacts/lab/persona_02.webm",
+        "duration_s": 70
+      }
+    },
+    {
+      "type": "quit_markers",
+      "seq": 101,
+      "ts": "2026-11-21T17:16:35.484329+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_04",
+        "markers": [
+          {
+            "t": 26.13,
+            "kind": "confusion",
+            "note": "Repeatedly scrolling down looking for real product photos or videos, questioning if it is just a concept page."
+          },
+          {
+            "t": 31.43,
+            "kind": "confusion",
+            "note": "Continues scrolling through diagrams and tech specs without finding real-life product imagery."
+          },
+          {
+            "t": 35.19,
+            "kind": "quit",
+            "note": "Quits after finding only text, diagrams, and tech specs with no real-life photos or videos of the product in action."
+          }
+        ]
+      }
+    },
+    {
+      "type": "quit_markers",
+      "seq": 102,
+      "ts": "2026-11-21T17:16:37.987441+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_02",
+        "markers": [
+          {
+            "t": 22.11,
+            "kind": "confusion",
+            "note": "Skeptical of graphic-only demo; searching for actual specs and potential catches."
+          },
+          {
+            "t": 39.01,
+            "kind": "confusion",
+            "note": "Repeatedly scrolling to find battery life, charging, and waterproofing specs."
+          },
+          {
+            "t": 69.91,
+            "kind": "quit",
+            "note": "Scrolled to checkout section to check for surprise fees, then left without buying."
+          }
+        ]
+      }
+    },
+    {
+      "type": "quit_markers",
+      "seq": 103,
+      "ts": "2026-11-21T17:16:39.480952+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_06",
+        "markers": [
+          {
+            "t": 12.28,
+            "kind": "confusion",
+            "note": "Looking for actual product photography and material/packaging details"
+          },
+          {
+            "t": 21.9,
+            "kind": "confusion",
+            "note": "Still no actual product photos or material specs visible"
+          },
+          {
+            "t": 62.11,
+            "kind": "quit",
+            "note": "Clicked Continue to review on demo checkout and ended session"
+          }
+        ]
+      }
+    },
+    {
+      "type": "quit_markers",
+      "seq": 104,
+      "ts": "2026-11-21T17:16:39.797659+00:00",
+      "stage": "lab",
+      "data": {
+        "persona_id": "persona_05",
+        "markers": [
+          {
+            "t": 20.57,
+            "kind": "confusion",
+            "note": "Skeptical that the streetlight demo is just a basic diagram rather than real-world footage"
+          },
+          {
+            "t": 55.35,
+            "kind": "confusion",
+            "note": "Notices it is only a demo pre-order checkout with no real payment and no company address"
+          },
+          {
+            "t": 59.31,
+            "kind": "quit",
+            "note": "Quits due to lack of founder identity, physical company address, and real checkout"
+          }
+        ]
+      }
+    },
+    {
+      "type": "stage_changed",
+      "seq": 105,
+      "ts": "2026-11-21T17:16:39.799156+00:00",
+      "stage": "swarm",
+      "data": {
+        "stage": "swarm"
+      }
+    },
+    {
+      "type": "swarm_progress",
+      "seq": 106,
+      "ts": "2026-11-21T17:18:11.026516+00:00",
+      "stage": "swarm",
+      "data": {
+        "done": 0,
+        "total": 1000
+      }
+    },
+    {
+      "type": "swarm_progress",
+      "seq": 107,
+      "ts": "2026-11-21T17:18:14.265448+00:00",
+      "stage": "swarm",
+      "data": {
+        "done": 1000,
+        "total": 1000
+      }
+    },
+    {
+      "type": "swarm_result",
+      "seq": 108,
+      "ts": "2026-11-21T17:18:14.267286+00:00",
+      "stage": "swarm",
+      "data": {
+        "personas": 200,
+        "rubrics": {
+          "value_clarity": 0.8785,
+          "pain_urgency": 0.3714,
+          "price_value_fit": 0.6669,
+          "credibility_trust": 0.2253,
+          "beat_competitors": 0.2851
+        },
+        "intent_mean": 0.4012
+      }
+    },
+    {
+      "type": "stage_changed",
+      "seq": 109,
+      "ts": "2026-11-21T17:18:14.267503+00:00",
+      "stage": "verdict",
+      "data": {
+        "stage": "verdict"
+      }
+    },
+    {
+      "type": "verdict",
+      "seq": 110,
+      "ts": "2026-11-21T17:18:32.812638+00:00",
+      "stage": "verdict",
+      "data": {
+        "launch_probability": 0.4012,
+        "confidence": 0.7709,
+        "failure_modes": [
+          "Zero real-world visual proof: Using diagrams instead of actual nighttime street footage destroys buyer trust (0.23 credibility score) and drives immediate exits.",
+          "Commodity saturation: Generic laser-lane and wing-projector bike lights already flood online stores at $29.99 to $39.99, leaving weak differentiation (0.29 competitive score).",
+          "Vaporware trust signals: No founder identity, no physical company address, and a fake pre-order checkout convince skeptical commuters the product does not exist.",
+          "Hardware obstruction on target bikes: Bulky bike-share frames and rear fenders block downward laser lines, while city potholes rattle clip-on mounts loose.",
+          "Unsustainable $29 unit economics: Dropping the price from $39 to $29 to match generic rivals crushes margins once paid customer acquisition costs hit."
+        ],
+        "summary": "At a 40.1% launch survival probability, this product stalls on trust and differentiation. Commuters instantly grasp the pitch, but rock-bottom credibility—driven by diagram-only demos, zero real-world footage, and missing company details—kills conversions. Worse, $30–$40 laser bike lights are already ubiquitous commodities, leaving thin margins at $29 and unsolved bike-share fender obstruction risks."
+      }
+    }
+  ]
+}
