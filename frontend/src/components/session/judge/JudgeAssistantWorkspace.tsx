@@ -240,7 +240,14 @@ export function JudgeAssistantWorkspace({
     [events]
   );
 
-  const questions = useMemo(() => extractJudgeQuestions(events), [events]);
+  const rawQuestions = useMemo(() => extractJudgeQuestions(events), [events]);
+  // The team works during the pitch, but judges only see results once the pitch is complete;
+  // then only questions the pitch did NOT already answer (questions_reviewed.open).
+  const pitchComplete = events.some((e) => e.type === "pitch_complete");
+  const reviewed = [...events].reverse().find((e) => e.type === "questions_reviewed")?.data as
+    | { open: typeof rawQuestions; answered: { question: string; origin?: string }[] }
+    | undefined;
+  const questions = pitchComplete ? (reviewed ? reviewed.open : []) : [];
 
   const researchSteps = useMemo(
     () => extractResearchSteps(events, questions.length > 0),
@@ -293,16 +300,38 @@ export function JudgeAssistantWorkspace({
 
         {/* Middle column (36%): the expert team channel */}
         <section className="flex min-h-0 w-[36%] shrink-0 flex-col border-r border-[#2A2B30] bg-[#0E0F11] px-5 py-5">
-          <TeamChannel events={events} />
+          <TeamChannel events={events} reveal={pitchComplete} />
         </section>
 
         {/* Right column: Questions + What we found + Typed fallback */}
         <main className="flex min-h-0 flex-1 flex-col overflow-hidden bg-[#0E0F11] px-6 py-5">
-          <QuestionsPanel
-            questions={questions}
-            researchSteps={researchSteps}
-          />
-          <FindingsSection research={research} />
+          {!pitchComplete ? (
+            <div className="flex flex-1 flex-col items-center justify-center gap-3 text-center">
+              <div className="h-[2px] w-40 animate-pulse rounded-full bg-[linear-gradient(90deg,#4285F4,#9B72CB,#D96570)]" />
+              <p className="text-[22px] font-light text-[#E8EAED]">The founder is pitching</p>
+              <p className="max-w-sm text-[14px] text-[#9AA0A6]">
+                Your team is researching in the background. Verified questions and findings appear here when the pitch ends.
+              </p>
+            </div>
+          ) : (
+            <>
+              {!reviewed && (
+                <p className="pb-3 text-[13px] text-[#9AA0A6]">Pitch complete. Checking which questions the pitch already answered…</p>
+              )}
+              <QuestionsPanel questions={questions} researchSteps={researchSteps} />
+              {reviewed && reviewed.answered.length > 0 && (
+                <details className="mb-3 rounded-[12px] border border-[#2A2B30] bg-[#16171A] px-4 py-2.5 text-[13px] text-[#9AA0A6]">
+                  <summary className="cursor-pointer">Already covered in the pitch ✓ ({reviewed.answered.length})</summary>
+                  <ul className="mt-2 space-y-1">
+                    {reviewed.answered.map((a, i) => (
+                      <li key={i} className="text-[#5F6368] line-through decoration-[#5F6368]/60">{a.question}</li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+              <FindingsSection research={research} />
+            </>
+          )}
           <TypedAskBar runId={runId} />
         </main>
       </div>

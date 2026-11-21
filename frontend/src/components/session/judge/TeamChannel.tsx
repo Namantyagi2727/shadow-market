@@ -42,13 +42,16 @@ function domain(url: string): string {
   }
 }
 
-export function TeamChannel({ events }: { events: SessionEvent[] }) {
+export function TeamChannel({ events, reveal = true }: { events: SessionEvent[]; reveal?: boolean }) {
   const state: Record<string, string> = {};
   const notes: ExpertNote[] = [];
   for (const e of events) {
     if (e.type === "expert_status") state[e.data.expert_id] = e.data.state;
     if (e.type === "expert_note") {
       state[e.data.expert_id] = "done";
+      // Keep only the latest note per specialist (research can re-run while the pitch grows).
+      const idx = notes.findIndex((n) => n.expert_id === e.data.expert_id);
+      if (idx >= 0) notes.splice(idx, 1);
       notes.push(e.data as ExpertNote);
     }
   }
@@ -86,10 +89,13 @@ export function TeamChannel({ events }: { events: SessionEvent[] }) {
 
       {/* Channel */}
       <div className="flex min-h-0 flex-1 flex-col gap-2.5 overflow-y-auto pr-1">
-        {notes.length === 0 && (
+        {!reveal && (
+          <p className="text-[13px] text-[#9AA0A6]">Working while the founder pitches… notes appear when the pitch ends.</p>
+        )}
+        {reveal && notes.length === 0 && (
           <p className="text-[13px] text-[#5F6368]">The team starts as soon as the founder describes the idea…</p>
         )}
-        {notes
+        {(reveal ? notes : [])
           .slice()
           .reverse()
           .map((n) => (

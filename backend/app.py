@@ -423,15 +423,11 @@ async def post_session_pitch_done(run_id: str) -> dict[str, bool]:
             {"step": "pitch", "state": "failed", "message": "No pitch heard yet. Check the founder mic and speak, then press again."},
         )
         return {"ok": False}
-    task = session.schedule_research(run_id, force=True)
+    session.request_pitch_complete(run_id, "founder pressed I'm done pitching")
     await log.emit(
         "research_status",
         "room",
-        {
-            "step": "pitch",
-            "state": "running" if task else "done",
-            "message": "Pitch received. Researching now…" if task else "Research already ran for this pitch.",
-        },
+        {"step": "pitch", "state": "done", "message": "Pitch complete. Verifying questions against your pitch…"},
     )
     return {"ok": True}
 
