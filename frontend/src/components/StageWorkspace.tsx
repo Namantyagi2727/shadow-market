@@ -28,7 +28,7 @@ import { SwarmStage } from "./SwarmStage";
 import { VerdictStage } from "./VerdictStage";
 import { V2Card } from "./V2Card";
 import { HotseatModal } from "./HotseatModal";
-import { Office3D } from "./office3d";
+import { OfficeScene } from "./office/OfficeScene";
 import { TeleprompterCard } from "./TeleprompterCard";
 
 export interface StageWorkspaceProps {
@@ -62,7 +62,7 @@ export function StageWorkspace({
   const [showDevSample, setShowDevSample] = useState(
     !presentationMode && process.env.NODE_ENV === "development"
   );
-  const [viewMode, setViewMode] = useState<ViewMode>("office");
+  const [viewMode, setViewMode] = useState<ViewMode>("classic");
   const [showDetailPanel, setShowDetailPanel] = useState(true);
 
   const [connectionStatus, setConnectionStatus] = useState<
@@ -599,7 +599,7 @@ export function StageWorkspace({
         ) : viewMode === "office" ? (
           <>
             <div className="h-[calc(100vh-150px)] min-h-[560px] w-full">
-              <Office3D
+              <OfficeScene
                 runState={runState}
                 activeStage={selectedStage}
                 isSampleData={isSampleData}
