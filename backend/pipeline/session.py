@@ -1298,14 +1298,15 @@ async def complete_pitch(run_id: str, reason: str) -> None:
     transcript = sess.transcript.strip()
     await log.emit("pitch_complete", "room", {"reason": reason, "words": len(transcript.split())})
 
-    # Make sure the research covers the WHOLE pitch.
-    if sess.research_task is not None and not sess.research_task.done():
-        await asyncio.gather(sess.research_task, return_exceptions=True)
-    if transcript and len(transcript.split()) > len(sess.researched_transcript.split()) + 8:
-        sess.research_runs = min(sess.research_runs, MAX_RESEARCH_RUNS - 1)
-        task = schedule_research(run_id, force=True)
-        if task is not None:
-            await asyncio.gather(task, return_exceptions=True)
+    # Reveal fast: wait only until the first questions exist (competitors + buyers, ~10 s), not for the
+    # slow web search (found in the 4:30 PM test: waiting for all research made the reveal take 37 s).
+    if not sess.latest_questions:
+        if sess.research_task is None or sess.research_task.done():
+            schedule_research(run_id, force=True)
+        for _ in range(40):  # up to ~20 s
+            if sess.latest_questions:
+                break
+            await asyncio.sleep(0.5)
 
     # Candidates: the suggested questions + each specialist's latest cross-question.
     candidates: list[dict[str, Any]] = [dict(q, origin="research") for q in (sess.latest_questions or [])]

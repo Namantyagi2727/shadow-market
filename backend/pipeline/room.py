@@ -38,7 +38,7 @@ SESSION_DEDUPE_RATIO = 0.8
 CAPTION_MIN_INTERVAL_S = 0.25  # <= 4/s
 GATE_TRIGGER_THRESHOLD = 0.7
 FALLBACK_DELAY_S = 4.0
-SILENCE_COMMIT_S = 1.8  # commit a live caption as an utterance after this much silence  # Live twin normally answers in ~1-2 s
+SILENCE_COMMIT_S = 2.4  # commit a live caption as an utterance after this much silence  # Live twin normally answers in ~1-2 s
 FALLBACK_VOICE = "Fenrir"
 MAX_FOUNDER_LINE_WORDS = 14
 
