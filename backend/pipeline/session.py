@@ -298,7 +298,10 @@ async def on_founder_utterance(run_id: str, text: str, log: EventLog) -> None:
     if session.debounce_task is not None and not session.debounce_task.done():
         session.debounce_task.cancel()
 
-    if session.research_runs < MAX_RESEARCH_RUNS:
+    # Only the opening pitch triggers research automatically. Once research has run, the founder is
+    # answering judges, so their speech must not restart it (seen in the 3:55 PM live test).
+    # "I'm done pitching" can still force a re-run.
+    if session.research_runs == 0:
         task = asyncio.create_task(_debounce_research(run_id))
         session.debounce_task = task
         _track_task(task, f"debounce:{run_id}")
