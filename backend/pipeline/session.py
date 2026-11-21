@@ -1137,9 +1137,10 @@ async def run_research(run_id: str, force: bool = False) -> None:
             except Exception as exc:  # noqa: BLE001
                 await _emit_status("prep", "failed", _sanitize_error(f"Founder prep failed ({type(exc).__name__})"))
 
-        await asyncio.gather(comp_task, analyst_task, buyers_task)
+        # First questions need only competitors + the 200 buyers (~10 s); analyst and web refresh them.
+        await asyncio.gather(comp_task, buyers_task)
         await _questions_and_prep(await _emit_research(), "")
-        await web_task
+        await asyncio.gather(analyst_task, web_task)
         if web_res:
             await _questions_and_prep(await _emit_research(), " (with web facts)")
 

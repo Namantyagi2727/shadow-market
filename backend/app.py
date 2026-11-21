@@ -411,8 +411,28 @@ async def post_session_pitch_done(run_id: str) -> dict[str, bool]:
     ctx, log, _ = _get_run(run_id)
     room_state = room.ensure_room(run_id, ctx, log)
     room_state.is_session = True
-    session.ensure_session(run_id)
-    session.schedule_research(run_id, force=True)
+    sess = session.ensure_session(run_id)
+    # Take whatever the founder's mic is still showing as a live caption (noisy rooms never "finish" a sentence).
+    pending = (room_state.latest_interim.get("founder") or "").strip()
+    if pending and pending not in sess.transcript:
+        await session.on_founder_utterance(run_id, pending, log)
+    if not sess.transcript.strip():
+        await log.emit(
+            "research_status",
+            "room",
+            {"step": "pitch", "state": "failed", "message": "No pitch heard yet. Check the founder mic and speak, then press again."},
+        )
+        return {"ok": False}
+    task = session.schedule_research(run_id, force=True)
+    await log.emit(
+        "research_status",
+        "room",
+        {
+            "step": "pitch",
+            "state": "running" if task else "done",
+            "message": "Pitch received. Researching now…" if task else "Research already ran for this pitch.",
+        },
+    )
     return {"ok": True}
 
 

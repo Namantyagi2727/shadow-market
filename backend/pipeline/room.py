@@ -37,7 +37,8 @@ SESSION_DEDUPE_WINDOW_S = 8.0
 SESSION_DEDUPE_RATIO = 0.8
 CAPTION_MIN_INTERVAL_S = 0.25  # <= 4/s
 GATE_TRIGGER_THRESHOLD = 0.7
-FALLBACK_DELAY_S = 4.0  # Live twin normally answers in ~1-2 s
+FALLBACK_DELAY_S = 4.0
+SILENCE_COMMIT_S = 2.5  # commit a live caption as an utterance after this much silence  # Live twin normally answers in ~1-2 s
 FALLBACK_VOICE = "Fenrir"
 MAX_FOUNDER_LINE_WORDS = 14
 
@@ -150,6 +151,7 @@ class RoomState:
     stage_changed_emitted: bool = False
     next_seat_idx: int = 0
     is_session: bool = False
+    latest_interim: dict[str, str] = field(default_factory=dict)  # role -> latest live caption
 
 
 ROOMS: dict[str, RoomState] = {}
@@ -559,6 +561,9 @@ async def stream_audio(run_id: str, websocket: WebSocket, role: str | None = Non
     client_disconnected = asyncio.Event()
     utterance_tasks: set[asyncio.Task[None]] = set()
     last_caption_ts = 0.0
+    # Silence watchdog: in a noisy venue the transcriber may never close a sentence, so if the live
+    # caption stops changing for SILENCE_COMMIT_S we commit it as an utterance ourselves.
+    interim = {"text": "", "ts": 0.0, "prefix": ""}
 
     def _caption_payload(text: str) -> dict[str, Any]:
         if effective_role is not None:
@@ -577,6 +582,34 @@ async def stream_audio(run_id: str, websocket: WebSocket, role: str | None = Non
                     print(f"[room] handle_utterance error ({run_id}): {type(exc).__name__}", flush=True)
 
         task.add_done_callback(_done)
+
+    def _new_part(full: str) -> str:
+        prefix = interim["prefix"]
+        if prefix and full.startswith(prefix):
+            return full[len(prefix):].strip(" ,.")
+        return full.strip()
+
+    def _on_interim(text: str) -> None:
+        if text != interim["text"]:
+            interim["text"], interim["ts"] = text, time.monotonic()
+        if effective_role is not None:
+            room.latest_interim[effective_role] = text
+
+    def _on_final(text: str) -> None:
+        part = _new_part(text)
+        interim["text"], interim["prefix"] = "", ""
+        if len(part.split()) >= 2:
+            _spawn_utterance(part)
+
+    async def _silence_watchdog() -> None:
+        while not client_disconnected.is_set():
+            await asyncio.sleep(0.5)
+            text = interim["text"]
+            if text and time.monotonic() - interim["ts"] >= SILENCE_COMMIT_S:
+                part = _new_part(text)
+                interim["prefix"], interim["text"] = text, ""
+                if len(part.split()) >= 2:
+                    _spawn_utterance(part)
 
     async def _ws_reader() -> None:
         try:
@@ -639,6 +672,7 @@ async def stream_audio(run_id: str, websocket: WebSocket, role: str | None = Non
 
                                 interim_text = _extract_interim_text(msg, sc)
                                 if interim_text and interim_text.strip():
+                                    _on_interim(interim_text.strip())
                                     now = time.monotonic()
                                     if now - last_caption_ts >= CAPTION_MIN_INTERVAL_S:
                                         last_caption_ts = now
@@ -663,7 +697,7 @@ async def stream_audio(run_id: str, websocket: WebSocket, role: str | None = Non
                                                 _caption_payload(cleaned),
                                             )
                                     else:
-                                        _spawn_utterance(cleaned)
+                                        _on_final(cleaned)
                             if not got_msg:
                                 return
 
@@ -699,13 +733,19 @@ async def stream_audio(run_id: str, websocket: WebSocket, role: str | None = Non
                 backoff_s = min(backoff_s * 1.5, 3.0)
 
     reader_task = asyncio.create_task(_ws_reader())
+    watchdog_task = asyncio.create_task(_silence_watchdog())
     transcribe_task = asyncio.create_task(_transcribe_loop())
     try:
         await reader_task
     finally:
         client_disconnected.set()
         transcribe_task.cancel()
-        await asyncio.gather(transcribe_task, return_exceptions=True)
+        watchdog_task.cancel()
+        # Commit anything still in the live caption when the mic stops.
+        leftover = _new_part(interim["text"]) if interim["text"] else ""
+        if len(leftover.split()) >= 2:
+            _spawn_utterance(leftover)
+        await asyncio.gather(transcribe_task, watchdog_task, return_exceptions=True)
 
 
 # ---------- 3. Utterance handling & Decisions gate ----------
