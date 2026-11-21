@@ -1,0 +1,242 @@
+{
+  "page": "r_066ae675",
+  "trap": "price_hidden",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 60.38,
+  "converted_count": 1,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "Every single price is replaced with 'Price shown at checkout', even mid-sentence. Hiding the price until checkout is a huge red flag, and I don't have time for this.",
+      "duration_s": 16.49,
+      "num_steps": 2,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Everything says 'Price shown at checkout' instead of an actual number, which is already annoying. Let's scroll down to see if there are any real specs or if this is just fluff.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "quit",
+          "target": "",
+          "thought": "Every single price is replaced with 'Price shown at checkout', even mid-sentence. Hiding the price until checkout is a huge red flag, and I don't have time for this.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "Okay, it's $24 total, which is still way too much for deodorant when I can get a regular one for a quarter of the price. Plus, the mobile layout was annoying earlier. I'm going to pass on this so I don't regret an impulse buy.",
+      "duration_s": 41.17,
+      "num_steps": 8,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Every price says 'Price shown at checkout' which is annoying when I'm trying to budget. Let me scroll down to see if there's more info on the product and how much it actually costs.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "click",
+          "target": "Price shown at checkout",
+          "thought": "It's super frustrating that they won't just show the price upfront. Let me click 'Price shown at checkout' to see what this actually costs before I waste any more time.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The comparison table is cut off on the right on my phone screen, which is super annoying, and clicking 'Price shown at checkout' didn't even show me the price. Let me scroll down to the FAQ & Checkout section to see if it finally tells me what this costs.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Okay, it says $24 each, which is still kind of pricey for deodorant, especially if they add shipping on top. Let me click 'Continue to review' to see the actual total before I decide.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "Ugh, it won't even let me see the total without entering my name and email. Fine, I'll type my name just to see what the final price with shipping is.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "Now I have to put in an email too just to see the shipping cost. Let me type a dummy email so I can finally see the total.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Okay, both my name and email are in there now. Let me click 'Continue to review' to finally see what the total price with shipping is.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "quit",
+          "target": "",
+          "thought": "Okay, it's $24 total, which is still way too much for deodorant when I can get a regular one for a quarter of the price. Plus, the mobile layout was annoying earlier. I'm going to pass on this so I don't regret an impulse buy.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "converted",
+      "quit_reason": null,
+      "duration_s": 60.02,
+      "num_steps": 11,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I want to see the actual pricing, shipping timeline, and how the refills work before deciding.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Everything says 'Price shown at checkout' which is frustrating, and I still don't see a clear shipping timeline for the starter kit. I'll scroll down to check the rest of the page for shipping details and reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The 10-second refill process looks simple enough, but I still need to see the actual ingredients, customer reviews, and clear shipping or refund terms before I consider buying.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The ingredients look safe and straightforward, which is a plus. I'll scroll down further to see if there are customer reviews, shipping timelines, and refund terms.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The 30-day money-back guarantee and 24-hour refund/replace policy for irritation or melting are reassuring, though the 'Price shown at checkout' placeholders are still annoying. I'll scroll down to check the comparison table, shipping timeline, and any customer reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The comparison table is useless with 'Price shown at checkout' everywhere. I'll scroll down to the FAQ & Checkout section to see if there's a clear shipping timeline and actual pricing.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The shipping timeline (2-3 business days plus 3-5 days in transit) and the 30-day money-back guarantee with free return shipping are clear and reassuring. I'll scroll down to check the FAQ and the pre-order checkout demo to finally see the actual price.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "I finally see the price—$24 each. The shipping timeline and 30-day return policy are clear. I'll fill in my name in the pre-order demo to see what the checkout review looks like.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "I'll enter my email address next so I can continue to the checkout review and see the final total.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 10,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Now that I've entered my name and email, I'll click 'Continue to review' to see the final total and shipping cost.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 11,
+          "action": "click",
+          "target": "Complete order",
+          "thought": "The total price is $24, and the shipping timeline and 30-day return policy are clear. Since this is a demo pre-order with no payment collected, I'll click 'Complete order' to finish.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: Every single price is replaced with 'Price shown at checkout', even mid-sentence. Hiding the price until checkout is a huge red flag, and I don't have time for this.\n  Step 1 (scroll on 'down'): Everything says 'Price shown at checkout' instead of an actual number, which is already annoying. Let's scroll down to see if there are any real specs or if this is just fluff.\n  Step 2 (quit): Every single price is replaced with 'Price shown at checkout', even mid-sentence. Hiding the price until checkout is a huge red flag, and I don't have time for this.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: Okay, it's $24 total, which is still way too much for deodorant when I can get a regular one for a quarter of the price. Plus, the mobile layout was annoying earlier. I'm going to pass on this so I don't regret an impulse buy.\n  Step 1 (scroll on 'down'): Every price says 'Price shown at checkout' which is annoying when I'm trying to budget. Let me scroll down to see if there's more info on the product and how much it actually costs.\n  Step 2 (click on 'Price shown at checkout'): It's super frustrating that they won't just show the price upfront. Let me click 'Price shown at checkout' to see what this actually costs before I waste any more time.\n  Step 3 (scroll on 'down'): The comparison table is cut off on the right on my phone screen, which is super annoying, and clicking 'Price shown at checkout' didn't even show me the price. Let me scroll down to the FAQ & Checkout section to see if it finally tells me what this costs.\n  Step 4 (click on 'Continue to review'): Okay, it says $24 each, which is still kind of pricey for deodorant, especially if they add shipping on top. Let me click 'Continue to review' to see the actual total before I decide.\n  Step 5 (type on 'Alex Rivera'): Ugh, it won't even let me see the total without entering my name and email. Fine, I'll type my name just to see what the final price with shipping is.\n  Step 6 (type on 'alex@example.com'): Now I have to put in an email too just to see the shipping cost. Let me type a dummy email so I can finally see the total.\n  Step 7 (click on 'Continue to review'): Okay, both my name and email are in there now. Let me click 'Continue to review' to finally see what the total price with shipping is.\n  Step 8 (quit): Okay, it's $24 total, which is still way too much for deodorant when I can get a regular one for a quarter of the price. Plus, the mobile layout was annoying earlier. I'm going to pass on this so I don't regret an impulse buy.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: converted\n  Step 1 (scroll on 'down'): I want to see the actual pricing, shipping timeline, and how the refills work before deciding.\n  Step 2 (scroll on 'down'): Everything says 'Price shown at checkout' which is frustrating, and I still don't see a clear shipping timeline for the starter kit. I'll scroll down to check the rest of the page for shipping details and reviews.\n  Step 3 (scroll on 'down'): The 10-second refill process looks simple enough, but I still need to see the actual ingredients, customer reviews, and clear shipping or refund terms before I consider buying.\n  Step 4 (scroll on 'down'): The ingredients look safe and straightforward, which is a plus. I'll scroll down further to see if there are customer reviews, shipping timelines, and refund terms.\n  Step 5 (scroll on 'down'): The 30-day money-back guarantee and 24-hour refund/replace policy for irritation or melting are reassuring, though the 'Price shown at checkout' placeholders are still annoying. I'll scroll down to check the comparison table, shipping timeline, and any customer reviews.\n  Step 6 (scroll on 'down'): The comparison table is useless with 'Price shown at checkout' everywhere. I'll scroll down to the FAQ & Checkout section to see if there's a clear shipping timeline and actual pricing.\n  Step 7 (scroll on 'down'): The shipping timeline (2-3 business days plus 3-5 days in transit) and the 30-day money-back guarantee with free return shipping are clear and reassuring. I'll scroll down to check the FAQ and the pre-order checkout demo to finally see the actual price.\n  Step 8 (type on 'Alex Rivera'): I finally see the price—$24 each. The shipping timeline and 30-day return policy are clear. I'll fill in my name in the pre-order demo to see what the checkout review looks like.\n  Step 9 (type on 'alex@example.com'): I'll enter my email address next so I can continue to the checkout review and see the final total.\n  Step 10 (click on 'Continue to review'): Now that I've entered my name and email, I'll click 'Continue to review' to see the final total and shipping cost.\n  Step 11 (click on 'Complete order'): The total price is $24, and the shipping timeline and 30-day return policy are clear. Since this is a demo pre-order with no payment collected, I'll click 'Complete order' to finish.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0442,
+      "confidence": 0.9558,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.0272,
+      "confidence": 0.9728,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0462,
+      "confidence": 0.9538,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.9819,
+      "confidence": 0.9819,
+      "found": true
+    },
+    "forced_signup": {
+      "noul": 0.0246,
+      "confidence": 0.9754,
+      "found": false
+    }
+  }
+}

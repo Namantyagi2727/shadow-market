@@ -1,0 +1,170 @@
+{
+  "page": "r_9828b9cf",
+  "trap": "price_hidden",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 46.35,
+  "converted_count": 1,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "Not only is this a kids' water bottle cap, which isn't what I'm looking for, but it literally says 'Price shown at checkout—Price shown at checkout' in the copy. Hiding the price until checkout is an instant bounce for me.",
+      "duration_s": 12.05,
+      "num_steps": 2,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "A kids' smart water bottle cap? 'Price shown at checkout' is already a red flag, but let's scroll down to see if there are actual technical specs or if it's just marketing fluff.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "quit",
+          "target": "",
+          "thought": "Not only is this a kids' water bottle cap, which isn't what I'm looking for, but it literally says 'Price shown at checkout—Price shown at checkout' in the copy. Hiding the price until checkout is an instant bounce for me.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "This is a smart water bottle cap for parents of 6-10 year olds, which I don't need at all, and it doesn't even show the price upfront ('Price shown at checkout'). Not wasting my time on this.",
+      "duration_s": 5.51,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "This is a smart water bottle cap for parents of 6-10 year olds, which I don't need at all, and it doesn't even show the price upfront ('Price shown at checkout'). Not wasting my time on this.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "converted",
+      "quit_reason": null,
+      "duration_s": 45.64,
+      "num_steps": 9,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "Shipping & FAQ",
+          "thought": "I want to check the shipping timeline and refund terms right away, and also see if this requires a companion app or complicated setup.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I can see the Shipping Timeline & Cost and 30-Day Fit & Kid-Proof Guarantee headers at the bottom, so I'll scroll down to read the full details.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "click",
+          "target": "Is there a monthly app subscription? +",
+          "thought": "I want to check the FAQ about the app subscription to see if it requires a companion app or complicated setup.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "click",
+          "target": "Will teachers ban it for making noise in class? +",
+          "thought": "I want to make sure it won't be a distraction in class before I consider pre-ordering.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The FAQs look reassuring, so I'll scroll down to check the pre-order checkout details and pricing.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "type",
+          "target": "e.g., Jordan Taylor",
+          "thought": "The price is $24 with no subscription, which is reasonable. I'll fill in my name to continue to the review step and see the final order details.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "type",
+          "target": "e.g., jordan@example.com",
+          "thought": "Now I'll enter my shipping email so I can continue to the review step.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "I've entered my name and email. Now I'll click 'Continue to review' to check the final order summary, shipping timeline, and terms.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "click",
+          "target": "Complete order",
+          "thought": "The order summary looks accurate—$24 total with no hidden fees. I'll click 'Complete order' to finish the pre-order.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: Not only is this a kids' water bottle cap, which isn't what I'm looking for, but it literally says 'Price shown at checkout—Price shown at checkout' in the copy. Hiding the price until checkout is an instant bounce for me.\n  Step 1 (scroll on 'down'): A kids' smart water bottle cap? 'Price shown at checkout' is already a red flag, but let's scroll down to see if there are actual technical specs or if it's just marketing fluff.\n  Step 2 (quit): Not only is this a kids' water bottle cap, which isn't what I'm looking for, but it literally says 'Price shown at checkout—Price shown at checkout' in the copy. Hiding the price until checkout is an instant bounce for me.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: This is a smart water bottle cap for parents of 6-10 year olds, which I don't need at all, and it doesn't even show the price upfront ('Price shown at checkout'). Not wasting my time on this.\n  Step 1 (quit): This is a smart water bottle cap for parents of 6-10 year olds, which I don't need at all, and it doesn't even show the price upfront ('Price shown at checkout'). Not wasting my time on this.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: converted\n  Step 1 (click on 'Shipping & FAQ'): I want to check the shipping timeline and refund terms right away, and also see if this requires a companion app or complicated setup.\n  Step 2 (scroll on 'down'): I can see the Shipping Timeline & Cost and 30-Day Fit & Kid-Proof Guarantee headers at the bottom, so I'll scroll down to read the full details.\n  Step 3 (click on 'Is there a monthly app subscription? +'): I want to check the FAQ about the app subscription to see if it requires a companion app or complicated setup.\n  Step 4 (click on 'Will teachers ban it for making noise in class? +'): I want to make sure it won't be a distraction in class before I consider pre-ordering.\n  Step 5 (scroll on 'down'): The FAQs look reassuring, so I'll scroll down to check the pre-order checkout details and pricing.\n  Step 6 (type on 'e.g., Jordan Taylor'): The price is $24 with no subscription, which is reasonable. I'll fill in my name to continue to the review step and see the final order details.\n  Step 7 (type on 'e.g., jordan@example.com'): Now I'll enter my shipping email so I can continue to the review step.\n  Step 8 (click on 'Continue to review'): I've entered my name and email. Now I'll click 'Continue to review' to check the final order summary, shipping timeline, and terms.\n  Step 9 (click on 'Complete order'): The order summary looks accurate—$24 total with no hidden fees. I'll click 'Complete order' to finish the pre-order.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0147,
+      "confidence": 0.9853,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.0354,
+      "confidence": 0.9646,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0446,
+      "confidence": 0.9554,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.9459,
+      "confidence": 0.9459,
+      "found": true
+    },
+    "forced_signup": {
+      "noul": 0.0211,
+      "confidence": 0.9789,
+      "found": false
+    }
+  }
+}

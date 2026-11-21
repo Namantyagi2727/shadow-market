@@ -1,0 +1,250 @@
+{
+  "page": "r_35bf7899",
+  "trap": "price_hidden",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 46.34,
+  "converted_count": 3,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "converted",
+      "quit_reason": null,
+      "duration_s": 37.86,
+      "num_steps": 8,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "Tech Specs",
+          "thought": "Price hidden until checkout is annoying, but let's check Tech Specs first to see if this thing has real specs or just buzzwords and impossible battery claims.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Specs look grounded—1100mAh Li-Po, 6 hours, IPX6, USB-C. No impossible physics claims so far. Let's scroll down to check the shipping, returns, and actual pricing.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "30-day night-ride return with covered return shipping is solid. Let's scroll down to the checkout section to see the actual price.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Skipping the email list. Let's scroll down to the pre-order checkout section to see the actual price.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "$29 is very reasonable for a 500lm USB-C light with a cam clamp and 30-day return policy. Let's fill out the demo pre-order form to see the review step.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "Let's fill in the shipping email and continue to the review step.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Details are filled out. Let's click 'Continue to review' to check the final summary.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "click",
+          "target": "Complete order",
+          "thought": "Order summary looks clean and $29 total is very fair. Let's click 'Complete order' to finish the demo pre-order flow.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "converted",
+      "quit_reason": null,
+      "duration_s": 46.01,
+      "num_steps": 7,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "It says 'Price shown at checkout' which is annoying since I'm on a tight budget, but let me scroll down to see what this actually costs and if it's worth it.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "click",
+          "target": "Price shown at checkout",
+          "thought": "Still no price visible, just 'Price shown at checkout' everywhere. Let me tap that button to jump to checkout and see what this actually costs.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "It's still saying 'Price shown at checkout' in the shipping section. Let me scroll down further to find the actual checkout form and see how much this costs.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "Okay, it's $29, which is under $35, so I'm not ruling it out yet. Let me fill in my name and check the review page to see if there's shipping or any extra fees.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "I'll enter my email address so I can continue to the review page and see if there are any extra shipping fees.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Now that my name and email are filled in, let me tap 'Continue to review' to see the final total and check if they add shipping or extra fees.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "click",
+          "target": "Complete order",
+          "thought": "The total is $29 with no surprise shipping or extra fees, which is under my $35 limit. Since this is a demo checkout, I'll go ahead and tap 'Complete order'.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "converted",
+      "quit_reason": null,
+      "duration_s": 31.63,
+      "num_steps": 7,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "Shipping & FAQ",
+          "thought": "I want to check the shipping timeline and refund terms right away before wasting time, so I'll click Shipping & FAQ.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The shipping timeline and 30-day return policy look clear so far. Let me scroll down to read the rest of the details and check the ordering process.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let me scroll down to see the pre-order checkout form and check the actual price and ordering steps.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "The price of $29 is reasonable and the checkout looks straightforward. Let me fill in my name to see the review step.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "Now I'll enter my shipping email so I can continue to the review step.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "I've entered my name and email, so I'll click 'Continue to review' to check the final order summary.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "click",
+          "target": "Complete order",
+          "thought": "Everything looks accurate in the order summary—$29 total, my name, and my email. I'll click 'Complete order' to finish the demo checkout.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: converted\n  Step 1 (click on 'Tech Specs'): Price hidden until checkout is annoying, but let's check Tech Specs first to see if this thing has real specs or just buzzwords and impossible battery claims.\n  Step 2 (scroll on 'down'): Specs look grounded—1100mAh Li-Po, 6 hours, IPX6, USB-C. No impossible physics claims so far. Let's scroll down to check the shipping, returns, and actual pricing.\n  Step 3 (scroll on 'down'): 30-day night-ride return with covered return shipping is solid. Let's scroll down to the checkout section to see the actual price.\n  Step 4 (scroll on 'down'): Skipping the email list. Let's scroll down to the pre-order checkout section to see the actual price.\n  Step 5 (type on 'Alex Rivera'): $29 is very reasonable for a 500lm USB-C light with a cam clamp and 30-day return policy. Let's fill out the demo pre-order form to see the review step.\n  Step 6 (type on 'alex@example.com'): Let's fill in the shipping email and continue to the review step.\n  Step 7 (click on 'Continue to review'): Details are filled out. Let's click 'Continue to review' to check the final summary.\n  Step 8 (click on 'Complete order'): Order summary looks clean and $29 total is very fair. Let's click 'Complete order' to finish the demo pre-order flow.\n\nTester persona_02 (Priya Nair, mobile) — outcome: converted\n  Step 1 (scroll on 'down'): It says 'Price shown at checkout' which is annoying since I'm on a tight budget, but let me scroll down to see what this actually costs and if it's worth it.\n  Step 2 (click on 'Price shown at checkout'): Still no price visible, just 'Price shown at checkout' everywhere. Let me tap that button to jump to checkout and see what this actually costs.\n  Step 3 (scroll on 'down'): It's still saying 'Price shown at checkout' in the shipping section. Let me scroll down further to find the actual checkout form and see how much this costs.\n  Step 4 (type on 'Alex Rivera'): Okay, it's $29, which is under $35, so I'm not ruling it out yet. Let me fill in my name and check the review page to see if there's shipping or any extra fees.\n  Step 5 (type on 'alex@example.com'): I'll enter my email address so I can continue to the review page and see if there are any extra shipping fees.\n  Step 6 (click on 'Continue to review'): Now that my name and email are filled in, let me tap 'Continue to review' to see the final total and check if they add shipping or extra fees.\n  Step 7 (click on 'Complete order'): The total is $29 with no surprise shipping or extra fees, which is under my $35 limit. Since this is a demo checkout, I'll go ahead and tap 'Complete order'.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: converted\n  Step 1 (click on 'Shipping & FAQ'): I want to check the shipping timeline and refund terms right away before wasting time, so I'll click Shipping & FAQ.\n  Step 2 (scroll on 'down'): The shipping timeline and 30-day return policy look clear so far. Let me scroll down to read the rest of the details and check the ordering process.\n  Step 3 (scroll on 'down'): Let me scroll down to see the pre-order checkout form and check the actual price and ordering steps.\n  Step 4 (type on 'Alex Rivera'): The price of $29 is reasonable and the checkout looks straightforward. Let me fill in my name to see the review step.\n  Step 5 (type on 'alex@example.com'): Now I'll enter my shipping email so I can continue to the review step.\n  Step 6 (click on 'Continue to review'): I've entered my name and email, so I'll click 'Continue to review' to check the final order summary.\n  Step 7 (click on 'Complete order'): Everything looks accurate in the order summary—$29 total, my name, and my email. I'll click 'Complete order' to finish the demo checkout.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0175,
+      "confidence": 0.9825,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.94,
+      "confidence": 0.94,
+      "found": true
+    },
+    "forced_signup": {
+      "noul": 0.0194,
+      "confidence": 0.9806,
+      "found": false
+    }
+  }
+}

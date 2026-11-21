@@ -1,0 +1,37 @@
+{
+  "page": "r_c5da68f4",
+  "trap": "clean",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 21.14,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page, grouped by category:\n\n---\n\n### 1. Checkout & Order-Completion Blockers\n* **It’s a non-functional demo checkout:** The yellow banner at the top of the form states `DEMO PRE-ORDER CHECKOUT - NO REAL PAYMENT OR CARD COLLECTION`. A real shopper who clicks \"Buy now\" expecting to purchase the product hits a dead end with no way to actually pay or place an order.\n* **Missing shipping address fields:** The checkout form only asks for **Full name** and **Shipping email**—there are no fields for street address, city, state, or ZIP code.\n* **Shipping cost is missing from the total:** The Shipping & FAQ section states *\"Flat $5 US shipping (free shipping on 2+ units),\"* yet with Quantity set to `1`, the checkout form displays `Total: $59` instead of `$64`.\n* **Promised \"$5 refundable spot\" doesn't exist:** The dark green CTA banner offers *\"Reserve your Smart Pill Organizer for $59 (or lock in a $5 refundable spot),\"* but the button only says `Buy now — $59`, and the checkout form has no $5 deposit option.\n* **\"Buy now\" hides the 6–8 week wait:** The header and hero buttons say `Buy now`, which implies an in-stock item. Shoppers aren't told it's a pre-order shipping in **6–8 weeks** until they read the lower sections (and it isn't reiterated in the checkout box).\n\n---\n\n### 2. Contradictions & Trust Issues\n* **Direct contradiction on the $5 deposit:** The FAQ card explicitly rejects $5 deposits (*\"A $5 deposit only measures curiosity. We let you place a full $59 V1 pre-order\"*), yet the banner directly beneath it advertises *\"(or lock in a $5 refundable spot).\"*\n* **\"No Subscription\" vs. $12/year renewal:** The hero badge claims `No Subscription` and `$59 One-time price`, while the FAQ reveals that after 3 years you must pay **$12/year** to keep the cellular SMS alerts working.\n* **\"Plug-in Setup\" vs. \"Cordless\":** The setup section is titled `3-STEP PLUG-IN SETUP (ZERO WI-FI)`, which contradicts the core selling point that the device is cordless and requires no wall-outlet tether.\n* **No real product photos or dimensions:** The only visual is a flat vector diagram. For a $59 hardware pre-order, shoppers have no idea what the physical device looks like, how big it is, what materials it's made of, or how many pills fit in a slot.\n* **Generic brand & missing legal/company info:** The brand is just \"Smart Pill Organizer\" with no company/LLC name, physical address, phone number, Privacy Policy, Terms of Service, or medical/FCC disclaimers in the footer.\n\n---\n\n### 3. Mobile & Layout Usability Issues\n* **Comparison table is cut off on mobile:** In the mobile view, the 3-column comparison table overflows horizontally. The `Bluetooth Organizers (~$45)` column is clipped mid-word (`Bluetoo...`, `Only if...`, `Coin ce...`), and the `Basic Alarm Boxes (~$25)` column is completely hidden off-screen with no scroll indicator.\n* **No mobile navigation:** Desktop has 5 anchor links (`How It Works`, `3-Step Setup`, `Compare`, `Shipping & FAQ`, `Updates`), all of which disappear on mobile without a hamburger menu, forcing mobile users to scroll the entire page to find details.\n\n---\n\n### 4. Product & Technical Clarity Gaps\n* **7-slot tray vs. twice-a-day dosing:** The illustration shows only 7 compartments (`SUN` through `SAT`), yet Step 2 uses `\"8am and 8pm\"` as the example schedule. It isn't explained how one compartment per day handles multiple daily doses without mixing morning/evening pills or triggering false missed-dose alerts.\n* **No cellular coverage or country details:** Because it relies on a built-in LTE-M IoT SIM, shoppers have no way to check if it works in their parent's area (e.g., rural areas, specific carriers, basement apartments) or outside the US.\n* **Missing setup & edge-case details:**\n  * How do you find the box's setup phone number to text it?\n  * How do you change the schedule, pause alerts (e.g., during travel/hospital stays), or handle time zones / Daylight Saving Time?\n  * How loud is the \"soft chime\" for seniors with hearing loss, and can the volume be adjusted?\n  * Is the lid easy for someone with arthritis or limited dexterity to open?",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0232,
+      "confidence": 0.9768,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.4333,
+      "confidence": 0.5667,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0237,
+      "confidence": 0.9763,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0223,
+      "confidence": 0.9777,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0193,
+      "confidence": 0.9807,
+      "found": false
+    }
+  }
+}

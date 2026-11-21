@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Pill Organizer — Peace of Mind Without the Daily Check-In Call</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --ink: #0f172a;
+      --ink-muted: #475569;
+      --border: #e2e8f0;
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --primary-soft: #ccfbf1;
+      --accent: #f59e0b;
+      --accent-soft: #fef3c7;
+      --danger-soft: #fee2e2;
+      --danger: #b91c1c;
+      --success-soft: #dcfce7;
+      --success: #15803d;
+      --radius: 14px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 4px 10px -4px rgba(15, 23, 42, 0.04);
+      --max-w: 1120px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background-color: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img, svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header / Nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 64px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--ink);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .brand:hover {
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: var(--ink-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background-color 0.15s ease, transform 0.1s ease, border-color 0.15s ease;
+      text-decoration: none;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background-color: var(--surface);
+      color: var(--ink);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--surface-alt);
+      text-decoration: none;
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 48px 0 64px;
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: 2.1rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .hero-sub {
+      margin: 0 0 24px;
+      font-size: 1.1rem;
+      color: var(--ink-muted);
+      max-width: 54ch;
+    }
+
+    .hero-price-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .price-tag {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .price-note {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      padding-left: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .hero-trust li {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-visual {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Sections */
+    section {
+      padding: 64px 0;
+    }
+
+    .section-alt {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-head {
+      max-width: 680px;
+      margin-bottom: 36px;
+    }
+
+    .section-kicker {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 12px;
+      font-size: 1.75rem;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--ink-muted);
+      font-size: 1.02rem;
+    }
+
+    /* Cards & Grids */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      min-width: 0;
+    }
+
+    .card-muted {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      min-width: 0;
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+
+    .card h3, .card-muted h3 {
+      margin: 0 0 8px;
+      font-size: 1.12rem;
+    }
+
+    .card p, .card-muted p {
+      margin: 0;
+      color: var(--ink-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Interactive Alert Demo */
+    .sms-demo {
+      margin-top: 28px;
+      background: var(--ink);
+      color: #ffffff;
+      border-radius: var(--radius);
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .sms-bubble {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 16px 18px;
+      font-size: 0.95rem;
+    }
+
+    .sms-meta {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .sms-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .sms-btn {
+      background: #334155;
+      color: #ffffff;
+      border: 1px solid #475569;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .sms-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* Comparison Table */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+      text-align: left;
+      font-size: 0.94rem;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--surface-alt);
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .col-highlight {
+      background: #f0fdfa;
+    }
+
+    th.col-highlight {
+      background: #ccfbf1;
+      color: var(--primary-dark);
+    }
+
+    /* Risk / Honest Answers */
+    .risk-item {
+      border-left: 4px solid var(--primary);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 20px 22px;
+    }
+
+    .risk-q {
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+      font-size: 1.02rem;
+    }
+
+    .risk-a {
+      color: var(--ink-muted);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* Reservation / CTA Banner */
+    .cta-box {
+      background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 32px 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .cta-box h2 {
+      margin: 0 0 10px;
+      font-size: 1.6rem;
+      color: #ffffff;
+    }
+
+    .cta-box p {
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 0.98rem;
+    }
+
+    /* Forms: Waitlist & Checkout */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+      width: 100%;
+      padding: 11px 14px;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--ink);
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.18);
+    }
+
+    .inline-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .msg-box {
+      margin-top: 14px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.94rem;
+      font-weight: 500;
+      display: none;
+    }
+
+    .msg-box.visible {
+      display: block;
+    }
+
+    .msg-success {
+      background: var(--success-soft);
+      color: var(--success);
+      border: 1px solid #bbf7d0;
+    }
+
+    .msg-error {
+      background: var(--danger-soft);
+      color: var(--danger);
+      border: 1px solid #fecaca;
+    }
+
+    /* Checkout Card */
+    .checkout-card {
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .demo-banner {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: #92400e;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+
+    .qty-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .qty-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    .qty-input {
+      width: 72px !important;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .summary-box {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 6px 0;
+      font-size: 0.95rem;
+    }
+
+    .summary-total {
+      border-top: 1px solid var(--border);
+      margin-top: 8px;
+      padding-top: 12px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--ink);
+    }
+
+    .step-panel {
+      display: none;
+    }
+
+    .step-panel.active {
+      display: block;
+    }
+
+    .checkout-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--ink);
+      color: #cbd5e1;
+      padding: 40px 0;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #5eead4;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .hero {
+        padding: 72px 0 80px;
+      }
+
+      .hero h1 {
+        font-size: 2.75rem;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .sms-demo {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cta-box {
+        grid-template-columns: 1.4fr auto;
+        padding: 40px;
+      }
+
+      .inline-form {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .inline-form input[type="email"] {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="#top" class="brand" aria-label="Smart Pill Organizer Home">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <rect x="2" y="4" width="24" height="20" rx="6" fill="#0d9488"/>
+          <rect x="6" y="8" width="7" height="12" rx="2" fill="#fef3c7"/>
+          <rect x="15" y="8" width="7" height="12" rx="2" fill="#ccfbf1"/>
+          <circle cx="9.5" cy="14" r="2" fill="#f59e0b"/>
+        </svg>
+        <span>Smart Pill Organizer</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#alert-flow">How It Works</a>
+        <a href="#setup">3-Step Setup</a>
+        <a href="#compare">Compare</a>
+        <a href="#honest-details">Shipping &amp; FAQ</a>
+        <a href="#waitlist">Updates</a>
+      </nav>
+      <a href="#checkout" class="btn btn-primary btn-sm">Buy now &mdash; $59</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 1. Hero: Glowing Organizer & Value Prop -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Built-in Cellular &bull; Zero Wi-Fi &bull; No Subscription</div>
+          <h1>Know Mom took her meds without the daily check-in call.</h1>
+          <p class="hero-sub">
+            A smart pill organizer for aging parents that lights up when a dose is due and texts their adult child if a dose is missed. No smartphone or Wi-Fi required for Mom.
+          </p>
+          <div class="hero-price-row">
+            <span class="price-tag">$59</span>
+            <span class="price-note">One-time price &bull; 3 years of cellular SMS alerts included</span>
+          </div>
+          <div class="hero-actions">
+            <a href="#checkout" class="btn btn-primary">Buy now</a>
+            <a href="#alert-flow" class="btn btn-secondary">See how alerts work</a>
+          </div>
+          <ul class="hero-trust">
+            <li>&#10003; Lights up for reminders</li>
+            <li>&#10003; Texts adult child if missed</li>
+            <li>&#10003; 30-day cordless battery</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" aria-label="Illustration of Smart Pill Organizer glowing and sending an SMS alert">
+          <svg viewBox="0 0 460 320" width="100%" role="img" aria-labelledby="hero-svg-title">
+            <title id="hero-svg-title">Smart Pill Organizer with glowing Tuesday compartment and SMS alert to adult child</title>
+            <!-- Soft background glow -->
+            <rect x="10" y="10" width="440" height="300" rx="18" fill="#f8fafc" stroke="#e2e8f0"/>
+
+            <!-- Organizer Base -->
+            <rect x="28" y="110" width="276" height="142" rx="18" fill="#0f172a"/>
+            <rect x="34" y="116" width="264" height="130" rx="14" fill="#1e293b"/>
+
+            <!-- 7 Day Compartments -->
+            <!-- Sun -->
+            <rect x="44" y="136" width="32" height="90" rx="7" fill="#334155"/>
+            <text x="60" y="156" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="sans-serif" font-weight="700">SUN</text>
+            <circle cx="60" cy="186" r="5" fill="#475569"/>
+
+            <!-- Mon -->
+            <rect x="81" y="136" width="32" height="90" rx="7" fill="#334155"/>
+            <text x="97" y="156" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="sans-serif" font-weight="700">MON</text>
+            <circle cx="97" cy="186" r="5" fill="#475569"/>
+
+            <!-- Tue (Active Glowing) -->
+            <rect x="115" y="128" width="38" height="106" rx="9" fill="#f59e0b" opacity="0.25"/>
+            <rect x="118" y="136" width="32" height="90" rx="7" fill="#fef3c7" stroke="#f59e0b" stroke-width="2.5"/>
+            <text x="134" y="156" text-anchor="middle" fill="#92400e" font-size="10" font-family="sans-serif" font-weight="800">TUE</text>
+            <ellipse cx="134" cy="184" rx="7" ry="4" fill="#0d9488"/>
+            <circle cx="134" cy="202" r="5" fill="#f59e0b"/>
+            <!-- Glow rays -->
+            <line x1="134" y1="118" x2="134" y2="106" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="120" y1="122" x2="112" y2="112" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="148" y1="122" x2="156" y2="112" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+
+            <!-- Wed -->
+            <rect x="155" y="136" width="32" height="90" rx="7" fill="#334155"/>
+            <text x="171" y="156" text-anchor="middle" fill="#cbd5e1" font-size="10" font-family="sans-serif" font-weight="700">WED</text>
+            <ellipse cx="171" cy="184" rx="7" ry="4" fill="#5eead4"/>
+
+            <!-- Thu -->
+            <rect x="192" y="136" width="32" height="90" rx="7" fill="#334155"/>
+            <text x="208" y="156" text-anchor="middle" fill="#cbd5e1" font-size="10" font-family="sans-serif" font-weight="700">THU</text>
+            <ellipse cx="208" cy="184" rx="7" ry="4" fill="#5eead4"/>
+
+            <!-- Fri -->
+            <rect x="229" y="136" width="32" height="90" rx="7" fill="#334155"/>
+            <text x="245" y="156" text-anchor="middle" fill="#cbd5e1" font-size="10" font-family="sans-serif" font-weight="700">FRI</text>
+            <ellipse cx="245" cy="184" rx="7" ry="4" fill="#5eead4"/>
+
+            <!-- Sat -->
+            <rect x="266" y="136" width="24" height="90" rx="7" fill="#334155"/>
+            <text x="278" y="156" text-anchor="middle" fill="#cbd5e1" font-size="9" font-family="sans-serif" font-weight="700">SAT</text>
+            <ellipse cx="278" cy="184" rx="5" ry="4" fill="#5eead4"/>
+
+            <!-- Signal Arc -->
+            <path d="M 272 95 Q 305 62 338 78" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-dasharray="5 5"/>
+
+            <!-- Adult Child Phone -->
+            <rect x="330" y="34" width="104" height="196" rx="16" fill="#0f172a"/>
+            <rect x="336" y="46" width="92" height="172" rx="10" fill="#ffffff"/>
+            <rect x="366" y="39" width="32" height="4" rx="2" fill="#334155"/>
+
+            <!-- SMS Bubble on Phone -->
+            <text x="382" y="68" text-anchor="middle" fill="#64748b" font-size="9" font-family="sans-serif" font-weight="700">SMS ALERT</text>
+            <rect x="342" y="78" width="80" height="74" rx="8" fill="#ccfbf1"/>
+            <text x="348" y="95" fill="#0f172a" font-size="9" font-family="sans-serif" font-weight="700">Smart Pill Box</text>
+            <text x="348" y="110" fill="#0f766e" font-size="8.5" font-family="sans-serif">Mom's 8:00 AM</text>
+            <text x="348" y="122" fill="#0f766e" font-size="8.5" font-family="sans-serif">Tue dose was</text>
+            <text x="348" y="134" fill="#0f766e" font-size="8.5" font-family="sans-serif">not opened yet.</text>
+
+            <rect x="342" y="162" width="80" height="40" rx="8" fill="#f1f5f9"/>
+            <text x="348" y="179" fill="#475569" font-size="8.5" font-family="sans-serif">Zero Wi-Fi needed.</text>
+            <text x="348" y="192" fill="#475569" font-size="8.5" font-family="sans-serif">30-day battery.</text>
+
+            <!-- Caption -->
+            <text x="166" y="280" text-anchor="middle" fill="#475569" font-size="11" font-family="sans-serif" font-weight="600">Cordless 7-Day Organizer &bull; Built-In Cellular</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Simple Text Alert Flow -->
+    <section id="alert-flow" class="section-alt">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Simple Text Alert Flow</div>
+          <h2>Gentle reminders for Mom. Quiet peace of mind for you.</h2>
+          <p>No apps for your parent to learn, and no constant notifications unless a dose is actually missed.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="step-badge">1</div>
+            <h3>Compartment Glows</h3>
+            <p>At dose time, today's slot lights up in warm amber with a soft chime so Mom knows exactly which pills to take.</p>
+          </article>
+          <article class="card">
+            <div class="step-badge">2</div>
+            <h3>Lid Sensor Logs It</h3>
+            <p>When Mom flips open the lid to take her pills, the light turns off and the dose is marked complete automatically.</p>
+          </article>
+          <article class="card">
+            <div class="step-badge">3</div>
+            <h3>SMS Only If Missed</h3>
+            <p>If the lid stays closed past your 45-minute grace window, you get a plain SMS text message so you can check in.</p>
+          </article>
+        </div>
+
+        <div class="sms-demo" aria-label="Interactive SMS alert preview">
+          <div>
+            <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #ffffff;">Preview the SMS you receive</h3>
+            <p style="margin: 0 0 16px; color: #cbd5e1; font-size: 0.94rem;">
+              Choose a scenario to see how the Smart Pill Organizer communicates with your phone:
+            </p>
+            <div class="sms-controls">
+              <button type="button" class="sms-btn active" data-scenario="missed">Missed Dose</button>
+              <button type="button" class="sms-btn" data-scenario="taken">Daily Summary</button>
+              <button type="button" class="sms-btn" data-scenario="battery">Low Battery</button>
+            </div>
+          </div>
+          <div class="sms-bubble" id="sms-preview">
+            <div class="sms-meta">
+              <span>Smart Pill Organizer</span>
+              <span id="sms-time">8:45 AM</span>
+            </div>
+            <div id="sms-text">
+              Heads up: Mom's 8:00 AM Tuesday compartment hasn't been opened yet (45 min past schedule).
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 3-Step Plug-In Setup (Zero Wi-Fi) -->
+    <section id="setup">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">3-Step Plug-In Setup (Zero Wi-Fi)</div>
+          <h2>Set up in 3 minutes. Keep it anywhere in the house.</h2>
+          <p>Built-in cellular means no Wi-Fi passwords, no router troubleshooting, and no wall-outlet tether.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card-muted">
+            <div class="step-badge">1</div>
+            <h3>Charge &amp; Place Anywhere</h3>
+            <p>Charge on the magnetic USB-C coaster for 2 hours, then place the cordless tray on the kitchen table, nightstand, or bathroom counter for up to 30 days per charge.</p>
+          </article>
+          <article class="card-muted">
+            <div class="step-badge">2</div>
+            <h3>Text Your Schedule</h3>
+            <p>Use your own phone to text the box's setup number (e.g., "8am and 8pm") and add up to 2 family phone numbers for alerts. Zero apps required.</p>
+          </article>
+          <article class="card-muted">
+            <div class="step-badge">3</div>
+            <h3>Fill the 7-Day Tray</h3>
+            <p>Load Sunday through Saturday compartments once a week. The built-in LTE-M chip connects automatically out of the box.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Cellular vs. Bluetooth Comparison -->
+    <section id="compare" class="section-alt">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Cellular vs. Bluetooth Comparison</div>
+          <h2>Why built-in cellular beats $25 alarms and $45 Bluetooth boxes</h2>
+          <p>Other organizers rely on your parent's smartphone or only beep into an empty room.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th class="col-highlight">Smart Pill Organizer ($59)</th>
+                <th>Bluetooth Organizers (~$45)</th>
+                <th>Basic Alarm Boxes (~$25)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Texts adult child if missed</strong></td>
+                <td class="col-highlight"><strong>Yes &mdash; instant SMS anywhere</strong></td>
+                <td>Only if Mom's phone is within 30 ft</td>
+                <td>No &mdash; local beep only</td>
+              </tr>
+              <tr>
+                <td><strong>Works without Wi-Fi or smartphone</strong></td>
+                <td class="col-highlight"><strong>Yes &mdash; built-in LTE-M cellular</strong></td>
+                <td>No &mdash; requires paired phone &amp; app</td>
+                <td>Yes (no connectivity)</td>
+              </tr>
+              <tr>
+                <td><strong>Cordless counter placement</strong></td>
+                <td class="col-highlight"><strong>30-day battery + magnetic dock</strong></td>
+                <td>Coin cell battery</td>
+                <td>Coin cell battery</td>
+              </tr>
+              <tr>
+                <td><strong>Monthly subscription</strong></td>
+                <td class="col-highlight"><strong>$0 (3 years included)</strong></td>
+                <td>$0</td>
+                <td>$0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Honest Answers to Hard Questions (Boardroom Risks) -->
+    <section id="risks">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Transparent Engineering</div>
+          <h2>How we made $59 cordless cellular possible</h2>
+          <p>Straightforward answers to the toughest questions about hardware margins, outlets, and pricing.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="risk-item">
+            <div class="risk-q">How can $59 include 3 years of cellular &amp; SMS with no subscription?</div>
+            <p class="risk-a">We use ultra-low-power LTE-M IoT SIMs that send tiny 1 KB status pings—not video or web data. Wholesale IoT connectivity plus bulk SMS alerts costs under $0.35/month (~$12.60 over 3 years), leaving healthy hardware margin at $59. After year 3, you can renew for $12/year or keep using light-up reminders free forever.</p>
+          </div>
+          <div class="risk-item">
+            <div class="risk-q">Does it have to stay plugged into a wall outlet?</div>
+            <p class="risk-a">No. Seniors keep pills on kitchen tables, nightstands, and bathroom counters—not next to outlets. A single 2-hour charge powers the organizer for 30 days cordless, and you get a low-battery text days before it needs the magnetic dock.</p>
+          </div>
+          <div class="risk-item">
+            <div class="risk-q">Why not a $25 alarm box or $45 Bluetooth organizer?</div>
+            <p class="risk-a">A $25 alarm box only beeps in an empty room if Mom is napping or outside. A $45 Bluetooth box fails the moment Mom forgets to charge her phone or leaves it in another room. For $14 more, built-in cellular works independently.</p>
+          </div>
+          <div class="risk-item">
+            <div class="risk-q">What about the $5 refundable reservation vs. full $59 pre-order?</div>
+            <p class="risk-a">A $5 deposit only measures curiosity. We let you place a full $59 V1 pre-order (100% refundable anytime before shipping) so we validate real commitment—or join the free launch waitlist below if you're still deciding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Refundable $5 Reservation CTA / Pre-order Banner -->
+    <section class="section-alt">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <div class="eyebrow" style="background: rgba(204, 251, 241, 0.16); color: #5eead4;">Batch 1 Pre-Order &bull; 100% Refundable</div>
+            <h2>Reserve your Smart Pill Organizer for $59 (or lock in a $5 refundable spot)</h2>
+            <p>Full $59 pre-orders ship first in Batch 1 with a 60-day home trial. Cancel anytime before dispatch for an instant refund.</p>
+          </div>
+          <div>
+            <a href="#checkout" class="btn btn-primary" style="background: #f59e0b; color: #0f172a;">Buy now &mdash; $59</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Honest Details Section -->
+    <section id="honest-details">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Honest Details</div>
+          <h2>Shipping, returns, and real human support</h2>
+          <p>Everything you should know before ordering V1 Batch 1.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Shipping Timeline &amp; Cost</h3>
+            <p><strong>Batch 1 ships in 6&ndash;8 weeks.</strong> Flat $5 US shipping (free shipping on 2+ units). You will receive tracking as soon as your unit leaves our fulfillment center.</p>
+          </article>
+          <article class="card">
+            <h3>60-Day Return Policy</h3>
+            <p>Try it with your parent for 60 days. If it doesn't fit their routine, email us for a <strong>prepaid return label and a 100% refund</strong>—no restocking fees.</p>
+          </article>
+          <article class="card">
+            <h3>Support &amp; Contact</h3>
+            <p>Questions about pill sizes, cellular coverage, or setup? Email <a href="mailto:support@smartpill.care">support@smartpill.care</a>. Real humans reply within 1 business day.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Email Waitlist / Launch Updates Signup -->
+    <section id="waitlist" class="section-alt">
+      <div class="container">
+        <div class="checkout-card" style="max-width: 680px;">
+          <div class="section-kicker">Launch Updates</div>
+          <h2 style="margin: 0 0 8px; font-size: 1.5rem;">Not ready to order? Get Batch 1 launch updates</h2>
+          <p style="margin: 0 0 18px; color: var(--ink-muted);">
+            Join the waitlist for shipping milestones, cellular coverage updates, and early-bird availability. No spam.
+          </p>
+          <form id="waitlist-form" novalidate>
+            <div class="inline-form">
+              <label for="waitlist-email" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Email address</label>
+              <input type="email" id="waitlist-email" name="email" placeholder="you@example.com" required />
+              <button type="submit" class="btn btn-primary">Notify me</button>
+            </div>
+            <div id="waitlist-msg" class="msg-box" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2-Step Demo Pre-Order Checkout -->
+    <section id="checkout">
+      <div class="container">
+        <div class="checkout-card">
+          <span class="demo-banner">DEMO PRE-ORDER CHECKOUT &bull; NO REAL PAYMENT OR CARD COLLECTION</span>
+          <h2 style="margin: 0 0 6px; font-size: 1.6rem;">Pre-order Smart Pill Organizer</h2>
+          <p style="margin: 0 0 22px; color: var(--ink-muted); font-size: 0.95rem;">
+            $59 each &bull; Includes 3 years of cellular SMS alerts &bull; 60-day trial
+          </p>
+
+          <!-- Step 1 -->
+          <div id="checkout-step-1" class="step-panel active">
+            <form id="step1-form" novalidate>
+              <div class="form-group">
+                <label for="co-qty">Quantity ($59 each)</label>
+                <div class="qty-row">
+                  <button type="button" class="qty-btn" id="qty-dec" aria-label="Decrease quantity">&minus;</button>
+                  <input type="number" id="co-qty" class="qty-input" min="1" max="10" value="1" required />
+                  <button type="button" class="qty-btn" id="qty-inc" aria-label="Increase quantity">+</button>
+                  <span id="live-subtotal" style="font-weight: 700; color: var(--primary-dark);">Total: $59</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="co-name">Full name</label>
+                <input type="text" id="co-name" placeholder="Jordan Taylor" required />
+              </div>
+
+              <div class="form-group">
+                <label for="co-email">Shipping email</label>
+                <input type="email" id="co-email" placeholder="jordan@example.com" required />
+              </div>
+
+              <div id="step1-error" class="msg-box msg-error" role="alert"></div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
+                Continue to review
+              </button>
+            </form>
+          </div>
+
+          <!-- Step 2 -->
+          <div id="checkout-step-2" class="step-panel">
+            <h3 style="margin: 0 0 14px; font-size: 1.15rem;">Review your demo order</h3>
+            <div class="summary-box">
+              <div class="summary-row">
+                <span>Product</span>
+                <strong>Smart Pill Organizer</strong>
+              </div>
+              <div class="summary-row">
+                <span>Quantity</span>
+                <strong id="rev-qty">1</strong>
+              </div>
+              <div class="summary-row">
+                <span>Customer</span>
+                <strong id="rev-name">&mdash;</strong>
+              </div>
+              <div class="summary-row">
+                <span>Shipping email</span>
+                <strong id="rev-email">&mdash;</strong>
+              </div>
+              <div class="summary-row summary-total">
+                <span>Total price</span>
+                <span id="rev-total">$59</span>
+              </div>
+            </div>
+
+            <div class="checkout-actions">
+              <button type="button" id="btn-back" class="btn btn-secondary">Back</button>
+              <button type="button" id="btn-complete" class="btn btn-primary">Complete order</button>
+            </div>
+          </div>
+
+          <!-- Confirmation -->
+          <div id="checkout-confirmation" class="step-panel">
+            <div class="msg-box msg-success visible" style="margin-top: 0; margin-bottom: 18px;" role="status">
+              <strong>Order confirmed!</strong> Thank you for your demo pre-order.
+            </div>
+            <div class="summary-box">
+              <div class="summary-row">
+                <span>Order number</span>
+                <strong id="conf-order-num">SPO-10000</strong>
+              </div>
+              <div class="summary-row">
+                <span>Product</span>
+                <strong>Smart Pill Organizer</strong>
+              </div>
+              <div class="summary-row">
+                <span>Quantity</span>
+                <strong id="conf-qty">1</strong>
+              </div>
+              <div class="summary-row">
+                <span>Total</span>
+                <strong id="conf-total">$59</strong>
+              </div>
+              <div class="summary-row">
+                <span>Confirmation sent to</span>
+                <strong id="conf-email">&mdash;</strong>
+              </div>
+            </div>
+            <button type="button" id="btn-reset-checkout" class="btn btn-secondary">Start another demo order</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: center;">
+      <div>
+        <strong>Smart Pill Organizer</strong> &mdash; Built for aging parents and their adult children.
+      </div>
+      <div>
+        Support: <a href="mailto:support@smartpill.care">support@smartpill.care</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var UNIT_PRICE = 59;
+
+      // 1. Interactive SMS Preview
+      var scenarios = {
+        missed: {
+          time: "8:45 AM",
+          text: "Heads up: Mom's 8:00 AM Tuesday compartment hasn't been opened yet (45 min past schedule)."
+        },
+        taken: {
+          time: "9:00 PM",
+          text: "Daily summary: Mom took both scheduled doses today (8:02 AM & 7:55 PM). All set!"
+        },
+        battery: {
+          time: "10:15 AM",
+          text: "Battery reminder: Smart Pill Organizer has ~4 days left. Set it on the magnetic coaster tonight."
+        }
+      };
+
+      var smsBtns = document.querySelectorAll(".sms-btn");
+      var smsTime = document.getElementById("sms-time");
+      var smsText = document.getElementById("sms-text");
+
+      smsBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          smsBtns.forEach(function (b) { b.classList.remove("active"); });
+          btn.classList.add("active");
+          var data = scenarios[btn.getAttribute("data-scenario")];
+          if (data) {
+            smsTime.textContent = data.time;
+            smsText.textContent = data.text;
+          }
+        });
+      });
+
+      // 2. Waitlist Form
+      var waitlistForm = document.getElementById("waitlist-form");
+      var waitlistEmail = document.getElementById("waitlist-email");
+      var waitlistMsg = document.getElementById("waitlist-msg");
+
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      waitlistForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var val = waitlistEmail.value.trim();
+        waitlistMsg.className = "msg-box visible";
+
+        if (!isValidEmail(val)) {
+          waitlistMsg.classList.add("msg-error");
+          waitlistMsg.textContent = "Please enter a valid email address.";
+          return;
+        }
+
+        waitlistMsg.classList.add("msg-success");
+        waitlistMsg.textContent = "You're on the list! We'll send Batch 1 updates to " + val + ".";
+        waitlistEmail.value = "";
+      });
+
+      // 3. 2-Step Demo Checkout
+      var step1Panel = document.getElementById("checkout-step-1");
+      var step2Panel = document.getElementById("checkout-step-2");
+      var confPanel = document.getElementById("checkout-confirmation");
+
+      var qtyInput = document.getElementById("co-qty");
+      var qtyDec = document.getElementById("qty-dec");
+      var qtyInc = document.getElementById("qty-inc");
+      var liveSubtotal = document.getElementById("live-subtotal");
+
+      var nameInput = document.getElementById("co-name");
+      var emailInput = document.getElementById("co-email");
+      var step1Form = document.getElementById("step1-form");
+      var step1Error = document.getElementById("step1-error");
+
+      var revQty = document.getElementById("rev-qty");
+      var revName = document.getElementById("rev-name");
+      var revEmail = document.getElementById("rev-email");
+      var revTotal = document.getElementById("rev-total");
+
+      var btnBack = document.getElementById("btn-back");
+      var btnComplete = document.getElementById("btn-complete");
+      var btnReset = document.getElementById("btn-reset-checkout");
+
+      var confOrderNum = document.getElementById("conf-order-num");
+      var confQty = document.getElementById("conf-qty");
+      var confTotal = document.getElementById("conf-total");
+      var confEmail = document.getElementById("conf-email");
+
+      function getQty() {
+        var n = parseInt(qtyInput.value, 10);
+        if (isNaN(n) || n < 1) return 1;
+        if (n > 10) return 10;
+        return n;
+      }
+
+      function updateSubtotal() {
+        var q = getQty();
+        qtyInput.value = q;
+        liveSubtotal.textContent = "Total: $" + (q * UNIT_PRICE);
+      }
+
+      qtyDec.addEventListener("click", function () {
+        qtyInput.value = Math.max(1, getQty() - 1);
+        updateSubtotal();
+      });
+
+      qtyInc.addEventListener("click", function () {
+        qtyInput.value = Math.min(10, getQty() + 1);
+        updateSubtotal();
+      });
+
+      qtyInput.addEventListener("input", updateSubtotal);
+
+      function showPanel(panel) {
+        step1Panel.classList.remove("active");
+        step2Panel.classList.remove("active");
+        confPanel.classList.remove("active");
+        panel.classList.add("active");
+      }
+
+      step1Form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var q = getQty();
+        var name = nameInput.value.trim();
+        var email = emailInput.value.trim();
+
+        step1Error.classList.remove("visible");
+
+        if (!name) {
+          step1Error.textContent = "Please enter your full name.";
+          step1Error.classList.add("visible");
+          nameInput.focus();
+          return;
+        }
+
+        if (!isValidEmail(email)) {
+          step1Error.textContent = "Please enter a valid shipping email address.";
+          step1Error.classList.add("visible");
+          emailInput.focus();
+          return;
+        }
+
+        revQty.textContent = String(q);
+        revName.textContent = name;
+        revEmail.textContent = email;
+        revTotal.textContent = "$" + (q * UNIT_PRICE);
+
+        showPanel(step2Panel);
+      });
+
+      btnBack.addEventListener("click", function () {
+        showPanel(step1Panel);
+      });
+
+      btnComplete.addEventListener("click", function () {
+        var q = getQty();
+        var total = "$" + (q * UNIT_PRICE);
+        var orderNum = "SPO-" + Math.floor(10000 + Math.random() * 90000);
+
+        confOrderNum.textContent = orderNum;
+        confQty.textContent = String(q);
+        confTotal.textContent = total;
+        confEmail.textContent = emailInput.value.trim();
+
+        showPanel(confPanel);
+      });
+
+      btnReset.addEventListener("click", function () {
+        qtyInput.value = 1;
+        updateSubtotal();
+        nameInput.value = "";
+        emailInput.value = "";
+        step1Error.classList.remove("visible");
+        showPanel(step1Panel);
+      });
+    })();
+  </script>
+
+<script data-lab-trap="1">
+(function () {
+  function applyTrap() {
+    if (!document.body || document.getElementById('lab-forced-signup-overlay')) return;
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
+    var overlay = document.createElement('div');
+    overlay.id = 'lab-forced-signup-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.style.cssText = [
+      'position:fixed',
+      'inset:0',
+      'z-index:2147483647',
+      'background:rgba(15,23,42,0.94)',
+      'display:flex',
+      'align-items:center',
+      'justify-content:center',
+      'padding:20px',
+      'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif'
+    ].join(';');
+
+    var card = document.createElement('div');
+    card.style.cssText = [
+      'background:#ffffff',
+      'color:#0f172a',
+      'max-width:420px',
+      'width:100%',
+      'border-radius:16px',
+      'padding:28px',
+      'box-shadow:0 24px 60px rgba(0,0,0,0.4)'
+    ].join(';');
+
+    card.innerHTML = ''
+      + '<h2 style="margin:0 0 8px;font-size:1.35rem;line-height:1.25;">Create an account to see this product</h2>'
+      + '<p style="margin:0 0 18px;font-size:0.92rem;color:#475569;">Sign up to continue viewing product details and pricing.</p>'
+      + '<form id="labForcedSignupForm" novalidate>'
+      + '  <div style="margin-bottom:12px;">'
+      + '    <label for="labSignupEmail" style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:4px;">Email</label>'
+      + '    <input id="labSignupEmail" type="email" placeholder="you@example.com" required '
+      + '      style="width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:0.95rem;box-sizing:border-box;" />'
+      + '  </div>'
+      + '  <div style="margin-bottom:16px;">'
+      + '    <label for="labSignupPassword" style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:4px;">Password</label>'
+      + '    <input id="labSignupPassword" type="password" placeholder="Create a password" required '
+      + '      style="width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:0.95rem;box-sizing:border-box;" />'
+      + '  </div>'
+      + '  <button type="submit" id="labSignupBtn" '
+      + '    style="width:100%;padding:12px 16px;background:#0f172a;color:#ffffff;border:none;border-radius:8px;font-size:0.98rem;font-weight:700;cursor:pointer;">Sign up</button>'
+      + '  <div id="labSignupStatus" role="status" '
+      + '    style="display:none;margin-top:14px;padding:10px 12px;border-radius:8px;background:#fef3c7;color:#92400e;font-size:0.9rem;font-weight:600;"></div>'
+      + '</form>';
+
+    overlay.appendChild(card);
+    document.body.appendChild(overlay);
+
+    var form = document.getElementById('labForcedSignupForm');
+    var status = document.getElementById('labSignupStatus');
+    function showVerify(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      status.textContent = 'Please verify your email';
+      status.style.display = 'block';
+    }
+    form.addEventListener('submit', showVerify);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyTrap);
+  } else {
+    applyTrap();
+  }
+})();
+</script>
+</body>
+</html>

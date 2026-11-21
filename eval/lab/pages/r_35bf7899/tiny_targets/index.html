@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clip-on Bike Lane Light — Safer Night Commutes ($29)</title>
+  <style>
+    :root {
+      --bg: #080c14;
+      --bg-elevated: #0f1623;
+      --bg-card: #131c2e;
+      --bg-card-hover: #182338;
+      --border: #23304a;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --laser: #22f59e;
+      --laser-dark: #0fb872;
+      --laser-glow: rgba(34, 245, 158, 0.22);
+      --amber: #fbbf24;
+      --coral: #fb7185;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --max-w: 1120px;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--laser);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img, svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header / Nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(8, 12, 20, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 64px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--laser);
+      box-shadow: 0 0 12px var(--laser);
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--laser);
+      color: #041b11;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .nav-cta:hover {
+      background: #44f8ae;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 24px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--laser);
+      color: #031910;
+      box-shadow: 0 0 24px var(--laser-glow);
+    }
+    .btn-primary:hover {
+      background: #48f9b0;
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: #364a70;
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 48px 0 56px;
+      background:
+        radial-gradient(circle at 75% 20%, rgba(34, 245, 158, 0.10), transparent 45%),
+        radial-gradient(circle at 15% 80%, rgba(56, 189, 248, 0.08), transparent 45%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        padding: 72px 0 80px;
+      }
+      .hero-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 48px;
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--laser);
+      background: rgba(34, 245, 158, 0.09);
+      border: 1px solid rgba(34, 245, 158, 0.25);
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2rem, 4.5vw, 3.15rem);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .hero-sub {
+      margin: 0 0 24px;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 56ch;
+    }
+
+    .hero-price-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .price-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 12px;
+    }
+
+    .price-amount {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .price-note {
+      font-size: 0.85rem;
+      color: var(--laser);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 22px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      padding-top: 8px;
+    }
+
+    .hero-trust span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .check-dot {
+      color: var(--laser);
+      font-weight: 800;
+    }
+
+    .hero-visual {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-visual-caption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Sections */
+    section {
+      padding: 64px 0;
+    }
+
+    .section-alt {
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-head {
+      max-width: 680px;
+      margin-bottom: 36px;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--laser);
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+
+    .section-desc {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1.02rem;
+    }
+
+    /* Interactive Demo Card */
+    .demo-shell {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 860px) {
+      .demo-shell {
+        grid-template-columns: 1.25fr 0.75fr;
+        padding: 28px;
+        align-items: center;
+      }
+    }
+
+    .demo-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .toggle-btn {
+      font-family: var(--font);
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .toggle-btn.active {
+      background: rgba(34, 245, 158, 0.14);
+      border-color: var(--laser);
+      color: #ffffff;
+    }
+
+    .demo-stage {
+      background: #060910;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .demo-readout h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: #ffffff;
+    }
+
+    .demo-readout p {
+      margin: 0 0 16px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .risk-answer-box {
+      background: rgba(34, 245, 158, 0.06);
+      border: 1px solid rgba(34, 245, 158, 0.25);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 0.9rem;
+    }
+
+    .risk-answer-box strong {
+      color: var(--laser);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* Two-column feature / mount section */
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    @media (min-width: 860px) {
+      .split-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 680px) {
+      .card-grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .card-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      color: #ffffff;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.93rem;
+    }
+
+    .badge-tag {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--amber);
+      background: rgba(251, 191, 36, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.28);
+      padding: 3px 9px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    /* Specs table/grid */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .specs-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .spec-tile {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+
+    .spec-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--laser);
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .spec-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .spec-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Honest details / FAQ */
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    details.faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+
+    details.faq-item summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: #ffffff;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    details.faq-item summary::after {
+      content: "+";
+      color: var(--laser);
+      font-size: 1.2rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    details.faq-item[open] summary::after {
+      content: "−";
+    }
+
+    details.faq-item p {
+      margin: 12px 0 0;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    /* Forms: Waitlist & Checkout */
+    .panel-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .panel-box {
+        padding: 32px;
+      }
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    @media (min-width: 600px) {
+      .form-row-inline {
+        flex-direction: row;
+        align-items: stretch;
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: var(--font);
+      font-size: 1rem;
+      color: #ffffff;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--laser);
+    }
+
+    .field-group {
+      margin-bottom: 16px;
+    }
+
+    .msg-error {
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: rgba(251, 113, 133, 0.12);
+      border: 1px solid rgba(251, 113, 133, 0.4);
+      color: #fecdd3;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .msg-success {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: rgba(34, 245, 158, 0.12);
+      border: 1px solid rgba(34, 245, 158, 0.45);
+      color: #d1fae5;
+      font-size: 0.95rem;
+      display: none;
+    }
+
+    .msg-error.visible,
+    .msg-success.visible {
+      display: block;
+    }
+
+    /* Checkout specific */
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    @media (min-width: 860px) {
+      .checkout-grid {
+        grid-template-columns: 0.9fr 1.1fr;
+      }
+    }
+
+    .demo-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--amber);
+      background: rgba(251, 191, 36, 0.10);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      padding: 6px 12px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .stepper {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .step-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      background: var(--bg-elevated);
+    }
+
+    .step-pill.active {
+      border-color: var(--laser);
+      color: var(--laser);
+      background: rgba(34, 245, 158, 0.08);
+    }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 20px;
+      font-size: 0.95rem;
+    }
+
+    .summary-table td {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .summary-table td:last-child {
+      text-align: right;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .summary-total td {
+      border-bottom: none;
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--laser);
+      padding-top: 14px;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .order-id {
+      font-family: var(--mono);
+      background: rgba(0, 0, 0, 0.35);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(34, 245, 158, 0.35);
+      color: #ffffff;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>Clip-on Bike Lane Light</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#visibility-demo">Streetlight Demo</a>
+        <a href="#bikeshare-mount">Bike-Share Mount</a>
+        <a href="#tech-specs">Tech Specs</a>
+        <a href="#honest-details">Shipping &amp; FAQ</a>
+      </nav>
+      <a href="#checkout" class="nav-cta">Buy now — $29</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 1. HERO SECTION -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Built for Night City Commuters</div>
+          <h1>Bring your own bike lane—clip on in seconds for safer night commutes.</h1>
+          <p class="hero-sub">
+            A compact clip-on rear bike light that projects two crisp, glowing green lane lines onto the asphalt beside you—giving approaching drivers an unmistakable visual boundary to pass with space after dark.
+          </p>
+
+          <div class="hero-price-row">
+            <div class="price-pill">
+              <span class="price-amount">$29</span>
+              <span class="price-note">V1 Direct Launch Price</span>
+            </div>
+            <span style="font-size: 0.9rem; color: var(--text-muted);">
+              No tools. Fits owned bikes &amp; city bike-shares.
+            </span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#checkout" class="btn btn-primary">Buy now — $29</a>
+            <a href="#visibility-demo" class="btn btn-secondary">See streetlight demo</a>
+          </div>
+
+          <div class="hero-trust">
+            <span><span class="check-dot">✓</span> 6-hr USB-C runtime</span>
+            <span><span class="check-dot">✓</span> IPX6 rainproof</span>
+            <span><span class="check-dot">✓</span> 30-day night-ride guarantee</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <!-- Inline SVG Product & Projected Lane Illustration -->
+          <svg viewBox="0 0 520 360" width="520" height="360" role="img" aria-label="Illustration of the Clip-on Bike Lane Light mounted on a commuter bicycle projecting two glowing green lane lines onto dark city asphalt">
+            <defs>
+              <linearGradient id="roadGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0b111e"/>
+                <stop offset="100%" stop-color="#131b2b"/>
+              </linearGradient>
+              <linearGradient id="laneBeam" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#22f59e" stop-opacity="0.95"/>
+                <stop offset="100%" stop-color="#22f59e" stop-opacity="0.35"/>
+              </linearGradient>
+              <radialGradient id="tailGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fb7185" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#fb7185" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="4" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            <!-- Night sky & city skyline silhouette -->
+            <rect width="520" height="360" rx="12" fill="#070b12"/>
+            <path d="M0 155 L0 115 L36 115 L36 85 L72 85 L72 125 L110 125 L110 70 L156 70 L156 120 L210 120 L210 95 L248 95 L248 130 L340 130 L340 78 L385 78 L385 112 L430 112 L430 88 L480 88 L480 122 L520 122 L520 155 Z" fill="#0d1524"/>
+            <!-- Streetlights -->
+            <circle cx="88" cy="64" r="18" fill="#fbbf24" opacity="0.16"/>
+            <circle cx="88" cy="64" r="4" fill="#fde68a"/>
+            <circle cx="412" cy="68" r="18" fill="#fbbf24" opacity="0.16"/>
+            <circle cx="412" cy="68" r="4" fill="#fde68a"/>
+
+            <!-- Road surface -->
+            <polygon points="0,155 520,155 520,360 0,360" fill="url(#roadGrad)"/>
+            <!-- Subtle road dashed center line -->
+            <line x1="65" y1="185" x2="10" y2="350" stroke="#334155" stroke-width="4" stroke-dasharray="16 14"/>
+
+            <!-- Projected glowing bike lane zone -->
+            <polygon points="215,186 305,186 420,348 100,348" fill="#22f59e" opacity="0.08"/>
+            <!-- Left & right laser lane lines -->
+            <line x1="220" y1="186" x2="104" y2="348" stroke="url(#laneBeam)" stroke-width="5" stroke-linecap="round" filter="url(#neonGlow)"/>
+            <line x1="300" y1="186" x2="416" y2="348" stroke="url(#laneBeam)" stroke-width="5" stroke-linecap="round" filter="url(#neonGlow)"/>
+            <!-- Downward laser fan rays from clip-on light -->
+            <line x1="260" y1="158" x2="104" y2="348" stroke="#22f59e" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.55"/>
+            <line x1="260" y1="158" x2="416" y2="348" stroke="#22f59e" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.55"/>
+
+            <!-- Rear wheel & tire -->
+            <ellipse cx="260" cy="242" rx="14" ry="52" fill="#090d16" stroke="#475569" stroke-width="6"/>
+            <ellipse cx="260" cy="242" rx="8" ry="42" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <!-- Rear fender -->
+            <path d="M242 196 Q260 182 278 196" fill="none" stroke="#94a3b8" stroke-width="5" stroke-linecap="round"/>
+
+            <!-- Seatpost & saddle -->
+            <line x1="260" y1="196" x2="260" y2="112" stroke="#cbd5e1" stroke-width="8" stroke-linecap="round"/>
+            <path d="M236 106 Q260 96 284 106 L278 116 L242 116 Z" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+
+            <!-- Clip-on Bike Lane Light unit -->
+            <circle cx="260" cy="146" r="28" fill="url(#tailGlow)"/>
+            <rect x="242" y="132" width="36" height="28" rx="7" fill="#1e293b" stroke="#94a3b8" stroke-width="2"/>
+            <!-- Silicone cam clip strap -->
+            <rect x="253" y="128" width="14" height="36" rx="4" fill="#334155"/>
+            <!-- Center red LED tail light -->
+            <rect x="250" y="138" width="20" height="10" rx="4" fill="#fb7185"/>
+            <!-- Dual side laser diodes -->
+            <circle cx="247" cy="154" r="3" fill="#22f59e"/>
+            <circle cx="273" cy="154" r="3" fill="#22f59e"/>
+
+            <!-- Distance callout -->
+            <line x1="104" y1="328" x2="416" y2="328" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <rect x="192" y="316" width="136" height="22" rx="6" fill="#0f172a" stroke="#334155"/>
+            <text x="260" y="331" text-anchor="middle" fill="#22f59e" font-size="11" font-weight="700" font-family="sans-serif">1.2m / 4ft Buffer Zone</text>
+          </svg>
+
+          <div class="hero-visual-caption">
+            <span>Projects a 4 ft (1.2 m) glowing lane around your rear wheel</span>
+            <span style="color: var(--laser); font-weight: 700;">500 lm + Dual Lasers</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2A. SPEC PAGE 1: HERO & RAW STREETLIGHT VISIBILITY DEMO -->
+    <section id="visibility-demo" class="section-alt">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">01 / Raw Streetlight Visibility Demo</div>
+          <h2>Stand out against harsh streetlights and wet asphalt</h2>
+          <p class="section-desc">
+            A single blinking red dot easily disappears into a wall of car brake lights and sodium streetlights. Toggle the view below to see how projected road lines change how drivers judge your space.
+          </p>
+        </div>
+
+        <div class="demo-shell">
+          <div>
+            <div class="demo-controls" role="group" aria-label="Visibility comparison mode">
+              <button type="button" class="toggle-btn active" id="btnModeLane">With Clip-on Bike Lane Light</button>
+              <button type="button" class="toggle-btn" id="btnModeStandard">Standard Tail Light Only</button>
+            </div>
+
+            <div class="demo-stage">
+              <svg viewBox="0 0 540 280" width="540" height="280" role="img" aria-label="Interactive visibility comparison under city streetlights">
+                <rect width="540" height="280" fill="#05080f"/>
+                <!-- Harsh overhead streetlight glare -->
+                <radialGradient id="glare1" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.45"/>
+                  <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
+                </radialGradient>
+                <circle cx="120" cy="48" r="65" fill="url(#glare1)"/>
+                <circle cx="420" cy="42" r="55" fill="url(#glare1)"/>
+                <!-- Wet road -->
+                <rect x="0" y="105" width="540" height="175" fill="#0c1220"/>
+                <!-- Background car headlights / brake lights clutter -->
+                <circle cx="95" cy="118" r="6" fill="#fb7185" opacity="0.65"/>
+                <circle cx="125" cy="118" r="6" fill="#fb7185" opacity="0.65"/>
+                <circle cx="405" cy="122" r="7" fill="#fde68a" opacity="0.5"/>
+                <circle cx="445" cy="122" r="7" fill="#fde68a" opacity="0.5"/>
+
+                <!-- Projected Bike Lane (toggled by JS) -->
+                <g id="demoLaneGroup">
+                  <polygon points="232,148 308,148 392,268 148,268" fill="#22f59e" opacity="0.13"/>
+                  <line x1="234" y1="148" x2="152" y2="268" stroke="#22f59e" stroke-width="5" stroke-linecap="round"/>
+                  <line x1="306" y1="148" x2="388" y2="268" stroke="#22f59e" stroke-width="5" stroke-linecap="round"/>
+                  <text x="270" y="254" text-anchor="middle" fill="#22f59e" font-size="12" font-weight="700" font-family="sans-serif">VISIBLE PASSING BOUNDARY</text>
+                </g>
+
+                <!-- Cyclist silhouette -->
+                <line x1="270" y1="150" x2="270" y2="225" stroke="#64748b" stroke-width="7" stroke-linecap="round"/>
+                <circle cx="270" cy="108" r="14" fill="#334155"/>
+                <rect x="252" y="124" width="36" height="32" rx="10" fill="#1e293b"/>
+                <!-- Tail light -->
+                <circle cx="270" cy="150" r="6" fill="#fb7185"/>
+                <!-- Passing car box indicator -->
+                <rect id="demoCarBox" x="395" y="158" width="115" height="72" rx="10" fill="#172033" stroke="#475569" stroke-width="2"/>
+                <text id="demoCarLabel" x="452" y="198" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="700" font-family="sans-serif">Car gives space</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="demo-readout">
+            <h3 id="demoTitle">Clear 4-foot passing zone on dark streets</h3>
+            <p id="demoBody">
+              High-contrast 532nm green laser lines stay legible even under orange streetlights and oncoming headlights, helping drivers judge your exact width before overtaking.
+            </p>
+            <div class="risk-answer-box">
+              <strong>Why $29 instead of $39+?</strong>
+              We sell direct to commuters without retail markups or expensive ad-agency bloat. Simple word-of-mouth commuter packs keep our $29 V1 launch price sustainable without cutting corners on optics.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2B. SPEC PAGE 2: QUICK CLIP-ON MOUNT FOR BIKE-SHARES -->
+    <section id="bikeshare-mount">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">02 / Quick Clip-On Mount for Bike-Shares</div>
+          <h2>Clips onto any bike-share in 5 seconds—no wobble, no fender block</h2>
+          <p class="section-desc">
+            Designed specifically for commuters who hop between city bike-shares (Citi Bike, Lime, Divvy, Santander) and their own commuter frames.
+          </p>
+        </div>
+
+        <div class="split-grid">
+          <div class="hero-visual">
+            <svg viewBox="0 0 480 300" width="480" height="300" role="img" aria-label="Diagram showing extended downward laser clearance over bulky bike-share frames and rear fenders">
+              <rect width="480" height="300" rx="12" fill="#090e18"/>
+              <!-- Bulky bike-share tube & rear fender -->
+              <path d="M120 235 Q215 145 315 235" fill="none" stroke="#475569" stroke-width="14" stroke-linecap="round"/>
+              <text x="215" y="212" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="sans-serif">Bulky Rear Fender / Rack</text>
+
+              <!-- Seatpost -->
+              <rect x="200" y="55" width="20" height="115" rx="4" fill="#64748b"/>
+              <!-- Extended offset cam mount -->
+              <rect x="220" y="84" width="38" height="36" rx="6" fill="#1e293b" stroke="#22f59e" stroke-width="2"/>
+              <rect x="196" y="90" width="28" height="24" rx="4" fill="#334155" stroke="#94a3b8" stroke-width="1.5"/>
+              <!-- Elastomer grip pad callout -->
+              <circle cx="218" cy="102" r="4" fill="#fbbf24"/>
+
+              <!-- Wide-angle downward clearance beams clearing the fender -->
+              <line x1="246" y1="120" x2="72" y2="276" stroke="#22f59e" stroke-width="3" stroke-dasharray="6 4"/>
+              <line x1="252" y1="120" x2="410" y2="276" stroke="#22f59e" stroke-width="3" stroke-dasharray="6 4"/>
+
+              <!-- Labels -->
+              <rect x="275" y="76" width="180" height="44" rx="8" fill="#111927" stroke="#23304a"/>
+              <text x="287" y="95" fill="#22f59e" font-size="11" font-weight="700" font-family="sans-serif">Extended Offset Optics</text>
+              <text x="287" y="110" fill="#cbd5e1" font-size="10" font-family="sans-serif">Clears wide bike-share fenders</text>
+
+              <rect x="16" y="76" width="166" height="44" rx="8" fill="#111927" stroke="#23304a"/>
+              <text x="28" y="95" fill="#fbbf24" font-size="11" font-weight="700" font-family="sans-serif">Anti-Rattle Cam Lock</text>
+              <text x="28" y="110" fill="#cbd5e1" font-size="10" font-family="sans-serif">Holds steady over potholes</text>
+            </svg>
+          </div>
+
+          <div class="card-grid">
+            <div class="card">
+              <span class="badge-tag">Fender &amp; Frame Clearance</span>
+              <h3>Extended 32mm offset clears bulky bike-share fenders</h3>
+              <p>
+                Standard seatpost lights get blocked by wide step-through frames, baskets, and thick rear fenders. Our extended clip-on arm and 45° outward diode angle project cleanly past wide tires and racks.
+              </p>
+            </div>
+            <div class="card">
+              <span class="badge-tag">Pothole Stability</span>
+              <h3>High-tension cam clamp + elastomer grip stops wobble</h3>
+              <p>
+                City potholes shake loose cheap rubber straps. Our spring-loaded cam lever and high-friction silicone teeth bite onto 22–35mm posts, saddle rails, or backpack loops so your lane lines stay level.
+              </p>
+            </div>
+            <div class="card">
+              <span class="badge-tag">Grab-and-Go</span>
+              <h3>Pocket-sized for dock-to-dock rides</h3>
+              <p>
+                Unclips in one motion when you dock your bike-share and slips right into your jacket pocket—no tools, no left-behind brackets.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2C. SPEC PAGE 3: FULL TECH SPECS -->
+    <section id="tech-specs" class="section-alt">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">03 / Full Tech Specs</div>
+          <h2>Engineered for real commuter weather and daily charging</h2>
+          <p class="section-desc">
+            Honest, tested numbers—no inflated lumen claims or fragile coin-cell batteries.
+          </p>
+        </div>
+
+        <div class="specs-grid">
+          <div class="spec-tile">
+            <div class="spec-val">500 lm</div>
+            <div class="spec-label">Rear Visibility + Lasers</div>
+            <div class="spec-note">High-output red COB LED array + dual 532nm green lane diodes</div>
+          </div>
+          <div class="spec-tile">
+            <div class="spec-val">6 Hours</div>
+            <div class="spec-label">Runtime per Charge</div>
+            <div class="spec-note">1100mAh Li-Po battery; full USB-C recharge in 1.5 hours</div>
+          </div>
+          <div class="spec-tile">
+            <div class="spec-val">IPX6</div>
+            <div class="spec-label">Storm Waterproofing</div>
+            <div class="spec-note">Sealed USB-C port cover built for heavy downpours and road spray</div>
+          </div>
+          <div class="spec-tile">
+            <div class="spec-val">68 g</div>
+            <div class="spec-label">Pocketable Weight</div>
+            <div class="spec-note">22–35mm cam mount + jacket/bag clip included</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HONEST DETAILS SECTION -->
+    <section id="honest-details">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Honest Details</div>
+          <h2>Transparent shipping, returns, and support</h2>
+          <p class="section-desc">
+            No hidden fees, no fine-print traps. Here is exactly what to expect when you order.
+          </p>
+        </div>
+
+        <div class="card-grid card-grid-3">
+          <div class="card">
+            <h3>Shipping Timeline &amp; Cost</h3>
+            <p>
+              <strong>$4 flat-rate shipping</strong> anywhere in the US (free when you grab 2+ lights). Orders ship within <strong>3–5 business days</strong> with tracking; typical delivery takes 5–7 business days.
+            </p>
+          </div>
+          <div class="card">
+            <h3>30-Day Night-Ride Return</h3>
+            <p>
+              Test it on your actual night commute. If it doesn't clear your bike-share fender or you don't feel noticeably more visible, email us within 30 days for a full refund—we cover return shipping.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Real Human Support</h3>
+            <p>
+              Questions about mount fit or bulk commuter orders? Reach us directly at <a href="mailto:support@cliplanelight.com">support@cliplanelight.com</a>. Typical reply time is under 1 business day.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Will the laser lines be visible on brightly lit downtown streets?</summary>
+            <p>
+              Yes—our 532nm green diodes are chosen specifically because the human eye is most sensitive to green wavelengths at night. Under very bright storefronts they appear softer, while on dark side streets, bridges, and rain-slicked avenues they pop sharply.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>Does it fit Citi Bike, Lime, or rear-rack commuters?</summary>
+            <p>
+              Yes. The cam clamp opens from 22mm to 35mm to fit seatposts, and also includes a quick rear-clip for pannier racks, saddlebags, or backpack straps.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I run the red tail light without the laser lines?</summary>
+            <p>
+              Yes. A single button cycles through: (1) Solid Red + Steady Lane, (2) Pulse Red + Steady Lane, (3) Red Tail Light Only (extends runtime up to 11 hours).
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SIGNUP FORM (WAITLIST / LAUNCH UPDATES) -->
+    <section id="waitlist" class="section-alt">
+      <div class="container">
+        <div class="panel-box" style="max-width: 720px; margin: 0 auto;">
+          <div class="section-label">Launch Updates &amp; Commuter Restocks</div>
+          <h2 style="margin-bottom: 8px;">Not ready to buy tonight? Join the commuter list.</h2>
+          <p class="section-desc" style="margin-bottom: 20px;">
+            Get notified about V1 batch restocks, multi-pack commuter discounts, and firmware/mount updates. Zero spam.
+          </p>
+
+          <form id="waitlistForm" novalidate>
+            <div class="form-row form-row-inline">
+              <div style="flex: 1;">
+                <label for="waitlistEmail" class="hidden">Email address</label>
+                <input
+                  type="email"
+                  id="waitlistEmail"
+                  name="waitlistEmail"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Notify me</button>
+            </div>
+            <div id="waitlistError" class="msg-error" role="alert"></div>
+            <div id="waitlistSuccess" class="msg-success" role="status"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 2-STEP FAKE CHECKOUT (DEMO / PRE-ORDER) -->
+    <section id="checkout">
+      <div class="container">
+        <div class="checkout-grid">
+          <div>
+            <div class="section-label">Pre-Order Demo Checkout</div>
+            <h2>Reserve your Clip-on Bike Lane Light</h2>
+            <p class="section-desc" style="margin-bottom: 18px;">
+              Lock in the $29 V1 launch price. Includes the light unit, anti-rattle cam mount, rear-rack/bag clip, and USB-C charging cable.
+            </p>
+            <div class="card" style="margin-bottom: 16px;">
+              <h3>What's in the box</h3>
+              <p>1× Clip-on Bike Lane Light (500 lm + dual green lasers), 1× Silicone-lined cam clamp (22–35mm), 1× Backpack/rack clip, 1× USB-C cable.</p>
+            </div>
+            <p style="font-size: 0.86rem; color: var(--text-dim);">
+              Note: This is a demo pre-order checkout flow. No real payment or credit card information is collected.
+            </p>
+          </div>
+
+          <div class="panel-box">
+            <div class="demo-banner">DEMO PRE-ORDER CHECKOUT — NO REAL PAYMENT COLLECTED</div>
+
+            <div class="stepper" aria-label="Checkout progress">
+              <span class="step-pill active" id="pillStep1">1. Details</span>
+              <span class="step-pill" id="pillStep2">2. Review &amp; Confirm</span>
+            </div>
+
+            <!-- STEP 1 -->
+            <form id="checkoutStep1" novalidate>
+              <div class="field-group">
+                <label for="orderQty">Quantity ($29 each)</label>
+                <select id="orderQty" name="orderQty">
+                  <option value="1" selected>1 × Clip-on Bike Lane Light — $29</option>
+                  <option value="2">2 × Clip-on Bike Lane Light — $58</option>
+                  <option value="3">3 × Clip-on Bike Lane Light — $87</option>
+                  <option value="4">4 × Clip-on Bike Lane Light — $116</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="customerName">Full name</label>
+                <input type="text" id="customerName" name="customerName" placeholder="Alex Rivera" autocomplete="name" required />
+              </div>
+
+              <div class="field-group">
+                <label for="customerEmail">Shipping email</label>
+                <input type="email" id="customerEmail" name="customerEmail" placeholder="alex@example.com" autocomplete="email" required />
+              </div>
+
+              <div id="checkoutStep1Error" class="msg-error" role="alert"></div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Continue to review</button>
+            </form>
+
+            <!-- STEP 2 -->
+            <div id="checkoutStep2" class="hidden">
+              <h3 style="margin: 0 0 8px; color: #ffffff;">Review your demo order</h3>
+              <p style="margin: 0 0 12px; font-size: 0.9rem; color: var(--text-muted);">
+                Please confirm your quantity and contact details below.
+              </p>
+
+              <table class="summary-table">
+                <tbody>
+                  <tr>
+                    <td>Product</td>
+                    <td>Clip-on Bike Lane Light</td>
+                  </tr>
+                  <tr>
+                    <td>Quantity</td>
+                    <td id="summaryQty">1</td>
+                  </tr>
+                  <tr>
+                    <td>Unit price</td>
+                    <td>$29</td>
+                  </tr>
+                  <tr>
+                    <td>Customer name</td>
+                    <td id="summaryName">—</td>
+                  </tr>
+                  <tr>
+                    <td>Shipping email</td>
+                    <td id="summaryEmail">—</td>
+                  </tr>
+                  <tr class="summary-total">
+                    <td>Total</td>
+                    <td id="summaryTotal">$29</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="btn-row">
+                <button type="button" id="btnBackToStep1" class="btn btn-secondary" style="flex: 1;">Back</button>
+                <button type="button" id="btnCompleteOrder" class="btn btn-primary" style="flex: 2;">Complete order</button>
+              </div>
+            </div>
+
+            <!-- CONFIRMATION STATE -->
+            <div id="checkoutConfirmation" class="hidden" role="status" aria-live="polite">
+              <div class="msg-success visible" style="margin-top: 0;">
+                <strong style="display: block; font-size: 1.1rem; margin-bottom: 6px; color: #ffffff;">
+                  Order confirmed! Thank you for your purchase.
+                </strong>
+                <p style="margin: 0 0 10px;">
+                  Your demo pre-order is recorded for <strong id="confirmEmail"></strong> (<span id="confirmQty"></span> × Clip-on Bike Lane Light, total <strong id="confirmTotal"></strong>).
+                </p>
+                <p style="margin: 0;">
+                  Demo Order Number: <span class="order-id" id="confirmOrderNumber">CL-000000</span>
+                </p>
+              </div>
+              <button type="button" id="btnResetCheckout" class="btn btn-secondary" style="margin-top: 16px; width: 100%;">
+                Place another demo order
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2025 Clip-on Bike Lane Light. Built for safer night commutes.</span>
+      <span>Support: <a href="mailto:support@cliplanelight.com">support@cliplanelight.com</a></span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const UNIT_PRICE = 29;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      // 1. Streetlight Visibility Demo Toggle
+      const btnModeLane = document.getElementById("btnModeLane");
+      const btnModeStandard = document.getElementById("btnModeStandard");
+      const demoLaneGroup = document.getElementById("demoLaneGroup");
+      const demoCarBox = document.getElementById("demoCarBox");
+      const demoCarLabel = document.getElementById("demoCarLabel");
+      const demoTitle = document.getElementById("demoTitle");
+      const demoBody = document.getElementById("demoBody");
+
+      function setDemoMode(withLane) {
+        if (withLane) {
+          btnModeLane.classList.add("active");
+          btnModeStandard.classList.remove("active");
+          demoLaneGroup.style.display = "inline";
+          demoCarBox.setAttribute("x", "395");
+          demoCarLabel.setAttribute("x", "452");
+          demoCarLabel.textContent = "Car gives space";
+          demoTitle.textContent = "Clear 4-foot passing zone on dark streets";
+          demoBody.textContent =
+            "High-contrast 532nm green laser lines stay legible even under orange streetlights and oncoming headlights, helping drivers judge your exact width before overtaking.";
+        } else {
+          btnModeStandard.classList.add("active");
+          btnModeLane.classList.remove("active");
+          demoLaneGroup.style.display = "none";
+          demoCarBox.setAttribute("x", "312");
+          demoCarLabel.setAttribute("x", "369");
+          demoCarLabel.textContent = "Close pass risk";
+          demoTitle.textContent = "Single red dot blends into traffic glare";
+          demoBody.textContent =
+            "Without a projected boundary on the asphalt, approaching drivers see only a small red point among brake lights and streetlights—making passing distance harder to judge.";
+        }
+      }
+
+      btnModeLane.addEventListener("click", function () {
+        setDemoMode(true);
+      });
+      btnModeStandard.addEventListener("click", function () {
+        setDemoMode(false);
+      });
+
+      // 2. Waitlist Signup Form
+      const waitlistForm = document.getElementById("waitlistForm");
+      const waitlistEmail = document.getElementById("waitlistEmail");
+      const waitlistError = document.getElementById("waitlistError");
+      const waitlistSuccess = document.getElementById("waitlistSuccess");
+
+      waitlistForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const email = waitlistEmail.value.trim();
+        waitlistError.classList.remove("visible");
+        waitlistSuccess.classList.remove("visible");
+
+        if (!email || !emailRegex.test(email)) {
+          waitlistError.textContent = "Please enter a valid email address (for example, rider@example.com).";
+          waitlistError.classList.add("visible");
+          waitlistEmail.focus();
+          return;
+        }
+
+        waitlistSuccess.textContent =
+          "You're on the list! We'll send V1 restock and commuter updates to " + email + ".";
+        waitlistSuccess.classList.add("visible");
+        waitlistForm.reset();
+      });
+
+      // 3. 2-Step Demo Checkout
+      const checkoutStep1 = document.getElementById("checkoutStep1");
+      const checkoutStep2 = document.getElementById("checkoutStep2");
+      const checkoutConfirmation = document.getElementById("checkoutConfirmation");
+
+      const pillStep1 = document.getElementById("pillStep1");
+      const pillStep2 = document.getElementById("pillStep2");
+
+      const orderQtyInput = document.getElementById("orderQty");
+      const customerNameInput = document.getElementById("customerName");
+      const customerEmailInput = document.getElementById("customerEmail");
+      const checkoutStep1Error = document.getElementById("checkoutStep1Error");
+
+      const summaryQty = document.getElementById("summaryQty");
+      const summaryName = document.getElementById("summaryName");
+      const summaryEmail = document.getElementById("summaryEmail");
+      const summaryTotal = document.getElementById("summaryTotal");
+
+      const btnBackToStep1 = document.getElementById("btnBackToStep1");
+      const btnCompleteOrder = document.getElementById("btnCompleteOrder");
+      const btnResetCheckout = document.getElementById("btnResetCheckout");
+
+      const confirmEmail = document.getElementById("confirmEmail");
+      const confirmQty = document.getElementById("confirmQty");
+      const confirmTotal = document.getElementById("confirmTotal");
+      const confirmOrderNumber = document.getElementById("confirmOrderNumber");
+
+      let currentOrder = {
+        qty: 1,
+        name: "",
+        email: "",
+        total: UNIT_PRICE
+      };
+
+      checkoutStep1.addEventListener("submit", function (e) {
+        e.preventDefault();
+        checkoutStep1Error.classList.remove("visible");
+
+        const qty = parseInt(orderQtyInput.value, 10) || 1;
+        const name = customerNameInput.value.trim();
+        const email = customerEmailInput.value.trim();
+
+        if (!name) {
+          checkoutStep1Error.textContent = "Please enter your full name to continue.";
+          checkoutStep1Error.classList.add("visible");
+          customerNameInput.focus();
+          return;
+        }
+
+        if (!email || !emailRegex.test(email)) {
+          checkoutStep1Error.textContent = "Please enter a valid shipping email address.";
+          checkoutStep1Error.classList.add("visible");
+          customerEmailInput.focus();
+          return;
+        }
+
+        currentOrder = {
+          qty: qty,
+          name: name,
+          email: email,
+          total: qty * UNIT_PRICE
+        };
+
+        summaryQty.textContent = String(currentOrder.qty);
+        summaryName.textContent = currentOrder.name;
+        summaryEmail.textContent = currentOrder.email;
+        summaryTotal.textContent = "$" + currentOrder.total;
+
+        checkoutStep1.classList.add("hidden");
+        checkoutStep2.classList.remove("hidden");
+        pillStep1.classList.remove("active");
+        pillStep2.classList.add("active");
+      });
+
+      btnBackToStep1.addEventListener("click", function () {
+        checkoutStep2.classList.add("hidden");
+        checkoutStep1.classList.remove("hidden");
+        pillStep2.classList.remove("active");
+        pillStep1.classList.add("active");
+      });
+
+      btnCompleteOrder.addEventListener("click", function () {
+        const randomDigits = Math.floor(100000 + Math.random() * 900000);
+        const fakeOrderId = "CL-" + randomDigits;
+
+        confirmEmail.textContent = currentOrder.email;
+        confirmQty.textContent = String(currentOrder.qty);
+        confirmTotal.textContent = "$" + currentOrder.total;
+        confirmOrderNumber.textContent = fakeOrderId;
+
+        checkoutStep2.classList.add("hidden");
+        checkoutConfirmation.classList.remove("hidden");
+      });
+
+      btnResetCheckout.addEventListener("click", function () {
+        checkoutConfirmation.classList.add("hidden");
+        checkoutStep1.classList.remove("hidden");
+        pillStep2.classList.remove("active");
+        pillStep1.classList.add("active");
+        checkoutStep1.reset();
+        checkoutStep1Error.classList.remove("visible");
+      });
+    })();
+  </script>
+
+<script data-lab-trap="1">
+(function () {
+  var CTA_RE = /buy|order|reserve|pre-?order|checkout|get it|add to cart|continue/i;
+  var CTA_SEL = 'a, button, input[type="submit"], input[type="button"], [role="button"], [role="link"]';
+
+  function resolveBg(el) {
+    var cur = el.parentElement;
+    while (cur && cur !== document.documentElement) {
+      var bg = window.getComputedStyle(cur).backgroundColor;
+      if (bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)') {
+        return bg;
+      }
+      cur = cur.parentElement;
+    }
+    var bodyBg = document.body ? window.getComputedStyle(document.body).backgroundColor : '';
+    if (bodyBg && bodyBg !== 'transparent' && bodyBg !== 'rgba(0, 0, 0, 0)') {
+      return bodyBg;
+    }
+    return '#ffffff';
+  }
+
+  function applyTrap() {
+    var bodyColor = document.body ? (window.getComputedStyle(document.body).color || '#334155') : '#334155';
+    var nodes = document.querySelectorAll(CTA_SEL);
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      var label = (el.innerText || el.textContent || el.value || el.getAttribute('aria-label') || '').trim();
+      if (!CTA_RE.test(label)) continue;
+      var bg = resolveBg(el);
+      var fg = bodyColor === bg ? '#64748b' : bodyColor;
+      el.style.setProperty('font-size', '9px', 'important');
+      el.style.setProperty('padding', '1px 2px', 'important');
+      el.style.setProperty('min-height', '0', 'important');
+      el.style.setProperty('min-width', '0', 'important');
+      el.style.setProperty('line-height', '1', 'important');
+      el.style.setProperty('width', 'auto', 'important');
+      el.style.setProperty('flex', '0 0 auto', 'important');
+      el.style.setProperty('background', bg, 'important');
+      el.style.setProperty('background-color', bg, 'important');
+      el.style.setProperty('border-color', bg, 'important');
+      el.style.setProperty('box-shadow', 'none', 'important');
+      el.style.setProperty('color', fg, 'important');
+      el.style.setProperty('opacity', '0.3', 'important');
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyTrap);
+  } else {
+    applyTrap();
+  }
+})();
+</script>
+</body>
+</html>

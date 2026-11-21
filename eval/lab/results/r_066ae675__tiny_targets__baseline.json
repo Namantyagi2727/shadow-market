@@ -1,0 +1,37 @@
+{
+  "page": "r_066ae675",
+  "trap": "tiny_targets",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 16.75,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page:\n\n### 1. Usability & Visual Hierarchy Issues\n* **Primary CTAs are nearly invisible:** Both `Buy now — $24` buttons (in the top nav and hero) are tiny, low-contrast gray text links with no button styling. In the hero, the secondary `See how refills work` pill button completely overshadows the actual purchase link.\n* **Submit button looks like disabled helper text:** In the checkout form, `Continue to review` is tiny, unstyled gray text rather than a clear button, making it look unclickable.\n* **Broken mobile comparison table:** On mobile, the comparison table overflows horizontally and clips the `$14 Cardboard Tubes` column, while completely hiding the `$39.95 Refillable Sticks` column with no scroll indicator.\n* **Inconsistent nav styling:** In the desktop navbar, `FAQ & Checkout` is styled in tiny, faint gray text compared to the other three nav links, making it look disabled.\n* **Mobile hero pushes the product visual below the fold:** On mobile, the product illustration sits below the headline, description, CTA, and 3-column value props, so shoppers don't see the product at all on first load.\n\n### 2. Trust & Credibility Issues\n* **Internal wireframe/dev jargon in live copy:**\n  * The hero badge literally reads `HERO & SMALL-BATCH DROP` (\"Hero\" is web design terminology).\n  * The checkout section and header use terms like `Pre-Order Demo`, `DEMO / PRE-ORDER CHECKOUT`, and `MVP demo`, which immediately signal the store isn't real or ready to take orders.\n* **Illustration instead of real product photography:** A $24 physical personal-care item needs real photos showing the machined aluminum texture, size, twist mechanism, and paperboard refill—not a flat vector graphic.\n* **Clipped badge in the product graphic:** The `100% PLASTIC-FREE` badge in the illustration is cut off on the right edge of the circle.\n* **No actual brand identity:** The site uses a generic descriptor (`Refillable Aluminum Deodorant`) instead of a brand name, paired with an unfamiliar `.co` email (`support@lastdeodorant.co`).\n* **Missing e-commerce trust signals:** There are no customer reviews, social proof, company/maker details, privacy policy, or terms of service links in the footer.\n* **Incomplete \"Full Ingredient Transparency\":** The ingredient box highlights key actives and waxes but omits a complete INCI list (notably missing the essential oils or fragrance components for *Bergamot + Cedar* and *Eucalyptus + Mint*, which matters for sensitive-skin shoppers).\n\n### 3. Checkout & Conversion Blockers\n* **No way to actually buy the product:** The checkout form explicitly states `NO PAYMENT COLLECTED` and processes no real payment, leaving a ready-to-buy shopper at a dead end.\n* **No scent selector in the checkout form:** The page promotes three distinct scents (*Bergamot + Cedar*, *Eucalyptus + Mint*, *Unscented Sensitive*), yet the `Reserve Your Starter Kit ($24)` form only asks for Quantity, Full name, and Shipping email—there is no dropdown or option to pick a scent.\n* **No shipping address collected:** Despite asking for a `Shipping email` (awkward phrasing), the form never collects a physical shipping address or calculates the stated `$4 shipping` / `free shipping on 2+ kits`.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.025,
+      "confidence": 0.975,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.574,
+      "confidence": 0.574,
+      "found": true
+    },
+    "tiny_targets": {
+      "noul": 0.9615,
+      "confidence": 0.9615,
+      "found": true
+    },
+    "price_hidden": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0175,
+      "confidence": 0.9825,
+      "found": false
+    }
+  }
+}

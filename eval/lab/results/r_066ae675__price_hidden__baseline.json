@@ -1,0 +1,37 @@
+{
+  "page": "r_066ae675",
+  "trap": "price_hidden",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 19.52,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page, based on the desktop and mobile views:\n\n---\n\n### 1. Broken Pricing & Copy (`\"Price shown at checkout\"` everywhere)\nA broken placeholder or global find-and-replace has overwritten almost every price—and several non-price words—with **`Price shown at checkout`**, making the page unreadable and untrustworthy:\n* **Navigation & Hero CTAs:** The top-right header button and the primary hero CTA button both literally say **`Price shown at checkout`** instead of an action (e.g., *Buy Now* or *Reserve Starter Kit*).\n* **Hero & Value Prop:** The hero price headline, subtext, feature highlight (`Price shown at checkout / Optional 2-month mail delivery`), and body copy (`without paying Price shown at checkout upfront`) hide the actual cost.\n* **Product Graphic & Caption:** The deodorant illustration has `Price shown at checkout` printed right across the refill box (overlapping `0% plastic`), and the caption reads `(Price shown at checkout starter kit) + compostable paperboard Price shown at checkout refill.`\n* **Comparison Table:** Both competitor column headers are literally **`Price shown at checkout`**, and all four cells for Starter Kit Price and Refill Price say `Price shown at checkout`, making the comparison meaningless.\n* **Shipping & FAQ:** Shipping says `Flat Price shown at checkout on single starter kits`, and the first FAQ reads: *“Why is the starter kit Price shown at checkout instead of Price shown at checkout?”* followed by an equally broken answer.\n* **Contradiction at the Bottom:** After hiding the price across the entire page, the checkout form at the bottom suddenly reveals **`Quantity ($24 each)`** in a small field label.\n\n---\n\n### 2. Checkout & Ordering Blockers\n* **It’s a Dead-End Demo:** The checkout box is labeled **`DEMO / PRE-ORDER CHECKOUT • NO PAYMENT COLLECTED`** and states *“No real card or payment is processed in this MVP demo.”* A real shopper trying to buy cannot actually purchase anything.\n* **No Scent Selection in Checkout:** The page showcases three scents (`Bergamot + Cedar`, `Eucalyptus + Mint`, `Unscented Sensitive`) mid-page, but the checkout form has **no scent selector**. Shoppers can’t choose which scent comes in their starter kit.\n* **No Shipping Address Fields:** The form only asks for `Quantity`, `Full name`, and `Shipping email`—there is no street address, city, state, or postal code for a physical mail-order product.\n* **No Refill or Bundle Options:** Shoppers cannot add extra refills to their order, even though the shipping section advertises `free shipping on 2+ kits`.\n* **Unclear Button & Missing Order Summary:** The CTA says `Continue to review`, with no itemized subtotal, shipping calculation, or tax estimate shown before submitting.\n\n---\n\n### 3. Mobile Layout & Responsive Bugs\n* **Broken Header Button:** In the mobile view, the top-right `Price shown at checkout` button wraps onto three lines inside a tall pill that overflows the header bar and crowds the announcement banner above it.\n* **Clipped Comparison Table:** In the mobile view, the comparison table overflows horizontally and cuts off the right columns (`Price sh / at chec`, `Paper c / soften/s`) with no visible scroll cue or stacked mobile layout.\n\n---\n\n### 4. Trust & Credibility Gaps\n* **No Real Product Photography:** The only product visual is a flat vector illustration. For a physical item touting “machined aluminum” and “brushed aluminum stick,” shoppers expect real photos showing texture, size/scale, and how the refill mechanism works.\n* **Clipped Badge in Illustration:** The green `100% PLASTIC-FREE` circle in the hero graphic is partially covered by the deodorant cap, cutting off the `1`.\n* **Generic Brand Identity:** The site is titled `Refillable Aluminum Deodorant` in the header and footer, while the support email is `support@lastdeodorant.co`. There is no company name, physical business address, About section, or privacy/terms links.\n* **Zero Social Proof:** There are no customer reviews, star ratings, testimonials, or dermatologist/clinical testing citations to back up claims like “24-hour odor neutralization” or “gentle on skin.”\n* **Ambiguous Guarantee Conditions:** The return policy mentions *“No return shipping fees for first-time buyers,”* leaving repeat buyers unsure what they’d have to pay, and gives no clear process for returns beyond emailing support.\n\n---\n\n### 5. Product Information & UX Gaps\n* **Missing Weight/Size Upfront:** You have to read Step 2 of *How Refills Work* to discover the stick is `2.2 oz` (~2 months of daily use).\n* **Incomplete Ingredient Transparency for Scents:** The ingredient list covers the base formula and states `zero synthetic fragrance`, but doesn’t list the essential oils or potential allergens used in `Bergamot + Cedar` or `Eucalyptus + Mint`—a key concern for shoppers with sensitive skin.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0375,
+      "confidence": 0.9625,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.4887,
+      "confidence": 0.5113,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0407,
+      "confidence": 0.9593,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.9714,
+      "confidence": 0.9714,
+      "found": true
+    },
+    "forced_signup": {
+      "noul": 0.0444,
+      "confidence": 0.9556,
+      "found": false
+    }
+  }
+}

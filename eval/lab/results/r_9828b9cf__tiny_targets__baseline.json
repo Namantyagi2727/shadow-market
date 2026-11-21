@@ -1,0 +1,37 @@
+{
+  "page": "r_9828b9cf",
+  "trap": "tiny_targets",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 16.22,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page:\n\n### 1. Checkout & Conversion Blockers\n* **Shoppers can’t actually buy anything:** The checkout section states *\"Demo / Pre-Order Checkout: No real payment or credit card is collected on this MVP preview page.\"* A real customer ready to buy hits a dead end.\n* **No visible \"Continue\" button in checkout:** At the bottom of Step 1 (`1. Details & Quantity`), there is only tiny, low-contrast grey text reading `Continue to review`—no actual button. Most shoppers will think the form is broken or incomplete.\n* **Missing shipping address & shipping cost math:** Step 1 asks for `Full name` and `Shipping email`, with no street address fields. It also shows `Total: $24` for 1 cap, contradicting the shipping box above it that states **flat-rate $4.95 shipping on 1 cap**.\n* **Misleading section label:** The checkout section eyebrow is titled `PRE-ORDER CHECKOUT & FAQ`, even though the FAQ is in the previous section.\n\n### 2. Usability & Visual Hierarchy Problems\n* **Nearly invisible primary CTA (`Buy now — $24`):** In both the header (desktop and mobile) and the hero section, `Buy now — $24` is tiny, low-contrast grey text with no button styling. Meanwhile, the secondary action (`Check Bottle Fit`) is styled as a prominent button, inverting the visual hierarchy.\n* **Broken mobile toggle in School Mode:** On mobile, the `School Mode (8 AM – 3 PM)` / `After-School Mode` segmented control wraps onto two lines inside its pill container, making the active state look misaligned and cramped.\n* **No color, spout style, or variant selection:** Kids' bottles typically use either a straw lid or a chug cap, and kids care about colors. The page never specifies what spout type this is, whether it comes in colors other than blue, or if a straw is included.\n\n### 3. Trust & Credibility Gaps\n* **Zero real product photography:** The hero uses a flat 2D illustration (`MAYA S. - RM 12`) rather than real photos or renders of the physical cap, the spout/turbine mechanism, the USB-C port, or the cap mounted on real bottles. Asking for a $24 pre-order (4–6 week wait) without showing the actual hardware is a major trust hurdle.\n* **No social proof:** Despite claiming *\"Teacher-Approved School Mode\"*, there are no parent reviews, beta-tester quotes, teacher endorsements, or press/safety certifications anywhere on the page.\n* **Missing hygiene & safety details:** The page highlights a *\"sealed food-grade micro-turbine inside the spout\"*, which immediately raises practical parent questions that go unanswered: *Is it dishwasher safe? How do you clean mold out of a micro-turbine? Is it BPA/phthalate-free?*\n* **Contradictory/questionable hardware claims:**\n  * **Kid-proof School Mode?** It says you can lock silent mode in the app *\"or hold the cap button for 3 seconds\"*—which means a 6–10 year old could also hold the button for 3 seconds in class to turn sound back on.\n  * **Bus tracking expectation:** *\"Last Seen Near Bluetooth ping... if it's left on the school bus\"* implies live tracking, when Bluetooth without Wi-Fi/GPS can only log the last place the *parent's phone* was near it.\n* **Missing legal & policy links:** The footer only has a support email (`support@smartcapkids.com`)—no Privacy Policy (especially important for an app tracking children's data), Terms of Service, or Warranty terms page.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0272,
+      "confidence": 0.9728,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.68,
+      "confidence": 0.68,
+      "found": true
+    },
+    "tiny_targets": {
+      "noul": 0.9563,
+      "confidence": 0.9563,
+      "found": true
+    },
+    "price_hidden": {
+      "noul": 0.0136,
+      "confidence": 0.9864,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0348,
+      "confidence": 0.9652,
+      "found": false
+    }
+  }
+}

@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Hydration Bottle Cap — School-Safe Hydration for Kids 6–10</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-soft: #e0f2fe;
+      --accent: #f59e0b;
+      --accent-soft: #fef3c7;
+      --success: #059669;
+      --success-soft: #d1fae5;
+      --danger: #dc2626;
+      --danger-soft: #fee2e2;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --max-w: 1120px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header / Nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 250, 252, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 64px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--text);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .brand:hover {
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #0284c7, #0ea5e9);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.98rem;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 0.12s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+      text-decoration: none;
+      line-height: 1.2;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(2, 132, 199, 0.26);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-alt);
+    }
+
+    .btn-sm {
+      padding: 9px 16px;
+      font-size: 0.88rem;
+    }
+
+    /* Sections */
+    section {
+      padding: 56px 0;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      background: var(--primary-soft);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3.2vw, 2.35rem);
+      line-height: 1.18;
+      margin: 0 0 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin: 0 0 28px;
+      max-width: 66ch;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 44px 0 64px;
+      background: radial-gradient(circle at 85% 15%, rgba(14, 165, 233, 0.12), transparent 45%),
+                  radial-gradient(circle at 10% 80%, rgba(245, 158, 11, 0.08), transparent 40%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-headline {
+      font-size: clamp(1.85rem, 4.2vw, 3rem);
+      line-height: 1.12;
+      margin: 0 0 18px;
+      letter-spacing: -0.025em;
+    }
+
+    .hero-copy {
+      font-size: 1.08rem;
+      color: var(--text-muted);
+      margin: 0 0 22px;
+      max-width: 56ch;
+    }
+
+    .hero-price-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .price-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .price-now {
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: var(--text);
+    }
+
+    .price-note {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--success);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .hero-trust {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-size: 0.94rem;
+      color: var(--text-muted);
+    }
+
+    .hero-trust li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .check-icon {
+      color: var(--success);
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .hero-visual {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .visual-caption {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    /* Cards & Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+      line-height: 1.3;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.96rem;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .badge-amber {
+      background: var(--accent-soft);
+      color: #92400e;
+    }
+
+    .badge-green {
+      background: var(--success-soft);
+      color: #065f46;
+    }
+
+    .badge-blue {
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+    }
+
+    /* Value comparison strip */
+    .compare-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-top: 24px;
+    }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .compare-item {
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .compare-item.highlight {
+      background: #f0f9ff;
+      border-color: #7dd3fc;
+    }
+
+    .compare-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    /* Fit checker */
+    .fit-checker {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .fit-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 16px;
+    }
+
+    .fit-btn {
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .fit-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .fit-result {
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.94rem;
+      background: var(--success-soft);
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+
+    .fit-result.warn {
+      background: var(--accent-soft);
+      color: #78350f;
+      border-color: #fde68a;
+    }
+
+    /* School Mode Demo */
+    .mode-switch {
+      display: inline-flex;
+      background: var(--surface-alt);
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      gap: 4px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .mode-tab {
+      font-family: inherit;
+      border: none;
+      background: transparent;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .mode-tab.active {
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .mode-panel {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+    }
+
+    /* Parent Summary Mock */
+    .phone-card {
+      background: #0f172a;
+      color: #f8fafc;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .phone-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+
+    .phone-stat {
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: #38bdf8;
+      margin-bottom: 4px;
+    }
+
+    .phone-bars {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin: 16px 0 10px;
+      align-items: end;
+      height: 76px;
+    }
+
+    .bar-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .bar-fill {
+      width: 100%;
+      border-radius: 6px 6px 2px 2px;
+      background: linear-gradient(180deg, #38bdf8, #0284c7);
+    }
+
+    .bar-label {
+      font-size: 0.72rem;
+      color: #94a3b8;
+    }
+
+    /* Honest details & FAQ */
+    .details-band {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      padding: 16px 18px;
+      font-family: inherit;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .faq-a {
+      display: none;
+      padding: 0 18px 16px;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    .faq-item.open .faq-a {
+      display: block;
+    }
+
+    /* Checkout & Waitlist */
+    .checkout-wrapper {
+      background: var(--surface);
+      border: 2px solid #bae6fd;
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-indicator {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .step-chip {
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--surface-alt);
+      color: var(--text-muted);
+    }
+
+    .step-chip.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-sm);
+      background: #fff;
+      color: var(--text);
+    }
+
+    input:focus, select:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 1px;
+      border-color: var(--primary);
+    }
+
+    .qty-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .qty-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      font-size: 1.2rem;
+      font-weight: 800;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .qty-input {
+      width: 72px !important;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .summary-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 6px 0;
+      font-size: 0.95rem;
+    }
+
+    .summary-total {
+      border-top: 1px solid var(--border);
+      margin-top: 8px;
+      padding-top: 10px;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .msg-error {
+      background: var(--danger-soft);
+      color: var(--danger);
+      border: 1px solid #fecaca;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: none;
+    }
+
+    .msg-success {
+      background: var(--success-soft);
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.96rem;
+      font-weight: 600;
+      margin-top: 14px;
+      display: none;
+    }
+
+    .waitlist-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    footer {
+      padding: 36px 0;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 44px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .compare-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .waitlist-form {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .waitlist-form input {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark" aria-hidden="true">SC</span>
+        <span>Smart Hydration Cap</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#fit-guarantee">Bottle Fit</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#school-mode">School Mode</a>
+        <a href="#honest-details">Shipping &amp; FAQ</a>
+      </nav>
+      <a href="#checkout" class="btn btn-primary btn-sm">Buy now — $24</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 1. Hero & Pre-Order CTA -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="section-eyebrow">Built for Parents of 6–10 Year Olds</span>
+          <h1 class="hero-headline">End Hydration Nagging With the School-Safe Smart Cap That Fits the Bottle They Already Own</h1>
+          <p class="hero-copy">
+            Snap the <strong>Smart Hydration Bottle Cap</strong> onto your child's favorite wide-mouth bottle. A gentle glow and optional after-school chime remind them to sip every hour—while you get a clear daily hydration summary on your phone with zero monthly fees.
+          </p>
+
+          <div class="hero-price-row">
+            <div class="price-pill">
+              <span class="price-now">$24</span>
+              <span class="price-note">No subscription required</span>
+            </div>
+            <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 600;">Includes universal adapter ring + 1-year drop warranty</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#checkout" class="btn btn-primary">Buy now — $24</a>
+            <a href="#fit-guarantee" class="btn btn-secondary">Check Bottle Fit</a>
+          </div>
+
+          <ul class="hero-trust">
+            <li><span class="check-icon">&#10003;</span><span><strong>Glows</strong> after 60 minutes without a real sip (silent in School Mode)</span></li>
+            <li><span class="check-icon">&#10003;</span><span><strong>Plays a friendly sound reminder</strong> at home or after school</span></li>
+            <li><span class="check-icon">&#10003;</span><span><strong>Sends a daily hydration summary</strong> to parents' phones via Bluetooth sync</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" aria-label="Illustration of Smart Hydration Bottle Cap on a kids wide-mouth bottle">
+          <svg viewBox="0 0 460 360" role="img" aria-labelledby="hero-svg-title">
+            <title id="hero-svg-title">Smart Hydration Bottle Cap with glow ring, sip-sensor spout, wide-mouth threads, and parent summary preview</title>
+            <defs>
+              <linearGradient id="capGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0ea5e9" />
+                <stop offset="100%" stop-color="#0369a1" />
+              </linearGradient>
+              <linearGradient id="bottleGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#e0f2fe" />
+                <stop offset="100%" stop-color="#bae6fd" />
+              </linearGradient>
+              <radialGradient id="glowHalo" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.55" />
+                <stop offset="100%" stop-color="#f59e0b" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+
+            <!-- Soft backdrop -->
+            <rect x="0" y="0" width="460" height="360" rx="18" fill="#f8fafc" />
+
+            <!-- Glow Halo around cap -->
+            <ellipse cx="165" cy="128" rx="95" ry="44" fill="url(#glowHalo)" />
+
+            <!-- Bottle Body (already owned bottle) -->
+            <path d="M98 158 C98 148 106 142 116 142 L214 142 C224 142 232 148 232 158 L232 308 C232 322 220 332 206 332 L124 332 C110 332 98 322 98 308 Z" fill="url(#bottleGrad)" stroke="#7dd3fc" stroke-width="3" />
+            <!-- Water level -->
+            <path d="M104 220 Q135 212 165 220 T226 220 L226 306 C226 318 216 326 204 326 L126 326 C114 326 104 318 104 306 Z" fill="#38bdf8" opacity="0.45" />
+            <text x="165" y="275" text-anchor="middle" font-size="12" font-weight="700" fill="#0369a1">THEIR FAVORITE</text>
+            <text x="165" y="292" text-anchor="middle" font-size="12" font-weight="700" fill="#0369a1">WIDE-MOUTH BOTTLE</text>
+
+            <!-- Silicone Adapter / Thread Ring -->
+            <rect x="106" y="132" width="118" height="16" rx="5" fill="#334155" />
+            <line x1="112" y1="140" x2="218" y2="140" stroke="#64748b" stroke-width="2" stroke-dasharray="6 4" />
+
+            <!-- Smart Cap Body -->
+            <rect x="102" y="88" width="126" height="46" rx="12" fill="url(#capGrad)" />
+            <!-- Shock-absorbing TPU Bumper -->
+            <rect x="99" y="88" width="132" height="12" rx="6" fill="#0f172a" opacity="0.88" />
+            <!-- Glow Reminder Ring -->
+            <rect x="104" y="122" width="122" height="8" rx="4" fill="#fbbf24" />
+            <!-- Flip Spout -->
+            <path d="M150 88 L150 64 C150 56 158 52 166 52 L176 52 C182 52 186 56 186 64 L186 88 Z" fill="#0f172a" />
+            <circle cx="168" cy="68" r="5" fill="#38bdf8" />
+
+            <!-- Writable Name Tag Strip -->
+            <rect x="126" y="103" width="78" height="14" rx="4" fill="#ffffff" opacity="0.92" />
+            <text x="165" y="114" text-anchor="middle" font-size="9" font-weight="800" fill="#0f172a">MAYA R. • RM 12</text>
+
+            <!-- Callout lines -->
+            <line x1="234" y1="126" x2="274" y2="112" stroke="#f59e0b" stroke-width="2" />
+            <rect x="274" y="88" width="166" height="46" rx="10" fill="#ffffff" stroke="#fde68a" stroke-width="1.5" />
+            <text x="286" y="107" font-size="11" font-weight="800" fill="#92400e">1-Hr Gentle Glow Ring</text>
+            <text x="286" y="123" font-size="10" fill="#475569">Silent in School Mode</text>
+
+            <line x1="226" y1="140" x2="274" y2="168" stroke="#0284c7" stroke-width="2" />
+            <rect x="274" y="148" width="166" height="46" rx="10" fill="#ffffff" stroke="#bae6fd" stroke-width="1.5" />
+            <text x="286" y="167" font-size="11" font-weight="800" fill="#0369a1">Universal 58–63mm Fit</text>
+            <text x="286" y="183" font-size="10" fill="#475569">Adapter ring included</text>
+
+            <!-- Mini Parent Summary Card -->
+            <rect x="274" y="212" width="166" height="114" rx="14" fill="#0f172a" />
+            <text x="288" y="234" font-size="10" font-weight="700" fill="#94a3b8">DAILY PARENT SUMMARY</text>
+            <text x="288" y="260" font-size="22" font-weight="900" fill="#38bdf8">34 oz</text>
+            <text x="352" y="260" font-size="10" font-weight="700" fill="#34d399">106% of goal</text>
+            <rect x="288" y="276" width="138" height="8" rx="4" fill="#1e293b" />
+            <rect x="288" y="276" width="124" height="8" rx="4" fill="#38bdf8" />
+            <text x="288" y="306" font-size="10" fill="#cbd5e1">7 real sips • 0 missed hrs</text>
+          </svg>
+          <div class="visual-caption">
+            <span><strong>Drop-tested:</strong> 6 ft TPU bumper + IPX7 waterproof</span>
+            <span><strong>Battery:</strong> 30 days per USB-C charge</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Wide-Mouth Bottle Fit Guarantee + Price-to-Value Positioning -->
+    <section id="fit-guarantee">
+      <div class="container">
+        <span class="section-eyebrow">Wide-Mouth Bottle Fit Guarantee</span>
+        <h2 class="section-title">Keep the Bottle They Already Love—Upgrade Only the Cap for $24</h2>
+        <p class="section-subtitle">
+          Kids get attached to their stickers, colors, and insulated bottles. Instead of spending $35–$46 on another full smart bottle they might leave in their locker, our universal wide-mouth thread + included silicone adapter fits 95% of kids' wide-mouth bottles.
+        </p>
+
+        <div class="grid-2">
+          <div class="fit-checker">
+            <h3 style="margin-top: 0;">Interactive Bottle Fit Checker</h3>
+            <p style="font-size: 0.94rem; color: var(--text-muted); margin-bottom: 8px;">
+              Tap your child's current bottle to verify thread compatibility before you order:
+            </p>
+            <div class="fit-buttons" role="group" aria-label="Select bottle brand">
+              <button type="button" class="fit-btn active" data-fit="perfect" data-msg="Direct Fit (63mm): Screws right onto Hydro Flask Kids (12oz, 16oz, 20oz) with zero adapter needed.">Hydro Flask Kids</button>
+              <button type="button" class="fit-btn" data-fit="adapter" data-msg="Included Adapter Fit (58mm): Snaps onto Yeti Rambler Jr. 12oz &amp; 18oz using the included food-grade silicone ring.">Yeti Rambler Jr.</button>
+              <button type="button" class="fit-btn" data-fit="perfect" data-msg="Direct Fit (63mm): Matches standard Nalgene Wide Mouth 16oz &amp; 32oz threads.">Nalgene Wide Mouth</button>
+              <button type="button" class="fit-btn" data-fit="perfect" data-msg="Direct Fit (63mm): Fits Simple Modern Summit &amp; CamelBak Eddy+ Kids Wide-Mouth bottles.">Simple Modern / Eddy+</button>
+              <button type="button" class="fit-btn" data-fit="narrow" data-msg="Not compatible with narrow-mouth disposable plastic bottles (28mm). Covered by our 100% Fit Guarantee—if it doesn't fit your bottle, we send a free custom adapter or refund you in full with prepaid return shipping.">Narrow / Other Bottle</button>
+            </div>
+            <div id="fitResult" class="fit-result">
+              Direct Fit (63mm): Screws right onto Hydro Flask Kids (12oz, 16oz, 20oz) with zero adapter needed.
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="badge badge-green">100% Fit Guarantee</span>
+            <h3>Zero Checkout Guesswork</h3>
+            <p style="margin-bottom: 14px;">
+              Every box includes both the standard <strong>63mm wide-mouth thread</strong> and a <strong>58mm silicone step-down ring</strong>. If it still doesn't seal cleanly on your child's bottle, email us a photo within 30 days and we'll ship a free custom ring or issue a full refund with a prepaid return label.
+            </p>
+            <p>
+              <strong>Why $24 beats a $45 smart bottle:</strong> When your child outgrows a 12oz bottle or wants a new color next school year, you just move the Smart Cap to the next bottle.
+            </p>
+          </div>
+        </div>
+
+        <div class="compare-box">
+          <h3 style="margin: 0 0 6px;">How It Compares to Buying a New Bottle</h3>
+          <p style="margin: 0; color: var(--text-muted); font-size: 0.94rem;">Honest math for back-to-school budgets.</p>
+          <div class="compare-row">
+            <div class="compare-item highlight">
+              <strong>Smart Hydration Cap — $24</strong>
+              <span style="font-size: 0.9rem; color: var(--text-muted);">Fits their existing insulated bottle, silent School Mode, anti-fake sip sensor, $0/mo app.</span>
+            </div>
+            <div class="compare-item">
+              <strong>Full Smart Kids Bottle — ~$46</strong>
+              <span style="font-size: 0.9rem; color: var(--text-muted);">Forces your child to switch bottles; nearly 2x the price and stuck in one size.</span>
+            </div>
+            <div class="compare-item">
+              <strong>Custom Printed Bottle — ~$35</strong>
+              <span style="font-size: 0.9rem; color: var(--text-muted);">Looks nice, but no sip reminders, no parent summary, and easy to forget in class.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. How It Works & Daily Parent Summary (Anti-Fake Sensor + Durability) -->
+    <section id="how-it-works" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <span class="section-eyebrow">How It Works &amp; Daily Parent Summary</span>
+        <h2 class="section-title">Tracks Real Sips—Not Shakes, Tilts, or Sink Dumps</h2>
+        <p class="section-subtitle">
+          Kids are clever. That's why we don't rely on a basic tilt switch that can be fooled on the playground. Every sip is verified before it counts toward their daily goal.
+        </p>
+
+        <div class="grid-2" style="align-items: center;">
+          <div class="grid-2" style="grid-template-columns: 1fr;">
+            <div class="card">
+              <span class="badge badge-blue">Anti-Fake Flow + Suction Sensor</span>
+              <h3>1. Measures Real Drinking Flow</h3>
+              <p>A sealed food-grade micro-turbine inside the spout pairs with a gentle suction check. Tilting the bottle upside down or popping the lid open without drinking registers <strong>0 oz</strong>.</p>
+            </div>
+            <div class="card">
+              <span class="badge badge-amber">1-Hour Smart Reminder</span>
+              <h3>2. Gentle Nudge Every 60 Minutes</h3>
+              <p>If your child hasn't taken a real sip in an hour, the cap's downward-facing LED halo glows warm amber—and plays a cheerful 1-second chime when outside school hours.</p>
+            </div>
+            <div class="card">
+              <span class="badge badge-green">Playground &amp; Bus-Proof</span>
+              <h3>3. Built for 6 ft Drops &amp; Lost-Cap Pings</h3>
+              <p>Shock-absorbing TPU bumper, shatter-resistant Tritan body, IPX7 waterproof electronics, a writable name-tag strip, and a "Last Seen Near" Bluetooth ping in the parent app if it's left on the school bus.</p>
+            </div>
+          </div>
+
+          <div class="phone-card" aria-label="Parent phone daily hydration summary preview">
+            <div class="phone-header">
+              <span>Parent Summary • Today, 5:30 PM</span>
+              <span style="color: #34d399; font-weight: 700;">Synced</span>
+            </div>
+            <div class="phone-stat">34 oz drank</div>
+            <div style="font-size: 0.9rem; color: #cbd5e1;">Goal: 32 oz • <strong>Zero nagging needed</strong></div>
+
+            <div class="phone-bars" aria-hidden="true">
+              <div class="bar-col">
+                <div class="bar-fill" style="height: 45%;"></div>
+                <span class="bar-label">8a</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-fill" style="height: 62%;"></div>
+                <span class="bar-label">10a</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-fill" style="height: 85%;"></div>
+                <span class="bar-label">12p</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-fill" style="height: 70%;"></div>
+                <span class="bar-label">2p</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-fill" style="height: 92%;"></div>
+                <span class="bar-label">4p</span>
+              </div>
+            </div>
+
+            <div style="border-top: 1px solid #1e293b; padding-top: 12px; font-size: 0.86rem; color: #cbd5e1; display: grid; gap: 6px;">
+              <div>&#128276; <strong>School Mode:</strong> Active 8:00 AM – 3:00 PM (Sound muted)</div>
+              <div>&#128267; <strong>Cap Battery:</strong> 88% (26 days left)</div>
+              <div>&#128205; <strong>Last Ping:</strong> Home Kitchen • 2 mins ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Teacher-Approved School Mode -->
+    <section id="school-mode">
+      <div class="container">
+        <span class="section-eyebrow">Teacher-Approved School Mode</span>
+        <h2 class="section-title">No Classroom Distractions. Zero Teacher Bans.</h2>
+        <p class="section-subtitle">
+          Teachers love hydrated students—they hate beeping gadgets during math class. Set school hours once in the parent app (or hold the cap button for 3 seconds) to lock in silent mode all day.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="mode-switch" role="tablist" aria-label="Cap mode demo">
+              <button type="button" class="mode-tab active" data-mode="school" role="tab" aria-selected="true">School Mode (8 AM – 3 PM)</button>
+              <button type="button" class="mode-tab" data-mode="home" role="tab" aria-selected="false">After-School Mode</button>
+            </div>
+            <div id="modePanel" class="mode-panel">
+              <strong style="display: block; margin-bottom: 6px; color: var(--success);">Silent Micro-Glow Only</strong>
+              <p style="margin: 0; font-size: 0.94rem; color: var(--text-muted);">
+                Audio chime is completely disabled. After 60 minutes without a sip, only the downward-angled ring softly pulses onto the desk for 3 seconds—visible to your child, invisible across the classroom.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="badge badge-blue">Parent App Included ($0/mo)</span>
+            <h3>Set It Once for the Whole Semester</h3>
+            <p style="margin-bottom: 12px;">
+              Choose your child's exact bell schedule (e.g., Mon–Fri 8:00 AM–3:00 PM), or enable <strong>Recess-Only Chime</strong> so sound reminders only play during lunch and outdoor breaks.
+            </p>
+            <p>
+              <strong>No screen on the cap:</strong> No games, no distracting animations, and no Wi-Fi required at school.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Honest Details, Shipping, Return Policy, Waitlist & FAQ -->
+    <section id="honest-details" class="details-band">
+      <div class="container">
+        <span class="section-eyebrow">Honest Details &amp; FAQ</span>
+        <h2 class="section-title">Transparent Shipping, Returns &amp; Support</h2>
+        <p class="section-subtitle">
+          Everything you need to know before placing a pre-order—no hidden subscriptions or fine print.
+        </p>
+
+        <div class="grid-3" style="margin-bottom: 32px;">
+          <div class="card">
+            <h3>Shipping Timeline &amp; Cost</h3>
+            <p>Batch 1 pre-orders ship in <strong>4–6 weeks</strong> from our US fulfillment center. Flat-rate <strong>$4.95 shipping</strong> on 1 cap, or <strong>FREE shipping</strong> when you order 2+ caps.</p>
+          </div>
+          <div class="card">
+            <h3>30-Day Fit &amp; Kid-Proof Guarantee</h3>
+            <p>If it doesn't fit your bottle or your child won't use it, return it within 30 days for a <strong>100% refund + free return label</strong>. Also backed by a <strong>1-year drop warranty</strong>.</p>
+          </div>
+          <div class="card">
+            <h3>Real Human Support</h3>
+            <p>Questions about bottle sizing, school policies, or your order? Email us anytime at <a href="mailto:support@smartcapkids.com"><strong>support@smartcapkids.com</strong></a> (replies within 1 business day).</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <h3 style="margin-top: 0;">Frequently Asked Questions</h3>
+            <div class="faq-list">
+              <div class="faq-item open">
+                <button type="button" class="faq-q">How do I know it will fit our current bottle? <span>+</span></button>
+                <div class="faq-a">It fits standard 63mm wide-mouth bottles directly (Hydro Flask Kids, Nalgene Wide Mouth, Simple Modern, CamelBak Eddy+ Kids) and includes a 58mm silicone adapter ring for Yeti Rambler Jr. If it still doesn't fit, we'll send a custom adapter or refund you in full.</div>
+              </div>
+              <div class="faq-item">
+                <button type="button" class="faq-q">Can my child trick the sensor by shaking or tilting the bottle? <span>+</span></button>
+                <div class="faq-a">No. The cap uses a sealed micro-flow sensor in the spout combined with a suction check, so tilting, shaking, or unscrewing the cap without drinking will not add ounces.</div>
+              </div>
+              <div class="faq-item">
+                <button type="button" class="faq-q">Will teachers ban it for making noise in class? <span>+</span></button>
+                <div class="faq-a">No—Teacher-Approved School Mode automatically mutes all sounds during school hours and uses only a soft, downward-angled glow ring that won't distract classmates.</div>
+              </div>
+              <div class="faq-item">
+                <button type="button" class="faq-q">Is there a monthly app subscription? <span>+</span></button>
+                <div class="faq-a">Never. The iOS and Android parent summary app is 100% free forever with your $24 cap.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" id="waitlist">
+            <span class="badge badge-blue">Launch Updates</span>
+            <h3>Not Ready to Pre-Order? Join the Waitlist</h3>
+            <p>Get notified when Batch 1 ships and receive our printable wide-mouth bottle fit guide.</p>
+            <form id="waitlistForm" class="waitlist-form" novalidate>
+              <input type="email" id="waitlistEmail" placeholder="parent@example.com" aria-label="Email address for launch updates" required />
+              <button type="submit" class="btn btn-secondary">Notify me</button>
+            </form>
+            <div id="waitlistError" class="msg-error" role="alert">Please enter a valid email address.</div>
+            <div id="waitlistSuccess" class="msg-success" role="status"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. 2-Step Demo Pre-Order Checkout -->
+    <section id="checkout">
+      <div class="container" style="max-width: 760px;">
+        <span class="section-eyebrow">Pre-Order Checkout &amp; FAQ</span>
+        <h2 class="section-title">Reserve Your Smart Hydration Bottle Cap</h2>
+        <p class="section-subtitle" style="margin-bottom: 20px;">
+          <strong>Demo / Pre-Order Checkout:</strong> No real payment or credit card is collected on this MVP preview page.
+        </p>
+
+        <div class="checkout-wrapper">
+          <div class="step-indicator" aria-label="Checkout steps">
+            <span id="chipStep1" class="step-chip active">1. Details &amp; Quantity</span>
+            <span id="chipStep2" class="step-chip">2. Review Order</span>
+            <span id="chipStep3" class="step-chip">3. Confirmation</span>
+          </div>
+
+          <!-- Step 1 -->
+          <form id="checkoutStep1" novalidate>
+            <div class="form-group">
+              <label for="qtyInput">Quantity ($24 each — No subscription)</label>
+              <div class="qty-row">
+                <button type="button" class="qty-btn" id="qtyMinus" aria-label="Decrease quantity">-</button>
+                <input type="number" id="qtyInput" class="qty-input" value="1" min="1" max="10" />
+                <button type="button" class="qty-btn" id="qtyPlus" aria-label="Increase quantity">+</button>
+                <span id="liveSubtotal" style="font-weight: 800; color: var(--primary-dark);">Total: $24</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="customerName">Full name</label>
+              <input type="text" id="customerName" placeholder="e.g., Jordan Taylor" required />
+            </div>
+
+            <div class="form-group">
+              <label for="customerEmail">Shipping email</label>
+              <input type="email" id="customerEmail" placeholder="e.g., jordan@example.com" required />
+            </div>
+
+            <div id="step1Error" class="msg-error" role="alert"></div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Continue to review</button>
+          </form>
+
+          <!-- Step 2 -->
+          <div id="checkoutStep2" class="hidden">
+            <h3 style="margin-top: 0;">Review Your Pre-Order</h3>
+            <div class="summary-box">
+              <div class="summary-line">
+                <span>Product</span>
+                <strong>Smart Hydration Bottle Cap</strong>
+              </div>
+              <div class="summary-line">
+                <span>Quantity</span>
+                <strong id="reviewQty">1</strong>
+              </div>
+              <div class="summary-line">
+                <span>Customer Name</span>
+                <strong id="reviewName">—</strong>
+              </div>
+              <div class="summary-line">
+                <span>Shipping Email</span>
+                <strong id="reviewEmail">—</strong>
+              </div>
+              <div class="summary-line summary-total">
+                <span>Total Price</span>
+                <span id="reviewTotal">$24</span>
+              </div>
+            </div>
+            <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 0;">
+              Demo pre-order only — clicking "Complete order" simulates confirmation without charging a card.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+              <button type="button" id="backToStep1" class="btn btn-secondary">Back</button>
+              <button type="button" id="completeOrderBtn" class="btn btn-primary" style="flex: 1;">Complete order</button>
+            </div>
+          </div>
+
+          <!-- Confirmation State -->
+          <div id="checkoutConfirmation" class="hidden">
+            <div class="msg-success" style="display: block; margin-top: 0;">
+              <div style="font-size: 1.15rem; margin-bottom: 6px;">Order confirmed! Thank you for your purchase.</div>
+              <div id="confirmDetails" style="font-weight: 500;"></div>
+            </div>
+            <div style="margin-top: 16px;">
+              <button type="button" id="resetCheckoutBtn" class="btn btn-secondary btn-sm">Place another demo order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Smart Hydration Bottle Cap</strong> &bull; School-Safe Hydration for Ages 6–10 &bull; Questions? <a href="mailto:support@smartcapkids.com">support@smartcapkids.com</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // 1. Bottle Fit Checker
+      var fitButtons = document.querySelectorAll('.fit-btn');
+      var fitResult = document.getElementById('fitResult');
+
+      fitButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          fitButtons.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          fitResult.textContent = btn.getAttribute('data-msg');
+          if (btn.getAttribute('data-fit') === 'narrow') {
+            fitResult.classList.add('warn');
+          } else {
+            fitResult.classList.remove('warn');
+          }
+        });
+      });
+
+      // 2. School Mode Toggle
+      var modeTabs = document.querySelectorAll('.mode-tab');
+      var modePanel = document.getElementById('modePanel');
+      var modeCopy = {
+        school: {
+          title: 'Silent Micro-Glow Only',
+          color: 'var(--success)',
+          text: 'Audio chime is completely disabled. After 60 minutes without a sip, only the downward-angled ring softly pulses onto the desk for 3 seconds—visible to your child, invisible across the classroom.'
+        },
+        home: {
+          title: 'Gentle Glow + Friendly Chime',
+          color: 'var(--primary-dark)',
+          text: 'After-school and weekend mode enables both the warm amber glow ring and a cheerful 1-second chime if your child forgets to drink during homework or sports practice.'
+        }
+      };
+
+      modeTabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          modeTabs.forEach(function (t) {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          var data = modeCopy[tab.getAttribute('data-mode')];
+          modePanel.innerHTML = '<strong style="display:block;margin-bottom:6px;color:' + data.color + ';">' + data.title + '</strong><p style="margin:0;font-size:0.94rem;color:var(--text-muted);">' + data.text + '</p>';
+        });
+      });
+
+      // 3. FAQ Accordion
+      document.querySelectorAll('.faq-q').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var item = btn.parentElement;
+          item.classList.toggle('open');
+        });
+      });
+
+      // 4. Waitlist / Launch Updates Form
+      var waitlistForm = document.getElementById('waitlistForm');
+      var waitlistEmail = document.getElementById('waitlistEmail');
+      var waitlistError = document.getElementById('waitlistError');
+      var waitlistSuccess = document.getElementById('waitlistSuccess');
+
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      waitlistForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var val = waitlistEmail.value.trim();
+        waitlistError.style.display = 'none';
+        waitlistSuccess.style.display = 'none';
+
+        if (!isValidEmail(val)) {
+          waitlistError.style.display = 'block';
+          return;
+        }
+
+        waitlistSuccess.textContent = 'You are on the list! We will send Batch 1 launch updates to ' + val + '.';
+        waitlistSuccess.style.display = 'block';
+        waitlistEmail.value = '';
+      });
+
+      // 5. 2-Step Demo Pre-Order Checkout
+      var UNIT_PRICE = 24;
+      var step1Form = document.getElementById('checkoutStep1');
+      var step2Div = document.getElementById('checkoutStep2');
+      var confirmDiv = document.getElementById('checkoutConfirmation');
+
+      var chip1 = document.getElementById('chipStep1');
+      var chip2 = document.getElementById('chipStep2');
+      var chip3 = document.getElementById('chipStep3');
+
+      var qtyInput = document.getElementById('qtyInput');
+      var qtyMinus = document.getElementById('qtyMinus');
+      var qtyPlus = document.getElementById('qtyPlus');
+      var liveSubtotal = document.getElementById('liveSubtotal');
+      var nameInput = document.getElementById('customerName');
+      var emailInput = document.getElementById('customerEmail');
+      var step1Error = document.getElementById('step1Error');
+
+      var reviewQty = document.getElementById('reviewQty');
+      var reviewName = document.getElementById('reviewName');
+      var reviewEmail = document.getElementById('reviewEmail');
+      var reviewTotal = document.getElementById('reviewTotal');
+      var confirmDetails = document.getElementById('confirmDetails');
+
+      function getSanitizedQty() {
+        var q = parseInt(qtyInput.value, 10);
+        if (isNaN(q) || q < 1) q = 1;
+        if (q > 10) q = 10;
+        qtyInput.value = q;
+        return q;
+      }
+
+      function updateLiveTotal() {
+        var q = getSanitizedQty();
+        liveSubtotal.textContent = 'Total: $' + (q * UNIT_PRICE);
+      }
+
+      qtyMinus.addEventListener('click', function () {
+        var q = getSanitizedQty();
+        if (q > 1) qtyInput.value = q - 1;
+        updateLiveTotal();
+      });
+
+      qtyPlus.addEventListener('click', function () {
+        var q = getSanitizedQty();
+        if (q < 10) qtyInput.value = q + 1;
+        updateLiveTotal();
+      });
+
+      qtyInput.addEventListener('input', updateLiveTotal);
+
+      function setStep(step) {
+        step1Form.classList.toggle('hidden', step !== 1);
+        step2Div.classList.toggle('hidden', step !== 2);
+        confirmDiv.classList.toggle('hidden', step !== 3);
+
+        chip1.classList.toggle('active', step === 1);
+        chip2.classList.toggle('active', step === 2);
+        chip3.classList.toggle('active', step === 3);
+      }
+
+      step1Form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        step1Error.style.display = 'none';
+
+        var qty = getSanitizedQty();
+        var fullName = nameInput.value.trim();
+        var email = emailInput.value.trim();
+
+        if (!fullName) {
+          step1Error.textContent = 'Please enter your full name.';
+          step1Error.style.display = 'block';
+          return;
+        }
+        if (!isValidEmail(email)) {
+          step1Error.textContent = 'Please enter a valid shipping email address.';
+          step1Error.style.display = 'block';
+          return;
+        }
+
+        reviewQty.textContent = String(qty);
+        reviewName.textContent = fullName;
+        reviewEmail.textContent = email;
+        reviewTotal.textContent = '$' + (qty * UNIT_PRICE);
+        setStep(2);
+      });
+
+      document.getElementById('backToStep1').addEventListener('click', function () {
+        setStep(1);
+      });
+
+      document.getElementById('completeOrderBtn').addEventListener('click', function () {
+        var qty = getSanitizedQty();
+        var total = qty * UNIT_PRICE;
+        var orderNum = 'SC-' + Math.floor(100000 + Math.random() * 900000);
+        confirmDetails.textContent = 'Order #' + orderNum + ' • ' + qty + 'x Smart Hydration Bottle Cap ($' + total + ') • Confirmation sent to ' + emailInput.value.trim() + '.';
+        setStep(3);
+      });
+
+      document.getElementById('resetCheckoutBtn').addEventListener('click', function () {
+        qtyInput.value = 1;
+        nameInput.value = '';
+        emailInput.value = '';
+        updateLiveTotal();
+        setStep(1);
+      });
+    })();
+  </script>
+
+<script data-lab-trap="1">
+(function () {
+  var CTA_RE = /buy|order|reserve|pre-?order|checkout|get it|add to cart|continue/i;
+  var CTA_SEL = 'a, button, input[type="submit"], input[type="button"], [role="button"], [role="link"]';
+
+  function elementLabel(el) {
+    return (el.innerText || el.textContent || el.value || el.getAttribute('aria-label') || '').trim();
+  }
+
+  function applyTrap() {
+    document.addEventListener('click', function (e) {
+      var target = e.target && e.target.closest ? e.target.closest(CTA_SEL) : null;
+      if (!target) return;
+      if (CTA_RE.test(elementLabel(target))) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        e.stopPropagation();
+      }
+    }, true);
+
+    document.addEventListener('submit', function (e) {
+      var form = e.target;
+      if (!form || !form.querySelectorAll) return;
+      if (e.submitter && CTA_RE.test(elementLabel(e.submitter))) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        e.stopPropagation();
+        return;
+      }
+      var submits = form.querySelectorAll('button[type="submit"], button:not([type]), input[type="submit"]');
+      for (var i = 0; i < submits.length; i++) {
+        if (CTA_RE.test(elementLabel(submits[i]))) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          e.stopPropagation();
+          return;
+        }
+      }
+    }, true);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyTrap);
+  } else {
+    applyTrap();
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+{
+  "page": "spikes",
+  "trap": "tiny_targets",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 24.83,
+  "converted_count": 1,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "converted",
+      "quit_reason": null,
+      "duration_s": 24.16,
+      "num_steps": 6,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Price is clear ($49) and specs like 9-bar and 320g are upfront. Let's scroll down to see the rest of the page and check if there are more technical details or just a checkout form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "No fluff so far, just a straightforward 9-bar hand-powered piston espresso maker for $49. Let's scroll down to see the rest of the checkout form and check if there's any warranty or repairability info at the bottom.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "Clean, no-nonsense page with upfront pricing and specs. Let's fill out the demo checkout form to see how the flow works.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "Let's enter my shipping email so I can continue to the review step.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Both name and email are filled out. Let's click 'Continue to review' to see the order summary.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "click",
+          "target": "Complete order",
+          "thought": "Everything looks accurate in the review step ($49.00 total, no hidden fees). Let's click 'Complete order' to finish the demo checkout.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "Even with a 10% discount, $44 is still over my $35 limit. As a barista, I don't need a pricey pocket gadget for my apartment—I'm going to pass and save my money.",
+      "duration_s": 11.4,
+      "num_steps": 2,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The price is $49, which is over my $35 limit, and the 'Buy now' button looks tiny. Let me scroll down to see if there's enough value to justify it or if I should just leave.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "quit",
+          "target": "",
+          "thought": "Even with a 10% discount, $44 is still over my $35 limit. As a barista, I don't need a pricey pocket gadget for my apartment—I'm going to pass and save my money.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "quit",
+      "quit_reason": "I've reached the bottom of the page and there is zero information about shipping timelines or refund terms. That's a dealbreaker for me, so I'm leaving.",
+      "duration_s": 14.98,
+      "num_steps": 3,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The product looks interesting and simple, with no chargers or apps needed. Let me scroll down to check the shipping timeline, refund terms, and any details on build quality.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I see the order form, but I still don't see any information about the shipping timeline, refund terms, or customer reviews. Let me scroll down further to check the bottom of the page.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "quit",
+          "target": "",
+          "thought": "I've reached the bottom of the page and there is zero information about shipping timelines or refund terms. That's a dealbreaker for me, so I'm leaving.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: converted\n  Step 1 (scroll on 'down'): Price is clear ($49) and specs like 9-bar and 320g are upfront. Let's scroll down to see the rest of the page and check if there are more technical details or just a checkout form.\n  Step 2 (scroll on 'down'): No fluff so far, just a straightforward 9-bar hand-powered piston espresso maker for $49. Let's scroll down to see the rest of the checkout form and check if there's any warranty or repairability info at the bottom.\n  Step 3 (type on 'Alex Rivera'): Clean, no-nonsense page with upfront pricing and specs. Let's fill out the demo checkout form to see how the flow works.\n  Step 4 (type on 'alex@example.com'): Let's enter my shipping email so I can continue to the review step.\n  Step 5 (click on 'Continue to review'): Both name and email are filled out. Let's click 'Continue to review' to see the order summary.\n  Step 6 (click on 'Complete order'): Everything looks accurate in the review step ($49.00 total, no hidden fees). Let's click 'Complete order' to finish the demo checkout.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: Even with a 10% discount, $44 is still over my $35 limit. As a barista, I don't need a pricey pocket gadget for my apartment—I'm going to pass and save my money.\n  Step 1 (scroll on 'down'): The price is $49, which is over my $35 limit, and the 'Buy now' button looks tiny. Let me scroll down to see if there's enough value to justify it or if I should just leave.\n  Step 2 (quit): Even with a 10% discount, $44 is still over my $35 limit. As a barista, I don't need a pricey pocket gadget for my apartment—I'm going to pass and save my money.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: quit\nQuit reason: I've reached the bottom of the page and there is zero information about shipping timelines or refund terms. That's a dealbreaker for me, so I'm leaving.\n  Step 1 (scroll on 'down'): The product looks interesting and simple, with no chargers or apps needed. Let me scroll down to check the shipping timeline, refund terms, and any details on build quality.\n  Step 2 (scroll on 'down'): I see the order form, but I still don't see any information about the shipping timeline, refund terms, or customer reviews. Let me scroll down further to check the bottom of the page.\n  Step 3 (quit): I've reached the bottom of the page and there is zero information about shipping timelines or refund terms. That's a dealbreaker for me, so I'm leaving.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0374,
+      "confidence": 0.9626,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.0147,
+      "confidence": 0.9853,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.1025,
+      "confidence": 0.8975,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0338,
+      "confidence": 0.9662,
+      "found": false
+    }
+  }
+}

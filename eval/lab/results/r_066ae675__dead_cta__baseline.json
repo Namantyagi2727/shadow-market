@@ -1,0 +1,37 @@
+{
+  "page": "r_066ae675",
+  "trap": "dead_cta",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 19.34,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page, based on both the desktop and mobile views:\n\n---\n\n### 1. Checkout & Ordering Problems (Critical)\n* **Shoppers cannot actually buy the product:** The checkout box is labeled *\"DEMO / PRE-ORDER CHECKOUT • NO PAYMENT COLLECTED\"* and states *\"No real card or payment is processed in this MVP demo.\"* A real shopper ready to buy hits a dead end.\n* **No scent selection in checkout:** The page offers three scents (*Bergamot + Cedar*, *Eucalyptus + Mint*, *Unscented Sensitive*) in the middle of the page, but there is no scent selector in the checkout form. Shoppers have no way to choose—or confirm—which scent they are ordering.\n* **Missing shipping address fields:** The form only asks for *Quantity*, *Full name*, and *Shipping email*—there are no fields for street address, city, state, or ZIP code.\n* **No order summary or shipping calculation:** The Shipping card mentions *\"Flat $4 shipping on single starter kits, or free shipping on 2+ kits,\"* but the checkout box doesn't show a subtotal, shipping fee ($4), total ($28), or a prompt encouraging shoppers to add a 2nd kit for free shipping.\n* **Competing \"Waitlist\" and \"Checkout\" forms:** Placing *\"Get Launch & Refill Restock Updates\"* right next to (and directly above on mobile) *\"Reserve Your Starter Kit ($24)\"* creates confusion over whether the product is actually available to order or still on a waitlist.\n\n---\n\n### 2. Usability & Mobile Layout Problems\n* **Broken mobile header button:** In the mobile view, the top-right `\"Buy now — $24\"` button wraps awkwardly across four lines (`Buy / now / — / $24`), bloating the header height.\n* **Clipped comparison table on mobile:** In the mobile view, the comparison table overflows horizontally and cuts off mid-word (`$14 Cardbo...`, `$14 (Sir...`, `Paper c...`), completely hiding the 4th column (`$39.95 Refillable Sticks`) with no clear scroll affordance.\n* **Disconnected scent tabs:** The scent pills in *\"Explore V1 Small-Batch Scents\"* only act as info tabs, not product-selection controls. Users clicking *Unscented Sensitive* may assume they’ve selected it for their order when they haven't.\n* **Hidden shipping cost:** Shipping ($4 flat rate) isn't mentioned in the hero or checkout box—shoppers only discover it if they read the *\"Shipping Timeline & Cost\"* card near the bottom.\n\n---\n\n### 3. Trust & Credibility Problems\n* **No real product photography:** The hero uses a flat vector illustration instead of real photos. For a $24 *\"precision-machined aluminum case\"* and plastic-free refill, shoppers want to see real material texture, size/scale in hand, and how the refill actually fits inside.\n* **Clipped graphic in the hero illustration:** The `\"100% PLASTIC-FREE\"` green pill badge in the hero illustration is awkwardly clipped/overlapping the edge of the circular background, which looks like a visual bug.\n* **Zero social proof:** There are no customer reviews, star ratings, testimonials, or real-world testing proof—especially risky for a natural deodorant making bold claims (*\"24-hour odor neutralization\"*, *\"no rashes\"*, *\"115°F melt point\"*).\n* **No brand identity or company info:** The page has no brand name (the header just says *\"Refillable Aluminum Deodorant\"*), no \"About Us,\" and no physical business address—only `support@lastdeodorant.co` and *\"Small-Batch Drop #01.\"*\n* **Incomplete ingredient transparency:** The *\"Full Ingredient Transparency\"* box lists grouped highlights rather than a standard, complete INCI ingredient list. Notably, it claims *\"zero synthetic fragrance\"* but omits the actual essential oils/fragrance ingredients used in *Bergamot + Cedar* and *Eucalyptus + Mint*.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0168,
+      "confidence": 0.9832,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.3951,
+      "confidence": 0.6049,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0273,
+      "confidence": 0.9727,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0164,
+      "confidence": 0.9836,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0172,
+      "confidence": 0.9828,
+      "found": false
+    }
+  }
+}

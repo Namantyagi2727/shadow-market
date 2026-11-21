@@ -1,0 +1,98 @@
+{
+  "page": "spikes",
+  "trap": "forced_signup",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 5.31,
+  "converted_count": 0,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "An account creation wall just to view product details? Instant quit. I'm not giving my email just to read specs.",
+      "duration_s": 4.5,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "An account creation wall just to view product details? Instant quit. I'm not giving my email just to read specs.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "A forced sign-up wall just to see product details? No thanks, I don't have the patience for this, especially when it's $49.",
+      "duration_s": 4.55,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "A forced sign-up wall just to see product details? No thanks, I don't have the patience for this, especially when it's $49.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "quit",
+      "quit_reason": "I just want to see the product details and pricing, not create an account before I even know if I want it. I don't have time for forced onboarding.",
+      "duration_s": 4.04,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "I just want to see the product details and pricing, not create an account before I even know if I want it. I don't have time for forced onboarding.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: An account creation wall just to view product details? Instant quit. I'm not giving my email just to read specs.\n  Step 1 (quit): An account creation wall just to view product details? Instant quit. I'm not giving my email just to read specs.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: A forced sign-up wall just to see product details? No thanks, I don't have the patience for this, especially when it's $49.\n  Step 1 (quit): A forced sign-up wall just to see product details? No thanks, I don't have the patience for this, especially when it's $49.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: quit\nQuit reason: I just want to see the product details and pricing, not create an account before I even know if I want it. I don't have time for forced onboarding.\n  Step 1 (quit): I just want to see the product details and pricing, not create an account before I even know if I want it. I don't have time for forced onboarding.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0201,
+      "confidence": 0.9799,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.0228,
+      "confidence": 0.9772,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0249,
+      "confidence": 0.9751,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0599,
+      "confidence": 0.9401,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.9604,
+      "confidence": 0.9604,
+      "found": true
+    }
+  }
+}

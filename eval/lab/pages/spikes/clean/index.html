@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pocket Espresso Maker — Hand-powered 9-bar espresso anywhere</title>
+  <style>
+    :root {
+      --bg: #faf7f2;
+      --surface: #ffffff;
+      --surface-alt: #f2ebe1;
+      --ink: #1e1612;
+      --ink-muted: #5c4d44;
+      --accent: #b85d28;
+      --accent-dark: #94461a;
+      --espresso: #2b1d16;
+      --crema: #d99b52;
+      --border: #e2d7c9;
+      --success-bg: #edf7f0;
+      --success-border: #8ec9a3;
+      --success-ink: #175933;
+      --error-ink: #b42318;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(30, 22, 18, 0.08);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 62px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      color: var(--espresso);
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: var(--espresso);
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background-color 0.15s ease;
+    }
+
+    .header-cta:hover {
+      background: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 36px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--accent-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 6vw, 3.1rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--espresso);
+    }
+
+    .hero-sub {
+      margin: 0 0 22px;
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      max-width: 48ch;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .price-tag {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--espresso);
+    }
+
+    .price-note {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 24px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.1s ease, background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(184, 93, 40, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-secondary {
+      background: var(--surface-alt);
+      color: var(--espresso);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e7ddd0;
+    }
+
+    .hero-visual {
+      background: linear-gradient(145deg, #f3eadf 0%, #e8dac8 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-visual svg {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      display: block;
+    }
+
+    /* Specs strip */
+    .specs {
+      padding: 8px 0 40px;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .spec-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+
+    .spec-val {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--espresso);
+      margin-bottom: 2px;
+    }
+
+    .spec-label {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+    }
+
+    /* Cards / Sections */
+    .section {
+      padding: 20px 0 44px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      margin: 0 0 6px;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      color: var(--espresso);
+    }
+
+    .section-desc {
+      margin: 0 0 20px;
+      color: var(--ink-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Forms */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--espresso);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #cfc2b2;
+      background: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--ink);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(184, 93, 40, 0.15);
+    }
+
+    .signup-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .field-error {
+      color: var(--error-ink);
+      font-size: 0.85rem;
+      font-weight: 500;
+      min-height: 1.2em;
+    }
+
+    .inline-confirm {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      color: var(--success-ink);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Checkout */
+    .demo-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .steps-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .step-pill {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--surface-alt);
+      color: var(--ink-muted);
+      border: 1px solid var(--border);
+    }
+
+    .step-pill.active {
+      background: var(--espresso);
+      color: #fff;
+      border-color: var(--espresso);
+    }
+
+    .step-pill.done {
+      background: var(--success-bg);
+      color: var(--success-ink);
+      border-color: var(--success-border);
+    }
+
+    .qty-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qty-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid #cfc2b2;
+      background: var(--surface-alt);
+      color: var(--espresso);
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qty-btn:hover {
+      background: #e5d8c8;
+    }
+
+    .qty-control input[type="number"] {
+      width: 72px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .summary-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 7px 0;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .summary-line:last-child {
+      border-bottom: none;
+    }
+
+    .summary-line.total {
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: var(--espresso);
+      padding-top: 12px;
+    }
+
+    .summary-key {
+      color: var(--ink-muted);
+    }
+
+    .summary-val {
+      font-weight: 600;
+      text-align: right;
+      word-break: break-word;
+    }
+
+    .checkout-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .order-number {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 700;
+      background: rgba(23, 89, 51, 0.1);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    footer {
+      padding: 24px 0 40px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Desktop enhancements */
+    @media (min-width: 768px) {
+      .hero {
+        padding: 56px 0 48px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 40px;
+      }
+
+      .specs-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .card {
+        padding: 32px;
+      }
+
+      .signup-row {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .signup-row input[type="email"] {
+        flex: 1;
+      }
+
+      .form-two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="7" y="2" width="10" height="4" rx="1.5" fill="#2b1d16" />
+          <rect x="6" y="6" width="12" height="10" rx="2" fill="#b85d28" />
+          <path d="M8 16h8l-1.2 4.5a1.5 1.5 0 0 1-1.45 1.1h-2.7a1.5 1.5 0 0 1-1.45-1.1L8 16z" fill="#2b1d16" />
+        </svg>
+        <span>Pocket Espresso</span>
+      </a>
+      <a href="#checkout" class="header-cta" id="header-buy-btn">Buy now — $49</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">9-Bar Portable Brewing &middot; Zero Batteries</span>
+          <h1>Hand-powered 9-bar espresso anywhere.</h1>
+          <p class="hero-sub">
+            Pack café-grade crema into your backpack. Just add hot water and ground coffee, pump the stainless piston, and pull a rich single or double shot in 90 seconds.
+          </p>
+          <div class="price-row">
+            <span class="price-tag">$49</span>
+            <span class="price-note">Includes travel pouch &amp; scoop</span>
+          </div>
+          <div class="hero-actions">
+            <button type="button" class="btn btn-primary" id="hero-buy-btn">Buy now</button>
+            <a href="#waitlist" class="btn btn-secondary">Get 10% launch discount</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Pocket Espresso Maker illustration">
+          <svg viewBox="0 0 320 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="product-svg-title">
+            <title id="product-svg-title">Pocket Espresso Maker pouring espresso into a cup</title>
+            <!-- Soft backdrop circle -->
+            <circle cx="160" cy="145" r="115" fill="#e5d4be" />
+            <!-- Handle / Pump Top -->
+            <rect x="115" y="26" width="90" height="18" rx="9" fill="#2b1d16" />
+            <rect x="150" y="44" width="20" height="22" fill="#8b7d74" />
+            <!-- Pressure Chamber Body -->
+            <rect x="108" y="66" width="104" height="106" rx="14" fill="#2b1d16" />
+            <!-- Grip Band -->
+            <rect x="108" y="92" width="104" height="44" fill="#b85d28" />
+            <line x1="120" y1="104" x2="200" y2="104" stroke="#d99b52" stroke-width="2.5" stroke-linecap="round" />
+            <line x1="120" y1="114" x2="200" y2="114" stroke="#d99b52" stroke-width="2.5" stroke-linecap="round" />
+            <line x1="120" y1="124" x2="200" y2="124" stroke="#d99b52" stroke-width="2.5" stroke-linecap="round" />
+            <!-- 9-Bar Badge -->
+            <circle cx="160" cy="79" r="9" fill="#faf7f2" />
+            <text x="160" y="82.5" text-anchor="middle" font-size="8.5" font-weight="800" fill="#2b1d16" font-family="system-ui, sans-serif">9B</text>
+            <!-- Portafilter Base -->
+            <path d="M116 172h88l-10 22h-68l-10-22z" fill="#4a3930" />
+            <rect x="154" y="194" width="12" height="10" rx="2" fill="#2b1d16" />
+            <!-- Espresso Stream -->
+            <path d="M160 204v28" stroke="#8a4419" stroke-width="5" stroke-linecap="round" />
+            <!-- Espresso Cup -->
+            <path d="M124 232h72l-6 36a10 10 0 0 1-10 8h-40a10 10 0 0 1-10-8l-6-36z" fill="#ffffff" stroke="#2b1d16" stroke-width="3" />
+            <!-- Cup Handle -->
+            <path d="M195 240h10a10 10 0 0 1 0 20h-12" stroke="#2b1d16" stroke-width="3" fill="none" stroke-linecap="round" />
+            <!-- Crema Layer -->
+            <ellipse cx="160" cy="236" rx="31" ry="6" fill="#d99b52" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="specs" aria-label="Key specifications">
+      <div class="container specs-grid">
+        <div class="spec-card">
+          <div class="spec-val">9-Bar Extraction</div>
+          <div class="spec-label">True espresso pressure for thick golden crema.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-val">320g Compact</div>
+          <div class="spec-label">Fits in any jacket pocket, carry-on, or daypack.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-val">No Chargers</div>
+          <div class="spec-label">100% hand-powered piston—ready off-grid.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Waitlist / 10% Launch Discount Signup -->
+    <section class="section" id="waitlist">
+      <div class="container">
+        <div class="card">
+          <h2 class="section-title">Get 10% off your launch order</h2>
+          <p class="section-desc">Join the email waitlist for early batch restocks and an instant 10% launch discount code.</p>
+
+          <form id="signup-form" novalidate>
+            <div class="field">
+              <label for="signup-email">Email address</label>
+              <div class="signup-row">
+                <input
+                  type="email"
+                  id="signup-email"
+                  name="email"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                />
+                <button type="submit" class="btn btn-primary">Claim 10% off</button>
+              </div>
+              <div class="field-error" id="signup-error" role="alert"></div>
+            </div>
+          </form>
+
+          <div id="signup-confirm" class="inline-confirm hidden" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2-Step Fake Checkout -->
+    <section class="section" id="checkout">
+      <div class="container">
+        <div class="card">
+          <span class="demo-badge">Demo Checkout &middot; No real payment</span>
+          <h2 class="section-title">Order Pocket Espresso Maker</h2>
+          <p class="section-desc">$49 each &middot; Hand-powered 9-bar espresso anywhere.</p>
+
+          <div class="steps-bar" aria-label="Checkout progress">
+            <span class="step-pill active" id="pill-step-1">1. Details</span>
+            <span class="step-pill" id="pill-step-2">2. Review</span>
+            <span class="step-pill" id="pill-step-3">3. Confirmed</span>
+          </div>
+
+          <!-- Step 1: Quantity & Customer Info -->
+          <form id="checkout-step-1" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="checkout-qty">Quantity ($49 each)</label>
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" id="qty-minus" aria-label="Decrease quantity">&minus;</button>
+                  <input type="number" id="checkout-qty" name="quantity" min="1" max="10" value="1" required />
+                  <button type="button" class="qty-btn" id="qty-plus" aria-label="Increase quantity">+</button>
+                </div>
+                <div class="field-error" id="qty-error" role="alert"></div>
+              </div>
+
+              <div class="form-two-col">
+                <div class="field">
+                  <label for="checkout-name">Full name</label>
+                  <input
+                    type="text"
+                    id="checkout-name"
+                    name="fullName"
+                    placeholder="Alex Rivera"
+                    autocomplete="name"
+                    required
+                  />
+                  <div class="field-error" id="name-error" role="alert"></div>
+                </div>
+
+                <div class="field">
+                  <label for="checkout-email">Shipping email</label>
+                  <input
+                    type="email"
+                    id="checkout-email"
+                    name="shippingEmail"
+                    placeholder="alex@example.com"
+                    autocomplete="email"
+                    required
+                  />
+                  <div class="field-error" id="email-error" role="alert"></div>
+                </div>
+              </div>
+
+              <div>
+                <button type="submit" class="btn btn-primary" id="continue-review-btn">Continue to review</button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Step 2: Order Summary -->
+          <div id="checkout-step-2" class="hidden">
+            <div class="summary-box" aria-label="Order summary">
+              <div class="summary-line">
+                <span class="summary-key">Item</span>
+                <span class="summary-val">Pocket Espresso Maker ($49.00 each)</span>
+              </div>
+              <div class="summary-line">
+                <span class="summary-key">Quantity</span>
+                <span class="summary-val" id="summary-qty">1</span>
+              </div>
+              <div class="summary-line">
+                <span class="summary-key">Customer name</span>
+                <span class="summary-val" id="summary-name"></span>
+              </div>
+              <div class="summary-line">
+                <span class="summary-key">Shipping email</span>
+                <span class="summary-val" id="summary-email"></span>
+              </div>
+              <div class="summary-line total">
+                <span>Total</span>
+                <span id="summary-total">$49.00</span>
+              </div>
+            </div>
+
+            <div class="checkout-actions">
+              <button type="button" class="btn btn-secondary" id="checkout-back-btn">Back</button>
+              <button type="button" class="btn btn-primary" id="complete-order-btn">Complete order</button>
+            </div>
+          </div>
+
+          <!-- Confirmation State -->
+          <div id="checkout-confirm" class="hidden" role="status" aria-live="polite">
+            <div class="inline-confirm" style="margin-top: 0; margin-bottom: 16px;">
+              <p style="margin: 0 0 8px;">Order confirmed! Thank you for your purchase.</p>
+              <p style="margin: 0; font-weight: 500;">
+                Order number: <span class="order-number" id="confirmed-order-number"></span>
+              </p>
+            </div>
+            <div class="summary-box">
+              <div class="summary-line">
+                <span class="summary-key">Item</span>
+                <span class="summary-val" id="confirmed-item"></span>
+              </div>
+              <div class="summary-line">
+                <span class="summary-key">Total</span>
+                <span class="summary-val" id="confirmed-total"></span>
+              </div>
+              <div class="summary-line">
+                <span class="summary-key">Confirmation sent to</span>
+                <span class="summary-val" id="confirmed-email"></span>
+              </div>
+            </div>
+            <button type="button" class="btn btn-secondary" id="new-order-btn">Place another demo order</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Pocket Espresso Maker &middot; $49 &middot; Demo product landing page (no real orders are processed)
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const UNIT_PRICE = 49;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      // Smooth scroll from Hero Buy Now button to Checkout
+      const heroBuyBtn = document.getElementById('hero-buy-btn');
+      const checkoutSection = document.getElementById('checkout');
+      heroBuyBtn.addEventListener('click', function () {
+        checkoutSection.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(function () {
+          const nameInput = document.getElementById('checkout-name');
+          if (nameInput && !document.getElementById('checkout-step-1').classList.contains('hidden')) {
+            nameInput.focus({ preventScroll: true });
+          }
+        }, 350);
+      });
+
+      // Waitlist / 10% Discount Signup
+      const signupForm = document.getElementById('signup-form');
+      const signupEmail = document.getElementById('signup-email');
+      const signupError = document.getElementById('signup-error');
+      const signupConfirm = document.getElementById('signup-confirm');
+
+      signupForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = signupEmail.value.trim();
+        signupError.textContent = '';
+
+        if (!email || !emailRegex.test(email)) {
+          signupError.textContent = 'Please enter a valid email address.';
+          signupConfirm.classList.add('hidden');
+          signupEmail.focus();
+          return;
+        }
+
+        signupConfirm.textContent =
+          'You are on the waitlist! Your 10% launch discount code CREMA10 has been reserved for ' + email + '.';
+        signupConfirm.classList.remove('hidden');
+        signupForm.reset();
+      });
+
+      // 2-Step Fake Checkout
+      const step1Form = document.getElementById('checkout-step-1');
+      const step2Box = document.getElementById('checkout-step-2');
+      const confirmBox = document.getElementById('checkout-confirm');
+
+      const pill1 = document.getElementById('pill-step-1');
+      const pill2 = document.getElementById('pill-step-2');
+      const pill3 = document.getElementById('pill-step-3');
+
+      const qtyInput = document.getElementById('checkout-qty');
+      const qtyMinus = document.getElementById('qty-minus');
+      const qtyPlus = document.getElementById('qty-plus');
+      const nameInput = document.getElementById('checkout-name');
+      const emailInput = document.getElementById('checkout-email');
+
+      const qtyError = document.getElementById('qty-error');
+      const nameError = document.getElementById('name-error');
+      const emailError = document.getElementById('email-error');
+
+      const summaryQty = document.getElementById('summary-qty');
+      const summaryName = document.getElementById('summary-name');
+      const summaryEmail = document.getElementById('summary-email');
+      const summaryTotal = document.getElementById('summary-total');
+
+      const backBtn = document.getElementById('checkout-back-btn');
+      const completeBtn = document.getElementById('complete-order-btn');
+      const newOrderBtn = document.getElementById('new-order-btn');
+
+      const confirmedOrderNumber = document.getElementById('confirmed-order-number');
+      const confirmedItem = document.getElementById('confirmed-item');
+      const confirmedTotal = document.getElementById('confirmed-total');
+      const confirmedEmail = document.getElementById('confirmed-email');
+
+      let orderState = {
+        qty: 1,
+        name: '',
+        email: ''
+      };
+
+      function setStep(step) {
+        step1Form.classList.toggle('hidden', step !== 1);
+        step2Box.classList.toggle('hidden', step !== 2);
+        confirmBox.classList.toggle('hidden', step !== 3);
+
+        pill1.className = 'step-pill' + (step === 1 ? ' active' : ' done');
+        pill2.className = 'step-pill' + (step === 2 ? ' active' : step > 2 ? ' done' : '');
+        pill3.className = 'step-pill' + (step === 3 ? ' active done' : '');
+      }
+
+      qtyMinus.addEventListener('click', function () {
+        const current = parseInt(qtyInput.value, 10) || 1;
+        qtyInput.value = Math.max(1, current - 1);
+        qtyError.textContent = '';
+      });
+
+      qtyPlus.addEventListener('click', function () {
+        const current = parseInt(qtyInput.value, 10) || 1;
+        qtyInput.value = Math.min(10, current + 1);
+        qtyError.textContent = '';
+      });
+
+      step1Form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        qtyError.textContent = '';
+        nameError.textContent = '';
+        emailError.textContent = '';
+
+        const qty = parseInt(qtyInput.value, 10);
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        let valid = true;
+
+        if (!Number.isInteger(qty) || qty < 1 || qty > 10) {
+          qtyError.textContent = 'Please select a quantity between 1 and 10.';
+          valid = false;
+        }
+        if (!name) {
+          nameError.textContent = 'Please enter your full name.';
+          valid = false;
+        }
+        if (!email || !emailRegex.test(email)) {
+          emailError.textContent = 'Please enter a valid shipping email.';
+          valid = false;
+        }
+
+        if (!valid) return;
+
+        orderState = { qty: qty, name: name, email: email };
+        const total = qty * UNIT_PRICE;
+
+        summaryQty.textContent = String(qty);
+        summaryName.textContent = name;
+        summaryEmail.textContent = email;
+        summaryTotal.textContent = '$' + total.toFixed(2);
+
+        setStep(2);
+      });
+
+      backBtn.addEventListener('click', function () {
+        setStep(1);
+      });
+
+      function generateOrderNumber() {
+        const num = Math.floor(100000 + Math.random() * 900000);
+        return 'PEM-' + num;
+      }
+
+      completeBtn.addEventListener('click', function () {
+        const total = orderState.qty * UNIT_PRICE;
+        confirmedOrderNumber.textContent = generateOrderNumber();
+        confirmedItem.textContent = 'Pocket Espresso Maker × ' + orderState.qty;
+        confirmedTotal.textContent = '$' + total.toFixed(2);
+        confirmedEmail.textContent = orderState.email;
+        setStep(3);
+      });
+
+      newOrderBtn.addEventListener('click', function () {
+        step1Form.reset();
+        qtyInput.value = '1';
+        orderState = { qty: 1, name: '', email: '' };
+        setStep(1);
+      });
+    })();
+  </script>
+</body>
+</html>

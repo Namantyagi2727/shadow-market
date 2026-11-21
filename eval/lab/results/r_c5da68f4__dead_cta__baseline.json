@@ -1,0 +1,37 @@
+{
+  "page": "r_c5da68f4",
+  "trap": "dead_cta",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 18.16,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page:\n\n---\n\n### 1. Checkout & Conversion Blockers\n* **It’s a fake/demo checkout:** The pre-order form is labeled **`DEMO PRE-ORDER CHECKOUT - NO REAL PAYMENT OR CARD COLLECTION`**. A real shopper trying to buy the product cannot actually complete a purchase.\n* **No shipping address or payment fields:** The form only collects `Quantity`, `Full name`, and `Shipping email`. There are no fields for a physical shipping address, phone number, or credit card/payment method.\n* **Missing $5 shipping fee in the total:** The \"Shipping & FAQ\" section states `Flat $5 US shipping (free shipping on 2+ units)`, but with `Quantity: 1`, the form displays `Total: $59` instead of `$64`.\n* **Contradictory $5 reservation option:** The dark green CTA banner says **`Reserve your Smart Pill Organizer for $59 (or lock in a $5 refundable spot)`**, but the checkout form below has no option to select or pay a $5 spot—only the $59 unit quantity.\n\n---\n\n### 2. Direct Contradictions on the Page\n* **$5 deposit vs. $59-only policy:** In the FAQ, the card titled *\"What about the $5 refundable reservation vs. full $59 pre-order?\"* explicitly argues against $5 deposits (*\"A $5 deposit only measures curiosity. We let you place a full $59 V1 pre-order...\"*). Directly beneath it, the banner offers `(or lock in a $5 refundable spot)`.\n* **\"No Subscription\" vs. $12/year renewal:** The top badge reads `Built-in Cellular • Zero Wi-Fi • No Subscription`, and the comparison table says `$0 (3 years included)`. However, the FAQ reveals there *is* a subscription after year 3 (*\"After year 3, you can renew for $12/year\"*).\n* **\"Plug-In Setup\" vs. \"Cordless\":** The setup section is titled **`3-STEP PLUG-IN SETUP (ZERO WI-FI)`**, which contradicts the core pitch of being cordless (`no wall-outlet tether`, `Cordless counter placement`).\n\n---\n\n### 3. Mobile Usability Bugs\n* **Comparison table is cut off on mobile:** In the mobile view, the \"Cellular vs. Bluetooth Comparison\" table overflows horizontally. The `Bluetooth Organizers (~$45)` column is sliced in half mid-word (`Bluetoo... Orga...`, `Only if phone 30 ft`), and the `Basic Alarm Boxes (~$25)` column is completely clipped off-screen with no visible scroll cue.\n* **No mobile navigation menu:** Unlike the desktop header (`How It Works`, `3-Step Setup`, `Compare`, `Shipping & FAQ`, `Updates`), the mobile header only has the logo and `Buy now — $59` button, forcing mobile users to scroll through the entire page to find shipping or FAQ details.\n\n---\n\n### 4. Product Logic & Unanswered Practical Questions\n* **7-day tray vs. multiple daily doses:** Step 2 of setup shows texting `\"8am and 8pm\"` as a schedule, yet the illustrated tray only has **7 compartments** (`SUN` through `SAT`—one per day). Step 2 of the alert flow says *\"When Mom flips open the lid to take her pills, the light turns off and the dose is marked complete automatically.\"* If she opens Tuesday's lid at 8am, it’s unclear how the device tracks or alerts for an 8pm dose from the same compartment.\n* **No pill capacity or dimensions:** Seniors often take large pills (e.g., calcium, fish oil) or multiple pills per dose. There are no measurements or compartment sizes anywhere on the page—the FAQ just tells shoppers to email support.\n* **No cellular coverage or region details:** Shoppers aren't told which LTE-M carriers it uses, whether it works in rural areas with weak signal, or whether it only works in the US (US-only shipping is only hinted at near the bottom with `Flat $5 US shipping`).\n* **Setup security concern:** Anyone can supposedly text the box's setup number to set schedules (`\"8am and 8pm\"`), with no mention of a PIN, verification, or how you prevent someone else from texting the number.\n\n---\n\n### 5. Trust & Credibility Gaps\n* **No real product photos:** For a $59 hardware pre-order shipping in 6–8 weeks, the only visual is a flat illustration/diagram. There are no photos of a physical prototype, materials, charging coaster, or lid mechanism.\n* **No company identity or legal links:** The footer has no company name, physical address, Privacy Policy, or Terms of Service—just `Smart Pill Organizer` and a support email (`support@smartpill.care`).\n* **No social proof or validation:** There are no customer reviews, beta-tester quotes, founder story, or hardware certifications shown to reassure a buyer spending $59 on a V1 batch pre-order.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0132,
+      "confidence": 0.9868,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.1899,
+      "confidence": 0.8101,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0256,
+      "confidence": 0.9744,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0212,
+      "confidence": 0.9788,
+      "found": false
+    }
+  }
+}

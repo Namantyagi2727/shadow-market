@@ -1,0 +1,37 @@
+{
+  "page": "spikes",
+  "trap": "dead_cta",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 17.11,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page, based on the desktop and mobile screenshots:\n\n### 1. Trust & Credibility Problems\n* **No real product photography:** The hero uses a flat vector illustration instead of actual photos of the device. A shopper cannot see build quality, size in a human hand, or the included travel pouch and scoop.\n* **Contradictory stock status:** The hero says **\"Buy now\"** and leads to an order form, but the section right above checkout says **\"Join the email waitlist for early batch restocks.\"** Shoppers won't know if the product is actually in stock or sold out.\n* **\"Demo\" disclaimers:** The checkout header (`DEMO CHECKOUT · NO REAL PAYMENT`) and footer (`Demo product landing page (no real orders are processed)`) explicitly tell shoppers they cannot actually buy anything here.\n* **Zero social proof:** There are no customer reviews, star ratings, testimonials, or third-party press mentions.\n* **No company, support, or policy info:** There is no \"About\" section, contact email, support link, warranty, return/refund policy, privacy policy, or terms of service anywhere on the page or in the footer.\n\n---\n\n### 2. Checkout & Fulfillment Problems\n* **No physical shipping address fields:** Step 1 (`1. Details`) only asks for **Full name** and **Shipping email** before moving to `2. Review`. A shopper has nowhere to enter a street address, city, postal code, or country for a physical product.\n* **No payment step or accepted payment methods:** The progress bar goes `1. Details` → `2. Review` → `3. Confirmed`, with no payment step, no credit card/Apple Pay/PayPal logos, and no security/encryption reassurance.\n* **No promo code field for the 10% discount:** The page prominently advertises **\"Claim 10% off\"** and **\"an instant 10% launch discount code\"** right above the checkout form, yet there is no field in checkout to apply that code.\n* **Hidden shipping costs, taxes, and delivery times:** There is no mention of shipping rates (or free shipping), supported countries, estimated delivery dates, or taxes.\n* **No live price/subtotal calculation:** Changing the quantity (`- 1 +`) doesn't show a running subtotal or total anywhere in the checkout card.\n\n---\n\n### 3. Missing Product Information\n* **Vague sizing and capacity:** It claims `\"320g Compact\"` and `\"Fits in any jacket pocket\"`, but gives no actual dimensions (height/width), water tank capacity (ml), or coffee dose capacity (grams).\n* **Unclear coffee & water requirements:** It says `\"ground coffee\"` and `\"hot water\"`, but doesn't specify grind size (espresso-fine vs. coarse), whether it accepts pods/capsules, or if it requires boiling water (and how to handle it safely without burning your hands).\n* **No materials or care details:** Aside from `\"stainless piston\"`, shoppers don't know if the body/chamber is BPA-free plastic, aluminum, or stainless steel, or how easy it is to clean on the go.\n\n---\n\n### 4. Usability & UI/UX Issues\n* **Competing forms on one page:** Having an inline **Email Waitlist** card directly above an inline **Order Checkout** card forces shoppers to decide whether they should sign up for a waitlist or just buy the product.\n* **Ambiguous stepper pills:** `1. Details`, `2. Review`, and `3. Confirmed` are styled like pill buttons, which can trick users into clicking `2. Review` directly rather than using the `Continue to review` button.\n* **Uneven mobile CTA alignment:** In the mobile hero, the **\"Buy now\"** button is narrow while **\"Get 10% launch discount\"** stretches much wider underneath it, creating an awkward visual hierarchy where the secondary action looks bigger than the primary one.\n* **Realistic placeholder name:** Using `\"Alex Rivera\"` as placeholder text (rather than a format hint) can make shoppers briefly think the name field is already pre-filled.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0522,
+      "confidence": 0.9478,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.0487,
+      "confidence": 0.9513,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0477,
+      "confidence": 0.9523,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0503,
+      "confidence": 0.9497,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.019,
+      "confidence": 0.981,
+      "found": false
+    }
+  }
+}
