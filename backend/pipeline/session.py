@@ -1134,3 +1134,92 @@ async def run_research(run_id: str, force: bool = False) -> None:
             await _emit_status("prep", "done", "Prepared 3 founder answers")
         except Exception as exc:  # noqa: BLE001
             await _emit_status("prep", "failed", _sanitize_error(f"Founder prep failed ({type(exc).__name__})"))
+
+
+# ---------------------------------------------------------------------------
+# Live web check for whatever the judge actually asked (founder_brief_update)
+# ---------------------------------------------------------------------------
+
+WEB_CHECK_TIMEOUT_S = 35.0
+
+_WEB_CHECK_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "properties": {
+        "facts": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {"fact": {"type": "string"}, "url": {"type": "string"}},
+                "required": ["fact"],
+            },
+        },
+        "line": {"type": "string"},
+        "changed": {"type": "boolean"},
+    },
+    "required": ["facts", "line", "changed"],
+}
+
+
+def _web_check_sync(pitch: dict[str, Any], question: str, current_line: str) -> dict[str, Any]:
+    """Google-Search the judge's exact question, then rewrite the founder's line if the web changes it."""
+    product = pitch.get("one_liner") or pitch.get("title") or "this product"
+    loc = pitch.get("location") or "its market"
+    resp = client().interactions.create(
+        model=MODEL_IDS["persona_driver"],
+        input=(
+            f"A judge just asked a founder pitching '{product}' (launching in {loc}): \"{question}\"\n"
+            "Search the web and report up to 3 short, concrete, current facts that help answer it "
+            "(names of real competitors, prices, market data, regulations). Give a source URL for each."
+        ),
+        tools=[{"type": "google_search"}],
+        generation_config={"thinking_level": "low"},
+    )
+    found = output_text(resp)
+    urls = _extract_grounding_urls(resp)
+    return generate_json(
+        MODEL_IDS["room_founder"],
+        (
+            f"Judge's question: {question}\nFounder's current answer line: {current_line}\n"
+            f"Web search results:\n{found}\nKnown source URLs: {urls}\n\n"
+            "Return: facts (≤3, each ≤20 words, with url when known); line = the founder's improved answer "
+            "(≤22 words, first person, honest, uses a web fact if it helps); changed = true only if the web facts "
+            "materially change or strengthen the answer."
+        ),
+        _WEB_CHECK_SCHEMA,
+        thinking="low",
+    )
+
+
+async def web_check_answer(
+    run_id: str, challenge_id: str, question: str, current_line: str, badge: str, log: EventLog
+) -> None:
+    sess = get_session(run_id)
+    pitch = ((sess.latest_research or {}).get("pitch") if sess else None) or {}
+    t0 = time.monotonic()
+    try:
+        result = await asyncio.wait_for(
+            asyncio.to_thread(_web_check_sync, pitch, question, current_line), timeout=WEB_CHECK_TIMEOUT_S
+        )
+    except Exception as exc:  # noqa: BLE001  (web check is a bonus; never break the live answer)
+        print(f"[session] web check failed for {challenge_id}: {type(exc).__name__}", flush=True)
+        return
+    facts = [
+        {"fact": str(f.get("fact", "")).strip(), "url": (str(f.get("url")).strip() or None) if f.get("url") else None}
+        for f in (result.get("facts") or [])
+        if str(f.get("fact", "")).strip()
+    ][:3]
+    if not facts:
+        return
+    line = _trim_words(str(result.get("line") or current_line), 22)
+    await log.emit(
+        "founder_brief_update",
+        "room",
+        {
+            "challenge_id": challenge_id,
+            "line": line if result.get("changed") else current_line,
+            "changed": bool(result.get("changed")),
+            "badge": badge,
+            "web": facts,
+            "latency_ms": int((time.monotonic() - t0) * 1000),
+        },
+    )

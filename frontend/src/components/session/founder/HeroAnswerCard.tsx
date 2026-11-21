@@ -1,15 +1,35 @@
 "use client";
 
 import React from "react";
-import { BookmarkCheck } from "lucide-react";
+import { BookmarkCheck, Globe } from "lucide-react";
 import { getBadgeConfig, type SessionFounderBriefPayload } from "./types";
+
+/** founder_brief_update: the same answer after a live Google Search on the judge's exact question. */
+export interface FounderBriefUpdate {
+  challenge_id: string;
+  line: string;
+  changed: boolean;
+  web: { fact: string; url: string | null }[];
+  latency_ms: number;
+}
 
 interface HeroAnswerCardProps {
   brief: SessionFounderBriefPayload | null;
   judgeQuestion: string | null;
+  update?: FounderBriefUpdate | null;
+  compact?: boolean;
 }
 
-export function HeroAnswerCard({ brief, judgeQuestion }: HeroAnswerCardProps) {
+function domainOf(url: string | null): string {
+  if (!url) return "";
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "";
+  }
+}
+
+export function HeroAnswerCard({ brief, judgeQuestion, update, compact }: HeroAnswerCardProps) {
   if (!brief) {
     return (
       <section
@@ -76,13 +96,36 @@ export function HeroAnswerCard({ brief, judgeQuestion }: HeroAnswerCardProps) {
         )}
       </div>
 
-      {/* Main speakable answer line in 30px */}
-      <h1 className="mt-3 text-[30px] font-medium leading-[1.22] tracking-[-0.015em] text-[#E8EAED]">
-        {brief.line}
+      {/* Main speakable answer line (updated by the live web check when it changes the answer) */}
+      <h1
+        className={`mt-3 font-medium tracking-[-0.015em] text-[#E8EAED] ${
+          compact ? "text-[17px] leading-[1.35]" : "text-[30px] leading-[1.22]"
+        }`}
+      >
+        {update?.changed ? update.line : brief.line}
       </h1>
 
+      {/* Live web check: facts found for this exact question */}
+      {!compact && update && update.web.length > 0 && (
+        <div className="founder-fade-in mt-3 rounded-[10px] border border-[#2A2B30] bg-[#1C1D21] px-3.5 py-2.5">
+          <div className="mb-1.5 flex items-center gap-1.5 text-[11px] text-[#9AA0A6]">
+            <Globe className="h-3 w-3" strokeWidth={1.75} />
+            <span>{update.changed ? "Updated with web check" : "Web check"}</span>
+            <span className="font-mono text-[#5F6368]">{Math.round(update.latency_ms / 100) / 10}s</span>
+          </div>
+          <ul className="space-y-1">
+            {update.web.map((f, i) => (
+              <li key={i} className="text-[13px] leading-snug text-[#E8EAED]">
+                {f.fact}
+                {f.url && <span className="ml-2 font-mono text-[11px] text-[#5F6368]">{domainOf(f.url)}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* Proof pills */}
-      {proofs.length > 0 && (
+      {!compact && proofs.length > 0 && (
         <div className="mt-3.5 flex flex-wrap items-center gap-2">
           {proofs.map((pill, idx) => (
             <div

@@ -20,7 +20,7 @@ import {
   type RoomMicStats,
   type RoomMicStatus,
 } from "@/lib/room-mic";
-import { HeroAnswerCard } from "./HeroAnswerCard";
+import { HeroAnswerCard, type FounderBriefUpdate } from "./HeroAnswerCard";
 import { PitchColumn } from "./PitchColumn";
 import { PreparedAnswersColumn } from "./PreparedAnswersColumn";
 import { ResearchColumn } from "./ResearchColumn";
@@ -335,6 +335,24 @@ export function FounderWorkspace({
     (latestBriefEvent?.data as SessionFounderBriefPayload | null) ?? null;
 
   const utterances = all("room_utterance");
+
+  // Every judge question answered so far, newest first, with its live web-check update.
+  const briefUpdates = new Map<string, FounderBriefUpdate>();
+  for (const e of all("founder_brief_update")) {
+    const u = e.data as FounderBriefUpdate;
+    briefUpdates.set(u.challenge_id, u);
+  }
+  const briefFeed = all("founder_brief")
+    .slice()
+    .reverse()
+    .map((e) => {
+      const brief = e.data as SessionFounderBriefPayload;
+      return {
+        brief,
+        question: findMatchingJudgeQuestion(e, utterances),
+        update: briefUpdates.get(brief.challenge_id) ?? null,
+      };
+    });
   const latestJudgeQuestion = findMatchingJudgeQuestion(
     latestBriefEvent,
     utterances
@@ -595,32 +613,39 @@ export function FounderWorkspace({
           </div>
         )}
 
-        {/* Full-width Hero: Live Answer Card */}
-        <HeroAnswerCard
-          brief={latestBrief}
-          judgeQuestion={latestJudgeQuestion}
-        />
+        {/* Main area: every judge question with its live answer (newest first) | context on the right */}
+        <div className="grid min-h-0 flex-1 grid-cols-[1.7fr_1fr] gap-4 overflow-hidden">
+          <div className="flex min-h-0 flex-col gap-3 overflow-y-auto pr-1">
+            {briefFeed.length === 0 ? (
+              <HeroAnswerCard brief={null} judgeQuestion={null} />
+            ) : (
+              briefFeed.map((item, idx) => (
+                <HeroAnswerCard
+                  key={item.brief.challenge_id}
+                  brief={item.brief}
+                  judgeQuestion={item.question}
+                  update={item.update}
+                  compact={idx > 0}
+                />
+              ))
+            )}
+          </div>
 
-        {/* Three-column workspace */}
-        <div className="grid min-h-0 flex-1 grid-cols-3 gap-4 overflow-hidden">
-          <PitchColumn
-            pitchUpdate={pitchUpdate}
-            founderCaption={latestFounderCaption}
-            extractedPitch={research?.pitch ?? null}
-            pitchStatus={researchStatuses.pitch ?? null}
-          />
-
-          <ResearchColumn
-            research={research}
-            researchStatuses={researchStatuses}
-          />
-
-          <PreparedAnswersColumn
-            answers={preparedAnswers}
-            matchedQuestionId={matchedQuestionId}
-            prepStatus={researchStatuses.prep ?? null}
-            questionsStatus={researchStatuses.questions ?? null}
-          />
+          <div className="flex min-h-0 flex-col gap-4 overflow-y-auto">
+            <PitchColumn
+              pitchUpdate={pitchUpdate}
+              founderCaption={latestFounderCaption}
+              extractedPitch={research?.pitch ?? null}
+              pitchStatus={researchStatuses.pitch ?? null}
+            />
+            <ResearchColumn research={research} researchStatuses={researchStatuses} />
+            <PreparedAnswersColumn
+              answers={preparedAnswers}
+              matchedQuestionId={matchedQuestionId}
+              prepStatus={researchStatuses.prep ?? null}
+              questionsStatus={researchStatuses.questions ?? null}
+            />
+          </div>
         </div>
 
         {/* Bottom strip: subtle live caption + typed fallback */}

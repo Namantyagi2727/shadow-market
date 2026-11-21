@@ -26,3 +26,6 @@ No twin voices, no votes in this mode.
 | `founder_prep` | `{ "answers": [{ "question_id": "q1", "question": string, "line": string (≤ 22 words, speakable), "points": [string] (2), "evidence": string }] }` |
 | `room_gate` | existing (judge utterances only) |
 | `founder_brief` | existing fields + `"matched_question_id": string \| null` (when the judge's real question matches a prepared one) — the live answer card on Laptop A |
+| `founder_brief_update` | `{ "challenge_id", "line": string, "changed": bool, "badge", "web": [{ "fact": string, "url": string \| null }], "latency_ms": int }` — ~15–30 s after each `founder_brief`: a live Google Search on the judge's exact question. If `changed`, show the new `line` and an "Updated with web check" note with the facts. |
+
+**Founder page priority:** the live answer feed (every judge question + its answer, newest first, large) is the main view; prepared answers are a small side panel and only a head start.

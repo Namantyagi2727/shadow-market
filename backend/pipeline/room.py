@@ -1440,3 +1440,12 @@ async def founder_brief(
         payload["matched_question_id"] = matched_question_id
 
     await room.log.emit("founder_brief", "room", payload)
+
+    # Live sessions: research THIS question on the web and push an updated card ~15-20 s later.
+    if room.is_session:
+        from pipeline import session as _session  # local import avoids a cycle
+
+        task = asyncio.create_task(
+            _session.web_check_answer(run_id, challenge_id, challenge_text, line, badge, room.log)
+        )
+        _session._track_task(task, f"web_check:{challenge_id}")
