@@ -13,7 +13,7 @@ BACKEND_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = BACKEND_DIR.parent
 RUNS_DIR = BACKEND_DIR / "runs"
 
-Stage = Literal["pitch", "boardroom", "build", "lab", "swarm", "verdict", "reality"]
+Stage = Literal["pitch", "boardroom", "build", "lab", "swarm", "verdict", "reality", "room"]
 
 
 @dataclass

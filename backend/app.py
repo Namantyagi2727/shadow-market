@@ -21,10 +21,12 @@ from pydantic import BaseModel
 from pipeline.context import REPO_ROOT, RUNS_DIR, EventLog, RunContext
 from pipeline.hotseat import create_hotseat_session
 from pipeline.orchestrator import run_pipeline
+from pipeline import room
 
 load_dotenv(REPO_ROOT / ".env")
 os.environ["PUBLIC_BASE_URL"] = os.environ.get("PUBLIC_BASE_URL", "http://localhost:8000").rstrip("/")
 
+_BACKGROUND: set = set()  # keep references to fire-and-forget tasks
 RUNS: dict[str, tuple[RunContext, EventLog, asyncio.Task[None] | None]] = {}
 _VOTE_LOCKS: dict[str, asyncio.Lock] = {}
 
@@ -295,3 +297,94 @@ async def ws_run_events(websocket: WebSocket, run_id: str) -> None:
     finally:
         disconnect_task.cancel()
         log.subscribers.discard(queue)
+
+
+class RoomSeatItem(BaseModel):
+    seat: int
+    role: str
+
+
+class RoomSeatsRequest(BaseModel):
+    seats: list[RoomSeatItem]
+
+
+class RoomTwinTokenRequest(BaseModel):
+    seat: int = 1
+
+
+class RoomChallengeRequest(BaseModel):
+    seat: int = 1
+    text: str
+    utterance_id: str | None = None
+
+
+class RoomAskRequest(BaseModel):
+    text: str
+    seat: int | None = None
+
+
+@app.websocket("/ws/runs/{run_id}/room-audio")
+async def ws_room_audio(websocket: WebSocket, run_id: str) -> None:
+    entry = RUNS.get(run_id)
+    if entry is None:
+        await websocket.accept()
+        await websocket.close(code=4404, reason="Run not found")
+        return
+
+    ctx, log, _ = entry
+    await websocket.accept()
+    room.ensure_room(run_id, ctx, log)
+    await room.stream_audio(run_id, websocket)
+
+
+@app.post("/api/runs/{run_id}/room/seats")
+async def post_room_seats(run_id: str, body: RoomSeatsRequest) -> dict[str, bool]:
+    ctx, log, _ = _get_run(run_id)
+    room.ensure_room(run_id, ctx, log)
+    room.set_seats(run_id, [{"seat": s.seat, "role": s.role} for s in body.seats])
+    return {"ok": True}
+
+
+@app.post("/api/runs/{run_id}/room/twin-token")
+async def post_room_twin_token(run_id: str, body: RoomTwinTokenRequest) -> dict[str, str]:
+    ctx, log, _ = _get_run(run_id)
+    room.ensure_room(run_id, ctx, log)
+    try:
+        return await asyncio.to_thread(room.twin_token, run_id, body.seat)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(
+            status_code=502,
+            detail=f"Failed to create twin token: {type(exc).__name__}",
+        ) from exc
+
+
+@app.post("/api/runs/{run_id}/room/challenge")
+async def post_room_challenge(run_id: str, body: RoomChallengeRequest) -> dict[str, bool]:
+    ctx, log, _ = _get_run(run_id)
+    room.ensure_room(run_id, ctx, log)
+    text = body.text.strip()
+    if not text:
+        raise HTTPException(status_code=400, detail="Challenge text must be non-empty.")
+    # Reply at once; twin_challenge is emitted immediately and founder_brief follows in the background.
+    task = asyncio.create_task(
+        room.post_challenge(run_id=run_id, seat=body.seat, text=text, utterance_id=body.utterance_id, source="live")
+    )
+    _BACKGROUND.add(task)
+    task.add_done_callback(_BACKGROUND.discard)
+    return {"ok": True}
+
+
+@app.post("/api/runs/{run_id}/room/ask")
+async def post_room_ask(run_id: str, body: RoomAskRequest) -> dict[str, bool]:
+    ctx, log, _ = _get_run(run_id)
+    room.ensure_room(run_id, ctx, log)
+    text = body.text.strip()
+    if not text:
+        raise HTTPException(status_code=400, detail="Question text must be non-empty.")
+    await room.handle_utterance(run_id, text, forced=True, seat=body.seat)
+    return {"ok": True}
+
+
+@app.get("/api/room/stats")
+async def get_room_stats() -> dict[str, Any]:
+    return room.get_stats()
