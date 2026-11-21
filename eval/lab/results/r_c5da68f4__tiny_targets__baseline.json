@@ -1,0 +1,37 @@
+{
+  "page": "r_c5da68f4",
+  "trap": "tiny_targets",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 14.53,
+  "findings_text": "Here are the usability, trust, and checkout problems visible across the desktop and mobile views of this page:\n\n---\n\n### 1. Checkout & Conversion Blockers\n* **It’s a \"Demo\" checkout—shoppers cannot actually buy:** The yellow badge at the bottom explicitly states `DEMO PRE-ORDER CHECKOUT • NO REAL PAYMENT OR CARD COLLECTION`. Anyone who wants to buy is stopped dead at the finish line.\n* **Primary CTAs are nearly invisible / look disabled:**\n  * In the **header** (desktop and mobile), `Buy now — $59` is tiny, faint gray text with no button styling.\n  * In the **hero**, `Buy now` is faint gray text next to a prominent bordered `See how alerts work` button, making the secondary action look like the primary CTA.\n  * In the **dark green pre-order banner**, `Buy now — $59` is dark-on-dark with extremely low contrast, making it look disabled or easy to miss.\n  * At the bottom of the **checkout form**, `Continue to review` is tiny, low-contrast gray text with no button container.\n* **Shipping cost isn't reflected in the total:** The \"Shipping Timeline & Cost\" card states `Flat $5 US shipping (free shipping on 2+ units)`, but the checkout box only shows `Total: $59` for quantity 1 with no shipping line item or explanation of when shipping is added.\n\n---\n\n### 2. Mobile & Desktop Usability Issues\n* **Comparison table is cut off on mobile:** In the mobile view, the \"Cellular vs. Bluetooth Comparison\" table overflows the right edge of the screen. The \"Bluetooth Organizers (~$45)\" column is clipped mid-word (`Bluetoot...` / `Orga...`), and the \"Basic Alarm Boxes (~$25)\" column is completely off-screen with no visible scroll indicator.\n* **No mobile navigation:** The mobile header drops all section links (`How It Works`, `3-Step Setup`, `Compare`, `Shipping & FAQ`, `Updates`) without replacing them with a menu, forcing mobile users to scroll the entire page to find answers.\n\n---\n\n### 3. Trust, Contradictions & Missing Information\n* **Direct contradiction on the \"$5 refundable spot\":**\n  * The FAQ card (\"What about the $5 refundable reservation vs. full $59 pre-order?\") states they **do not** take $5 deposits (*\"A $5 deposit only measures curiosity. We let you place a full $59 V1 pre-order...\"*).\n  * Immediately below it, the dark banner headline says: **`Reserve your Smart Pill Organizer for $59 (or lock in a $5 refundable spot)`**. This directly contradicts the FAQ and creates confusion about what is actually being offered.\n* **Functional contradiction on dosing schedule vs. hardware:**\n  * The product illustration shows a **7-compartment** tray (`SUN` through `SAT`—one compartment per day).\n  * However, Step 2 (\"Text Your Schedule\") gives the example `\"8am and 8pm\"` (two doses per day). It is unclear how a 7-slot box tracks twice-daily doses for a full week.\n* **No real product photos or dimensions:** Every visual is a flat illustration. For a $59 physical hardware pre-order, shoppers need to see real prototype photos, overall size, and—crucially for pill organizers—how many/how large of pills fit in each compartment.\n* **No cellular coverage or region details:** The core value proposition relies on built-in LTE-M cellular, yet there is no coverage checker, carrier info, or mention of whether it only works in the US (despite mentioning \"$5 US shipping\").\n* **Anonymous seller & missing legal/policy links:** The footer has no company/entity name, physical address, Terms of Service, or Privacy Policy—only `Smart Pill Organizer` and `support@smartpill.care`. Asking for a $59 pre-order with a 6–8 week wait without showing who is behind the product is a major trust hurdle.\n* **No social proof or prototype validation:** There are no testimonials, beta-tester quotes, or video demonstrations showing the lid sensor, chime volume, or light-up behavior in action.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0315,
+      "confidence": 0.9685,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.5174,
+      "confidence": 0.5174,
+      "found": true
+    },
+    "tiny_targets": {
+      "noul": 0.9576,
+      "confidence": 0.9576,
+      "found": true
+    },
+    "price_hidden": {
+      "noul": 0.0271,
+      "confidence": 0.9729,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0183,
+      "confidence": 0.9817,
+      "found": false
+    }
+  }
+}

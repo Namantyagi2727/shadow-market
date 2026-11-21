@@ -1,0 +1,242 @@
+{
+  "page": "r_9828b9cf",
+  "trap": "hidden_fee",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 758.25,
+  "converted_count": 0,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "Ran out of patience after 12 steps without finishing checkout. Last thought: Let's enter my email address so I can click Continue to review and see the final breakdown.",
+      "duration_s": 442.38,
+      "num_steps": 12,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "It's marketed to parents of 6-10 year olds, which isn't my demographic, but the $24 price, USB-C, and 30-day battery are upfront. Let's scroll down to see the actual technical specs and how it works.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The 63mm/58mm thread specs, IPX7 rating, and 30-day USB-C battery are solid, no-nonsense hardware details. Let's scroll down further to see how the sensor actually works and if there's any bloated app requirement.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "click",
+          "target": "Nalgene Wide Mouth",
+          "thought": "Let's test the interactive fit checker with Nalgene Wide Mouth to see if it's a direct 63mm fit for my own bottle.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Nice, it's a direct 63mm fit for standard Nalgene Wide Mouth bottles, and $0/mo app. Let's scroll down to check how the anti-fake sip sensor works and read the FAQ.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "A micro-turbine paired with a suction check is actually a solid mechanical approach instead of a cheap accelerometer. Let's scroll down to see the rest of the sensor details and the FAQ.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "IPX7 electronics, 6 ft drop protection, and a 26-day battery life at 88% are solid specs. Let's scroll down to check the School Mode mute options and the FAQ.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let's scroll down to see the School Mode details, FAQ, and checkout flow.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Silent Micro-Glow Only is a nice touch for desk/office use too, not just classrooms. Let's scroll down to check the shipping, returns, and FAQ details.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "scroll",
+          "target": "down",
+          "thought": "30-day guarantee, 1-year drop warranty, and transparent shipping ($4.95 or free for 2+) are all reasonable. Let's scroll down to see the pre-order checkout form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 10,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let's scroll down a bit more to see the full pre-order checkout form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 11,
+          "action": "type",
+          "target": "e.g., Jordan Taylor",
+          "thought": "The specs and no-subscription model are solid, though the $14.99 handling fee on a $24 item is a bit steep. Let's fill out the form to see what the review step looks like.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 12,
+          "action": "type",
+          "target": "e.g., jordan@example.com",
+          "thought": "Let's enter my email address so I can click Continue to review and see the final breakdown.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "This is built for parents of 6-10 year olds, not for a 22-year-old grad student. Definitely not something I need to spend $24 on.",
+      "duration_s": 25.07,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "This is built for parents of 6-10 year olds, not for a 22-year-old grad student. Definitely not something I need to spend $24 on.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "quit",
+      "quit_reason": "A $14.99 non-refundable handling fee on a $24 item—which isn't even added into the $24 total price—plus no clear shipping timeline or refund terms is a dealbreaker for me.",
+      "duration_s": 757.68,
+      "num_steps": 8,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "Shipping & FAQ",
+          "thought": "Let's check Shipping & FAQ right away to see the shipping timeline, refund terms, and if there's a required companion app.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The shipping timeline (4-6 weeks) and 30-day refund terms are clear. Let's scroll down to check the FAQs and see the checkout section.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "click",
+          "target": "Is there a monthly app subscription? +",
+          "thought": "Let's check 'Is there a monthly app subscription?' to see if a companion app is required, which would be a dealbreaker for me.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "No monthly subscription is great. Let's scroll down to inspect the rest of the checkout form and see if there are any other fees or details.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "type",
+          "target": "e.g., Jordan Taylor",
+          "thought": "Let's enter my name to see what the Review Order step looks like, though that $14.99 non-refundable handling fee on a $24 item is pretty steep.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "type",
+          "target": "e.g., jordan@example.com",
+          "thought": "Let's enter my email address so I can click Continue to review and see the final order breakdown.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Let's click 'Continue to review' to see the final order breakdown and confirm the total with that handling fee.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "quit",
+          "target": "",
+          "thought": "A $14.99 non-refundable handling fee on a $24 item—which isn't even added into the $24 total price—plus no clear shipping timeline or refund terms is a dealbreaker for me.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: Ran out of patience after 12 steps without finishing checkout. Last thought: Let's enter my email address so I can click Continue to review and see the final breakdown.\n  Step 1 (scroll on 'down'): It's marketed to parents of 6-10 year olds, which isn't my demographic, but the $24 price, USB-C, and 30-day battery are upfront. Let's scroll down to see the actual technical specs and how it works.\n  Step 2 (scroll on 'down'): The 63mm/58mm thread specs, IPX7 rating, and 30-day USB-C battery are solid, no-nonsense hardware details. Let's scroll down further to see how the sensor actually works and if there's any bloated app requirement.\n  Step 3 (click on 'Nalgene Wide Mouth'): Let's test the interactive fit checker with Nalgene Wide Mouth to see if it's a direct 63mm fit for my own bottle.\n  Step 4 (scroll on 'down'): Nice, it's a direct 63mm fit for standard Nalgene Wide Mouth bottles, and $0/mo app. Let's scroll down to check how the anti-fake sip sensor works and read the FAQ.\n  Step 5 (scroll on 'down'): A micro-turbine paired with a suction check is actually a solid mechanical approach instead of a cheap accelerometer. Let's scroll down to see the rest of the sensor details and the FAQ.\n  Step 6 (scroll on 'down'): IPX7 electronics, 6 ft drop protection, and a 26-day battery life at 88% are solid specs. Let's scroll down to check the School Mode mute options and the FAQ.\n  Step 7 (scroll on 'down'): Let's scroll down to see the School Mode details, FAQ, and checkout flow.\n  Step 8 (scroll on 'down'): Silent Micro-Glow Only is a nice touch for desk/office use too, not just classrooms. Let's scroll down to check the shipping, returns, and FAQ details.\n  Step 9 (scroll on 'down'): 30-day guarantee, 1-year drop warranty, and transparent shipping ($4.95 or free for 2+) are all reasonable. Let's scroll down to see the pre-order checkout form.\n  Step 10 (scroll on 'down'): Let's scroll down a bit more to see the full pre-order checkout form.\n  Step 11 (type on 'e.g., Jordan Taylor'): The specs and no-subscription model are solid, though the $14.99 handling fee on a $24 item is a bit steep. Let's fill out the form to see what the review step looks like.\n  Step 12 (type on 'e.g., jordan@example.com'): Let's enter my email address so I can click Continue to review and see the final breakdown.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: This is built for parents of 6-10 year olds, not for a 22-year-old grad student. Definitely not something I need to spend $24 on.\n  Step 1 (quit): This is built for parents of 6-10 year olds, not for a 22-year-old grad student. Definitely not something I need to spend $24 on.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: quit\nQuit reason: A $14.99 non-refundable handling fee on a $24 item—which isn't even added into the $24 total price—plus no clear shipping timeline or refund terms is a dealbreaker for me.\n  Step 1 (click on 'Shipping & FAQ'): Let's check Shipping & FAQ right away to see the shipping timeline, refund terms, and if there's a required companion app.\n  Step 2 (scroll on 'down'): The shipping timeline (4-6 weeks) and 30-day refund terms are clear. Let's scroll down to check the FAQs and see the checkout section.\n  Step 3 (click on 'Is there a monthly app subscription? +'): Let's check 'Is there a monthly app subscription?' to see if a companion app is required, which would be a dealbreaker for me.\n  Step 4 (scroll on 'down'): No monthly subscription is great. Let's scroll down to inspect the rest of the checkout form and see if there are any other fees or details.\n  Step 5 (type on 'e.g., Jordan Taylor'): Let's enter my name to see what the Review Order step looks like, though that $14.99 non-refundable handling fee on a $24 item is pretty steep.\n  Step 6 (type on 'e.g., jordan@example.com'): Let's enter my email address so I can click Continue to review and see the final order breakdown.\n  Step 7 (click on 'Continue to review'): Let's click 'Continue to review' to see the final order breakdown and confirm the total with that handling fee.\n  Step 8 (quit): A $14.99 non-refundable handling fee on a $24 item—which isn't even added into the $24 total price—plus no clear shipping timeline or refund terms is a dealbreaker for me.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.9243,
+      "confidence": 0.9243,
+      "found": true
+    },
+    "dead_cta": {
+      "noul": 0.0908,
+      "confidence": 0.9092,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0538,
+      "confidence": 0.9462,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.2649,
+      "confidence": 0.7351,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0195,
+      "confidence": 0.9805,
+      "found": false
+    }
+  }
+}

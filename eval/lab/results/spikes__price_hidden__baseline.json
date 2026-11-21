@@ -1,0 +1,37 @@
+{
+  "page": "spikes",
+  "trap": "price_hidden",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 15.42,
+  "findings_text": "A real shopper landing on this page would run into several major usability, trust, and checkout blockers:\n\n---\n\n### 1. Pricing & Transparency Issues\n* **Hidden price everywhere—except one spot:** The header badge, hero headline, checkout subtitle, and footer all say **“Price shown at checkout”** instead of stating the price. However, in the checkout form, the quantity label randomly reveals **`Quantity ($49 each)`**. Hiding the price only to contradict it at the bottom feels like a dark pattern and creates immediate distrust.\n* **Broken copy in checkout:** The checkout subtitle reads *“Price shown at checkout each · Hand-powered 9-bar espresso anywhere.”*—which doesn’t make grammatical sense.\n* **No total, shipping, or tax breakdown:** Even with `Quantity ($49 each)` set to `1`, there is no visible subtotal, shipping cost, or estimated total before clicking **Continue to review**.\n\n---\n\n### 2. Broken / Incomplete Checkout Flow\n* **“Demo checkout” dead end:** The badge (`DEMO CHECKOUT · NO REAL PAYMENT`) and footer (`no real orders are processed`) tell shoppers they can’t actually buy the product, despite prominent **Buy now** and **Order Pocket Espresso Maker** CTAs.\n* **No shipping address fields:** Step `1. Details` only asks for **Full name** and **Shipping email**. There are no fields for street address, city, postal code, or country—making it impossible to ship a physical product.\n* **Confusing “Shipping email” label:** Calling the field “Shipping email” instead of “Email address” (or “Order confirmation email”) is confusing, especially without physical address fields.\n* **No payment step:** The progress indicator shows `1. Details`, `2. Review`, `3. Confirmed`—leaving no step for entering payment details.\n* **No promo code field:** The page heavily promotes a **10% launch discount code**, yet there is nowhere in the checkout form to enter a discount code.\n\n---\n\n### 3. Contradictory Stock & Availability Signals\n* **In-stock vs. waitlist conflict:** The hero (**Buy now**) and checkout (**Order Pocket Espresso Maker**) imply the product is available to buy immediately, while the middle card says **“Join the email waitlist for early batch restocks”**—leaving shoppers unsure if the item is actually in stock or sold out.\n\n---\n\n### 4. Trust, Credibility & Missing Product Information\n* **No real product photography:** There is only a single flat vector illustration. Shoppers can’t see real materials, build quality, scale/size, or what the included **travel pouch & scoop** look like.\n* **Zero social proof:** No customer reviews, ratings, or testimonials.\n* **Missing key specs & usage details:** No information on water capacity, shot volume, compatible grind/pods, materials (e.g., BPA-free, stainless steel), or cleaning instructions.\n* **No policies or contact info:** There is no shipping timeframe, return/refund policy, warranty, customer support contact, or privacy policy/terms (a red flag when two separate forms ask for an email address).\n\n---\n\n### 5. UI & Mobile Usability Issues\n* **Misleading header button:** The top-right **“Price shown at checkout”** pill is styled like a primary action button, even though it’s not a clear navigation or purchase action.\n* **Awkward hero layout:** **“Includes travel pouch & scoop”** sits floating to the right of “Price shown at checkout” with odd spacing on both desktop and mobile.\n* **Inverted button hierarchy on mobile:** On the mobile view, the primary **Buy now** button is narrow, while the secondary **Get 10% launch discount** button below it is much wider—making the secondary action visually dominate.\n* **Header wrapping on mobile:** “Pocket Espresso” wraps onto two lines in the mobile header, making the top bar look cramped.\n* **Stepper looks like clickable buttons:** `1. Details`, `2. Review`, and `3. Confirmed` are styled like standalone pill buttons rather than a connected progress bar, which may tempt users to click directly to `2. Review` before filling out the form.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0349,
+      "confidence": 0.9651,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.1451,
+      "confidence": 0.8549,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0431,
+      "confidence": 0.9569,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.9705,
+      "confidence": 0.9705,
+      "found": true
+    },
+    "forced_signup": {
+      "noul": 0.0182,
+      "confidence": 0.9818,
+      "found": false
+    }
+  }
+}

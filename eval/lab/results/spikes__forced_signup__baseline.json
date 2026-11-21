@@ -1,0 +1,37 @@
+{
+  "page": "spikes",
+  "trap": "forced_signup",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 16.02,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page:\n\n---\n\n### 1. Usability Problems\n\n* **Unclosable forced sign-up wall:** The `\"Create an account to see this product\"` modal blocks the top of the page with **no close (`×`) button**, no `\"Continue as guest\"` option, and no `\"Already have an account? Log in\"` link. A shopper cannot dismiss it.\n* **Broken overlay / backdrop cutoff:** The dark modal backdrop does not cover the full page or stay fixed to the viewport. On desktop, it cuts off abruptly right across the `\"Get 10% off\"` email input; on mobile, it slices through the bottom of the product illustration. Everything below the cutoff is exposed and interactive, making the gate both frustrating and broken.\n* **Modal copy contradicts the page:** The modal says *\"Sign up to continue viewing product details and pricing,\"* even though the `$49` price, feature cards, and checkout form are all visible below (or behind) the overlay.\n* **Redundant, competing email prompts:** Shoppers are asked for their email in three separate places:\n  1. Account sign-up modal (`Email` + `Password`)\n  2. Launch waitlist card (`Email address` for 10% off)\n  3. Checkout form (`Shipping email`)\n* **Missing essential product details:** For a portable espresso maker with `\"No Chargers\"`, shoppers aren't told critical usage info—such as whether they need to supply their own hot water, what type of coffee it takes (grounds vs. pods), water/basket capacity, materials, or dimensions.\n\n---\n\n### 2. Trust Problems\n\n* **\"Demo Checkout\" disclaimers:** The checkout badge explicitly states `DEMO CHECKOUT · NO REAL PAYMENT`, and the footer says `Demo product landing page (no real orders are processed)`. Any real shopper will immediately abandon the page or assume it’s unfinished/fake.\n* **Conflicting stock & launch messaging:** The header (`Buy now — $49`), hero (`Buy now`), and bottom form (`Order Pocket Espresso Maker`) imply the product is in stock and ready to ship. Meanwhile, the middle section says *\"Join the email waitlist for early batch restocks,\"* which implies it’s sold out or not yet launched.\n* **No real product photos:** The only visual is a flat vector illustration. There are no real photographs, lifestyle shots, scale references, or demonstrations showing how a `\"100% hand-powered piston\"` actually works.\n* **Zero social proof:** No customer reviews, star ratings, testimonials, or third-party validation.\n* **Missing store policies & contact info:** There is no privacy policy or terms of service (especially sketchy when demanding an account password and email), no return/refund policy, no warranty info, and no company address or support contact.\n\n---\n\n### 3. Checkout Problems\n\n* **No physical shipping address:** Step `1. Details` asks only for `Quantity`, `Full name`, and `Shipping email`—there are no fields for street address, city, postal code, or country.\n* **No payment methods:** Because it’s a demo checkout, there are no payment inputs (credit card, Apple Pay, PayPal, etc.) or payment security indicators.\n* **No promo code field for the 10% discount:** The page heavily advertises *\"Get 10% off your launch order\"* with an *\"instant 10% launch discount code,\"* yet there is nowhere in the checkout details to apply a discount code.\n* **No dynamic pricing, shipping cost, or taxes:** Changing the quantity doesn't show a live subtotal, shipping fee, tax calculation, or estimated delivery date—only the static `$49 each` label.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0283,
+      "confidence": 0.9717,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.0637,
+      "confidence": 0.9363,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0299,
+      "confidence": 0.9701,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0443,
+      "confidence": 0.9557,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.9664,
+      "confidence": 0.9664,
+      "found": true
+    }
+  }
+}

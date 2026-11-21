@@ -1,0 +1,37 @@
+{
+  "page": "r_9828b9cf",
+  "trap": "price_hidden",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 17.28,
+  "findings_text": "Here is a breakdown of the usability, trust, and checkout problems a real shopper would hit on this page, based on both the desktop and mobile views:\n\n---\n\n### 1. Broken Pricing & Copy Errors (Global Replace Bug)\nIt appears a global find-and-replace replaced almost every price—and several unrelated labels—with the phrase **\"Price shown at checkout\"**. This breaks readability across the entire page:\n* **Unusable CTA buttons:** The header button and main hero CTA both read **\"Price shown at checkout\"** instead of an action verb (e.g., *Pre-Order Now* or *Reserve Yours*).\n* **Broken headlines & body copy:**\n  * *\"Upgrade Only the Cap for Price shown at checkout\"*\n  * *\"Instead of spending Price shown at checkout–Price shown at checkout on another full smart bottle...\"*\n  * *\"Why Price shown at checkout beats a Price shown at checkout smart bottle\"*\n  * *\"...Price shown at checkout/mo app.\"* (likely meant to be *$0/mo*).\n* **Broken Comparison Table (\"How It Compares to Buying a New Bottle\"):** All three column headers are broken. Column 1 and Column 3 are both titled **\"Price shown at checkout\"** (Column 3 is clearly meant to be *Standard Bottle*), and Column 2 reads **\"Full Smart Kids Bottle — ~Price shown at checkout\"**.\n* **Hidden Shipping Cost:** Under *Shipping Timeline & Cost*, it reads *\"Flat-rate Price shown at checkout on 1 cap\"*, leaving the shopper guessing what shipping actually costs.\n* **Stray Replacement in School Mode:** The badge above the right-hand card in the School Mode section reads **\"Price shown at checkout\"** (where a feature badge like *Zero Distractions* or *100% Silent* should be).\n\n---\n\n### 2. Checkout & Conversion Blockers\n* **It’s a fake/demo checkout:** The checkout section states: *\"Demo / Pre-Order Checkout: No real payment or credit card is collected on this MVP preview page.\"* A real shopper who scrolls all the way down ready to buy hits a dead end.\n* **\"Price shown at checkout\" contradicts the checkout:** The page refuses to state the price anywhere above the fold, only to reveal **\"Quantity ($24 each — No subscription)\"** at the very bottom. Hiding a very reasonable $24 price hurts conversion.\n* **Missing physical shipping address:** Step 1 (*Details & Quantity*) asks for **Full name** and **Shipping email**, then Step 2 jumps straight to **Review Order** and Step 3 to **Confirmation**. There is no field for a physical street address to ship a physical product.\n* **No shipping cost calculation in the total:** Even though 1 cap is supposed to have a flat-rate shipping fee, the checkout widget shows **Total: $24** with no shipping line item or explanation of whether shipping is added later.\n\n---\n\n### 3. Trust & Credibility Issues\n* **Ironic \"Transparency\" claims:** The page promises **\"Zero Checkout Guesswork\"** and **\"Transparent Shipping, Returns & Support\"** while hiding both the product price and the flat-rate shipping fee behind broken placeholder text.\n* **No real product photos:** The only visual of the cap is a flat 2D illustration. For a $24 hardware product that has to seal watertight on a child’s bottle, survive 6-foot drops, and charge via USB-C, shoppers will be skeptical without photos of a real prototype, the spout/turbine mechanism, and the silicone adapter ring.\n* **No social proof or founder identity:** There are no parent reviews, teacher quotes, safety certifications (e.g., BPA-free, food-grade materials), or company/team details beyond a generic `support@smartcapkids.com` email.\n* **4–6 week pre-order wait + \"MVP preview\":** Asking parents to pre-order Batch 1 with a 4–6 week wait feels risky when the page itself admits it is an MVP preview.\n\n---\n\n### 4. Usability & Layout Flaws\n* **Mismatched section badge:** The checkout section at the bottom is labeled **`PRE-ORDER CHECKOUT & FAQ`**, even though the FAQ is in the section above it.\n* **Awkward mobile segmented toggle:** In the *Teacher-Approved School Mode* section, the **\"School Mode (8 AM – 3 PM) / After-School Mode\"** toggle sits side-by-side on desktop, but stacks vertically on mobile, making it look less like an interactive tab switcher and more like two stacked text rows.\n* **No clear link between \"Check Bottle Fit\" and the tool:** Clicking \"Check Bottle Fit\" in the hero presumably scrolls to the *Interactive Bottle Fit Checker*, though there's no indication on the page of what happens if a user selects *\"Narrow / Other Bottle\"*—shoppers with non-standard bottles may not realize if they are supported until they read the fine print next to it.\n* **Mobile header wrapping:** On mobile, the **\"Price shown at checkout\"** button wraps onto two lines inside the sticky/top bar, crowding the *\"Smart Hydration Cap\"* brand title.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0457,
+      "confidence": 0.9543,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.5326,
+      "confidence": 0.5326,
+      "found": true
+    },
+    "tiny_targets": {
+      "noul": 0.0382,
+      "confidence": 0.9618,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.9698,
+      "confidence": 0.9698,
+      "found": true
+    },
+    "forced_signup": {
+      "noul": 0.0182,
+      "confidence": 0.9818,
+      "found": false
+    }
+  }
+}

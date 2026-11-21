@@ -1,0 +1,37 @@
+{
+  "page": "r_9828b9cf",
+  "trap": "forced_signup",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 25.15,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this product page, grouped by severity and area:\n\n---\n\n### 1. Critical Blockers\n* **Forced Account Wall with No Exit:** An unclosable **\"Create an account to see this product\"** modal sits over the hero section on both desktop and mobile. There is no `X` button, no \"Continue as guest\" option, and no \"Log in\" link for returning users.\n* **Obscured Hero & Broken First Impression:** Because the modal darkens the top of the page, shoppers cannot read the main headline, value proposition, hero pricing, or click the primary **\"Buy now — $24\"** and **\"Check Bottle Fit\"** buttons.\n* **Contradictory Gatekeeping:** The modal says *\"Sign up to continue viewing product details and pricing,\"* yet the entire rest of the page (including the $24 price and checkout form) is visible if you scroll past the top—making the gate feel broken and pointless.\n\n---\n\n### 2. Checkout & Pricing Problems\n* **\"Demo\" Checkout Dead End:** The checkout section explicitly states: *\"Demo / Pre-Order Checkout: No real payment or credit card is collected on this MVP preview page.\"* A real shopper trying to buy the cap hits a wall and cannot actually complete a purchase.\n* **Missing Shipping Address:** Step 1 (`1. Details & Quantity`) only asks for Quantity, **Full name**, and **Shipping email** (awkward phrasing for an email address). There are no street address, city, state, or ZIP fields, nor any clear indication of where shipping details are collected.\n* **Shipping Cost Mismatch:** The FAQ/Shipping section states shipping is **$4.95 flat-rate for 1 cap** (free for 2+), but in the checkout form with Quantity set to `1`, the total displays **`Total: $24`** with no shipping line item or explanation—setting up a surprise fee on the next step.\n* **No Product/Adapter Configuration:** Even though the page emphasizes thread compatibility (63mm standard + 58mm adapter) and custom rings for non-standard bottles, the checkout has no option to select a bottle type, color, or adapter, forcing buyers to email a photo *after* ordering if it doesn't fit.\n* **Waitlist vs. Pre-Order Confusion:** Placing a *\"Not Ready to Pre-Order? Join the Waitlist\"* box directly above a *\"Demo\"* pre-order checkout sends mixed signals about whether the product is actually available to order or still in concept/waitlist stage.\n\n---\n\n### 3. Trust & Credibility Gaps\n* **No Real Product Photography:** The only product visual is a flat vector diagram (partially hidden behind the modal). Shoppers buying smart hardware want real photos of the physical cap, the charging port, the spout/turbine, and how it looks on an actual kid's bottle.\n* **No Company Identity or Social Proof:** There are zero customer reviews, parent/teacher testimonials (despite the *\"Teacher-Approved School Mode\"* claim), or company details (no brand name beyond \"Smart Hydration Cap\", no physical address, no team/founder info—just `support@smartcapkids.com`).\n* **Missing Safety & Material Certifications:** For a children's drinking product with electronics and a battery, parents look for **BPA-free**, **FDA food-grade**, and **battery/safety certifications**—none are listed.\n* **No App Store Links or App Screenshots:** The page promises a free parent app for schedules, daily summaries, and lost-cap pings, but provides no iOS/Android compatibility details, App Store/Google Play links, or real app screenshots.\n* **Potentially Misleading \"Lost-Cap\" Claim:** Claiming a *\"Last Seen Near Bluetooth ping... if it's left on the school bus\"* can mislead parents into thinking it has GPS/Find My tracking, when standard Bluetooth only works within close range.\n\n---\n\n### 4. Usability & Mobile Layout Issues\n* **Broken Toggle Wrapping on Mobile:** In the *Teacher-Approved School Mode* section on mobile, the segmented toggle (`School Mode (8 AM – 3 PM)` / `After-School Mode`) wraps onto two lines inside its pill container, making the active state look cramped and misaligned.\n* **Wrapped Checkout Stepper on Mobile:** The 3-step checkout progress indicator (`1. Details & Quantity`, `2. Review Order`, `3. Confirmation`) wraps onto two lines on mobile, with step 3 awkwardly dropping below step 1.\n* **Mismatched Section Badge:** The badge above the checkout form reads **`PRE-ORDER CHECKOUT & FAQ`**, even though the FAQ is in the section above and there are no FAQs in the checkout block.\n\n---\n\n### 5. Missing Product & Care Information\n* **Cleaning & Dishwasher Safety:** The cap uses a *\"food-grade micro-turbine inside the spout\"* and has electronics/USB-C charging, yet there is **no mention of whether it is dishwasher safe** or how parents are supposed to clean the turbine to prevent mold—a major concern for kids' water bottles.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.1027,
+      "confidence": 0.8973,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.5135,
+      "confidence": 0.5135,
+      "found": true
+    },
+    "tiny_targets": {
+      "noul": 0.0236,
+      "confidence": 0.9764,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0459,
+      "confidence": 0.9541,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.9816,
+      "confidence": 0.9816,
+      "found": true
+    }
+  }
+}

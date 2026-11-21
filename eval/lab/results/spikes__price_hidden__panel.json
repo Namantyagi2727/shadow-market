@@ -1,0 +1,154 @@
+{
+  "page": "spikes",
+  "trap": "price_hidden",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 17.32,
+  "converted_count": 0,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "I'm at the bottom of the page and there are zero technical specs, materials, or repairability details—just buzzword-heavy copy and a checkout form. Not buying.",
+      "duration_s": 14.24,
+      "num_steps": 3,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Hiding the price until checkout is annoying. Let me scroll down to see if there are actual technical specs or if this is just fluff.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Okay, it says $49 each down here, so it's not a strict email wall, just sloppy copy. Let me scroll down further to see if there are any actual technical specs, materials, or repairability details below the checkout form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "quit",
+          "target": "",
+          "thought": "I'm at the bottom of the page and there are zero technical specs, materials, or repairability details—just buzzword-heavy copy and a checkout form. Not buying.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "It's $49 each, which is way over my $35 limit even with the 10% off. Definitely not worth an impulse buy on a grad student budget.",
+      "duration_s": 16.6,
+      "num_steps": 4,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "It says 'Price shown at checkout' which is annoying since I'm on a tight budget, but let me scroll down to see if it's actually worth looking into.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "9-Bar Extraction sounds decent for a portable, but I still don't see a price. Let me scroll down to see if the price is listed further down.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Still no price, just a 10% off email signup. Let me scroll down to the checkout section to see what this actually costs.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "quit",
+          "target": "",
+          "thought": "It's $49 each, which is way over my $35 limit even with the 10% off. Definitely not worth an impulse buy on a grad student budget.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "quit",
+      "quit_reason": "I've reached the bottom of the page and there is still no information about the shipping timeline or refund terms. As an operations manager and working parent, I don't have time to guess when this will arrive or if I can return it if it doesn't work.",
+      "duration_s": 14.25,
+      "num_steps": 3,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I want to see the actual price, shipping timeline, and refund terms before deciding, since 'Price shown at checkout' is not very transparent.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Okay, it's $49 each, which is reasonable, but I still don't see any shipping timeline, refund terms, or customer reviews. Let me scroll down further to check.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "quit",
+          "target": "",
+          "thought": "I've reached the bottom of the page and there is still no information about the shipping timeline or refund terms. As an operations manager and working parent, I don't have time to guess when this will arrive or if I can return it if it doesn't work.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: I'm at the bottom of the page and there are zero technical specs, materials, or repairability details—just buzzword-heavy copy and a checkout form. Not buying.\n  Step 1 (scroll on 'down'): Hiding the price until checkout is annoying. Let me scroll down to see if there are actual technical specs or if this is just fluff.\n  Step 2 (scroll on 'down'): Okay, it says $49 each down here, so it's not a strict email wall, just sloppy copy. Let me scroll down further to see if there are any actual technical specs, materials, or repairability details below the checkout form.\n  Step 3 (quit): I'm at the bottom of the page and there are zero technical specs, materials, or repairability details—just buzzword-heavy copy and a checkout form. Not buying.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: It's $49 each, which is way over my $35 limit even with the 10% off. Definitely not worth an impulse buy on a grad student budget.\n  Step 1 (scroll on 'down'): It says 'Price shown at checkout' which is annoying since I'm on a tight budget, but let me scroll down to see if it's actually worth looking into.\n  Step 2 (scroll on 'down'): 9-Bar Extraction sounds decent for a portable, but I still don't see a price. Let me scroll down to see if the price is listed further down.\n  Step 3 (scroll on 'down'): Still no price, just a 10% off email signup. Let me scroll down to the checkout section to see what this actually costs.\n  Step 4 (quit): It's $49 each, which is way over my $35 limit even with the 10% off. Definitely not worth an impulse buy on a grad student budget.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: quit\nQuit reason: I've reached the bottom of the page and there is still no information about the shipping timeline or refund terms. As an operations manager and working parent, I don't have time to guess when this will arrive or if I can return it if it doesn't work.\n  Step 1 (scroll on 'down'): I want to see the actual price, shipping timeline, and refund terms before deciding, since 'Price shown at checkout' is not very transparent.\n  Step 2 (scroll on 'down'): Okay, it's $49 each, which is reasonable, but I still don't see any shipping timeline, refund terms, or customer reviews. Let me scroll down further to check.\n  Step 3 (quit): I've reached the bottom of the page and there is still no information about the shipping timeline or refund terms. As an operations manager and working parent, I don't have time to guess when this will arrive or if I can return it if it doesn't work.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.028,
+      "confidence": 0.972,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.0122,
+      "confidence": 0.9878,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0144,
+      "confidence": 0.9856,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.8359,
+      "confidence": 0.8359,
+      "found": true
+    },
+    "forced_signup": {
+      "noul": 0.0434,
+      "confidence": 0.9566,
+      "found": false
+    }
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "page": "r_066ae675",
+  "trap": "clean",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 60.17,
+  "converted_count": 2,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "converted",
+      "quit_reason": null,
+      "duration_s": 56.98,
+      "num_steps": 11,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Pricing is upfront ($24 starter kit, $8 refills) and no forced subscription, which is good. I'll scroll down to see the actual mechanism and ingredients.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The refill mechanism is straightforward and the no-forced-subscription model is clear. Let me scroll down to check the ingredients and scent options.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The melt-point rating (115°F) and specific active ingredients (magnesium hydroxide, zinc ricinoleate) are solid technical details. I'll scroll down to see the full ingredient list and scent options.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Full ingredient transparency is solid—magnesium hydroxide, zinc ricinoleate, candelilla/carnauba wax. I'll scroll down to check the 30-day guarantee and the checkout flow.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The comparison table is straightforward and the 30-day guarantee covers summer melting. I'll scroll down to check the FAQ and the checkout form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Shipping timeline and return policy are clear and straightforward. Let me scroll down to check the actual checkout form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let me scroll down a bit more to see the rest of the checkout form and the review button.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "The pricing is transparent ($24 starter kit, $8 refills) and there's no forced subscription. I'll fill in my name to test the pre-order review flow.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "Now I'll enter my email address so I can click Continue to review.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 10,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Both my name and email are filled in. I'll click 'Continue to review' to see the order summary.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 11,
+          "action": "click",
+          "target": "Complete order",
+          "thought": "The order summary is clear and accurate ($24 total, no hidden fees or forced subscriptions). I'll click 'Complete order' to finish the demo checkout.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "The comparison table is cut off on the right side on my phone, which is super annoying to read. I'm already on the fence about spending $24, so I'll just pass for now.",
+      "duration_s": 59.37,
+      "num_steps": 11,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "$24 for a starter kit and $8 refills isn't terrible, and it's under my $35 limit, but I want to see the scents and more details before deciding if it's worth it.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I see the 30-day guarantee and $8 refills, which is good, but I still want to scroll down to see the scent options and how the refills actually work.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Zero forced subscriptions is a big plus for me, so I'll scroll down a bit more to see how the refills actually work and check out the scent options.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Okay, twisting and dropping in a refill pod seems easy enough. Let's scroll down to see the rest of the steps and finally get to the scent options.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Two months per $8 stick and no surprise auto-charges sounds good for my budget. Let's scroll down to check out the scent options.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Okay, I see the ingredients section now. Let's scroll down a bit more to actually see and pick from the scent options.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "click",
+          "target": "Eucalyptus + Mint",
+          "thought": "Bergamot + Cedar sounds nice, but I want to see the scent notes for Eucalyptus + Mint before deciding.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Eucalyptus + Mint sounds really refreshing. Let's scroll down to see the rest of the page and check out the checkout options or any deals.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The ingredients look clean and gentle, which is great. Let's scroll down further to see the checkout section and final price.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 10,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The 30-day money-back guarantee and $24 price point look really solid, especially compared to $39.95 competitors. Let's scroll down to see the comparison table and get to the checkout.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 11,
+          "action": "quit",
+          "target": "",
+          "thought": "The comparison table is cut off on the right side on my phone, which is super annoying to read. I'm already on the fence about spending $24, so I'll just pass for now.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "converted",
+      "quit_reason": null,
+      "duration_s": 51.88,
+      "num_steps": 11,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I want to see how the refills work, what scents are available, and check the shipping timeline and any customer reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Refills look simple and there are no forced subscriptions, which is great. Let me scroll down further to check the scent options, shipping timeline, and any customer reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I see the ingredients and scent notes section starting at the bottom. Let me scroll down to check the scent options, shipping timeline, and customer reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The ingredients look safe and well-thought-out, especially the high melt point. Now I need to scroll down to check the shipping timeline, refund terms, and any customer reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The 30-day money-back guarantee and 24-hour refund/replacement terms are very clear. Let me scroll down to check the shipping timeline and any customer reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I see the FAQ & Checkout section starting at the bottom with Shipping Timeline & Cost. Let me scroll down to read the full shipping details and check if there are any customer reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The shipping timeline (2-3 business days, 3-5 days in transit) and 30-day money-back guarantee are very clear. Let me scroll down to check the rest of the FAQs and the pre-order checkout form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "The shipping, return policy, and FAQs are all clear and straightforward. I'm ready to try the pre-order demo by entering my name.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "Now that I've entered my name, I'll enter my email address to complete the pre-order demo form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 10,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "I've entered my name and email address. Let me click 'Continue to review' to see the rest of the pre-order demo.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 11,
+          "action": "click",
+          "target": "Complete order",
+          "thought": "Everything looks accurate—the product, quantity, my name, email, and the $24 total. I'll click 'Complete order' to finish the pre-order demo.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: converted\n  Step 1 (scroll on 'down'): Pricing is upfront ($24 starter kit, $8 refills) and no forced subscription, which is good. I'll scroll down to see the actual mechanism and ingredients.\n  Step 2 (scroll on 'down'): The refill mechanism is straightforward and the no-forced-subscription model is clear. Let me scroll down to check the ingredients and scent options.\n  Step 3 (scroll on 'down'): The melt-point rating (115°F) and specific active ingredients (magnesium hydroxide, zinc ricinoleate) are solid technical details. I'll scroll down to see the full ingredient list and scent options.\n  Step 4 (scroll on 'down'): Full ingredient transparency is solid—magnesium hydroxide, zinc ricinoleate, candelilla/carnauba wax. I'll scroll down to check the 30-day guarantee and the checkout flow.\n  Step 5 (scroll on 'down'): The comparison table is straightforward and the 30-day guarantee covers summer melting. I'll scroll down to check the FAQ and the checkout form.\n  Step 6 (scroll on 'down'): Shipping timeline and return policy are clear and straightforward. Let me scroll down to check the actual checkout form.\n  Step 7 (scroll on 'down'): Let me scroll down a bit more to see the rest of the checkout form and the review button.\n  Step 8 (type on 'Alex Rivera'): The pricing is transparent ($24 starter kit, $8 refills) and there's no forced subscription. I'll fill in my name to test the pre-order review flow.\n  Step 9 (type on 'alex@example.com'): Now I'll enter my email address so I can click Continue to review.\n  Step 10 (click on 'Continue to review'): Both my name and email are filled in. I'll click 'Continue to review' to see the order summary.\n  Step 11 (click on 'Complete order'): The order summary is clear and accurate ($24 total, no hidden fees or forced subscriptions). I'll click 'Complete order' to finish the demo checkout.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: The comparison table is cut off on the right side on my phone, which is super annoying to read. I'm already on the fence about spending $24, so I'll just pass for now.\n  Step 1 (scroll on 'down'): $24 for a starter kit and $8 refills isn't terrible, and it's under my $35 limit, but I want to see the scents and more details before deciding if it's worth it.\n  Step 2 (scroll on 'down'): I see the 30-day guarantee and $8 refills, which is good, but I still want to scroll down to see the scent options and how the refills actually work.\n  Step 3 (scroll on 'down'): Zero forced subscriptions is a big plus for me, so I'll scroll down a bit more to see how the refills actually work and check out the scent options.\n  Step 4 (scroll on 'down'): Okay, twisting and dropping in a refill pod seems easy enough. Let's scroll down to see the rest of the steps and finally get to the scent options.\n  Step 5 (scroll on 'down'): Two months per $8 stick and no surprise auto-charges sounds good for my budget. Let's scroll down to check out the scent options.\n  Step 6 (scroll on 'down'): Okay, I see the ingredients section now. Let's scroll down a bit more to actually see and pick from the scent options.\n  Step 7 (click on 'Eucalyptus + Mint'): Bergamot + Cedar sounds nice, but I want to see the scent notes for Eucalyptus + Mint before deciding.\n  Step 8 (scroll on 'down'): Eucalyptus + Mint sounds really refreshing. Let's scroll down to see the rest of the page and check out the checkout options or any deals.\n  Step 9 (scroll on 'down'): The ingredients look clean and gentle, which is great. Let's scroll down further to see the checkout section and final price.\n  Step 10 (scroll on 'down'): The 30-day money-back guarantee and $24 price point look really solid, especially compared to $39.95 competitors. Let's scroll down to see the comparison table and get to the checkout.\n  Step 11 (quit): The comparison table is cut off on the right side on my phone, which is super annoying to read. I'm already on the fence about spending $24, so I'll just pass for now.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: converted\n  Step 1 (scroll on 'down'): I want to see how the refills work, what scents are available, and check the shipping timeline and any customer reviews.\n  Step 2 (scroll on 'down'): Refills look simple and there are no forced subscriptions, which is great. Let me scroll down further to check the scent options, shipping timeline, and any customer reviews.\n  Step 3 (scroll on 'down'): I see the ingredients and scent notes section starting at the bottom. Let me scroll down to check the scent options, shipping timeline, and customer reviews.\n  Step 4 (scroll on 'down'): The ingredients look safe and well-thought-out, especially the high melt point. Now I need to scroll down to check the shipping timeline, refund terms, and any customer reviews.\n  Step 5 (scroll on 'down'): The 30-day money-back guarantee and 24-hour refund/replacement terms are very clear. Let me scroll down to check the shipping timeline and any customer reviews.\n  Step 6 (scroll on 'down'): I see the FAQ & Checkout section starting at the bottom with Shipping Timeline & Cost. Let me scroll down to read the full shipping details and check if there are any customer reviews.\n  Step 7 (scroll on 'down'): The shipping timeline (2-3 business days, 3-5 days in transit) and 30-day money-back guarantee are very clear. Let me scroll down to check the rest of the FAQs and the pre-order checkout form.\n  Step 8 (type on 'Alex Rivera'): The shipping, return policy, and FAQs are all clear and straightforward. I'm ready to try the pre-order demo by entering my name.\n  Step 9 (type on 'alex@example.com'): Now that I've entered my name, I'll enter my email address to complete the pre-order demo form.\n  Step 10 (click on 'Continue to review'): I've entered my name and email address. Let me click 'Continue to review' to see the rest of the pre-order demo.\n  Step 11 (click on 'Complete order'): Everything looks accurate—the product, quantity, my name, email, and the $24 total. I'll click 'Complete order' to finish the pre-order demo.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0238,
+      "confidence": 0.9762,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.0265,
+      "confidence": 0.9735,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0227,
+      "confidence": 0.9773,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0149,
+      "confidence": 0.9851,
+      "found": false
+    }
+  }
+}

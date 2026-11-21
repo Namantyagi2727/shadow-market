@@ -1,0 +1,98 @@
+{
+  "page": "r_35bf7899",
+  "trap": "forced_signup",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 7.3,
+  "converted_count": 0,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "There's an account creation wall blocking me from even viewing product details and pricing. Immediate quit.",
+      "duration_s": 6.34,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "There's an account creation wall blocking me from even viewing product details and pricing. Immediate quit.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "I'm not creating an account just to see product details and pricing. That's an instant no for me.",
+      "duration_s": 4.37,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "I'm not creating an account just to see product details and pricing. That's an instant no for me.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "quit",
+      "quit_reason": "A forced sign-up wall just to view product details and pricing? I don't have time for this. I'm leaving.",
+      "duration_s": 6.63,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "A forced sign-up wall just to view product details and pricing? I don't have time for this. I'm leaving.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: There's an account creation wall blocking me from even viewing product details and pricing. Immediate quit.\n  Step 1 (quit): There's an account creation wall blocking me from even viewing product details and pricing. Immediate quit.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: I'm not creating an account just to see product details and pricing. That's an instant no for me.\n  Step 1 (quit): I'm not creating an account just to see product details and pricing. That's an instant no for me.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: quit\nQuit reason: A forced sign-up wall just to view product details and pricing? I don't have time for this. I'm leaving.\n  Step 1 (quit): A forced sign-up wall just to view product details and pricing? I don't have time for this. I'm leaving.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0208,
+      "confidence": 0.9792,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.0334,
+      "confidence": 0.9666,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0319,
+      "confidence": 0.9681,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.3111,
+      "confidence": 0.6889,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.9583,
+      "confidence": 0.9583,
+      "found": true
+    }
+  }
+}

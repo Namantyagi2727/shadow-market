@@ -1,0 +1,290 @@
+{
+  "page": "r_35bf7899",
+  "trap": "clean",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 63.89,
+  "converted_count": 2,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "converted",
+      "quit_reason": null,
+      "duration_s": 39.55,
+      "num_steps": 8,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "Tech Specs",
+          "thought": "Price is upfront ($29) and no email wall, which is good. 500 lm + dual lasers for 6 hours on USB-C sounds plausible if it's a decent cell, but I want to check the actual Tech Specs—battery mAh, laser class, and mount durability—before taking it seriously.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The tech specs are actually concrete—1100mAh Li-Po, IPX6, 532nm diodes, 68g. I want to scroll down to check the shipping, returns, and warranty/support details.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Shipping ($4 flat-rate) and 30-day return policy with covered return shipping are solid and straightforward. Let's scroll down to check the actual purchase flow.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I see the pre-order demo checkout starting at the bottom of the screen. Let's scroll down to see the full checkout form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "The demo checkout is clearly labeled as a demo with no real payment collected, and the included hardware (cam clamp, rack clip, USB-C cable) is solid for $29. Let's fill in my name to test the checkout flow.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "Let's enter my shipping email so I can continue to the review step of the demo checkout.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Name and email are filled in. Let's click 'Continue to review' to see the final step of the demo checkout.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "click",
+          "target": "Complete order",
+          "thought": "The review screen is clean and accurate ($29 total, no hidden fees). Let's click 'Complete order' to finish the demo checkout.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "Ran out of patience after 12 steps without finishing checkout. Last thought: I see the 'Notify me' email signup, but I want to scroll down a bit more to see the actual order form.",
+      "duration_s": 63.25,
+      "num_steps": 12,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "See streetlight demo",
+          "thought": "$29 is under my $35 limit, and I bike at night sometimes, so it's intriguing. I want to see the streetlight demo first to make sure it's actually bright and not a cheap gimmick.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "click",
+          "target": "Standard Tail Light Only",
+          "thought": "Let me toggle to 'Standard Tail Light Only' to see the actual difference and make sure this isn't just a marketing gimmick.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Okay, I see the difference in the diagram, though it's just a simple illustration. Let me scroll down to see actual product details, battery life, or reviews before I decide if it's worth $29.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The explanation for why it's $29 instead of $39+ sounds reasonable, and I use bike-shares sometimes, so let me scroll down to read about the quick clip-on mount and other specs.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The clip-on mount diagram looks practical for bike-shares, but I still want to see battery life, waterproofing, or customer reviews before spending $29. Let me scroll down further.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Okay, pothole stability and fender clearance are nice, but I still need to see battery life, waterproofing, or actual reviews before I commit $29.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Finally, the 'Full Tech Specs' section is coming up. Let me scroll down to check the battery life and waterproofing.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "scroll",
+          "target": "down",
+          "thought": "500 lumens, 6 hours battery with USB-C, and IPX6 waterproofing for $29 actually sounds like a really good deal. Let me scroll down to check if there are any reviews, warranty info, or hidden shipping fees.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I see the 'Transparent shipping, returns, and support' section starting at the bottom. Let me scroll down to check if there are any hidden shipping fees that would push the total over $35.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 10,
+          "action": "scroll",
+          "target": "down",
+          "thought": "$29 plus $4 flat-rate shipping is $33, which is under my $35 limit, and the 30-day free return shipping takes away the risk of regretting the purchase. Let me scroll down to see the rest of the page and the checkout area.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 11,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The 30-day return policy and real human support are reassuring. Let me scroll down past the FAQs to check out the order form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 12,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I see the 'Notify me' email signup, but I want to scroll down a bit more to see the actual order form.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "converted",
+      "quit_reason": null,
+      "duration_s": 32.06,
+      "num_steps": 7,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "Shipping & FAQ",
+          "thought": "I want to check the shipping timeline and refund terms right away to make sure they are clear.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The shipping timeline and 30-day return policy look very clear so far. Let me scroll down to finish reading the return terms and see the order options.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I see the pre-order demo checkout section starting at the bottom of the screen. Let me scroll down to inspect the order options and checkout process.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "The product and checkout look straightforward and reliable, with everything needed in the box. Let me fill in my name to test the pre-order flow.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "Now I'll enter my shipping email so I can proceed to the review step.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Both my name and email are filled in, so I'll click 'Continue to review' to see the final order summary.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "click",
+          "target": "Complete order",
+          "thought": "The order summary is clear and accurate—1 unit at $29 with my name and email. I'll click 'Complete order' to finish the demo checkout.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: converted\n  Step 1 (click on 'Tech Specs'): Price is upfront ($29) and no email wall, which is good. 500 lm + dual lasers for 6 hours on USB-C sounds plausible if it's a decent cell, but I want to check the actual Tech Specs—battery mAh, laser class, and mount durability—before taking it seriously.\n  Step 2 (scroll on 'down'): The tech specs are actually concrete—1100mAh Li-Po, IPX6, 532nm diodes, 68g. I want to scroll down to check the shipping, returns, and warranty/support details.\n  Step 3 (scroll on 'down'): Shipping ($4 flat-rate) and 30-day return policy with covered return shipping are solid and straightforward. Let's scroll down to check the actual purchase flow.\n  Step 4 (scroll on 'down'): I see the pre-order demo checkout starting at the bottom of the screen. Let's scroll down to see the full checkout form.\n  Step 5 (type on 'Alex Rivera'): The demo checkout is clearly labeled as a demo with no real payment collected, and the included hardware (cam clamp, rack clip, USB-C cable) is solid for $29. Let's fill in my name to test the checkout flow.\n  Step 6 (type on 'alex@example.com'): Let's enter my shipping email so I can continue to the review step of the demo checkout.\n  Step 7 (click on 'Continue to review'): Name and email are filled in. Let's click 'Continue to review' to see the final step of the demo checkout.\n  Step 8 (click on 'Complete order'): The review screen is clean and accurate ($29 total, no hidden fees). Let's click 'Complete order' to finish the demo checkout.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: Ran out of patience after 12 steps without finishing checkout. Last thought: I see the 'Notify me' email signup, but I want to scroll down a bit more to see the actual order form.\n  Step 1 (click on 'See streetlight demo'): $29 is under my $35 limit, and I bike at night sometimes, so it's intriguing. I want to see the streetlight demo first to make sure it's actually bright and not a cheap gimmick.\n  Step 2 (click on 'Standard Tail Light Only'): Let me toggle to 'Standard Tail Light Only' to see the actual difference and make sure this isn't just a marketing gimmick.\n  Step 3 (scroll on 'down'): Okay, I see the difference in the diagram, though it's just a simple illustration. Let me scroll down to see actual product details, battery life, or reviews before I decide if it's worth $29.\n  Step 4 (scroll on 'down'): The explanation for why it's $29 instead of $39+ sounds reasonable, and I use bike-shares sometimes, so let me scroll down to read about the quick clip-on mount and other specs.\n  Step 5 (scroll on 'down'): The clip-on mount diagram looks practical for bike-shares, but I still want to see battery life, waterproofing, or customer reviews before spending $29. Let me scroll down further.\n  Step 6 (scroll on 'down'): Okay, pothole stability and fender clearance are nice, but I still need to see battery life, waterproofing, or actual reviews before I commit $29.\n  Step 7 (scroll on 'down'): Finally, the 'Full Tech Specs' section is coming up. Let me scroll down to check the battery life and waterproofing.\n  Step 8 (scroll on 'down'): 500 lumens, 6 hours battery with USB-C, and IPX6 waterproofing for $29 actually sounds like a really good deal. Let me scroll down to check if there are any reviews, warranty info, or hidden shipping fees.\n  Step 9 (scroll on 'down'): I see the 'Transparent shipping, returns, and support' section starting at the bottom. Let me scroll down to check if there are any hidden shipping fees that would push the total over $35.\n  Step 10 (scroll on 'down'): $29 plus $4 flat-rate shipping is $33, which is under my $35 limit, and the 30-day free return shipping takes away the risk of regretting the purchase. Let me scroll down to see the rest of the page and the checkout area.\n  Step 11 (scroll on 'down'): The 30-day return policy and real human support are reassuring. Let me scroll down past the FAQs to check out the order form.\n  Step 12 (scroll on 'down'): I see the 'Notify me' email signup, but I want to scroll down a bit more to see the actual order form.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: converted\n  Step 1 (click on 'Shipping & FAQ'): I want to check the shipping timeline and refund terms right away to make sure they are clear.\n  Step 2 (scroll on 'down'): The shipping timeline and 30-day return policy look very clear so far. Let me scroll down to finish reading the return terms and see the order options.\n  Step 3 (scroll on 'down'): I see the pre-order demo checkout section starting at the bottom of the screen. Let me scroll down to inspect the order options and checkout process.\n  Step 4 (type on 'Alex Rivera'): The product and checkout look straightforward and reliable, with everything needed in the box. Let me fill in my name to test the pre-order flow.\n  Step 5 (type on 'alex@example.com'): Now I'll enter my shipping email so I can proceed to the review step.\n  Step 6 (click on 'Continue to review'): Both my name and email are filled in, so I'll click 'Continue to review' to see the final order summary.\n  Step 7 (click on 'Complete order'): The order summary is clear and accurate—1 unit at $29 with my name and email. I'll click 'Complete order' to finish the demo checkout.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0245,
+      "confidence": 0.9755,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0431,
+      "confidence": 0.9569,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0162,
+      "confidence": 0.9838,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    }
+  }
+}

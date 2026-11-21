@@ -1,0 +1,37 @@
+{
+  "page": "r_35bf7899",
+  "trap": "forced_signup",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 18.09,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page:\n\n### 1. Usability & Navigation Problems\n* **Uncloseable Sign-Up Wall Blocking the Hero:** A modal (*\"Sign up to continue viewing product details and pricing\"*) covers the hero headline, pricing, and primary CTAs on load. There is **no close (`×`) button**, no \"Continue as guest\" option, and no \"Log in\" link.\n* **Broken/Inconsistent Modal Form Styling:** Inside the sign-up modal, the **Email** input has a dark background while the **Password** input has a white background, and both field labels (`Email`, `Password`) have very low contrast against the white modal background.\n* **Three Competing Email Forms:** Shoppers are asked for their email in three different places (the top sign-up gate, the *\"Join the commuter list\"* section, and the pre-order checkout).\n* **Conflicting Availability Messaging:** The page simultaneously presents the product as **in stock** (*\"Orders ship within 3–5 business days\"*), a **pre-order** (*\"Pre-order demo checkout\"*), and **sold out / upcoming** (*\"Get notified about V1 batch restocks\"*).\n\n### 2. Trust & Credibility Problems\n* **No Real Product Photography or Video:** Every visual on the page is a stylized vector diagram. There are zero real photos of the physical light, the clamp hardware, it mounted on a real bike-share, or actual night-time road tests showing how bright the lasers really are under streetlights.\n* **Implausible Technical Specs:** Claiming **500 lumens + dual 532nm green lasers** with **6 hours of runtime** from an **1100mAh** battery is physically unrealistic (a true 500 lm LED alone would drain an 1100mAh Li-Po cell in roughly an hour). Experienced cyclists will immediately doubt the *\"Honest, tested numbers—no inflated lumen claims\"* promise.\n* **Missing Laser Safety & Compliance Info:** Dual 532nm lasers are a core selling point, yet there is no mention of laser class (e.g., Class 2 / Class 3R) or road-use legality.\n* **International Mention vs. US-Only Shipping:** The copy specifically targets **Santander** bike-share riders (London, UK), yet shipping terms only mention **US flat-rate shipping** with no mention of international availability, duties, or shipping rates.\n* **Zero Social Proof or Legal Pages:** There are no customer reviews, user photos, warranty details (beyond the 30-day return window), company address, Privacy Policy, or Terms of Service—despite the site asking users to create a password and submit personal details.\n\n### 3. Checkout & Conversion Problems\n* **Fake \"Demo\" Checkout:** A shopper who clicks *\"Buy now — $29\"* cannot actually buy the product. The checkout is labeled **\"DEMO PRE-ORDER CHECKOUT — NO REAL PAYMENT COLLECTED\"** with a note stating no payment or credit card information is collected.\n* **Missing Shipping Address Fields:** Even for a demo flow, Step 1 (`Details`) only asks for **Quantity**, **Full name**, and **Shipping email**—there are no street address, city, state, or postal code fields for a physical product that supposedly ships in 3–5 business days.\n* **Unclear Multi-Pack / Discount Logic:** The copy mentions *\"free [shipping] when you grab 2+ lights\"* and *\"multi-pack commuter discounts\"*, but the checkout only shows a single dropdown (`1 × Clip-on Bike Lane Light — $29`) with no visible cart summary, shipping calculation, or bundle pricing preview.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0335,
+      "confidence": 0.9665,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.1165,
+      "confidence": 0.8835,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0816,
+      "confidence": 0.9184,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.1312,
+      "confidence": 0.8688,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.977,
+      "confidence": 0.977,
+      "found": true
+    }
+  }
+}

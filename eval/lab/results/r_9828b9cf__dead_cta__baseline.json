@@ -1,0 +1,37 @@
+{
+  "page": "r_9828b9cf",
+  "trap": "dead_cta",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 22.0,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page, grouped by severity and area:\n\n---\n\n### 1. Checkout & Conversion Blockers (Critical)\n* **Not a real checkout:** The checkout banner explicitly states *\"Demo / Pre-Order Checkout: No real payment or credit card is collected on this MVP preview page.\"* A shopper ready to buy hits a dead end.\n* **No physical shipping address fields:** Step 1 (`Details & Quantity`) only asks for `Full name` and `Shipping email` (odd phrasing for an email field). There are no fields for street address, city, state, or ZIP code.\n* **No payment step:** The progress indicator shows `1. Details & Quantity` → `2. Review Order` → `3. Confirmation`. There is no payment step at all.\n* **Shipping cost is missing from the total:** The shipping section promises *$4.95 flat-rate shipping on 1 cap (free on 2+)*, yet with Quantity set to `1`, the checkout displays **`Total: $24`** with no shipping line item or \"add 1 more for free shipping\" prompt.\n* **Waitlist cannibalizes checkout:** Placing a *\"Not Ready to Pre-Order? Join the Waitlist\"* form directly above the checkout form creates unnecessary friction and makes shoppers wonder whether the product is actually available to order.\n* **Mislabeled section pill:** The checkout section badge says `PRE-ORDER CHECKOUT & FAQ`, even though the FAQ is in the section above it.\n\n---\n\n### 2. Product Information & Trust Gaps\n* **Zero real product photos:** Every visual is a flat vector diagram. For a $24 piece of hardware that has to seal watertight in a child’s backpack, parents need real photos of the cap, spout/straw mechanism, silicone ring, USB-C port cover, and scale on an actual bottle.\n* **No cleaning or dishwasher instructions:** The cap contains a *\"micro-turbine inside the spout\"*, electronics, and a battery, yet there is **no mention of how to clean it or whether it is dishwasher-safe**. Parents will immediately worry about mold in the spout or ruining the electronics in hot water (IPX7 only covers brief room-temperature submersion).\n* **No color or spout options:** Kids are picky about bottle colors and whether a lid has a straw, chug spout, or flip cap. None of this is shown or selectable.\n* **Missing app & device compatibility:** The page mentions a *\"Parent App\"* and Bluetooth sync, but never states whether it supports **iOS, Android, or both**, nor does it show App Store / Google Play badges or screenshots of the actual app.\n* **No company identity, safety certifications, or privacy policy:**\n  * No company name, physical address, or team/founder info—just `support@smartcapkids.com`.\n  * No BPA-free, phthalate-free, or FDA food-contact certifications (only \"food-grade micro-turbine\").\n  * No Privacy Policy or COPPA (children's data privacy) disclosure, despite tracking a 6–10-year-old’s daily habits in an app.\n  * No social proof (parent reviews, beta tester quotes, or teacher endorsements).\n\n---\n\n### 3. Copy Contradictions & Misleading Claims\n* **\"Universal adapter ring\" vs. single 58mm ring:** The hero promises *\"Includes universal adapter ring\"*, but the *Zero Checkout Guesswork* card clarifies it only includes a **63mm thread and a 58mm silicone step-down ring**. That fits specific wide-mouth bottles, not \"universal\" bottle sizes.\n* **Misleading \"Lost on the school bus\" Bluetooth claim:** The page promises a *\"‘Last Seen Near’ Bluetooth ping in the parent app if it's left on the school bus.\"* Standard Bluetooth only has a ~30–100 ft range—if a child leaves the bottle on a bus, the parent's phone wasn't on the bus to ping it (it would only show where the parent's phone last disconnected, e.g., at home or the bus stop).\n* **Unclear pre-order timeline:** *\"Batch 1 pre-orders ship in 4–6 weeks\"* has no specific target ship month or date, which feels vague for a pre-order.\n\n---\n\n### 4. Usability & Mobile UI Issues\n* **Broken tab wrapping on mobile:** In the *Teacher-Approved School Mode* section on mobile, the segmented control wraps `After-School Mode` onto a second line underneath the `School Mode (8 AM – 3 PM)` pill, making the toggle look misaligned.\n* **Cramped mobile header CTA:** The mobile top-right button (`Buy now — $24`) wraps onto two lines inside a tight pill.\n* **Bundled bottle brands in the Fit Checker:** The `Simple Modern / Eddy+` button groups two different brands together into a single option, which could confuse parents checking compatibility for one or the other.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0254,
+      "confidence": 0.9746,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.176,
+      "confidence": 0.824,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0692,
+      "confidence": 0.9308,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0154,
+      "confidence": 0.9846,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0192,
+      "confidence": 0.9808,
+      "found": false
+    }
+  }
+}

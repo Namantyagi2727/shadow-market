@@ -1,0 +1,146 @@
+{
+  "page": "spikes",
+  "trap": "dead_cta",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 15.81,
+  "converted_count": 0,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "Reached the bottom of the page and there are zero technical specs—no info on materials, seal replacement, or repairability. Not buying hardware without knowing how it's built.",
+      "duration_s": 15.34,
+      "num_steps": 3,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Price ($49) and basic specs (9-bar, 320g, hand-powered) are clear without an email wall. Scrolling down to check for more technical details, materials, or repairability info.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Still haven't seen any details on materials, seal replacement, or build quality—just a 10% email promo and the checkout form. Scrolling down to see if there are any specs or a footer below.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "quit",
+          "target": "",
+          "thought": "Reached the bottom of the page and there are zero technical specs—no info on materials, seal replacement, or repairability. Not buying hardware without knowing how it's built.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "Even with the 10% off, $44.10 is still way over my $35 budget. As a barista, I don't need to impulse buy a pocket espresso maker right now.",
+      "duration_s": 14.76,
+      "num_steps": 3,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "$49 is quite steep for me, even with a 10% discount. Let me scroll down to see if there is clear value or more details about this pocket espresso maker.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "As a barista, 9-bar extraction in a hand-powered device sounds neat, but $49 is still over my $35 limit. Let me scroll down to see if there's anything else on the page before I decide.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "quit",
+          "target": "",
+          "thought": "Even with the 10% off, $44.10 is still way over my $35 budget. As a barista, I don't need to impulse buy a pocket espresso maker right now.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "quit",
+      "quit_reason": "I've reached the bottom of the page and there is no shipping timeline or refund terms anywhere. That's a dealbreaker for me, so I'm leaving.",
+      "duration_s": 13.89,
+      "num_steps": 3,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I want to see the checkout details, shipping timeline, refund terms, and any reviews or safety information before deciding.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I don't see any shipping timeline or refund terms yet. Let me scroll down to check if there's a footer with that information.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "quit",
+          "target": "",
+          "thought": "I've reached the bottom of the page and there is no shipping timeline or refund terms anywhere. That's a dealbreaker for me, so I'm leaving.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: Reached the bottom of the page and there are zero technical specs—no info on materials, seal replacement, or repairability. Not buying hardware without knowing how it's built.\n  Step 1 (scroll on 'down'): Price ($49) and basic specs (9-bar, 320g, hand-powered) are clear without an email wall. Scrolling down to check for more technical details, materials, or repairability info.\n  Step 2 (scroll on 'down'): Still haven't seen any details on materials, seal replacement, or build quality—just a 10% email promo and the checkout form. Scrolling down to see if there are any specs or a footer below.\n  Step 3 (quit): Reached the bottom of the page and there are zero technical specs—no info on materials, seal replacement, or repairability. Not buying hardware without knowing how it's built.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: Even with the 10% off, $44.10 is still way over my $35 budget. As a barista, I don't need to impulse buy a pocket espresso maker right now.\n  Step 1 (scroll on 'down'): $49 is quite steep for me, even with a 10% discount. Let me scroll down to see if there is clear value or more details about this pocket espresso maker.\n  Step 2 (scroll on 'down'): As a barista, 9-bar extraction in a hand-powered device sounds neat, but $49 is still over my $35 limit. Let me scroll down to see if there's anything else on the page before I decide.\n  Step 3 (quit): Even with the 10% off, $44.10 is still way over my $35 budget. As a barista, I don't need to impulse buy a pocket espresso maker right now.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: quit\nQuit reason: I've reached the bottom of the page and there is no shipping timeline or refund terms anywhere. That's a dealbreaker for me, so I'm leaving.\n  Step 1 (scroll on 'down'): I want to see the checkout details, shipping timeline, refund terms, and any reviews or safety information before deciding.\n  Step 2 (scroll on 'down'): I don't see any shipping timeline or refund terms yet. Let me scroll down to check if there's a footer with that information.\n  Step 3 (quit): I've reached the bottom of the page and there is no shipping timeline or refund terms anywhere. That's a dealbreaker for me, so I'm leaving.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0199,
+      "confidence": 0.9801,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.0119,
+      "confidence": 0.9881,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0217,
+      "confidence": 0.9783,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0144,
+      "confidence": 0.9856,
+      "found": false
+    }
+  }
+}

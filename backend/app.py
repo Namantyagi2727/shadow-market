@@ -21,7 +21,7 @@ from pydantic import BaseModel
 from pipeline.context import REPO_ROOT, RUNS_DIR, EventLog, RunContext
 from pipeline.hotseat import create_hotseat_session
 from pipeline.orchestrator import run_pipeline
-from pipeline import iterate, room
+from pipeline import iterate, room, session
 
 load_dotenv(REPO_ROOT / ".env")
 os.environ["PUBLIC_BASE_URL"] = os.environ.get("PUBLIC_BASE_URL", "http://localhost:8000").rstrip("/")
@@ -84,7 +84,11 @@ def _load_existing_runs() -> None:
     RUNS_DIR.mkdir(parents=True, exist_ok=True)
     # backend/demo_runs/ holds committed golden runs: replay works on any machine, no API key needed.
     demo_dir = Path(__file__).resolve().parent / "demo_runs"
-    files = sorted(RUNS_DIR.glob("r_*/events.jsonl")) + sorted(demo_dir.glob("r_*/events.jsonl"))
+    files = (
+        sorted(RUNS_DIR.glob("r_*/events.jsonl"))
+        + sorted(RUNS_DIR.glob("s_*/events.jsonl"))
+        + sorted(demo_dir.glob("r_*/events.jsonl"))
+    )
     for events_file in files:
         run_dir = events_file.parent
         run_id = run_dir.name
@@ -383,6 +387,95 @@ class RoomAskRequest(BaseModel):
     seat: int | None = None
 
 
+class SessionAskRequest(BaseModel):
+    text: str
+    role: Literal["founder", "judge"]
+
+
+@app.post("/api/sessions")
+async def create_session() -> dict[str, str]:
+    run_id = f"s_{secrets.token_hex(4)}"
+    run_dir = RUNS_DIR / run_id
+    run_dir.mkdir(parents=True, exist_ok=True)
+    ctx = RunContext(run_id=run_id, run_dir=run_dir)
+    log = EventLog(run_dir)
+    RUNS[run_id] = (ctx, log, None)
+    room_state = room.ensure_room(run_id, ctx, log)
+    room_state.is_session = True
+    session.ensure_session(run_id)
+    return {"run_id": run_id}
+
+
+@app.post("/api/runs/{run_id}/session/pitch-done")
+async def post_session_pitch_done(run_id: str) -> dict[str, bool]:
+    ctx, log, _ = _get_run(run_id)
+    room_state = room.ensure_room(run_id, ctx, log)
+    room_state.is_session = True
+    sess = session.ensure_session(run_id)
+    # Take whatever the founder's mic is still showing as a live caption (noisy rooms never "finish" a sentence).
+    pending = (room_state.latest_interim.get("founder") or "").strip()
+    if pending and pending not in sess.transcript:
+        await session.on_founder_utterance(run_id, pending, log)
+    if not sess.transcript.strip():
+        await log.emit(
+            "research_status",
+            "room",
+            {"step": "pitch", "state": "failed", "message": "No pitch heard yet. Check the founder mic and speak, then press again."},
+        )
+        return {"ok": False}
+    task = session.schedule_research(run_id, force=True)
+    await log.emit(
+        "research_status",
+        "room",
+        {
+            "step": "pitch",
+            "state": "running" if task else "done",
+            "message": "Pitch received. Researching now…" if task else "Research already ran for this pitch.",
+        },
+    )
+    return {"ok": True}
+
+
+@app.post("/api/runs/{run_id}/session/ask")
+async def post_session_ask(run_id: str, body: SessionAskRequest) -> dict[str, bool]:
+    ctx, log, _ = _get_run(run_id)
+    room_state = room.ensure_room(run_id, ctx, log)
+    room_state.is_session = True
+    session.ensure_session(run_id)
+    text = body.text.strip()
+    if not text:
+        raise HTTPException(status_code=400, detail="Text must be non-empty.")
+    await room.handle_utterance(
+        run_id,
+        text,
+        forced=(body.role == "judge"),
+        role=body.role,
+    )
+    return {"ok": True}
+
+
+@app.post("/api/runs/{run_id}/session/full-run")
+async def post_session_full_run(run_id: str) -> dict[str, bool]:
+    ctx, log, existing_task = _get_run(run_id)
+    if existing_task is not None and not existing_task.done():
+        return {"ok": True}
+    sess = session.ensure_session(run_id)
+    transcript = sess.transcript.strip()
+    if not transcript:
+        for ev in reversed(log.events):
+            if ev.get("type") == "pitch_update":
+                t = str((ev.get("data") or {}).get("transcript") or "").strip()
+                if t:
+                    transcript = t
+                    break
+    if not transcript:
+        raise HTTPException(status_code=400, detail="Session has no pitch transcript yet.")
+    ctx.pitch = {"raw_text": transcript}
+    task = asyncio.create_task(run_pipeline(ctx, log))
+    RUNS[run_id] = (ctx, log, task)
+    return {"ok": True}
+
+
 @app.websocket("/ws/runs/{run_id}/room-audio")
 async def ws_room_audio(websocket: WebSocket, run_id: str) -> None:
     entry = RUNS.get(run_id)
@@ -392,9 +485,11 @@ async def ws_room_audio(websocket: WebSocket, run_id: str) -> None:
         return
 
     ctx, log, _ = entry
+    raw_role = websocket.query_params.get("role")
+    role = raw_role if raw_role in ("founder", "judge") else None
     await websocket.accept()
     room.ensure_room(run_id, ctx, log)
-    await room.stream_audio(run_id, websocket)
+    await room.stream_audio(run_id, websocket, role=role)
 
 
 @app.post("/api/runs/{run_id}/room/seats")

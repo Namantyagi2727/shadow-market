@@ -1,0 +1,98 @@
+{
+  "page": "r_9828b9cf",
+  "trap": "forced_signup",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 7.28,
+  "converted_count": 0,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "There's a forced account creation modal blocking the product details and pricing. Immediate quit trigger.",
+      "duration_s": 4.33,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "There's a forced account creation modal blocking the product details and pricing. Immediate quit trigger.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "I'm not creating an account just to look at a product page. I don't have time for this, so I'm leaving.",
+      "duration_s": 6.62,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "I'm not creating an account just to look at a product page. I don't have time for this, so I'm leaving.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "quit",
+      "quit_reason": "I'm immediately blocked by a mandatory account creation wall just to see the product details and pricing. I don't have time for this friction—I'm leaving.",
+      "duration_s": 4.33,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "I'm immediately blocked by a mandatory account creation wall just to see the product details and pricing. I don't have time for this friction—I'm leaving.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: There's a forced account creation modal blocking the product details and pricing. Immediate quit trigger.\n  Step 1 (quit): There's a forced account creation modal blocking the product details and pricing. Immediate quit trigger.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: I'm not creating an account just to look at a product page. I don't have time for this, so I'm leaving.\n  Step 1 (quit): I'm not creating an account just to look at a product page. I don't have time for this, so I'm leaving.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: quit\nQuit reason: I'm immediately blocked by a mandatory account creation wall just to see the product details and pricing. I don't have time for this friction—I'm leaving.\n  Step 1 (quit): I'm immediately blocked by a mandatory account creation wall just to see the product details and pricing. I don't have time for this friction—I'm leaving.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0295,
+      "confidence": 0.9705,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.0181,
+      "confidence": 0.9819,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0223,
+      "confidence": 0.9777,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.313,
+      "confidence": 0.687,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.9778,
+      "confidence": 0.9778,
+      "found": true
+    }
+  }
+}

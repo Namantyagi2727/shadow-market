@@ -1,11 +1,33 @@
 # Shadow Market
 
-**Pitch a product out loud. Gemini builds the MVP, sends a panel of browser agents to try it (most of them quit, on video), scores it with 1,000 calibrated buyer checks, and gives a launch probability that we backtested on 120 real 2026 Kickstarter campaigns. Then the judges' table gets AI twins that challenge the founder live, by voice, while a co-pilot feeds the founder fact-checked answers.**
+**A live pitch room with two AI assistants.** The founder pitches out loud. The judges' laptop listens, and a team of six AI specialists (market size, competitors, startup history, go-to-market, social, sales) researches the idea in real time with live Google Search, a 200-buyer Decisions API check and a backtested analyst, then suggests the sharpest questions to ask. When a judge asks *anything*, the founder's laptop shows a fact-checked answer in about 5 seconds and updates it with a live web search of that exact question. Behind it, the full pipeline can build the MVP, send browser agents through it, and fix it.
 
 Built in one day at the **Gemini 4 NYC Hackathon** (Nov 21, 2026) by Naman ([@Namantyagi2727](https://github.com/Namantyagi2727)) and Arnab ([@arnabdas1999](https://github.com/arnabdas1999)).
 Track: **Problem Statement 1 — 5 Sigma** (+ Managed Agents).
 
 ---
+
+## Live pitch session (the main demo)
+
+| | Judge's assistant (Laptop B, `/judge/<id>`) | Founder's assistant (Laptop A, `/founder/<id>`) |
+|---|---|---|
+| Listens to | the judges' mic | the founder's mic |
+| Shows | live transcript; **the team channel**: Maya (market size, web), Theo (competitors, web), Iris (startups that failed/succeeded, web), Ravi (go-to-market), Zoe (social/virality), Marco (sales), each with a suggested cross-question; **3 questions worth asking** with evidence | **a live answer to every judge question** (VERIFIED / PARTIAL / PUSH BACK + a line to say + code-checked proof), then an "Updated with web check" version; pitch notes, research, prepared answers |
+
+**Flow:** pitch → `gemini-3.5-transcribe-live` (each laptop's mic tags the speaker) → `gemini-4-hydrogen` extracts the pitch → in parallel: Shopify catalog competitors, Google Search (Hydrogen with the `google_search` tool), the backtested `gemini-4-neon` analyst, 200 buyers × 5 rubrics on `gemini-decision-1`, and the six specialists → `gemini-4-neon` writes the judge questions. Judge speech → Decisions gate (is this a real question?) → `gemini-4-hydrogen` answer card + Decisions badge → live web check of that question → updated card.
+
+**Measured in live tests today (real voices, venue noise, two laptops on a phone hotspot):**
+
+| Step | Measured |
+|---|---|
+| Pitch understood after the founder stops | ~5 s (the transcriber never closes sentences in a noisy room, so a caption unchanged for 2.5 s is committed; we found this in the live test) |
+| Specialists' notes on the judge screen | 10–28 s after the pitch |
+| First 3 judge questions | ~23 s; refreshed with web facts at ~43 s |
+| Judge question → founder answer card | **~5 s** (gate 0.25–0.7 s) |
+| Answer updated with a live web check | ~20–30 s later (e.g. found a New York competitor the founder hadn't mentioned) |
+| Small talk / founder's own lines wrongly treated as questions | 0 in the live tests (gate 0.01–0.13 on small talk) |
+
+## The full pipeline
 
 ## What it does
 
@@ -70,7 +92,10 @@ Measured end to end with spoken audio streamed into the room endpoint (`backend/
 
 **Self-check:** every number shown on the founder's teleprompter is checked by code against this run's real data before it appears; pills that fail are dropped and replaced by a value taken directly from the evidence.
 
-### 3. Where it still breaks
+### 3. Browser lab vs screenshots (`eval/lab/LAB_RESULTS.md`)
+5 model-generated MVP pages × 5 injected UX traps (hidden fee, dead buy button, tiny tap targets, hidden price, forced signup) + clean controls. **Panel 72% vs one Gemini call on static screenshots 80%; 96% if either finds it.** The panel catches interaction bugs screenshots can't (dead buttons 80% vs 20%) with 0% false alarms; screenshots catch visual ones the agents click past (tiny targets 100% vs 0%). Traps on trap pages cut panel conversions from 53% to 19%. Traps were injected by us into model-generated pages; grading is automatic (Decisions API, threshold 0.5).
+
+### 4. Where it still breaks
 - **Build time.** The managed-agent MVP build takes ~2.5–3 min, so a full run is 6–8 min. On stage we start the run before our slot and keep a fallback replay.
 - **No speaker labels in live transcription** (diarization isn't supported in streaming mode). We separate judges from the founder by *what* is said, using the Decisions gate, and keep the room mic at the judges' end of the table.
 - **Agentic video mode is slow** (95 s for a 14 s clip), so quit analysis uses standard video understanding plus the recorded action log.

@@ -386,6 +386,11 @@ export function getApiBase(): string {
   if (configured) {
     return configured.replace(/\/+$/, "");
   }
+  // No fixed address: use the host this page was opened from, so the laptop (localhost)
+  // and other devices (http://<laptop-ip>:3000) all reach the backend on port 8000 without restarts.
+  if (typeof window !== "undefined" && window.location.hostname) {
+    return `${window.location.protocol}//${window.location.hostname}:8000`;
+  }
   return "http://localhost:8000";
 }
 
