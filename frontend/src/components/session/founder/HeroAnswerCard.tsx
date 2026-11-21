@@ -8,6 +8,7 @@ import { getBadgeConfig, type SessionFounderBriefPayload } from "./types";
 export interface FounderBriefUpdate {
   challenge_id: string;
   line: string;
+  answer?: string;
   changed: boolean;
   web: { fact: string; url: string | null }[];
   latency_ms: number;
@@ -96,14 +97,25 @@ export function HeroAnswerCard({ brief, judgeQuestion, update, compact }: HeroAn
         )}
       </div>
 
-      {/* Main speakable answer line (updated by the live web check when it changes the answer) */}
-      <h1
-        className={`mt-3 font-medium tracking-[-0.015em] text-[#E8EAED] ${
-          compact ? "text-[17px] leading-[1.35]" : "text-[30px] leading-[1.22]"
-        }`}
-      >
-        {update?.changed ? update.line : brief.line}
-      </h1>
+      {/* Headline + the full paragraph to read out loud (web-checked version replaces it when it changes) */}
+      {(() => {
+        const headline = update?.changed ? update.line : brief.line;
+        const paragraph = (update?.changed && update.answer) || brief.answer || "";
+        return (
+          <>
+            <p className={`mt-3 font-medium text-[#9AA0A6] ${compact ? "text-[13px]" : "text-[15px]"}`}>{headline}</p>
+            {paragraph && (
+              <p
+                className={`mt-1.5 text-[#E8EAED] ${
+                  compact ? "text-[15px] leading-[1.45] line-clamp-3" : "text-[23px] leading-[1.45]"
+                }`}
+              >
+                {paragraph}
+              </p>
+            )}
+          </>
+        );
+      })()}
 
       {/* Live web check: facts found for this exact question */}
       {!compact && update && update.web.length > 0 && (

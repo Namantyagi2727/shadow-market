@@ -99,6 +99,8 @@ export interface SessionFounderBriefPayload {
   badge: FounderBriefBadge;
   badge_confidence: number;
   line: string;
+  /** Full spoken paragraph (60-90 words) to read out loud. */
+  answer?: string;
   proof: FounderBriefProof[];
   latency_ms: number;
   matched_question_id?: string | null;

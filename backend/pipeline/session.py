@@ -28,7 +28,7 @@ from pipeline.context import BACKEND_DIR, EventLog
 from pipeline.llm import MODEL_IDS, client, generate_json, output_text, text_part
 from pipeline.swarm import CHUNK_SIZE_QUESTIONS, RUBRICS, _call_decisions_sync
 
-DEBOUNCE_DELAY_S = 6.0
+DEBOUNCE_DELAY_S = 2.0  # was 6 s; the 3-minute demo needs research to start right after the pitch
 MIN_TRANSCRIPT_WORDS = 12
 MAX_RESEARCH_RUNS = 3
 
@@ -813,7 +813,7 @@ RESEARCH:
 {summary}"""
 
     raw = generate_json(
-        model=MODEL_IDS["strategist"],
+        model=MODEL_IDS["persona_driver"],
         parts=[text_part(prompt)],
         schema=JUDGE_QUESTIONS_SCHEMA,
         thinking="low",
@@ -1166,9 +1166,10 @@ _WEB_CHECK_SCHEMA: dict[str, Any] = {
             },
         },
         "line": {"type": "string"},
+        "answer": {"type": "string"},
         "changed": {"type": "boolean"},
     },
-    "required": ["facts", "line", "changed"],
+    "required": ["facts", "line", "answer", "changed"],
 }
 
 
@@ -1195,7 +1196,8 @@ def _web_check_sync(pitch: dict[str, Any], question: str, current_line: str) -> 
             f"Web search results:\n{found}\nKnown source URLs: {urls}\n\n"
             "Return: facts (≤3, each ≤20 words, with url when known); line = the founder's improved answer "
             "(≤22 words, first person, honest, uses a web fact if it helps); changed = true only if the web facts "
-            "materially change or strengthen the answer."
+            "materially change or strengthen the answer; answer = the full spoken answer (one paragraph, 60-90 words, first person, "
+            "using the web facts by name) the founder can read out word for word."
         ),
         _WEB_CHECK_SCHEMA,
         thinking="low",
@@ -1229,6 +1231,7 @@ async def web_check_answer(
         {
             "challenge_id": challenge_id,
             "line": line if result.get("changed") else current_line,
+            "answer": " ".join(str(result.get("answer") or "").split()) if result.get("changed") else "",
             "changed": bool(result.get("changed")),
             "badge": badge,
             "web": facts,

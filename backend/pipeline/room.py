@@ -38,7 +38,7 @@ SESSION_DEDUPE_RATIO = 0.8
 CAPTION_MIN_INTERVAL_S = 0.25  # <= 4/s
 GATE_TRIGGER_THRESHOLD = 0.7
 FALLBACK_DELAY_S = 4.0
-SILENCE_COMMIT_S = 2.5  # commit a live caption as an utterance after this much silence  # Live twin normally answers in ~1-2 s
+SILENCE_COMMIT_S = 1.8  # commit a live caption as an utterance after this much silence  # Live twin normally answers in ~1-2 s
 FALLBACK_VOICE = "Fenrir"
 MAX_FOUNDER_LINE_WORDS = 14
 
@@ -105,6 +105,7 @@ FOUNDER_BRIEF_SCHEMA: dict[str, Any] = {
     "type": "object",
     "properties": {
         "line": {"type": "string"},
+        "answer": {"type": "string"},
         "proof": {
             "type": "array",
             "items": {
@@ -124,7 +125,7 @@ FOUNDER_BRIEF_SCHEMA: dict[str, Any] = {
             "maxItems": 2,
         },
     },
-    "required": ["line", "proof"],
+    "required": ["line", "answer", "proof"],
     "additionalProperties": False,
 }
 
@@ -1485,7 +1486,8 @@ Evidence from our analysis (ONLY use facts and exact numbers from here):
 {ev_text}
 {hint_section}
 Return ONLY JSON matching the schema:
-- "line": ONE sharp, speakable first-person sentence ("We ...", "Our ..."), STRICTLY 14 words or fewer, that directly answers or concedes and names the fix. No quotes, no markdown.
+- "line": the headline of the answer: ONE sharp first-person sentence ("We ...", "Our ..."), 14 words or fewer.
+- "answer": the FULL answer the founder will read out loud word for word: one natural spoken paragraph of 60-90 words, first person, confident and honest. Answer exactly what the judge asked; name what we are building and why it wins; use concrete names and numbers from the evidence; if the evidence is against us, concede briefly and give the specific plan. No bullet points, no markdown, no quotes.
 - "proof": 1 to 2 short proof pills backed by the evidence above:
   - "label": concise 2-4 word label
   - "value": concise value with EXACT numbers copied verbatim from the evidence above (never invent or alter numbers)
@@ -1552,6 +1554,7 @@ async def founder_brief(
         "badge": badge,
         "badge_confidence": round(badge_confidence, 4),
         "line": line,
+        "answer": " ".join(str(copy_data.get("answer") or "").split()) or line,
         "proof": proof,
         "latency_ms": latency_ms,
     }
