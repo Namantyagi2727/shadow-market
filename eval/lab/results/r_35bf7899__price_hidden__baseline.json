@@ -1,0 +1,37 @@
+{
+  "page": "r_35bf7899",
+  "trap": "price_hidden",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 16.96,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this product page, based on the desktop and mobile screenshots:\n\n---\n\n### 1. Pricing & Checkout Blockers\n* **Broken/Hidden Pricing (\"Price shown at checkout\"):** Instead of showing a price, the page literally displays *\"Price shown at checkout\"* in the top nav button, the hero price box, the hero CTA button, a callout box in Section 01, and the pre-order copy. A shopper has to scroll all the way to the bottom checkout form to discover the price is **$29**.\n* **Shipping Cost Replaced by Broken Placeholder:** Under *Shipping Timeline & Cost*, it reads: *\"**Price shown at checkout** anywhere in the US (free when you grab 2+ lights).\"* Clearly, a shipping fee (e.g., `$5`) was overwritten with `\"Price shown at checkout\"`, leaving shoppers with no idea what shipping costs for a single unit.\n* **Checkout Is a Non-Functional Demo:** The checkout section is labeled **\"PRE-ORDER DEMO CHECKOUT\"** with a warning badge (*\"DEMO PRE-ORDER CHECKOUT — NO REAL PAYMENT COLLECTED\"*) and a note stating no payment or credit card information is collected. A real customer literally cannot buy the product.\n* **Missing Shipping Address Fields:** Step 1 (*Details*) only asks for **Quantity**, **Full name**, and **Shipping email** before moving to *2. Review & Confirm*—there are no fields for a street address, city, state, or postal code.\n* **Contradictory Fulfillment Messaging:** The shipping section says *\"Orders ship within 3–5 business days\"*, while the bottom sections refer to **\"PRE-ORDER DEMO CHECKOUT\"** and **\"V1 batch restocks\"**, leaving shoppers unsure if the item is in stock or a future pre-order.\n\n---\n\n### 2. Trust & Credibility Issues\n* **Zero Real Product Photos or Videos:** Every visual on the page is a simplified vector diagram. There are no photos of the actual hardware, the cam-lock clip, the USB-C port cover, or real-world night photos showing how the 532nm green lasers actually look on wet asphalt under streetlights.\n* **Zero Social Proof:** Despite mentioning *\"word-of-mouth commuter packs\"*, there are no customer reviews, star ratings, user photos, or third-party press/testing.\n* **Generic Brand Identity & Mismatched Domain:** There is no company name, physical address, or \"About\" info—just the generic product name *\"Clip-on Bike Lane Light\"*, paired with a slightly mismatched support email (`support@cliplanelight.com`).\n* **Questionable Technical Claims Without Proof:** Claiming **6 hours of runtime** from a **1100mAh Li-Po** battery powering a **500 lm COB LED + dual 532nm lasers** is likely only achievable on a low/blinking mode, not full output, and there is no laser safety class or mode breakdown provided.\n\n---\n\n### 3. Usability & Mobile Responsive Bugs\n* **Clipped Mobile Header Button:** In the mobile view, the top-right green CTA button (`Price shown at check...`) overflows and is cut off by the right edge of the screen.\n* **Missing Mobile Navigation:** All four section links (`Streetlight Demo`, `Bike-Share Mount`, `Tech Specs`, `Shipping & FAQ`) disappear on mobile with no hamburger menu or replacement navigation.\n* **Confusing Primary CTA Copy:** Having the main green hero button say **\"Price shown at checkout\"** instead of an action like *\"Buy Now — $29\"* or *\"Order Now\"* makes it look like a static status label rather than a clickable purchase button.\n* **Key Objections Hidden in Closed Accordions:** Critical buying questions—like *\"Will the laser lines be visible on brightly lit downtown streets?\"* and *\"Does it fit Citi Bike, Lime, or rear-rack commuters?\"*—are collapsed by default in the FAQ.\n* **Unclear Multi-Pack Discount:** The shipping box mentions free shipping on `2+ lights` and the newsletter mentions `multi-pack commuter discounts`, but no bundle pricing or discount tiers are shown anywhere on the page.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.031,
+      "confidence": 0.969,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.8378,
+      "confidence": 0.8378,
+      "found": true
+    },
+    "tiny_targets": {
+      "noul": 0.0822,
+      "confidence": 0.9178,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.9807,
+      "confidence": 0.9807,
+      "found": true
+    },
+    "forced_signup": {
+      "noul": 0.0212,
+      "confidence": 0.9788,
+      "found": false
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "page": "spikes",
+  "trap": "clean",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 17.11,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page:\n\n### 1. Checkout & Fulfillment Blockers\n* **It’s a non-functional demo:** The checkout header explicitly says `DEMO CHECKOUT · NO REAL PAYMENT`, and the footer states `Demo product landing page (no real orders are processed)`. A real customer cannot actually purchase anything.\n* **No physical shipping address fields:** Even though the form asks for `Full name` and `Shipping email`, there are no fields for street address, city, state/province, postal code, or country—making physical fulfillment impossible.\n* **No payment step:** The progress indicator only lists `1. Details`, `2. Review`, `3. Confirmed`. There is no payment step or mention of accepted payment methods (credit card, Apple Pay, PayPal, etc.).\n* **No order total, shipping cost, or tax:** The form shows `Quantity ($49 each)` with a `- / +` stepper, but there is no live subtotal, shipping fee, estimated tax, or final total shown before clicking `Continue to review`.\n* **No shipping or delivery info:** There is no indication of shipping rates, supported countries, or estimated delivery dates.\n\n### 2. Contradictory Messaging & Broken Promo Flow\n* **In-stock vs. waitlist contradiction:** The hero and checkout encourage immediate purchase (`Buy now`, `Order Pocket Espresso Maker`), yet the discount card says *\"Join the email waitlist for early batch restocks...\"* Shoppers can't tell if the product is actually in stock or sold out.\n* **No way to apply the 10% discount:** The page advertises an *\"instant 10% launch discount code\"* right above the checkout, but the checkout form has **no promo/coupon code field** to redeem it.\n* **Competing hero CTAs:** Placing `Get 10% launch discount` right next to `Buy now` undermines full-price conversions and creates an extra detour before buying.\n\n### 3. Trust & Credibility Gaps\n* **No real product photos:** The page only shows a flat vector illustration. Shoppers can’t see real materials, build quality, scale in someone’s hand, the included travel pouch/scoop, or actual espresso crema.\n* **Zero social proof:** There are no customer reviews, star ratings, testimonials, or user photos.\n* **No company or support information:** There is no \"About\" section, contact email, support link, physical business address, or social media presence.\n* **No policies or guarantees:** There is no warranty information, return/refund policy, or privacy policy (both in the email signup form and at checkout).\n\n### 4. Missing Product & Usability Details\n* **Insufficient technical specs:** It mentions `320g Compact` and `stainless piston`, but omits key buying details:\n  * Exact dimensions (will it actually fit in *my* pocket/bag?)\n  * Water tank and coffee basket capacity (grams of coffee / ml of water)\n  * Compatibility (fine espresso grind only, or pods/capsules too?)\n  * Materials (BPA-free plastics, stainless steel, silicone?)\n* **No \"How it works\" or care instructions:** Shoppers have no idea how much force is required to pump 9 bars by hand, what water temperature to use, or how easy it is to disassemble and clean on the go.\n* **Inconsistent mobile button sizing:** On the mobile layout, `Buy now` and `Get 10% launch discount` stack vertically at different widths instead of matching cleanly (e.g., full-width buttons), which looks visually unbalanced.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0314,
+      "confidence": 0.9686,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.1104,
+      "confidence": 0.8896,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0317,
+      "confidence": 0.9683,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0226,
+      "confidence": 0.9774,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.029,
+      "confidence": 0.971,
+      "found": false
+    }
+  }
+}

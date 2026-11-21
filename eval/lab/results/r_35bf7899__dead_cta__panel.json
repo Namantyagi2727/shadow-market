@@ -1,0 +1,338 @@
+{
+  "page": "r_35bf7899",
+  "trap": "dead_cta",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 65.95,
+  "converted_count": 0,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "Clicked 'Continue to review' twice and the form still isn't advancing. Broken checkout flow—not worth my time.",
+      "duration_s": 35.63,
+      "num_steps": 9,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "Tech Specs",
+          "thought": "Price is upfront ($29) and no email wall, which is good. Let's check the Tech Specs to see battery capacity, laser class, and build details.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Specs look grounded: 1100mAh Li-Po, 6h runtime, IPX6, USB-C. Let's scroll down to check shipping, returns, and the checkout flow.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Shipping ($4 flat-rate, 30-day return) is transparent and reasonable. Let's scroll down to check out the purchase form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let's scroll down to see the full pre-order demo checkout form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "Everything checks out—grounded specs, transparent $29 price, and no account wall. Let's fill out the demo checkout form to see how the review step looks.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "Now let's enter a shipping email so we can proceed to the review step.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Now that name and email are filled in, let's click 'Continue to review' to check the order summary.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "The form didn't advance to the review step yet. Let's click 'Continue to review' again to see the order summary.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "quit",
+          "target": "",
+          "thought": "Clicked 'Continue to review' twice and the form still isn't advancing. Broken checkout flow—not worth my time.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "Ran out of patience after 12 steps without finishing checkout. Last thought: Let me scroll down a bit more to see the actual checkout form.",
+      "duration_s": 53.05,
+      "num_steps": 12,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "See streetlight demo",
+          "thought": "$29 is under my $35 limit, but I don't want to buy this on impulse. Let's see the streetlight demo to check if it actually looks useful.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "click",
+          "target": "Standard Tail Light Only",
+          "thought": "Let's toggle to 'Standard Tail Light Only' to see how much of a difference this actually makes.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Okay, that's just a simple illustration. Let's scroll down to see if there are actual photos, specs, or reviews before I even think about spending $29.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Okay, they explain why it's $29, which is nice, but I still want to see actual product details, specs, or reviews. Let's keep scrolling down.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Okay, it's a quick clip-on mount for bike-shares. Still just diagrams though—let's keep scrolling to see if there are real photos, specs, or reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "More feature cards and diagrams. Let's keep scrolling down to see if there are actual product photos, battery specs, or customer reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Finally, the tech specs section! Let's scroll down to see battery life, brightness, and actual details.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "scroll",
+          "target": "down",
+          "thought": "500 lm, 6 hours runtime, USB-C, and IPX6 waterproofing actually sound pretty solid for $29. Let me scroll down to see the rest of the specs and if there are any reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Good specs, now let's see what the shipping and return policies look like—especially if there are extra shipping fees.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 10,
+          "action": "scroll",
+          "target": "down",
+          "thought": "$29 plus $4 shipping is $33, and free return shipping within 30 days is actually really reassuring. Let me scroll down to see the rest of the page and checkout options.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 11,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The 30-day free return shipping and FAQs are reassuring. Let me scroll down to the checkout section to see how easy it is to order.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 12,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let me scroll down a bit more to see the actual checkout form.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "quit",
+      "quit_reason": "Ran out of patience after 12 steps without finishing checkout. Last thought: Everything checks out—clear shipping, 30-day returns, no companion app needed, and $29 is reasonable. Let me fill in my name to reserve one.",
+      "duration_s": 65.47,
+      "num_steps": 12,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I like that it requires no tools and has a 30-day guarantee, but I want to see the actual streetlight demo, build quality, and shipping details before deciding.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "click",
+          "target": "Standard Tail Light Only",
+          "thought": "Let me toggle to 'Standard Tail Light Only' to see the actual difference in visibility.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Okay, the difference in visibility is clear. Now I need to scroll down to check the build quality, tech specs, and especially the shipping timeline and refund terms.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let me scroll down further to see the Bike-Share Mount, Tech Specs, and Shipping & FAQ sections.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The 5-second clip-on mount with anti-rattle cam lock sounds practical. Let me scroll down to check the tech specs, shipping timeline, and refund terms.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The extended offset and cam clamp sound sturdy, which is good for safety. Let me keep scrolling down to check the tech specs, shipping timeline, and refund terms.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I see the Full Tech Specs section starting at the bottom. Let me scroll down to read the specs and then check the shipping timeline and refund terms.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The tech specs look solid—500 lm, 6-hour battery with USB-C, and IPX6 waterproofing. Now I see the 'Transparent shipping, returns, and support' section starting at the bottom. Let me scroll down to check the actual shipping timeline and refund terms.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The shipping timeline (3-5 business days to ship, 5-7 to deliver) and 30-day return policy with free return shipping are very clear. Let me scroll down to check the FAQ and see the checkout form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 10,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I see the FAQ and the email list, and the checkout form should be just below. Let me scroll down to look at the order options.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 11,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I see the 'Reserve your Clip-on Bike Lane Light' section starting, and the box contents look complete. Let me scroll down to see the actual checkout form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 12,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "Everything checks out—clear shipping, 30-day returns, no companion app needed, and $29 is reasonable. Let me fill in my name to reserve one.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: Clicked 'Continue to review' twice and the form still isn't advancing. Broken checkout flow—not worth my time.\n  Step 1 (click on 'Tech Specs'): Price is upfront ($29) and no email wall, which is good. Let's check the Tech Specs to see battery capacity, laser class, and build details.\n  Step 2 (scroll on 'down'): Specs look grounded: 1100mAh Li-Po, 6h runtime, IPX6, USB-C. Let's scroll down to check shipping, returns, and the checkout flow.\n  Step 3 (scroll on 'down'): Shipping ($4 flat-rate, 30-day return) is transparent and reasonable. Let's scroll down to check out the purchase form.\n  Step 4 (scroll on 'down'): Let's scroll down to see the full pre-order demo checkout form.\n  Step 5 (type on 'Alex Rivera'): Everything checks out—grounded specs, transparent $29 price, and no account wall. Let's fill out the demo checkout form to see how the review step looks.\n  Step 6 (type on 'alex@example.com'): Now let's enter a shipping email so we can proceed to the review step.\n  Step 7 (click on 'Continue to review'): Now that name and email are filled in, let's click 'Continue to review' to check the order summary.\n  Step 8 (click on 'Continue to review'): The form didn't advance to the review step yet. Let's click 'Continue to review' again to see the order summary.\n  Step 9 (quit): Clicked 'Continue to review' twice and the form still isn't advancing. Broken checkout flow—not worth my time.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: Ran out of patience after 12 steps without finishing checkout. Last thought: Let me scroll down a bit more to see the actual checkout form.\n  Step 1 (click on 'See streetlight demo'): $29 is under my $35 limit, but I don't want to buy this on impulse. Let's see the streetlight demo to check if it actually looks useful.\n  Step 2 (click on 'Standard Tail Light Only'): Let's toggle to 'Standard Tail Light Only' to see how much of a difference this actually makes.\n  Step 3 (scroll on 'down'): Okay, that's just a simple illustration. Let's scroll down to see if there are actual photos, specs, or reviews before I even think about spending $29.\n  Step 4 (scroll on 'down'): Okay, they explain why it's $29, which is nice, but I still want to see actual product details, specs, or reviews. Let's keep scrolling down.\n  Step 5 (scroll on 'down'): Okay, it's a quick clip-on mount for bike-shares. Still just diagrams though—let's keep scrolling to see if there are real photos, specs, or reviews.\n  Step 6 (scroll on 'down'): More feature cards and diagrams. Let's keep scrolling down to see if there are actual product photos, battery specs, or customer reviews.\n  Step 7 (scroll on 'down'): Finally, the tech specs section! Let's scroll down to see battery life, brightness, and actual details.\n  Step 8 (scroll on 'down'): 500 lm, 6 hours runtime, USB-C, and IPX6 waterproofing actually sound pretty solid for $29. Let me scroll down to see the rest of the specs and if there are any reviews.\n  Step 9 (scroll on 'down'): Good specs, now let's see what the shipping and return policies look like—especially if there are extra shipping fees.\n  Step 10 (scroll on 'down'): $29 plus $4 shipping is $33, and free return shipping within 30 days is actually really reassuring. Let me scroll down to see the rest of the page and checkout options.\n  Step 11 (scroll on 'down'): The 30-day free return shipping and FAQs are reassuring. Let me scroll down to the checkout section to see how easy it is to order.\n  Step 12 (scroll on 'down'): Let me scroll down a bit more to see the actual checkout form.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: quit\nQuit reason: Ran out of patience after 12 steps without finishing checkout. Last thought: Everything checks out—clear shipping, 30-day returns, no companion app needed, and $29 is reasonable. Let me fill in my name to reserve one.\n  Step 1 (scroll on 'down'): I like that it requires no tools and has a 30-day guarantee, but I want to see the actual streetlight demo, build quality, and shipping details before deciding.\n  Step 2 (click on 'Standard Tail Light Only'): Let me toggle to 'Standard Tail Light Only' to see the actual difference in visibility.\n  Step 3 (scroll on 'down'): Okay, the difference in visibility is clear. Now I need to scroll down to check the build quality, tech specs, and especially the shipping timeline and refund terms.\n  Step 4 (scroll on 'down'): Let me scroll down further to see the Bike-Share Mount, Tech Specs, and Shipping & FAQ sections.\n  Step 5 (scroll on 'down'): The 5-second clip-on mount with anti-rattle cam lock sounds practical. Let me scroll down to check the tech specs, shipping timeline, and refund terms.\n  Step 6 (scroll on 'down'): The extended offset and cam clamp sound sturdy, which is good for safety. Let me keep scrolling down to check the tech specs, shipping timeline, and refund terms.\n  Step 7 (scroll on 'down'): I see the Full Tech Specs section starting at the bottom. Let me scroll down to read the specs and then check the shipping timeline and refund terms.\n  Step 8 (scroll on 'down'): The tech specs look solid—500 lm, 6-hour battery with USB-C, and IPX6 waterproofing. Now I see the 'Transparent shipping, returns, and support' section starting at the bottom. Let me scroll down to check the actual shipping timeline and refund terms.\n  Step 9 (scroll on 'down'): The shipping timeline (3-5 business days to ship, 5-7 to deliver) and 30-day return policy with free return shipping are very clear. Let me scroll down to check the FAQ and see the checkout form.\n  Step 10 (scroll on 'down'): I see the FAQ and the email list, and the checkout form should be just below. Let me scroll down to look at the order options.\n  Step 11 (scroll on 'down'): I see the 'Reserve your Clip-on Bike Lane Light' section starting, and the box contents look complete. Let me scroll down to see the actual checkout form.\n  Step 12 (type on 'Alex Rivera'): Everything checks out—clear shipping, 30-day returns, no companion app needed, and $29 is reasonable. Let me fill in my name to reserve one.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0474,
+      "confidence": 0.9526,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.8488,
+      "confidence": 0.8488,
+      "found": true
+    },
+    "tiny_targets": {
+      "noul": 0.0357,
+      "confidence": 0.9643,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0131,
+      "confidence": 0.9869,
+      "found": false
+    }
+  }
+}

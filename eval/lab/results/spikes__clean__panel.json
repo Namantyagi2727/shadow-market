@@ -1,0 +1,146 @@
+{
+  "page": "spikes",
+  "trap": "clean",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 15.31,
+  "converted_count": 0,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "I'm at the bottom of the page and there are zero technical specs—no materials, dimensions, weight, or seal/repairability details. Just generic copy and a checkout form. I'm out.",
+      "duration_s": 14.87,
+      "num_steps": 3,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Price is upfront ($49) and the 9-bar hand-powered claim is plausible, but I need to scroll down to see actual specs, materials, or if it's just a generic checkout form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Just three generic feature cards, an email discount box, and a checkout form. Scrolling down to see if there are any actual technical specs, materials, or repairability details below.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "quit",
+          "target": "",
+          "thought": "I'm at the bottom of the page and there are zero technical specs—no materials, dimensions, weight, or seal/repairability details. Just generic copy and a checkout form. I'm out.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "Even with the 10% launch discount, $44 is still well over my $35 limit, and I don't really need a hand-powered off-grid espresso maker for my apartment. Better to save my money and skip this.",
+      "duration_s": 14.96,
+      "num_steps": 3,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "$49 is pretty steep for me, even with a 10% discount it's over $44. Let me scroll down to see if it's actually worth it.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "9-bar extraction sounds legit, but I'm not sure I need something 'off-grid' for my apartment. Let me scroll down a bit more to see if there's a better deal or more details.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "quit",
+          "target": "",
+          "thought": "Even with the 10% launch discount, $44 is still well over my $35 limit, and I don't really need a hand-powered off-grid espresso maker for my apartment. Better to save my money and skip this.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "quit",
+      "quit_reason": "I've reached the bottom of the page and there is no shipping timeline or refund terms anywhere. That's a dealbreaker for me, so I'm leaving.",
+      "duration_s": 14.34,
+      "num_steps": 3,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let me scroll down to check the checkout details, shipping timeline, and any refund terms or reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "I don't see any shipping timeline, refund terms, or customer reviews yet. Let me scroll down further to see if that information is at the bottom of the page.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "quit",
+          "target": "",
+          "thought": "I've reached the bottom of the page and there is no shipping timeline or refund terms anywhere. That's a dealbreaker for me, so I'm leaving.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: I'm at the bottom of the page and there are zero technical specs—no materials, dimensions, weight, or seal/repairability details. Just generic copy and a checkout form. I'm out.\n  Step 1 (scroll on 'down'): Price is upfront ($49) and the 9-bar hand-powered claim is plausible, but I need to scroll down to see actual specs, materials, or if it's just a generic checkout form.\n  Step 2 (scroll on 'down'): Just three generic feature cards, an email discount box, and a checkout form. Scrolling down to see if there are any actual technical specs, materials, or repairability details below.\n  Step 3 (quit): I'm at the bottom of the page and there are zero technical specs—no materials, dimensions, weight, or seal/repairability details. Just generic copy and a checkout form. I'm out.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: Even with the 10% launch discount, $44 is still well over my $35 limit, and I don't really need a hand-powered off-grid espresso maker for my apartment. Better to save my money and skip this.\n  Step 1 (scroll on 'down'): $49 is pretty steep for me, even with a 10% discount it's over $44. Let me scroll down to see if it's actually worth it.\n  Step 2 (scroll on 'down'): 9-bar extraction sounds legit, but I'm not sure I need something 'off-grid' for my apartment. Let me scroll down a bit more to see if there's a better deal or more details.\n  Step 3 (quit): Even with the 10% launch discount, $44 is still well over my $35 limit, and I don't really need a hand-powered off-grid espresso maker for my apartment. Better to save my money and skip this.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: quit\nQuit reason: I've reached the bottom of the page and there is no shipping timeline or refund terms anywhere. That's a dealbreaker for me, so I'm leaving.\n  Step 1 (scroll on 'down'): Let me scroll down to check the checkout details, shipping timeline, and any refund terms or reviews.\n  Step 2 (scroll on 'down'): I don't see any shipping timeline, refund terms, or customer reviews yet. Let me scroll down further to see if that information is at the bottom of the page.\n  Step 3 (quit): I've reached the bottom of the page and there is no shipping timeline or refund terms anywhere. That's a dealbreaker for me, so I'm leaving.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0284,
+      "confidence": 0.9716,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0301,
+      "confidence": 0.9699,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0127,
+      "confidence": 0.9873,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0118,
+      "confidence": 0.9882,
+      "found": false
+    }
+  }
+}

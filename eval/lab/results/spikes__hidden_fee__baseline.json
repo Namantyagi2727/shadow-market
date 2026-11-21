@@ -1,0 +1,37 @@
+{
+  "page": "spikes",
+  "trap": "hidden_fee",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 13.26,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page, based on the desktop and mobile views:\n\n### 1. Pricing & Hidden Fees (Major Trust Breaker)\n* **Surprise $14.99 non-refundable handling fee:** The header (`Buy now — $49`) and hero (`$49 Includes travel pouch & scoop`) advertise a flat $49 price. However, in the checkout card, tiny low-contrast gray text above the quantity selector sneaks in `+ $14.99 handling fee (non-refundable)`—an unexpected ~31% surcharge.\n* **No live price or order total:** Changing the quantity doesn’t show a subtotal, the handling fee calculation, estimated taxes, shipping costs, or a final total before clicking **Continue to review**.\n\n### 2. Checkout & Form Usability\n* **No shipping address or payment fields:** The checkout steps are `1. Details` → `2. Review` → `3. Confirmed`, yet Step 1 only asks for Quantity, Full name, and \"Shipping email.\" There is nowhere to enter a physical street address or payment method before reviewing the order.\n* **No promo code field for the 10% discount:** The page prominently pushes an *\"instant 10% launch discount code\"* right above the checkout, but there is no field in the checkout form to apply a discount code.\n* **Ambiguous step indicators:** `1. Details`, `2. Review`, and `3. Confirmed` are styled like pill buttons rather than a connected progress stepper, making them look clickable when they aren’t.\n* **\"Demo Checkout\" dead end:** For an actual shopper, the `DEMO CHECKOUT · NO REAL PAYMENT` badge and footer disclaimer (`no real orders are processed`) mean they cannot actually purchase the product.\n\n### 3. Trust & Product Credibility\n* **No real product photography:** The only visual is a flat vector illustration. Shoppers buying $49+ physical hardware expect real photos showing size in hand, build quality, disassembled parts, and actual espresso extraction.\n* **Missing key product specifications:** Beyond \"320g\" and \"stainless piston,\" there are no details on body materials (plastic vs. metal, BPA-free?), water capacity, shot volume, compatible grind size/pods, or how to clean it.\n* **Zero social proof or policies:** There are no customer reviews, ratings, warranty details, return/refund policy (especially jarring next to a \"non-refundable\" fee), shipping timelines, or company/support contact info.\n* **No privacy/consent notice on email capture:** Asking for an email address with no link to a privacy policy or unsubscribe terms lowers trust.\n\n### 4. Copy Contradictions & Mobile UX\n* **In-stock vs. waitlist contradiction:** The email form says *\"Join the email waitlist for early batch restocks,\"* which implies the product is sold out, directly contradicting the active **Buy now** buttons and checkout form right below it.\n* **Inconsistent mobile button sizing:** In the mobile hero, **Buy now** is a narrow, left-aligned button while **Get 10% launch discount** below it is noticeably wider, and neither spans full-width—unlike the full-width buttons in the lower cards (**Claim 10% off** and **Continue to review**).\n* **Minor naming mismatch:** The header calls the product **Pocket Espresso**, while the checkout and footer call it **Pocket Espresso Maker**.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.9728,
+      "confidence": 0.9728,
+      "found": true
+    },
+    "dead_cta": {
+      "noul": 0.2318,
+      "confidence": 0.7682,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.1675,
+      "confidence": 0.8325,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0584,
+      "confidence": 0.9416,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0353,
+      "confidence": 0.9647,
+      "found": false
+    }
+  }
+}

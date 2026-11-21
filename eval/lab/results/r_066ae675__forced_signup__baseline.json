@@ -1,0 +1,37 @@
+{
+  "page": "r_066ae675",
+  "trap": "forced_signup",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 16.59,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page, based on the desktop and mobile views:\n\n---\n\n### 1. Checkout & Conversion Blockers\n* **Forced account creation before viewing the product:** A dark overlay and modal (`\"Create an account to see this product\"`) blocks the hero section, product title, pricing, and primary CTAs on load. There is **no close (`X`) button**, no `\"Continue as guest\"` option, and no `\"Log in\"` link for returning users.\n* **The checkout is a non-functional demo:** The checkout box is labeled `\"DEMO / PRE-ORDER CHECKOUT • NO PAYMENT COLLECTED\"` and states *\"No real card or payment is processed in this MVP demo.\"* A shopper who wants to actually buy the product hits a dead end.\n* **No scent selection in checkout:** The page advertises three scents (*Bergamot + Cedar*, *Eucalyptus + Mint*, *Unscented Sensitive*), but the `\"Explore V1 Small-Batch Scents\"` section is just an informational switcher. The `\"Reserve Your Starter Kit ($24)\"` form has **no scent selector**, so a buyer has no way to pick which scent they are ordering.\n* **No shipping address or order summary:** The checkout form only asks for Quantity, Full name, and Shipping email before `\"Continue to review\"`. It doesn’t show a subtotal, the $4 flat shipping fee (or free shipping on 2+ kits mentioned in the shipping card), or tax.\n* **No way to add extra refills:** The page heavily markets `$8` refills and free shipping on `2+ kits`, but there is no option to add extra refills to the starter kit order (or buy refills on their own), and the quantity field lacks `- / +` steppers.\n* **Conflicting \"in stock\" vs. \"waitlist\" messaging:** Right next to/above the pre-order checkout form, a `\"Get Launch & Refill Restock Updates\"` box asks users to *\"join the small-batch waitlist for restock alerts,\"* making it unclear whether the product is actually available to order right now.\n\n---\n\n### 2. Usability & Mobile Layout Issues\n* **Broken mobile comparison table:** On mobile, the comparison table overflows horizontally off the right side of the screen. The `\"$14 Cardboard Tubes\"` column is sliced in half, and the `\"$39.95 Refillable Sticks\"` column is completely cut off with no visible scroll cue.\n* **Cramped mobile header CTA:** In the mobile top bar, the `\"Buy now — $24\"` button is squished so narrowly that the text wraps onto four lines (`Buy / now / — / $24`).\n* **Jarring modal overlay cutoff:** The dark backdrop behind the sign-up modal only covers the hero section rather than the full viewport, leaving the rest of the page readable underneath—which defeats the modal’s stated purpose (*\"Sign up to continue viewing product details and pricing\"*) while still blocking the hero and nav.\n* **No mobile navigation:** The desktop anchor links (`How Refills Work`, `Ingredients & Scents`, `Guarantee`, `FAQ & Checkout`) disappear completely on mobile with no menu alternative.\n\n---\n\n### 3. Trust & Credibility Problems\n* **No real product photography:** The only product visual is a flat vector illustration. For a $24 physical personal-care item, shoppers expect real photos showing the anodized aluminum finish, size in hand, and how the refill cartridge actually fits inside.\n* **Zero social proof:** There are no customer reviews, star ratings, or testimonials—a major gap for a deodorant, where shoppers are skeptical about odor control, skin irritation, and clothing stains.\n* **No brand identity or legal links:** The footer has no company/brand name, no physical address, and no links to a **Privacy Policy**, **Terms of Service**, or full **Return Policy**. Asking shoppers to create an account with a password and submit personal info without a Privacy Policy is a major trust red flag.\n* **Unverifiable claims without details:** The page promises *\"lifetime precision-machined aluminum case\"* and *\"30-day money-back guarantee,\"* but provides no terms for what the lifetime warranty covers or how to actually initiate a return beyond emailing `support@lastdeodorant.co`.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0197,
+      "confidence": 0.9803,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.2596,
+      "confidence": 0.7404,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0682,
+      "confidence": 0.9318,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0689,
+      "confidence": 0.9311,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.9478,
+      "confidence": 0.9478,
+      "found": true
+    }
+  }
+}

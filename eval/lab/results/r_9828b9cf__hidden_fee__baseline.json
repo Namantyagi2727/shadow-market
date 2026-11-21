@@ -1,0 +1,37 @@
+{
+  "page": "r_9828b9cf",
+  "trap": "hidden_fee",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 19.89,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page:\n\n### 1. Checkout & Pricing Problems\n* **It’s a non-functional demo checkout:** The checkout section explicitly states: *\"Demo / Pre-Order Checkout: No real payment or credit card is collected on this MVP preview page.\"* A shopper who scrolls down to buy cannot actually complete a purchase.\n* **Hidden $14.99 non-refundable handling fee:** In tiny grey fine print inside the checkout box (duplicated both above and below the quantity selector), it adds `+ $14.99 handling fee (non-refundable)`. That is over 60% of the $24 product price and directly contradicts the *\"no hidden subscriptions or fine print\"* claim above.\n* **Broken total math:** With Quantity set to `1` ($24 each), the checkout displays `Total: $24`, completely omitting both the `$14.99` handling fee and the `$4.95` shipping cost.\n* **Shipping & refund contradictions:**\n  * The Shipping section promises *\"Flat-rate $4.95 shipping on 1 cap, or FREE shipping when you order 2+ caps,\"* with no mention of a $14.99 handling fee.\n  * The Guarantee promises a *\"100% refund + free return label,\"* which is contradicted by the *\"non-refundable\"* $14.99 handling fee.\n* **Missing shipping address in checkout steps:** Step 1 (`1. Details & Quantity`) only asks for `Full name` and `Shipping email`, and the remaining steps are `2. Review Order` and `3. Confirmation`—leaving no clear step for entering a physical shipping address.\n\n### 2. Trust & Credibility Problems\n* **No real product photos:** Every visual of the cap is a flat vector illustration or UI mockup. For a physical hardware product with a spout, silicone adapter, LED ring, and USB-C port, having zero real photos makes it look unbuilt or untrustworthy.\n* **Missing essential parent/safety details:** There is no mention of how to clean or wash a cap with a *\"sealed food-grade micro-turbine\"* and electronics (e.g., whether it is dishwasher safe), whether materials are BPA-free, what phone OS the app supports (iOS/Android), or whether a USB-C cable is included.\n* **Unverified \"Teacher-Approved\" claim:** The page uses the badge `TEACHER-APPROVED SCHOOL MODE` and promises *\"Zero Teacher Bans,\"* but provides no actual teacher quotes, endorsements, or school testing details.\n* **Suspicious / confusing FAQ selection:** The collapsed FAQs (*\"Can my child trick the sensor...\"*, *\"Will teachers ban it...\"*, *\"Is there a monthly app subscription?\"*) just repeat claims already covered on the page instead of answering practical buyer questions (cleaning, app compatibility, Batch 1 cancellation policy, etc.).\n* **Unclear Bluetooth tracking claim:** The app mockup shows `Last Ping: Home Kitchen - 2 mins ago` and the copy mentions a *\"Last Seen Near\" Bluetooth ping* if left on a school bus, without explaining that Bluetooth only updates when the parent's phone was last within range.\n\n### 3. Usability & Mobile Layout Problems\n* **Bottle fit guide is gated behind an email signup:** The *\"printable wide-mouth bottle fit guide\"* is locked inside the *\"Join the Waitlist\"* email form instead of being available to shoppers trying to verify fit before ordering.\n* **No mobile navigation:** On mobile, all header links (`Bottle Fit`, `How It Works`, `School Mode`, `Shipping & FAQ`) disappear with no hamburger menu, forcing users to scroll through the entire page to find information.\n* **Awkward mobile UI wrapping:**\n  * The mobile header CTA wraps onto two lines (`Buy now —` / `$24`).\n  * In the School Mode section on mobile, the `School Mode (8 AM – 3 PM)` and `After-School Mode` tabs stack vertically inside the pill container rather than sitting side-by-side.\n* **Misleading section label:** The checkout header is labeled `PRE-ORDER CHECKOUT & FAQ`, even though there are no FAQs in that section.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.9752,
+      "confidence": 0.9752,
+      "found": true
+    },
+    "dead_cta": {
+      "noul": 0.4716,
+      "confidence": 0.5284,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0361,
+      "confidence": 0.9639,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0175,
+      "confidence": 0.9825,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0258,
+      "confidence": 0.9742,
+      "found": false
+    }
+  }
+}

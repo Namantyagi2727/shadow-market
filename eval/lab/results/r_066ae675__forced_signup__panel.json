@@ -1,0 +1,98 @@
+{
+  "page": "r_066ae675",
+  "trap": "forced_signup",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 5.78,
+  "converted_count": 0,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "An account creation wall just to view product details and pricing? Immediate nope. Closing the tab.",
+      "duration_s": 4.98,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "An account creation wall just to view product details and pricing? Immediate nope. Closing the tab.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "I'm not creating an account just to see product details and pricing for a $24 deodorant. Too much friction, I'm out.",
+      "duration_s": 4.37,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "I'm not creating an account just to see product details and pricing for a $24 deodorant. Too much friction, I'm out.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "quit",
+      "quit_reason": "I'm not creating an account just to see product details and pricing for a deodorant. I don't have time for this.",
+      "duration_s": 5.09,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "I'm not creating an account just to see product details and pricing for a deodorant. I don't have time for this.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: An account creation wall just to view product details and pricing? Immediate nope. Closing the tab.\n  Step 1 (quit): An account creation wall just to view product details and pricing? Immediate nope. Closing the tab.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: I'm not creating an account just to see product details and pricing for a $24 deodorant. Too much friction, I'm out.\n  Step 1 (quit): I'm not creating an account just to see product details and pricing for a $24 deodorant. Too much friction, I'm out.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: quit\nQuit reason: I'm not creating an account just to see product details and pricing for a deodorant. I don't have time for this.\n  Step 1 (quit): I'm not creating an account just to see product details and pricing for a deodorant. I don't have time for this.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0253,
+      "confidence": 0.9747,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.0387,
+      "confidence": 0.9613,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0467,
+      "confidence": 0.9533,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.2794,
+      "confidence": 0.7206,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.9595,
+      "confidence": 0.9595,
+      "found": true
+    }
+  }
+}

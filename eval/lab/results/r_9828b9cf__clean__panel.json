@@ -1,0 +1,242 @@
+{
+  "page": "r_9828b9cf",
+  "trap": "clean",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 782.79,
+  "converted_count": 2,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "converted",
+      "quit_reason": null,
+      "duration_s": 722.35,
+      "num_steps": 11,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "How It Works",
+          "thought": "Not really the target demographic (parents of 6-10 year olds), but $24 for a 30-day battery USB-C smart cap with no subscription is interesting hardware. Let's check 'How It Works' to see if there are actual technical specs or if it's just fluff.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "A micro-turbine plus suction check is actually decent hardware design compared to a basic tilt switch. Let's scroll down to see the rest of point 3 ('Lost-Cap Pings') and see how it syncs.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "IPX7 waterproof and Bluetooth ping are decent, though I don't care about school mode. Let's scroll down to check the FAQ and see if there are any actual hardware specs, battery details, or if it's just a kids' toy.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let's scroll down to read the shipping, returns, and FAQ section to see if there are any actual technical specs or warranty details.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "click",
+          "target": "Can my child trick the sensor by shaking or tilting the bottle? +",
+          "thought": "The 1-year drop warranty and 30-day guarantee are solid, and there's no hidden subscription. Let's check the FAQ on 'Can my child trick the sensor by shaking or tilting the bottle?' to see if they actually explain the sensor mechanics.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let's scroll down to read the sensor FAQ answer and see the rest of the page, including the pre-order section.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Okay, a sealed micro-flow sensor with a suction check is actually solid hardware, and it fits standard 63mm Nalgene bottles. Let's scroll down to check out the pre-order section.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "type",
+          "target": "e.g., Jordan Taylor",
+          "thought": "A $24 smart cap with a real micro-flow sensor, no subscription, and Nalgene Wide Mouth compatibility is actually pretty solid for desk hydration. Since this is a demo checkout with no real payment, let's fill out the reservation form to see the review step.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "type",
+          "target": "e.g., jordan@example.com",
+          "thought": "Let's enter a demo email address so we can proceed to the review step.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 10,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Let's click 'Continue to review' to inspect the order review step.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 11,
+          "action": "click",
+          "target": "Complete order",
+          "thought": "Everything in the review looks accurate: Smart Hydration Bottle Cap, quantity 1, $24, no hidden fees. Let's click 'Complete order' to finish the demo pre-order.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "This is built for parents of 6-10 year olds, not for a 22-year-old grad student. Definitely don't need to spend $24 on a smart bottle cap.",
+      "duration_s": 7.61,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "This is built for parents of 6-10 year olds, not for a 22-year-old grad student. Definitely don't need to spend $24 on a smart bottle cap.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "converted",
+      "quit_reason": null,
+      "duration_s": 782.04,
+      "num_steps": 9,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "Shipping & FAQ",
+          "thought": "As a busy parent, I want to check the shipping timeline and refund terms right away before investing time in this product.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The shipping timeline (4-6 weeks) and 30-day refund terms look clear so far. Let me scroll down to read the rest of the guarantee and check the FAQ.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "click",
+          "target": "Is there a monthly app subscription? +",
+          "thought": "I want to check if there is a monthly app subscription or if a companion app is required, because I need something that works out of the box without extra hassle.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "click",
+          "target": "Will teachers ban it for making noise in class? +",
+          "thought": "No monthly subscription is great. Next, I want to make sure it won't make noise in class and get banned by teachers.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Good, Teacher-Approved School Mode mutes sounds automatically. Now let me scroll down to look at the pre-order checkout section and see how straightforward it is to order.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "type",
+          "target": "e.g., Jordan Taylor",
+          "thought": "The checkout form looks straightforward with no hidden subscription. Let me enter my name to reserve one.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "type",
+          "target": "e.g., jordan@example.com",
+          "thought": "Now let me enter my shipping email so I can continue to review the pre-order.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "I've entered my name and email. Let's click 'Continue to review' to check the order summary and see if there are clear shipping timelines or refund terms.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "click",
+          "target": "Complete order",
+          "thought": "Everything in the order summary looks accurate—$24 total, no hidden fees, and my details are correct. Let's click 'Complete order' to finalize the pre-order.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: converted\n  Step 1 (click on 'How It Works'): Not really the target demographic (parents of 6-10 year olds), but $24 for a 30-day battery USB-C smart cap with no subscription is interesting hardware. Let's check 'How It Works' to see if there are actual technical specs or if it's just fluff.\n  Step 2 (scroll on 'down'): A micro-turbine plus suction check is actually decent hardware design compared to a basic tilt switch. Let's scroll down to see the rest of point 3 ('Lost-Cap Pings') and see how it syncs.\n  Step 3 (scroll on 'down'): IPX7 waterproof and Bluetooth ping are decent, though I don't care about school mode. Let's scroll down to check the FAQ and see if there are any actual hardware specs, battery details, or if it's just a kids' toy.\n  Step 4 (scroll on 'down'): Let's scroll down to read the shipping, returns, and FAQ section to see if there are any actual technical specs or warranty details.\n  Step 5 (click on 'Can my child trick the sensor by shaking or tilting the bottle? +'): The 1-year drop warranty and 30-day guarantee are solid, and there's no hidden subscription. Let's check the FAQ on 'Can my child trick the sensor by shaking or tilting the bottle?' to see if they actually explain the sensor mechanics.\n  Step 6 (scroll on 'down'): Let's scroll down to read the sensor FAQ answer and see the rest of the page, including the pre-order section.\n  Step 7 (scroll on 'down'): Okay, a sealed micro-flow sensor with a suction check is actually solid hardware, and it fits standard 63mm Nalgene bottles. Let's scroll down to check out the pre-order section.\n  Step 8 (type on 'e.g., Jordan Taylor'): A $24 smart cap with a real micro-flow sensor, no subscription, and Nalgene Wide Mouth compatibility is actually pretty solid for desk hydration. Since this is a demo checkout with no real payment, let's fill out the reservation form to see the review step.\n  Step 9 (type on 'e.g., jordan@example.com'): Let's enter a demo email address so we can proceed to the review step.\n  Step 10 (click on 'Continue to review'): Let's click 'Continue to review' to inspect the order review step.\n  Step 11 (click on 'Complete order'): Everything in the review looks accurate: Smart Hydration Bottle Cap, quantity 1, $24, no hidden fees. Let's click 'Complete order' to finish the demo pre-order.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: This is built for parents of 6-10 year olds, not for a 22-year-old grad student. Definitely don't need to spend $24 on a smart bottle cap.\n  Step 1 (quit): This is built for parents of 6-10 year olds, not for a 22-year-old grad student. Definitely don't need to spend $24 on a smart bottle cap.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: converted\n  Step 1 (click on 'Shipping & FAQ'): As a busy parent, I want to check the shipping timeline and refund terms right away before investing time in this product.\n  Step 2 (scroll on 'down'): The shipping timeline (4-6 weeks) and 30-day refund terms look clear so far. Let me scroll down to read the rest of the guarantee and check the FAQ.\n  Step 3 (click on 'Is there a monthly app subscription? +'): I want to check if there is a monthly app subscription or if a companion app is required, because I need something that works out of the box without extra hassle.\n  Step 4 (click on 'Will teachers ban it for making noise in class? +'): No monthly subscription is great. Next, I want to make sure it won't make noise in class and get banned by teachers.\n  Step 5 (scroll on 'down'): Good, Teacher-Approved School Mode mutes sounds automatically. Now let me scroll down to look at the pre-order checkout section and see how straightforward it is to order.\n  Step 6 (type on 'e.g., Jordan Taylor'): The checkout form looks straightforward with no hidden subscription. Let me enter my name to reserve one.\n  Step 7 (type on 'e.g., jordan@example.com'): Now let me enter my shipping email so I can continue to review the pre-order.\n  Step 8 (click on 'Continue to review'): I've entered my name and email. Let's click 'Continue to review' to check the order summary and see if there are clear shipping timelines or refund terms.\n  Step 9 (click on 'Complete order'): Everything in the order summary looks accurate—$24 total, no hidden fees, and my details are correct. Let's click 'Complete order' to finalize the pre-order.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0178,
+      "confidence": 0.9822,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.012,
+      "confidence": 0.988,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0271,
+      "confidence": 0.9729,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    }
+  }
+}

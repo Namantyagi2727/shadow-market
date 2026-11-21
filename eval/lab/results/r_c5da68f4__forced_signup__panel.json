@@ -1,0 +1,98 @@
+{
+  "page": "r_c5da68f4",
+  "trap": "forced_signup",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 5.3,
+  "converted_count": 0,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "An account creation wall just to view product details and pricing? Instant nope. Closing this tab.",
+      "duration_s": 4.02,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "An account creation wall just to view product details and pricing? Instant nope. Closing this tab.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "Ugh, a forced sign-up wall just to see the product? Plus I can already see it's $59 in the background, which is way over my $35 budget. I'm not wasting time creating an account for this.",
+      "duration_s": 4.67,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "Ugh, a forced sign-up wall just to see the product? Plus I can already see it's $59 in the background, which is way over my $35 budget. I'm not wasting time creating an account for this.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "quit",
+      "quit_reason": "I just landed on the page and it's already forcing me to create an account just to view product details and pricing. I don't have time for this.",
+      "duration_s": 4.97,
+      "num_steps": 1,
+      "actions": [
+        {
+          "step": 1,
+          "action": "quit",
+          "target": "",
+          "thought": "I just landed on the page and it's already forcing me to create an account just to view product details and pricing. I don't have time for this.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: An account creation wall just to view product details and pricing? Instant nope. Closing this tab.\n  Step 1 (quit): An account creation wall just to view product details and pricing? Instant nope. Closing this tab.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: Ugh, a forced sign-up wall just to see the product? Plus I can already see it's $59 in the background, which is way over my $35 budget. I'm not wasting time creating an account for this.\n  Step 1 (quit): Ugh, a forced sign-up wall just to see the product? Plus I can already see it's $59 in the background, which is way over my $35 budget. I'm not wasting time creating an account for this.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: quit\nQuit reason: I just landed on the page and it's already forcing me to create an account just to view product details and pricing. I don't have time for this.\n  Step 1 (quit): I just landed on the page and it's already forcing me to create an account just to view product details and pricing. I don't have time for this.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0305,
+      "confidence": 0.9695,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.028,
+      "confidence": 0.972,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0442,
+      "confidence": 0.9558,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.6337,
+      "confidence": 0.6337,
+      "found": true
+    },
+    "forced_signup": {
+      "noul": 0.9678,
+      "confidence": 0.9678,
+      "found": true
+    }
+  }
+}

@@ -1,0 +1,290 @@
+{
+  "page": "r_066ae675",
+  "trap": "hidden_fee",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 55.76,
+  "converted_count": 0,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "Whoa, a hidden '+ $14.99 handling fee (non-refundable)' on a $24 item? That's over 60% in junk fees. I'm out.",
+      "duration_s": 54.94,
+      "num_steps": 10,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "See how refills work",
+          "thought": "Pricing is clear ($24 starter, $8 refills, no forced sub) and it's machined aluminum. I want to see how the refill mechanism actually works to judge if it's durable.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The refill mechanism is straightforward and no-nonsense. They also give actual specs on the formula (magnesium hydroxide, zinc ricinoleate, 115F melt point). Let's scroll down to see the scent options and guarantee.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Full ingredient transparency with actual functional explanations—no fluff. I'll scroll down to check the guarantee and see what the checkout flow looks like.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The comparison table is clear and doesn't hide the ball—$24 starter, $8 refills, no forced subscription. Let's scroll down to see the rest of the table and check out the FAQ or checkout flow.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The comparison table is solid and transparent. Now I want to scroll down to read the shipping timeline, return policy, and see how the pre-order demo/checkout works.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Shipping and return policies are clear and fair. Let's scroll down to see the rest of the pre-order demo form and any remaining FAQs.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "The product specs, pricing, and policies are all transparent and no-nonsense. Let's fill out the demo pre-order form to see how the checkout flow works.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "Now I'll enter my email address into the shipping email field so I can continue to the review step.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "I've filled out my name and email, so let's click 'Continue to review' to see the final checkout summary.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 10,
+          "action": "quit",
+          "target": "",
+          "thought": "Whoa, a hidden '+ $14.99 handling fee (non-refundable)' on a $24 item? That's over 60% in junk fees. I'm out.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "The comparison table is cut off on the right side of my phone screen, which is really annoying on mobile. I'm going to pass on this.",
+      "duration_s": 45.56,
+      "num_steps": 8,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "See how refills work",
+          "thought": "$24 is under my $35 limit, and $8 refills sound okay, but I want to see how the refills actually work before I decide if it's worth it.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Okay, $8 refills with no forced subscription sounds reasonable. Let me scroll down to see the rest of the steps and what scents are available.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "No surprise auto-charges is a relief. Let me scroll down to check the ingredients and scent options.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "click",
+          "target": "Eucalyptus + Mint",
+          "thought": "I like fresh scents, so let me tap Eucalyptus + Mint to see the description before I decide if this is worth $24.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let me scroll down to read the Eucalyptus + Mint description and see if there are any other details or reviews before I decide.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Eucalyptus + Mint sounds nice and not overpowering. Let me scroll down to check the rest of the ingredients and see if there are any reviews or shipping costs.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Good to know it has a 30-day money-back guarantee. Let me scroll down to see the rest of the details and check if there's any info on shipping costs.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "quit",
+          "target": "",
+          "thought": "The comparison table is cut off on the right side of my phone screen, which is really annoying on mobile. I'm going to pass on this.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "quit",
+      "quit_reason": "There's a surprise $14.99 non-refundable handling fee added at checkout, which contradicts the $4 flat shipping and 30-day money-back guarantee mentioned above. I'm not paying hidden fees, so I'm leaving.",
+      "duration_s": 52.96,
+      "num_steps": 9,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "See how refills work",
+          "thought": "I want to see how the refills work to make sure it's simple and doesn't add hassle to my routine.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The refill process looks simple and the ingredients are transparent. I want to scroll down to check shipping timelines, refund terms, and reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The 30-day money-back guarantee and 24-hour refund/replacement policy are clear. Let me scroll down further to see the comparison table, shipping timelines, and reviews.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The comparison table looks good, and there's no forced subscription. I'll scroll down to check the FAQ & Checkout section for shipping timelines and any other details.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The shipping timeline and return policy are very clear and straightforward. I'll scroll down to check the Frequently Asked Questions and the pre-order demo.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "Everything looks clear, reliable, and straightforward. I'll fill out my name in the pre-order demo to reserve a starter kit.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "I've entered my name. Now I'll enter my shipping email so I can continue to review the pre-order.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "I've filled out my name and shipping email. Now I'll click 'Continue to review' to complete the pre-order demo.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "quit",
+          "target": "",
+          "thought": "There's a surprise $14.99 non-refundable handling fee added at checkout, which contradicts the $4 flat shipping and 30-day money-back guarantee mentioned above. I'm not paying hidden fees, so I'm leaving.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: Whoa, a hidden '+ $14.99 handling fee (non-refundable)' on a $24 item? That's over 60% in junk fees. I'm out.\n  Step 1 (click on 'See how refills work'): Pricing is clear ($24 starter, $8 refills, no forced sub) and it's machined aluminum. I want to see how the refill mechanism actually works to judge if it's durable.\n  Step 2 (scroll on 'down'): The refill mechanism is straightforward and no-nonsense. They also give actual specs on the formula (magnesium hydroxide, zinc ricinoleate, 115F melt point). Let's scroll down to see the scent options and guarantee.\n  Step 3 (scroll on 'down'): Full ingredient transparency with actual functional explanations—no fluff. I'll scroll down to check the guarantee and see what the checkout flow looks like.\n  Step 4 (scroll on 'down'): The comparison table is clear and doesn't hide the ball—$24 starter, $8 refills, no forced subscription. Let's scroll down to see the rest of the table and check out the FAQ or checkout flow.\n  Step 5 (scroll on 'down'): The comparison table is solid and transparent. Now I want to scroll down to read the shipping timeline, return policy, and see how the pre-order demo/checkout works.\n  Step 6 (scroll on 'down'): Shipping and return policies are clear and fair. Let's scroll down to see the rest of the pre-order demo form and any remaining FAQs.\n  Step 7 (type on 'Alex Rivera'): The product specs, pricing, and policies are all transparent and no-nonsense. Let's fill out the demo pre-order form to see how the checkout flow works.\n  Step 8 (type on 'alex@example.com'): Now I'll enter my email address into the shipping email field so I can continue to the review step.\n  Step 9 (click on 'Continue to review'): I've filled out my name and email, so let's click 'Continue to review' to see the final checkout summary.\n  Step 10 (quit): Whoa, a hidden '+ $14.99 handling fee (non-refundable)' on a $24 item? That's over 60% in junk fees. I'm out.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: The comparison table is cut off on the right side of my phone screen, which is really annoying on mobile. I'm going to pass on this.\n  Step 1 (click on 'See how refills work'): $24 is under my $35 limit, and $8 refills sound okay, but I want to see how the refills actually work before I decide if it's worth it.\n  Step 2 (scroll on 'down'): Okay, $8 refills with no forced subscription sounds reasonable. Let me scroll down to see the rest of the steps and what scents are available.\n  Step 3 (scroll on 'down'): No surprise auto-charges is a relief. Let me scroll down to check the ingredients and scent options.\n  Step 4 (click on 'Eucalyptus + Mint'): I like fresh scents, so let me tap Eucalyptus + Mint to see the description before I decide if this is worth $24.\n  Step 5 (scroll on 'down'): Let me scroll down to read the Eucalyptus + Mint description and see if there are any other details or reviews before I decide.\n  Step 6 (scroll on 'down'): Eucalyptus + Mint sounds nice and not overpowering. Let me scroll down to check the rest of the ingredients and see if there are any reviews or shipping costs.\n  Step 7 (scroll on 'down'): Good to know it has a 30-day money-back guarantee. Let me scroll down to see the rest of the details and check if there's any info on shipping costs.\n  Step 8 (quit): The comparison table is cut off on the right side of my phone screen, which is really annoying on mobile. I'm going to pass on this.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: quit\nQuit reason: There's a surprise $14.99 non-refundable handling fee added at checkout, which contradicts the $4 flat shipping and 30-day money-back guarantee mentioned above. I'm not paying hidden fees, so I'm leaving.\n  Step 1 (click on 'See how refills work'): I want to see how the refills work to make sure it's simple and doesn't add hassle to my routine.\n  Step 2 (scroll on 'down'): The refill process looks simple and the ingredients are transparent. I want to scroll down to check shipping timelines, refund terms, and reviews.\n  Step 3 (scroll on 'down'): The 30-day money-back guarantee and 24-hour refund/replacement policy are clear. Let me scroll down further to see the comparison table, shipping timelines, and reviews.\n  Step 4 (scroll on 'down'): The comparison table looks good, and there's no forced subscription. I'll scroll down to check the FAQ & Checkout section for shipping timelines and any other details.\n  Step 5 (scroll on 'down'): The shipping timeline and return policy are very clear and straightforward. I'll scroll down to check the Frequently Asked Questions and the pre-order demo.\n  Step 6 (type on 'Alex Rivera'): Everything looks clear, reliable, and straightforward. I'll fill out my name in the pre-order demo to reserve a starter kit.\n  Step 7 (type on 'alex@example.com'): I've entered my name. Now I'll enter my shipping email so I can continue to review the pre-order.\n  Step 8 (click on 'Continue to review'): I've filled out my name and shipping email. Now I'll click 'Continue to review' to complete the pre-order demo.\n  Step 9 (quit): There's a surprise $14.99 non-refundable handling fee added at checkout, which contradicts the $4 flat shipping and 30-day money-back guarantee mentioned above. I'm not paying hidden fees, so I'm leaving.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.9772,
+      "confidence": 0.9772,
+      "found": true
+    },
+    "dead_cta": {
+      "noul": 0.0251,
+      "confidence": 0.9749,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.027,
+      "confidence": 0.973,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0333,
+      "confidence": 0.9667,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0171,
+      "confidence": 0.9829,
+      "found": false
+    }
+  }
+}

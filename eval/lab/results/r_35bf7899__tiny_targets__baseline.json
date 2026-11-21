@@ -1,0 +1,37 @@
+{
+  "page": "r_35bf7899",
+  "trap": "tiny_targets",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 18.9,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page, based on both the desktop and mobile layouts:\n\n---\n\n### 1. Usability & Visual Hierarchy Problems\n* **Primary \"Buy now\" CTA looks disabled:** In both the hero section and the top navigation bar (desktop and mobile), `Buy now — $29` is rendered as low-contrast, dark muted text with no button background or border. Meanwhile, the secondary action (`See streetlight demo`) has a clear pill button style, inverting the visual hierarchy.\n* **Checkout submit button is nearly invisible:** At the bottom of the checkout card, `Continue to review` is styled as tiny, dark-grey plain text with no button container, making it look like a footnote or a disabled element rather than an actionable next step.\n* **Newsletter CTA overpowers purchase CTAs:** The `Notify me` button in the email capture section is bright mint green—giving a secondary lead-capture form far more visual prominence than both the `Buy now` and `Continue to review` buttons.\n* **No mobile navigation:** On mobile, the header links (`Streetlight Demo`, `Bike-Share Mount`, `Tech Specs`, `Shipping & FAQ`) disappear completely with no hamburger menu or jump links to replace them.\n* **Critical answers hidden in collapsed FAQs:** Important pre-purchase questions (e.g., whether lasers are visible under bright downtown streetlights, or if the red tail light can run without lasers) are collapsed by default.\n\n---\n\n### 2. Trust & Product Credibility Problems\n* **Zero real product photography:** Every visual on the page is a simplified vector/SVG illustration. Shoppers buying physical hardware want to see real photos of the light unit, the clamp/clip hardware, its size in hand, and actual night-time photos or video of the lasers on wet asphalt—not just diagrams.\n* **No social proof:** There are no customer reviews, star ratings, rider testimonials, or user-submitted photos anywhere on the page.\n* **Missing laser safety & regulatory details:** The product projects dual 532nm green lasers onto public roads, yet there is no mention of laser class/eye-safety compliance (e.g., Class 2 / Class 3R) or street-legality.\n* **No legal or company footer links:** The footer only contains a copyright line and a support email. There are no links to a Privacy Policy, Terms of Service, Return Policy page, or a physical business address.\n\n---\n\n### 3. Checkout Problems\n* **It is a non-functional \"demo\" checkout:** The form is explicitly labeled `DEMO PRE-ORDER CHECKOUT — NO REAL PAYMENT COLLECTED` and states that no payment or credit card info is collected. A real shopper who clicks \"Buy now\" intending to purchase hits a dead end and cannot actually buy the product.\n* **Missing shipping address fields:** Even though the page advertises `$4 flat-rate shipping anywhere in the US`, Step `1. Details` only asks for `Quantity`, `Full name`, and `Shipping email`—there are no street address, city, state, or ZIP code fields.\n* **No live price or shipping calculation:** Choosing `1 × Clip-on Bike Lane Light — $29` does not display the `$4` shipping fee, estimated tax, or order total (`$33`). It also misses the opportunity to surface the \"free shipping on 2+ lights\" offer inside the quantity dropdown.\n* **No cart or payment method visibility:** There is no indication of accepted payment methods (Apple Pay, Shop Pay, credit card, etc.) or security/encryption reassurance before asking for personal details.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0184,
+      "confidence": 0.9816,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.8248,
+      "confidence": 0.8248,
+      "found": true
+    },
+    "tiny_targets": {
+      "noul": 0.9185,
+      "confidence": 0.9185,
+      "found": true
+    },
+    "price_hidden": {
+      "noul": 0.0318,
+      "confidence": 0.9682,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0221,
+      "confidence": 0.9779,
+      "found": false
+    }
+  }
+}

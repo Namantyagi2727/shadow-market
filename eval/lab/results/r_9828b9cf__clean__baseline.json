@@ -1,0 +1,37 @@
+{
+  "page": "r_9828b9cf",
+  "trap": "clean",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 23.8,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page, grouped by category:\n\n---\n\n### 1. Checkout & Conversion Blockers\n* **\"Demo / MVP Preview\" disclaimer kills real purchases:** The checkout header explicitly states *\"Demo / Pre-Order Checkout: No real payment or credit card is collected on this MVP preview page.\"* A real shopper trying to buy will immediately abandon or feel tricked.\n* **Hidden shipping fee in the order summary:** The FAQ/shipping section states shipping is **$4.95 for 1 cap** (free for 2+), yet the checkout form shows `Quantity: 1` and `Total: $24` with no shipping line item and no prompt to add a second cap for free shipping.\n* **Confusing checkout steps & missing address fields:** Step 1 asks for `Full name` and `Shipping email` (an unusual term), then goes straight to `2. Review Order` and `3. Confirmation`—leaving no obvious step for entering a **physical shipping address** or **payment method**.\n* **No color, style, or spout selection:** There is no way to choose a color (which matters for 6–10 year olds) or confirm bottle compatibility at checkout.\n* **Waitlist form competes with checkout:** Placing a *\"Not Ready to Pre-Order? Join the Waitlist\"* email form immediately above the checkout box gives hesitant buyers an exit ramp right before they convert.\n\n---\n\n### 2. Trust, Safety & Credibility Gaps\n* **No real product photography:** The hero only shows a flat vector illustration. Shoppers cannot see the actual cap’s size, materials, spout style, LED placement, USB-C port, or how it looks on a real bottle.\n* **No social proof or company identity:** There are zero customer reviews, parent testimonials, teacher endorsements, company/brand backstory, physical address, or social media links.\n* **No safety or food-grade certifications:** For a children’s electronic drinking product, there is no mention of **BPA-free / phthalate-free** materials, **FDA food-grade** compliance, or **battery safety** certifications.\n* **No Privacy Policy or Terms of Service:** The footer only has a support email. A connected kids' product with a parent app needs a clear Privacy Policy (including COPPA/children's data handling) and Terms of Service.\n* **4–6 week pre-order wait with no payment protection:** Asking for a pre-order that ships in 4–6 weeks without recognizable payment methods (Apple Pay, PayPal, Shop Pay, credit card icons) or a clear cancellation policy feels risky.\n\n---\n\n### 3. Critical Missing Product Information\n* **How do you wash it?** Parents of 6–10 year olds need to know if a cap containing electronics, an LED ring, and a \"micro-turbine inside the spout\" is **dishwasher safe** or how to clean it to prevent mold. This is never mentioned.\n* **How does a child actually drink from it?** The copy mentions a \"spout\" and \"gentle suction check,\" but neither the text nor the illustration clarifies whether it’s a flip-straw, bite valve, or open chug spout—a dealbreaker for kids' bottles.\n* **What phones/OS does the app support?** The page repeatedly references the \"parent app\" and \"Bluetooth sync,\" but never states whether it works on **iOS, Android, or both**, or what OS versions are required.\n* **Is a USB-C cable included?** It states *\"30 days per USB-C charge,\"* but doesn't say if a charging cable comes in the box.\n\n---\n\n### 4. Copy Contradictions & Questionable Claims\n* **Misleading \"Lost-Cap\" / School Bus tracking claim:** Section 3 advertises a *\"Last Seen Near\" Bluetooth ping in the parent app if it's left on the school bus.* Standard Bluetooth only has a ~30–100 ft range and only logs where *your own phone* last connected to it—it cannot locate a cap left on a moving school bus unless there is a crowd-sourced network (which isn't mentioned).\n* **School Mode control loophole:** Section 4 says you can *\"hold the cap button for 3 seconds to lock in silent mode all day.\"* If a 6–10 year old can access that button, they can also accidentally or intentionally unlock it during class.\n* **Ambiguous \"Silent\" behavior:** The hero says *\"Glows after 60 minutes without a real sip (silent in School Mode)\"*, which sounds like it might not glow in School Mode—whereas Section 4 clarifies it *does* glow in School Mode (only audio is disabled).\n* **Unsubstantiated & awkward comparisons:**\n  * Claims it *\"fits 95% of kids' wide-mouth bottles\"* with no source or list of compatible brands beyond 4 examples.\n  * Grouping `Simple Modern / Eddy+` together as one button in the Fit Checker is confusing since they are different brands with different lid designs.\n  * Comparing against a *\"Custom Printed Bottle — ~$35\"* in the comparison table feels arbitrary and doesn't address real competitors (like HidrateSpark or Gululu).\n\n---\n\n### 5. UI & Mobile Usability Issues\n* **Broken tab switcher on mobile:** In the *\"No Classroom Distractions\"* section on mobile, the `School Mode (8 AM – 3 PM)` / `After-School Mode` toggle wraps onto two lines inside the pill container, causing awkward alignment and cramped padding.\n* **Cramped mobile header CTA:** In the mobile sticky header, the `Buy now — $24` button wraps onto two lines inside a small pill.\n* **Unhelpful app chart preview:** The dark *\"Parent Summary\"* card shows `34 oz drank` (exceeding the `32 oz` goal), yet the 5 bars (`8a`–`4p`) have no oz values or y-axis scale, making it look like a static mockup rather than a real app screenshot.\n* **No mobile navigation:** Desktop has 4 section links (`Bottle Fit`, `How It Works`, `School Mode`, `Shipping & FAQ`), while mobile removes navigation entirely, forcing users to scroll through a very long page to find Shipping or FAQs.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0804,
+      "confidence": 0.9196,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.0745,
+      "confidence": 0.9255,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.0516,
+      "confidence": 0.9484,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0234,
+      "confidence": 0.9766,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0127,
+      "confidence": 0.9873,
+      "found": false
+    }
+  }
+}

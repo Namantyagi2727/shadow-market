@@ -1,0 +1,37 @@
+{
+  "page": "r_066ae675",
+  "trap": "hidden_fee",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 23.74,
+  "findings_text": "Here is a breakdown of the **checkout, trust, and usability problems** a real shopper would hit on this page, based on both the desktop and mobile views.\n\n---\n\n### 1. Checkout & Conversion Blockers\n* **It’s explicitly a \"Demo\" with no real checkout:** The section heading reads *\"Honest Details, FAQ & Pre-Order Demo\"* and the checkout box says *\"DEMO / PRE-ORDER CHECKOUT · NO PAYMENT COLLECTED\"* and *\"No real card or payment is processed in this MVP demo.\"* A real shopper trying to buy will immediately abandon the page because there is no way to actually pay or place a real order.\n* **No scent selection in the checkout form:** Higher up on the page, shoppers can browse three scents (*Bergamot + Cedar*, *Eucalyptus + Mint*, *Unscented Sensitive*), but the checkout form only asks for *Quantity ($24 each)*, *Full name*, and *Shipping email*. There is no way to choose which scent you are buying.\n* **No ability to add extra refills:** The page promotes $8 refills and free shipping on 2+ kits, but the checkout form only lets you change the quantity of the $24 Starter Kit—you can't add extra $8 refills to your order.\n* **Missing shipping address & cost breakdown:** The FAQ mentions *\"Flat $4 shipping on single starter kits, or free shipping on 2+ kits,\"* yet the checkout form has no street address fields, no order summary, and doesn't calculate or display the $4 shipping fee (or show when free shipping is unlocked).\n* **Confusing waitlist placement:** Right next to (and above on mobile) the checkout form is a *\"Get Launch & Refill Restock Updates\"* waitlist box. Putting a waitlist form right beside the checkout form makes it look like the product might be sold out or not actually available yet.\n\n---\n\n### 2. Trust & Credibility Issues\n* **No brand name:** The header just says *\"Refillable Aluminum Deodorant\"* and the footer only lists `support@lastdeodorant.co`. Without an actual brand name, company identity, or \"About\" info, the site feels like an unfinished template or a dropshipping test.\n* **No real product photography:** The only product visual is a flat vector illustration of a tube and a paper refill. Shoppers buying a $24 \"machined aluminum\" product want to see real photos of the metal finish, the size in someone's hand, how the refill loads, and what the deodorant stick looks like.\n* **Zero social proof:** There are no customer reviews, star ratings, testimonials, or dermatologist/safety badges—just marketing claims.\n* **Missing legal & policy links:** The footer has no *Privacy Policy*, *Terms of Service*, or full *Refund/Shipping Policy* links, which is a major red flag for e-commerce shoppers.\n* **Confusing \"break-even\" math in the FAQ:** Under *\"Why is the starter kit $24 instead of $14?\"*, the copy says *\"By refill #2, you've already spent less.\"* Because the starter kit ($24) includes your first stick, your first *refill* puts you at $32 vs. $28 for two $14 tubes, and your second *refill* puts you at $40 vs. $42. Calling the 3rd stick \"refill #2\" is technically accurate, but at a glance the math feels off to a skeptical buyer.\n\n---\n\n### 3. Usability, Layout & Mobile Bugs\n* **Broken CTA button in the mobile header:** In the mobile view, the top-right *\"Buy now — $24\"* button wraps awkwardly onto four narrow lines (`Buy / now / — / $24`), bloating the header height and looking broken.\n* **Clipped badge on the hero illustration:** In both desktop and mobile views, the green `\"100% PLASTIC-FREE\"` pill in the hero circle is cut off at the edges (`00% PLASTIC-FRE` / clipped `1` and `E`).\n* **Cut-off comparison table on mobile:** In the *\"Try it risk-free\"* section on mobile, the 4-column comparison table overflows off the right side of the screen. The 3rd column (`$14 Cardboard Tubes`) is sliced in half, and the 4th column (`$39.95 Refillable Sticks`) is completely hidden with no clear visual cue to scroll horizontally.\n* **No mobile navigation:** The desktop header has anchor links (*How Refills Work*, *Ingredients & Scents*, *Guarantee*, *FAQ & Checkout*), which disappear completely on mobile without a menu button.\n* **Unclear interactive states:** In *\"Explore V1 Small-Batch Scents\"*, the scent pills look like interactive tabs, but it isn't obvious whether clicking them updates the checkout or just changes the description text below. Similarly, the *\"Continue to review\"* button in the checkout box doesn't clarify what happens next (e.g., whether it leads to an address/payment step or just a fake confirmation).",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.028,
+      "confidence": 0.972,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.2895,
+      "confidence": 0.7105,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.03,
+      "confidence": 0.97,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0232,
+      "confidence": 0.9768,
+      "found": false
+    }
+  }
+}

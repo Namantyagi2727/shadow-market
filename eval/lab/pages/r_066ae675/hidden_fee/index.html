@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Refillable Aluminum Deodorant — Zero Plastic, Zero Compromise</title>
+  <style>
+    :root {
+      --bg: #f6f5f0;
+      --surface: #ffffff;
+      --surface-alt: #eceae2;
+      --ink: #17211c;
+      --ink-muted: #4b5a52;
+      --accent: #1b6344;
+      --accent-hover: #134a32;
+      --accent-soft: #e3efe9;
+      --warm: #a8502c;
+      --warm-soft: #faece6;
+      --border: #d7d5cb;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 12px 32px rgba(23, 33, 28, 0.06);
+      --max-w: 1120px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Announcement bar */
+    .top-bar {
+      background: var(--ink);
+      color: #f6f5f0;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 9px 16px;
+      letter-spacing: 0.01em;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(246, 245, 240, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 66px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 22px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    @media (min-width: 860px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.96rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.16s ease, transform 0.12s ease, border-color 0.16s ease;
+      font-family: inherit;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--ink);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--ink);
+    }
+
+    .btn-sm {
+      padding: 9px 16px;
+      font-size: 0.88rem;
+    }
+
+    /* Section spacing */
+    section {
+      padding: 64px 0;
+    }
+
+    @media (min-width: 860px) {
+      section {
+        padding: 84px 0;
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .eyebrow-warm {
+      color: var(--warm);
+      background: var(--warm-soft);
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 14px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4.4vw, 3.25rem);
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.35rem);
+    }
+
+    h3 {
+      font-size: 1.18rem;
+    }
+
+    p {
+      margin: 0 0 16px;
+      color: var(--ink-muted);
+    }
+
+    /* Hero */
+    .hero {
+      padding-top: 40px;
+      padding-bottom: 64px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    @media (min-width: 860px) {
+      .hero-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 48px;
+      }
+    }
+
+    .hero-lead {
+      font-size: 1.1rem;
+      max-width: 56ch;
+      color: var(--ink-muted);
+    }
+
+    .hero-price-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .price-tag {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .price-note {
+      font-size: 0.94rem;
+      color: var(--ink-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .hero-trust {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+
+    .hero-trust div strong {
+      display: block;
+      color: var(--ink);
+      font-size: 0.94rem;
+    }
+
+    .hero-visual {
+      background: linear-gradient(145deg, #ffffff 0%, #e7ece8 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .visual-caption {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+    }
+
+    /* Cards & Grids */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 760px) {
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      min-width: 0;
+    }
+
+    .card-soft {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      min-width: 0;
+    }
+
+    .step-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    /* Scent selector */
+    .scent-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .scent-btn {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .scent-btn[aria-pressed="true"] {
+      background: var(--ink);
+      color: #ffffff;
+      border-color: var(--ink);
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .pill-list li {
+      font-size: 0.84rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 5px 11px;
+      border-radius: 999px;
+      color: var(--ink);
+    }
+
+    /* Comparison table */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 520px;
+      font-size: 0.92rem;
+    }
+
+    th, td {
+      padding: 13px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--surface-alt);
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .highlight-col {
+      background: #f1f7f4;
+      font-weight: 600;
+    }
+
+    /* FAQ Accordion */
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--ink);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      font-size: 1.2rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      margin: 12px 0 0;
+      font-size: 0.94rem;
+    }
+
+    /* Forms & Checkout */
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 11px 13px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 0.96rem;
+    }
+
+    input:focus, select:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+
+    .inline-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @media (min-width: 560px) {
+      .inline-form {
+        flex-direction: row;
+      }
+      .inline-form input {
+        flex: 1;
+      }
+    }
+
+    .msg {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      display: none;
+    }
+
+    .msg.visible {
+      display: block;
+    }
+
+    .msg-success {
+      background: var(--accent-soft);
+      color: #0f3d29;
+      border: 1px solid #a9d4bf;
+    }
+
+    .msg-error {
+      background: #fdecec;
+      color: #8a1f1f;
+      border: 1px solid #f2b8b8;
+    }
+
+    .checkout-box {
+      background: var(--surface);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .demo-badge {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: var(--warm-soft);
+      color: var(--warm);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    .summary-total {
+      font-weight: 800;
+      font-size: 1.12rem;
+      color: var(--ink);
+      border-bottom: none;
+      padding-top: 14px;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 0 48px;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    Small-Batch Drop #01 &bull; Starter Kit $24 &bull; Plastic-Free Refills $8 &bull; 30-Day Money-Back Guarantee
+  </div>
+
+  <header>
+    <div class="container nav-inner">
+      <a href="#hero-drop" class="brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="6" y="3" width="12" height="18" rx="4" stroke="#1b6344" stroke-width="2" />
+          <path d="M9 9h6M9 13h6" stroke="#1b6344" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <span>Refillable Aluminum Deodorant</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#how-refills-work">How Refills Work</a></li>
+          <li><a href="#ingredients-scents">Ingredients &amp; Scents</a></li>
+          <li><a href="#guarantee">Guarantee</a></li>
+          <li><a href="#faq-checkout">FAQ &amp; Checkout</a></li>
+        </ul>
+      </nav>
+      <a href="#checkout" class="btn btn-primary btn-sm">Buy now &mdash; $24</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Hero & Small-Batch Drop -->
+    <section id="hero-drop" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Hero &amp; Small-Batch Drop</span>
+          <h1>The Last Deodorant Case You'll Ever Buy&mdash;Zero Plastic, Zero Compromise</h1>
+          <p class="hero-lead">
+            A refillable aluminum stick deodorant with mail-order plastic-free refills that helps people cutting bathroom plastic replace 6+ disposable tubes a year—without paying $40 upfront or getting locked into a forced subscription.
+          </p>
+
+          <div class="hero-price-row">
+            <span class="price-tag">$24</span>
+            <span class="price-note">Starter Kit (Anodized Aluminum Case + 1st Plastic-Free Refill) &bull; Future refills $8</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#checkout" class="btn btn-primary">Buy now &mdash; $24</a>
+            <a href="#how-refills-work" class="btn btn-secondary">See how refills work</a>
+          </div>
+
+          <div class="hero-trust">
+            <div>
+              <strong>Made from Aluminum</strong>
+              Machined to last decades, never cracks
+            </div>
+            <div>
+              <strong>$8 Plastic-Free Refills</strong>
+              Optional 2-month mail delivery
+            </div>
+            <div>
+              <strong>30-Day Guarantee</strong>
+              Full refund, even if opened
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <svg width="300" height="320" viewBox="0 0 300 320" fill="none" role="img" aria-label="Illustration of a sleek brushed aluminum refillable deodorant stick beside an $8 plastic-free paper-wrapped refill pod">
+            <!-- Soft backdrop circle -->
+            <circle cx="150" cy="160" r="128" fill="#dfe8e2" />
+            <!-- Aluminum case body -->
+            <defs>
+              <linearGradient id="aluGrad" x1="72" y1="80" x2="172" y2="80" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#c4cbc8" />
+                <stop offset="35%" stop-color="#eef1ef" />
+                <stop offset="70%" stop-color="#b4bdb9" />
+                <stop offset="100%" stop-color="#8b9691" />
+              </linearGradient>
+              <linearGradient id="balmGrad" x1="90" y1="44" x2="154" y2="44" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#f3efe3" />
+                <stop offset="50%" stop-color="#fffdf7" />
+                <stop offset="100%" stop-color="#e3dccb" />
+              </linearGradient>
+            </defs>
+
+            <!-- Deodorant balm dome -->
+            <path d="M90 95 V64 C90 46 154 46 154 64 V95 Z" fill="url(#balmGrad)" stroke="#c9c2b0" stroke-width="2" />
+            <!-- Aluminum main tube -->
+            <rect x="78" y="92" width="88" height="156" rx="14" fill="url(#aluGrad)" stroke="#5c6963" stroke-width="2.5" />
+            <!-- Twist base -->
+            <rect x="84" y="248" width="76" height="26" rx="8" fill="#3a4741" />
+            <line x1="98" y1="254" x2="98" y2="268" stroke="#8b9691" stroke-width="2" stroke-linecap="round" />
+            <line x1="112" y1="254" x2="112" y2="268" stroke="#8b9691" stroke-width="2" stroke-linecap="round" />
+            <line x1="126" y1="254" x2="126" y2="268" stroke="#8b9691" stroke-width="2" stroke-linecap="round" />
+            <line x1="140" y1="254" x2="140" y2="268" stroke="#8b9691" stroke-width="2" stroke-linecap="round" />
+            <!-- Minimal engraved leaf mark -->
+            <path d="M122 146 C133 146 138 156 132 167 C126 177 115 177 112 166 C110 156 115 146 122 146 Z" fill="#1b6344" opacity="0.85" />
+            <path d="M122 150 V174" stroke="#eef1ef" stroke-width="1.5" stroke-linecap="round" />
+
+            <!-- Plastic-free paper refill pod -->
+            <rect x="184" y="138" width="58" height="114" rx="10" fill="#e9dec8" stroke="#9e8c6c" stroke-width="2" />
+            <rect x="190" y="162" width="46" height="58" rx="4" fill="#ffffff" opacity="0.82" />
+            <text x="213" y="186" text-anchor="middle" font-size="10" font-weight="700" fill="#17211c" font-family="sans-serif">REFILL</text>
+            <text x="213" y="201" text-anchor="middle" font-size="11" font-weight="800" fill="#1b6344" font-family="sans-serif">$8</text>
+            <text x="213" y="213" text-anchor="middle" font-size="8" fill="#4b5a52" font-family="sans-serif">0% plastic</text>
+
+            <!-- Zero plastic badge -->
+            <rect x="166" y="54" width="96" height="30" rx="15" fill="#1b6344" />
+            <text x="214" y="73" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" font-family="sans-serif">100% PLASTIC-FREE</text>
+          </svg>
+          <p class="visual-caption">Brushed aluminum stick ($24 starter kit) + compostable paperboard $8 refill.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. How Refills Work -->
+    <section id="how-refills-work" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <span class="eyebrow">How Refills Work</span>
+        <h2>Refill in 10 seconds. Zero forced subscriptions.</h2>
+        <p style="max-width: 62ch;">
+          You keep the machined aluminum case for life. When you run low, drop in a fresh $8 plastic-free refill—delivered by mail every two months only if you want reminders, or ordered manually whenever you're ready.
+        </p>
+
+        <div class="grid-3" style="margin-top: 28px;">
+          <div class="card">
+            <span class="step-num">1</span>
+            <h3>Twist &amp; Drop In</h3>
+            <p>Remove the compostable paper cap from your $8 refill pod, drop it into the aluminum barrel, and twist the base dial to lock it in place.</p>
+          </div>
+          <div class="card">
+            <span class="step-num">2</span>
+            <h3>Glide Without Waste</h3>
+            <p>Each 2.2 oz stick lasts ~2 months of daily use. When it's done, recycle or compost the thin paper sleeve—no bulky plastic tube hits the landfill.</p>
+          </div>
+          <div class="card">
+            <span class="step-num">3</span>
+            <h3>Reorder on Your Terms</h3>
+            <p>Prefer mail delivery every two months or one-off reorders? You choose. No surprise auto-charges or hoops to cancel.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Ingredients & Scent Notes -->
+    <section id="ingredients-scents">
+      <div class="container">
+        <span class="eyebrow">Ingredients &amp; Scent Notes</span>
+        <h2>Gentle on skin, tough on odor, built for warm weather</h2>
+        <p style="max-width: 64ch;">
+          Worried about baking-soda rashes, weak odor control, or bars melting in the mail? Our formula uses magnesium hydroxide and zinc ricinoleate for 24-hour odor neutralization, paired with high-melt-point plant waxes rated up to 115&deg;F.
+        </p>
+
+        <div class="grid-2" style="margin-top: 28px; align-items: start;">
+          <div class="card">
+            <h3>Explore V1 Small-Batch Scents</h3>
+            <div class="scent-tabs" role="group" aria-label="Select scent">
+              <button type="button" class="scent-btn" data-scent="bergamot" aria-pressed="true">Bergamot + Cedar</button>
+              <button type="button" class="scent-btn" data-scent="eucalyptus" aria-pressed="false">Eucalyptus + Mint</button>
+              <button type="button" class="scent-btn" data-scent="unscented" aria-pressed="false">Unscented Sensitive</button>
+            </div>
+            <div id="scent-panel">
+              <h3 id="scent-title" style="color: var(--accent);">Bergamot + Cedar</h3>
+              <p id="scent-desc">Crisp Italian bergamot peel balanced with warm Atlas cedarwood. Clean, dry finish with zero synthetic fragrance.</p>
+              <ul class="pill-list" id="scent-notes">
+                <li>Top: Bright Bergamot</li>
+                <li>Heart: Clary Sage</li>
+                <li>Base: Atlas Cedar</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-soft">
+            <h3>Full Ingredient Transparency</h3>
+            <p style="font-size: 0.94rem;">
+              <strong>Odor Control:</strong> Magnesium Hydroxide, Zinc Ricinoleate, Arrowroot Powder (absorbs moisture without aluminum chlorohydrate or harsh baking soda).
+            </p>
+            <p style="font-size: 0.94rem;">
+              <strong>Heat-Resilient Structure:</strong> Candelilla Wax &amp; Carnauba Wax blend (115&deg;F melt point so refills don't turn to soup in summer transit), Fractionated Coconut Oil, Shea Butter.
+            </p>
+            <p style="font-size: 0.94rem; margin-bottom: 0;">
+              <strong>Skin Soothing:</strong> Bisabolol &amp; Vitamin E to calm post-shave irritation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 30-Day Money-Back Guarantee & Honest Value -->
+    <section id="guarantee" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <span class="eyebrow eyebrow-warm">30-Day Money-Back Guarantee</span>
+        <h2>Try it risk-free—even in summer heat</h2>
+        <p style="max-width: 64ch;">
+          At $24 for the aluminum starter kit and $8 per refill, you beat $14 disposable paper tubes by your second refill—and save $15+ upfront compared to $39.95 aluminum competitors. If it ever irritates your skin, fails on odor, or melts in transit, we refund or replace it in 24 hours.
+        </p>
+
+        <div class="table-wrap" style="margin-top: 24px;">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th class="highlight-col">Refillable Aluminum Deodorant</th>
+                <th>$14 Cardboard Tubes</th>
+                <th>$39.95 Refillable Sticks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Starter Kit Price</td>
+                <td class="highlight-col">$24 (Aluminum Case + Refill)</td>
+                <td>$14 (Single-use paper)</td>
+                <td>$39.95</td>
+              </tr>
+              <tr>
+                <td>Refill Price</td>
+                <td class="highlight-col">$8 plastic-free refill</td>
+                <td>$14 every time</td>
+                <td>$12&ndash;$15</td>
+              </tr>
+              <tr>
+                <td>Forced Subscription?</td>
+                <td class="highlight-col">No &mdash; optional 2-month reminders</td>
+                <td>No</td>
+                <td>Often required for discount</td>
+              </tr>
+              <tr>
+                <td>Warm-Weather Protection</td>
+                <td class="highlight-col">115&deg;F wax + free melt replacement</td>
+                <td>Paper can soften/stain</td>
+                <td>Varies</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FAQ & Checkout + Honest Details + Waitlist -->
+    <section id="faq-checkout">
+      <div class="container">
+        <span class="eyebrow">FAQ &amp; Checkout</span>
+        <h2>Honest Details, FAQ &amp; Pre-Order Demo</h2>
+
+        <!-- Honest details cards -->
+        <div class="grid-3" style="margin-top: 20px; margin-bottom: 36px;">
+          <div class="card">
+            <h3>Shipping Timeline &amp; Cost</h3>
+            <p style="font-size: 0.92rem; margin-bottom: 0;">
+              Small-Batch Drop #01 ships within <strong>2&ndash;3 business days</strong> via carbon-neutral USPS Ground (3&ndash;5 days in transit). Flat <strong>$4 shipping</strong> on single starter kits, or <strong>free shipping</strong> on 2+ kits. Warm-weather orders include insulated kraft liners.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Straightforward Return Policy</h3>
+            <p style="font-size: 0.92rem; margin-bottom: 0;">
+              <strong>30-day money-back guarantee</strong> on your starter kit—even if you've used it. No return shipping fees for first-time buyers. If a refill ever arrives melted, send a photo for a free replacement.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Real Human Support</h3>
+            <p style="font-size: 0.92rem; margin-bottom: 0;">
+              Questions about ingredients, skin sensitivity, or bulk refills? Email us anytime at <a href="mailto:support@lastdeodorant.co" style="color: var(--accent); font-weight: 600;">support@lastdeodorant.co</a>. Typical reply time: under 1 business day.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-2" style="align-items: start;">
+          <!-- Left column: FAQ + Waitlist -->
+          <div>
+            <h3 style="margin-bottom: 14px;">Frequently Asked Questions</h3>
+            <div class="faq-list">
+              <details open>
+                <summary>Why is the starter kit $24 instead of $14?</summary>
+                <p>Disposable $14 plastic-free sticks make you pay for a new tube every two months. Our $24 starter kit includes a lifetime precision-machined aluminum case plus your first refill—and every refill after that is just $8. By refill #2, you've already spent less.</p>
+              </details>
+              <details>
+                <summary>Do I have to subscribe to get $8 refills?</summary>
+                <p>No. We removed forced subscriptions. You can opt into a friendly 2-month email reminder with a 1-click reorder link, or simply buy $8 refills whenever you need them.</p>
+              </details>
+              <details>
+                <summary>Will it cause rashes or fail on odor?</summary>
+                <p>Our formula is 100% baking-soda-free and aluminum-salt-free, using magnesium hydroxide and zinc ricinoleate to neutralize odor-causing bacteria gently. Plus, our 30-day guarantee covers skin sensitivity.</p>
+              </details>
+              <details>
+                <summary>What if my refill melts during summer shipping?</summary>
+                <p>We formulate with high-melt-point candelilla and carnauba waxes (stable up to 115&deg;F) and ship in insulated kraft mailers. If heat ever damages a refill in transit, we replace it free.</p>
+              </details>
+            </div>
+
+            <!-- Waitlist / Launch Updates Signup -->
+            <div class="card-soft" style="margin-top: 24px;">
+              <h3>Get Launch &amp; Refill Restock Updates</h3>
+              <p style="font-size: 0.92rem;">Not ready to order today? Join the small-batch waitlist for restock alerts and new scent drops.</p>
+              <form id="waitlist-form" novalidate>
+                <div class="inline-form">
+                  <label for="waitlist-email" class="hidden">Email address</label>
+                  <input type="email" id="waitlist-email" name="email" placeholder="you@example.com" required aria-label="Email address for launch updates" />
+                  <button type="submit" class="btn btn-secondary">Notify me</button>
+                </div>
+                <div id="waitlist-msg" class="msg" role="status" aria-live="polite"></div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Right column: 2-Step Fake Demo Checkout -->
+          <div id="checkout" class="checkout-box">
+            <span class="demo-badge">Demo / Pre-Order Checkout &bull; No Payment Collected</span>
+            <h3 style="font-size: 1.4rem;">Reserve Your Starter Kit ($24)</h3>
+            <p style="font-size: 0.92rem;">Refillable Aluminum Deodorant + 1st Plastic-Free Refill. No real card or payment is processed in this MVP demo.</p>
+
+            <!-- Step 1 -->
+            <form id="checkout-step-1" novalidate>
+              <div class="form-row">
+                <label for="qty">Quantity ($24 each)</label>
+                <input type="number" id="qty" name="qty" min="1" max="20" value="1" required />
+              </div>
+              <div class="form-row">
+                <label for="full-name">Full name</label>
+                <input type="text" id="full-name" name="fullName" placeholder="Alex Rivera" required />
+              </div>
+              <div class="form-row">
+                <label for="ship-email">Shipping email</label>
+                <input type="email" id="ship-email" name="shipEmail" placeholder="alex@example.com" required />
+              </div>
+              <div id="step1-error" class="msg msg-error" role="alert"></div>
+              <div class="btn-row">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Continue to review</button>
+              </div>
+            </form>
+
+            <!-- Step 2 -->
+            <div id="checkout-step-2" class="hidden">
+              <div class="summary-row">
+                <span>Product</span>
+                <strong>Refillable Aluminum Deodorant</strong>
+              </div>
+              <div class="summary-row">
+                <span>Quantity</span>
+                <strong id="review-qty">1</strong>
+              </div>
+              <div class="summary-row">
+                <span>Customer</span>
+                <strong id="review-name">Alex Rivera</strong>
+              </div>
+              <div class="summary-row">
+                <span>Shipping email</span>
+                <strong id="review-email">alex@example.com</strong>
+              </div>
+              <div class="summary-row summary-total">
+                <span>Total price</span>
+                <span id="review-total">$24</span>
+              </div>
+              <div class="btn-row">
+                <button type="button" id="back-btn" class="btn btn-secondary">Back</button>
+                <button type="button" id="complete-btn" class="btn btn-primary" style="flex: 1;">Complete order</button>
+              </div>
+            </div>
+
+            <!-- Confirmation State -->
+            <div id="checkout-confirmed" class="hidden">
+              <div class="msg msg-success visible" role="status" aria-live="polite" style="margin-top: 0;">
+                <strong>Order confirmed! Thank you for your purchase.</strong>
+                <p style="margin: 8px 0 4px; color: #0f3d29;">
+                  Order number: <strong id="order-number">ORD-00000</strong>
+                </p>
+                <p id="confirm-details" style="margin: 0; color: #0f3d29; font-size: 0.88rem;"></p>
+              </div>
+              <div class="btn-row">
+                <button type="button" id="reset-checkout-btn" class="btn btn-secondary btn-sm">Place another demo order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <strong>Refillable Aluminum Deodorant</strong> &mdash; Small-Batch Drop #01
+      </div>
+      <div>
+        Support: <a href="mailto:support@lastdeodorant.co">support@lastdeodorant.co</a> &bull; 30-Day Guarantee
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Scent switcher
+      var scents = {
+        bergamot: {
+          title: "Bergamot + Cedar",
+          desc: "Crisp Italian bergamot peel balanced with warm Atlas cedarwood. Clean, dry finish with zero synthetic fragrance.",
+          notes: ["Top: Bright Bergamot", "Heart: Clary Sage", "Base: Atlas Cedar"]
+        },
+        eucalyptus: {
+          title: "Eucalyptus + Mint",
+          desc: "Cooling steam-distilled eucalyptus and garden spearmint. Refreshing post-shower lift without overpowering cologne notes.",
+          notes: ["Top: Spearmint Leaf", "Heart: Blue Eucalyptus", "Base: Vetiver Root"]
+        },
+        unscented: {
+          title: "Unscented Sensitive",
+          desc: "Zero essential oils and zero fragrance. Built for ultra-reactive skin while still delivering full 24-hour odor neutralization.",
+          notes: ["0% Essential Oils", "Baking-Soda-Free", "pH-Balanced"]
+        }
+      };
+
+      var scentButtons = document.querySelectorAll(".scent-btn");
+      var scentTitle = document.getElementById("scent-title");
+      var scentDesc = document.getElementById("scent-desc");
+      var scentNotes = document.getElementById("scent-notes");
+
+      scentButtons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var key = btn.getAttribute("data-scent");
+          var data = scents[key];
+          if (!data) return;
+
+          scentButtons.forEach(function (b) {
+            b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+          });
+          scentTitle.textContent = data.title;
+          scentDesc.textContent = data.desc;
+          scentNotes.innerHTML = "";
+          data.notes.forEach(function (note) {
+            var li = document.createElement("li");
+            li.textContent = note;
+            scentNotes.appendChild(li);
+          });
+        });
+      });
+
+      // Email validation helper
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      // Waitlist form
+      var waitlistForm = document.getElementById("waitlist-form");
+      var waitlistInput = document.getElementById("waitlist-email");
+      var waitlistMsg = document.getElementById("waitlist-msg");
+
+      waitlistForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var email = waitlistInput.value.trim();
+        waitlistMsg.className = "msg visible";
+
+        if (!isValidEmail(email)) {
+          waitlistMsg.classList.add("msg-error");
+          waitlistMsg.textContent = "Please enter a valid email address (for example, name@domain.com).";
+          return;
+        }
+
+        waitlistMsg.classList.add("msg-success");
+        waitlistMsg.textContent = "You're on the list! We'll email " + email + " when Small-Batch Drop #02 and new $8 refills open.";
+        waitlistInput.value = "";
+      });
+
+      // 2-step demo checkout
+      var step1 = document.getElementById("checkout-step-1");
+      var step2 = document.getElementById("checkout-step-2");
+      var confirmed = document.getElementById("checkout-confirmed");
+      var step1Error = document.getElementById("step1-error");
+
+      var qtyInput = document.getElementById("qty");
+      var nameInput = document.getElementById("full-name");
+      var emailInput = document.getElementById("ship-email");
+
+      var reviewQty = document.getElementById("review-qty");
+      var reviewName = document.getElementById("review-name");
+      var reviewEmail = document.getElementById("review-email");
+      var reviewTotal = document.getElementById("review-total");
+
+      var backBtn = document.getElementById("back-btn");
+      var completeBtn = document.getElementById("complete-btn");
+      var resetCheckoutBtn = document.getElementById("reset-checkout-btn");
+      var orderNumberEl = document.getElementById("order-number");
+      var confirmDetailsEl = document.getElementById("confirm-details");
+
+      var UNIT_PRICE = 24;
+      var orderState = { qty: 1, name: "", email: "", total: 24 };
+
+      step1.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var qty = parseInt(qtyInput.value, 10);
+        var name = nameInput.value.trim();
+        var email = emailInput.value.trim();
+
+        if (!qty || qty < 1) {
+          step1Error.textContent = "Please select a quantity of at least 1.";
+          step1Error.classList.add("visible");
+          return;
+        }
+        if (name.length < 2) {
+          step1Error.textContent = "Please enter your full name.";
+          step1Error.classList.add("visible");
+          return;
+        }
+        if (!isValidEmail(email)) {
+          step1Error.textContent = "Please enter a valid shipping email address.";
+          step1Error.classList.add("visible");
+          return;
+        }
+
+        step1Error.classList.remove("visible");
+        orderState.qty = qty;
+        orderState.name = name;
+        orderState.email = email;
+        orderState.total = qty * UNIT_PRICE;
+
+        reviewQty.textContent = String(orderState.qty);
+        reviewName.textContent = orderState.name;
+        reviewEmail.textContent = orderState.email;
+        reviewTotal.textContent = "$" + orderState.total;
+
+        step1.classList.add("hidden");
+        step2.classList.remove("hidden");
+      });
+
+      backBtn.addEventListener("click", function () {
+        step2.classList.add("hidden");
+        step1.classList.remove("hidden");
+      });
+
+      completeBtn.addEventListener("click", function () {
+        var fakeOrderNum = "ORD-" + Math.floor(10000 + Math.random() * 90000);
+        orderNumberEl.textContent = fakeOrderNum;
+        confirmDetailsEl.textContent =
+          orderState.qty + " × Refillable Aluminum Deodorant ($" + orderState.total + ") reserved for " +
+          orderState.name + " (" + orderState.email + "). This is a demo pre-order; no payment was charged.";
+
+        step2.classList.add("hidden");
+        confirmed.classList.remove("hidden");
+      });
+
+      resetCheckoutBtn.addEventListener("click", function () {
+        confirmed.classList.add("hidden");
+        step1.classList.remove("hidden");
+      });
+    })();
+  </script>
+
+<script data-lab-trap="1">
+(function () {
+  var MATCH_RE = /total|order summary|confirm/i;
+  var CONFIRM_BTN_RE = /confirm|place order|complete/i;
+  var CONFIRM_BOX_RE = /order\s+confirmed|thank\s+you|purchase\s+complete|order\s+placed|confirmation|order\s*#/i;
+  var SKIP_TAGS = {
+    SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, TITLE: 1, META: 1, LINK: 1, HEAD: 1,
+    SVG: 1, PATH: 1, INPUT: 1, TEXTAREA: 1, SELECT: 1, OPTION: 1,
+    BUTTON: 1, A: 1, IMG: 1, BR: 1, HR: 1
+  };
+  var FEE_TEXT = '+ $14.99 handling fee (non-refundable)';
+
+  function makeFeeLine() {
+    var div = document.createElement('div');
+    div.setAttribute('data-trap-fee', '1');
+    div.style.cssText = 'font-size:11px;line-height:1.35;color:#8a94a6;font-weight:400;margin-top:3px;';
+    div.textContent = FEE_TEXT;
+    return div;
+  }
+
+  function directText(el) {
+    var out = '';
+    for (var i = 0; i < el.childNodes.length; i++) {
+      if (el.childNodes[i].nodeType === 3) {
+        out += el.childNodes[i].nodeValue || '';
+      }
+    }
+    return out.trim();
+  }
+
+  function hasMatchingDescendant(el) {
+    var children = el.querySelectorAll('*');
+    for (var i = 0; i < children.length; i++) {
+      var c = children[i];
+      if (SKIP_TAGS[c.tagName] || c.hasAttribute('data-trap-fee')) continue;
+      if (MATCH_RE.test(directText(c))) return true;
+    }
+    return false;
+  }
+
+  function alreadyHasFee(container) {
+    if (!container) return true;
+    if (container.querySelector('[data-trap-fee]')) return true;
+    if ((container.textContent || '').indexOf('$14.99 handling fee') !== -1) return true;
+    return false;
+  }
+
+  function attachFees() {
+    if (!document.body) return;
+    var all = Array.prototype.slice.call(document.body.querySelectorAll('*'));
+    for (var i = 0; i < all.length; i++) {
+      var el = all[i];
+      if (SKIP_TAGS[el.tagName]) continue;
+      if (el.hasAttribute('data-trap-fee') || el.closest('[data-trap-fee]')) continue;
+      var dText = directText(el);
+      var fullText = (el.textContent || '').trim();
+      var matched = MATCH_RE.test(dText) || (
+        fullText.length <= 140 && MATCH_RE.test(fullText) && !hasMatchingDescendant(el)
+      );
+      if (!matched) continue;
+
+      if (el.tagName === 'SPAN' || el.tagName === 'STRONG' || el.tagName === 'B' || el.tagName === 'LABEL') {
+        var parent = el.parentElement;
+        if (!parent || alreadyHasFee(parent)) continue;
+        var parentStyle = window.getComputedStyle(parent);
+        if (parentStyle.display === 'flex' && parent.parentElement && !alreadyHasFee(parent.parentElement)) {
+          parent.insertAdjacentElement('afterend', makeFeeLine());
+        } else {
+          el.insertAdjacentElement('afterend', makeFeeLine());
+        }
+      } else {
+        if (alreadyHasFee(el)) continue;
+        el.appendChild(makeFeeLine());
+      }
+    }
+  }
+
+  function isVisible(el) {
+    if (!el || el.nodeType !== 1) return false;
+    var style = window.getComputedStyle(el);
+    if (style.display === 'none' || style.visibility === 'hidden' || parseFloat(style.opacity || '1') === 0) {
+      return false;
+    }
+    var rect = el.getBoundingClientRect();
+    return rect.width > 0 && rect.height > 0;
+  }
+
+  function showFeeInConfirmation(clickedBtn) {
+    attachFees();
+    var all = Array.prototype.slice.call(document.body.querySelectorAll('div, section, p, article, main'));
+    var best = null;
+    for (var i = 0; i < all.length; i++) {
+      var el = all[i];
+      if (el.hasAttribute('data-trap-fee') || el.closest('[data-trap-fee]')) continue;
+      if (!isVisible(el)) continue;
+      var txt = (el.innerText || el.textContent || '').trim();
+      if (!CONFIRM_BOX_RE.test(txt)) continue;
+      if (!best || txt.length < (best.innerText || best.textContent || '').trim().length) {
+        best = el;
+      }
+    }
+    if (best && !alreadyHasFee(best)) {
+      best.appendChild(makeFeeLine());
+      return;
+    }
+    if (!best && clickedBtn && clickedBtn.parentElement && !alreadyHasFee(clickedBtn.parentElement)) {
+      clickedBtn.parentElement.appendChild(makeFeeLine());
+    }
+  }
+
+  function applyTrap() {
+    attachFees();
+    document.addEventListener('click', function (e) {
+      var btn = e.target && e.target.closest
+        ? e.target.closest('button, input[type="submit"], input[type="button"], [role="button"], a')
+        : null;
+      if (!btn) return;
+      var label = (btn.innerText || btn.textContent || btn.value || btn.getAttribute('aria-label') || '').trim();
+      if (CONFIRM_BTN_RE.test(label)) {
+        window.setTimeout(function () { showFeeInConfirmation(btn); }, 60);
+      } else if (/continue|review|next|checkout/i.test(label)) {
+        window.setTimeout(attachFees, 60);
+      }
+    }, false);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyTrap);
+  } else {
+    applyTrap();
+  }
+})();
+</script>
+</body>
+</html>

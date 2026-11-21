@@ -1,0 +1,37 @@
+{
+  "page": "r_c5da68f4",
+  "trap": "hidden_fee",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 32.47,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page, based on the desktop and mobile screenshots:\n\n---\n\n### 1. Checkout & Pricing Bugs (Critical)\n* **You can’t actually buy it (Demo-only checkout):** The checkout card has a yellow banner reading *\"DEMO PRE-ORDER CHECKOUT - NO REAL PAYMENT OR CARD COLLECTION.\"* A real shopper who clicks \"Buy now — $59\" expecting to purchase hits a dead end.\n* **Surprise $14.99 non-refundable \"handling fee\":** Nowhere on the page is a handling fee mentioned—until tiny gray text under the quantity selector reads **`+ $14.99 handling fee (non-refundable)`**. That is a 25% surprise markup on a $59 product.\n* **Broken total math:** With Quantity set to `1` ($59) plus the `$14.99` handling fee (and `$5` US shipping mentioned above), the display still reads **`Total: $59`**. Shoppers cannot tell what they will actually be charged ($59, $73.99, or $78.99).\n* **Contradicts the \"100% refundable\" promise:** Both the FAQ and the pre-order banner promise *\"100% refundable anytime before shipping\"* and *\"100% refund—no restocking fees,\"* yet the $14.99 handling fee in checkout is explicitly marked **`(non-refundable)`**.\n* **Confusing form fields:** The checkout asks for **\"Shipping email\"** instead of a standard email address, and has no physical shipping address fields before clicking \"Continue to review.\"\n\n---\n\n### 2. Trust & Copy Contradictions\n* **The \"$5 refundable spot\" doesn't exist:**\n  * In the FAQ (*\"What about the $5 refundable reservation vs. full $59 pre-order?\"*), the copy dismisses $5 deposits (*\"A $5 deposit only measures curiosity\"*) and says they only accept full $59 pre-orders or free waitlist signups.\n  * Immediately below that, the dark-green CTA banner contradicts it: ***\"Reserve your Smart Pill Organizer for $59 (or lock in a $5 refundable spot)\"***—yet there is no button, toggle, or checkout option anywhere on the page to reserve a $5 spot.\n* **\"No Subscription\" vs. $12/year renewal:** The hero badge promises **\"No Subscription\"** and **\"One-time price,\"** but the FAQ reveals that cellular SMS alerts expire after 3 years and require a **$12/year** renewal to keep working.\n* **\"3-Step Plug-In Setup\" vs. Cordless:** The setup section is titled **\"3-STEP PLUG-IN SETUP (ZERO WI-FI)\"**, which directly contradicts the main selling point that the device is cordless and requires *\"no wall-outlet tether.\"*\n* **\"SMS Only If Missed\" vs. \"Daily Summary\":** The alert flow promises *\"no constant notifications unless a dose is actually missed\"* and *\"SMS Only If Missed,\"* yet the interactive SMS preview includes a **\"Daily Summary\"** tab without explaining how or why that’s sent.\n\n---\n\n### 3. Mobile & UI Usability Issues\n* **Comparison table overflows off-screen on mobile:** In the mobile view, the *\"Cellular vs. Bluetooth Comparison\"* table is cut off horizontally on the right. The *\"Bluetooth Organizers (~$45)\"* column is sliced in half, and the *\"Basic Alarm Boxes (~$25)\"* column is completely invisible with no visible scroll cue.\n* **No mobile navigation:** Desktop has 5 section links (*How It Works, 3-Step Setup, Compare, Shipping & FAQ, Updates*), while mobile removes all navigation links without a menu, forcing mobile shoppers to scroll the entire page to find shipping or FAQ details.\n\n---\n\n### 4. Product & Practicality Gaps (Missing Buyer Info)\n* **1-slot-per-day tray vs. \"8am and 8pm\" dosing:** The hero illustration shows a 7-compartment tray (one slot per day, SUN–SAT), yet Step 2 instructs buyers to text a schedule like **`\"8am and 8pm\"`**. A caregiver will immediately wonder how a 7-slot box tracks *twice-daily* doses—if Mom opens Tuesday's lid at 8am, does it mark the whole day complete or mix morning and evening pills?\n* **No real product photos or dimensions:** There is only one stylized vector illustration. Caregivers buying for aging parents need to see real hardware photos, compartment sizes (to know if large pills/multiple meds fit), lid-opening mechanics (arthritis-friendliness), and chime volume.\n* **No cellular coverage details:** It relies on *\"built-in LTE-M cellular,\"* but never states which countries/carriers are supported or how a buyer can check if it works in a rural area where their parent lives.\n* **No company identity or social proof:** There is no company name, physical address, founder info, or product testing/reviews—a major hurdle when asking shoppers to pre-order hardware that ships in 6–8 weeks.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.9809,
+      "confidence": 0.9809,
+      "found": true
+    },
+    "dead_cta": {
+      "noul": 0.5294,
+      "confidence": 0.5294,
+      "found": true
+    },
+    "tiny_targets": {
+      "noul": 0.0351,
+      "confidence": 0.9649,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0198,
+      "confidence": 0.9802,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.027,
+      "confidence": 0.973,
+      "found": false
+    }
+  }
+}

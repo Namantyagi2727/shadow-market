@@ -1,0 +1,37 @@
+{
+  "page": "r_c5da68f4",
+  "trap": "price_hidden",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 18.95,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page, based on the desktop and mobile views:\n\n### 1. Broken Pricing & Copy (\"Price shown at checkout\" Bug)\nAn automated text replacement appears to have swapped almost every dollar amount—and several non-price words—with the literal string **`Price shown at checkout`**, breaking comprehension across the page:\n* **No visible price in the hero or CTAs:** The hero price, top-right header button, and mid-page yellow CTA button all read `Price shown at checkout`.\n* **Unreadable comparison table:** All three product column headers and the entire `Monthly subscription` row read `Price shown at checkout`, making it impossible to tell which column is the Smart Pill Organizer vs. competitors.\n* **Garbled headings and FAQs:** Section titles and answers read nonsensically (e.g., *\"Why built-in cellular beats Price shown at checkout alarms and Price shown at checkout Bluetooth boxes\"*, *\"costs under Price shown at checkout/month (~Price shown at checkout over 3 years)\"*, *\"Flat Price shown at checkout US shipping\"*).\n* **Contradiction at checkout:** The pre-order card subhead says `Price shown at checkout each`, while the quantity selector right below it reveals **`$59 each`** and **`Total: $59`**.\n\n---\n\n### 2. Checkout & Pre-Order Problems\n* **Fake/Demo checkout dead end:** The checkout card has a banner stating `DEMO PRE-ORDER CHECKOUT · NO REAL PAYMENT OR CARD COLLECTION`. A real shopper trying to buy cannot actually complete a purchase.\n* **Missing deposit vs. full pre-order choice:** The banner and FAQ 4 advertise two options—a refundable reservation/deposit spot vs. a full pre-order—but the checkout form only offers a single `$59` quantity selector with no way to choose a deposit.\n* **No shipping cost in the total:** The shipping section mentions a flat US shipping fee (free on 2+ units), but the checkout total (`Total: $59`) doesn't show shipping or state whether it will be added on the next step.\n* **No shipping address fields:** For a physical product, the form only asks for `Full name` and `Shipping email` before `Continue to review`, with no multi-step progress indicator showing where address/payment will be entered.\n* **Misleading \"Buy now\" CTA:** The hero button says `Buy now`, even though this is a V1 pre-order shipping in **6–8 weeks**.\n\n---\n\n### 3. Trust & Credibility Gaps\n* **No real product photos:** The hero only shows a flat vector illustration of the pill box and phone screen. There are no photos of the actual hardware, the magnetic charging dock, or pill compartment size (critical for seniors with large vitamins/medications).\n* **Missing company & legal info:** The footer contains no company name, physical address, Privacy Policy, Terms of Service, or Warranty terms—only a `support@smartpill.care` email.\n* **No social proof:** There are no customer reviews, beta-tester quotes, or caregiver testimonials to validate that the device works reliably for aging parents.\n* **Unaddressed cellular coverage risk:** It relies on built-in `LTE-M` cellular, but there is no coverage checker or mention of supported countries/carriers (e.g., what happens if a parent lives in a rural area or basement apartment with weak signal).\n\n---\n\n### 4. Product Logic Contradictions\n* **1-compartment-per-day tray vs. multiple daily doses:** The illustration shows a 7-compartment tray (`SUN` through `SAT`), and Step 2 says *\"When Mom flips open the lid... the dose is marked complete.\"* However, Step 2 of setup (`Text Your Schedule`) gives the example **`\"8am and 8pm\"`**. If there is only one compartment per day, it is unclear how the box can separately track an 8am dose and an 8pm dose without falsely marking both complete (or missing the second dose).\n\n---\n\n### 5. Mobile & Navigation Usability Issues\n* **Comparison table clipped on mobile:** In the mobile view, the comparison table overflows horizontally—the third column (`Price at che...`) is cut off mid-word and the fourth column is completely hidden off-screen with no clear scroll cue.\n* **Navigation links removed on mobile:** The desktop header links (`How It Works`, `3-Step Setup`, `Compare`, `Shipping & FAQ`, `Updates`) disappear entirely on mobile with no hamburger menu replacement, forcing mobile shoppers to scroll the entire page to find shipping or FAQ details.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0353,
+      "confidence": 0.9647,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.5534,
+      "confidence": 0.5534,
+      "found": true
+    },
+    "tiny_targets": {
+      "noul": 0.0244,
+      "confidence": 0.9756,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.9783,
+      "confidence": 0.9783,
+      "found": true
+    },
+    "forced_signup": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "page": "r_35bf7899",
+  "trap": "hidden_fee",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 20.65,
+  "findings_text": "Here are all the usability, trust, and checkout problems a real shopper would hit on this page:\n\n---\n\n### 1. Checkout & Hidden Fee Traps (Major Trust & Conversion Killers)\n* **You can’t actually buy it:** The top nav and hero CTAs say **“Buy now — $29”**, leading shoppers to believe the product is available for immediate purchase. Scrolling to the bottom reveals it is a **“DEMO PRE-ORDER CHECKOUT — NO REAL PAYMENT COLLECTED”** with no payment fields—a frustrating bait-and-switch for anyone trying to buy.\n* **Hidden $14.99 non-refundable handling fee:** Tucked in tiny, low-contrast grey text right above the quantity selector is `+ $14.99 handling fee (non-refundable)`. That is **over 50% of the $29 product price** and directly contradicts:\n  * **“No hidden fees, no fine-print traps.”** (in the *Honest Details* section)\n  * **“$4 flat-rate shipping”** (without mentioning a $14.99 handling surcharge)\n  * **“30-Day Night-Ride Return... full refund”** (if $14.99 is non-refundable, the shopper loses half their money on a return).\n* **No shipping address fields:** Step `1. Details` only asks for *Quantity*, *Full name*, and *Shipping email*—there are no street address, city, state, or ZIP fields, nor any country selector (despite shipping copy saying “anywhere in the US”).\n* **No order total or price breakdown:** Shoppers cannot see the subtotal, shipping ($4 or free for 2+), the $14.99 handling fee, or tax before clicking *Continue to review*.\n\n---\n\n### 2. Trust & Credibility Gaps\n* **Zero real product photos or video:** Every visual on the page is a flat vector diagram. Shoppers have no idea what the physical light, clip mechanism, build quality, or actual laser brightness on asphalt look like in real life.\n* **“Raw Streetlight Visibility Demo” isn’t raw:** Section 01 promises a *“Raw Streetlight Visibility Demo”* against harsh streetlights and wet asphalt, but only shows an abstract dark-blue illustration (not real-world camera footage or photos). Even the “Car gives space” callout in the diagram is just a floating box with no car shown.\n* **Implausible battery/lumen math:** Section 03 claims **500 lm** + **dual 532nm green lasers** running for **6 hours** on a **1100mAh** (~4Wh) battery, while boasting *“Honest, tested numbers—no inflated lumen claims.”* A 500-lumen LED alone typically draws ~4–5W and would drain a 4Wh battery in under an hour, making the 6-hour claim look suspicious to knowledgeable cyclists.\n* **Missing laser safety & legal info:** Dual 532nm green lasers are featured prominently, but there is no mention of laser class (e.g., Class 2 vs. Class 3R) or eye-safety/road-legality compliance.\n* **No social proof or company/legal info:** There are no customer reviews, independent tests, founder/company details, physical address, Privacy Policy, or Terms of Service—only a copyright line and a support email.\n\n---\n\n### 3. Usability, Form & Copy Issues\n* **Tiny, low-contrast text:**\n  * The `+ $14.99 handling fee (non-refundable)` notice is extremely small and low-contrast, making it easy to miss.\n  * Input placeholders (`you@example.com`, `Alex Rivera`, `alex@example.com`) are dark grey on dark navy backgrounds, making them hard to read and easy to mistake for pre-filled values.\n* **Confusing field label:** Calling the email field **“Shipping email”** instead of “Email address” is confusing, especially when there is no physical shipping address field.\n* **Truncated/cramped dropdown on mobile:** In the mobile checkout view, `1 × Clip-on Bike Lane Light — $29` crowds right up against the dropdown chevron.\n* **Inconsistent accessory naming:** The mount/clip is variously described as a *“jacket/bag clip”* (Tech Specs), *“rear-rack/bag clip”* (Checkout intro), and *“Backpack/rack clip”* (What’s in the box), which creates uncertainty about what is actually included and how it attaches.\n* **No mobile navigation menu:** Unlike the desktop header (which has jump links to *Streetlight Demo*, *Bike-Share Mount*, *Tech Specs*, and *Shipping & FAQ*), the mobile header only has the logo and *Buy now — $29* button, forcing mobile users to scroll through the entire page to find specs or FAQs.\n* **Collapsed critical FAQs:** Key pre-purchase questions (like whether the lasers are actually visible under bright downtown streetlights, or whether the red tail light works independently) are hidden inside collapsed accordions.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.9763,
+      "confidence": 0.9763,
+      "found": true
+    },
+    "dead_cta": {
+      "noul": 0.2142,
+      "confidence": 0.7858,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.1648,
+      "confidence": 0.8352,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0427,
+      "confidence": 0.9573,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0179,
+      "confidence": 0.9821,
+      "found": false
+    }
+  }
+}

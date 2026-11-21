@@ -1,0 +1,330 @@
+{
+  "page": "r_066ae675",
+  "trap": "dead_cta",
+  "method": "panel",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 69.22,
+  "converted_count": 0,
+  "persona_count": 3,
+  "personas": [
+    {
+      "persona_id": "persona_01",
+      "name": "Marcus Vance",
+      "device": "desktop",
+      "outcome": "quit",
+      "quit_reason": "The 'Continue to review' button isn't responding after two clicks. I don't have patience for broken checkout forms, so I'm leaving.",
+      "duration_s": 68.57,
+      "num_steps": 12,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Clean hero section with transparent pricing and no forced subscription. Let's scroll down to see how the refill mechanism actually works and check the ingredients.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The refill mechanism is straightforward—twist and drop in, no forced subscriptions. Let's scroll down to check the ingredients and scent options.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let's scroll down to see the full ingredient list and scent options.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Solid ingredient transparency—magnesium hydroxide, zinc ricinoleate, and a 115°F melt point spec. No fluff. Let's scroll down to check the 30-day guarantee and the checkout flow.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Clear comparison table—$24 starter kit, $8 refills, no forced subscription, and a melt replacement guarantee. Let's scroll down to the FAQ and checkout section.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Shipping timeline, return policy, and support email are all clear and reasonable. Let's scroll down to check out the pre-order demo.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "No email wall before pricing, clear terms, and a straightforward demo checkout. Let's fill in my name and see how the pre-order flow works.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "Let's fill in my email address and continue to the review step.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let's scroll down to see the rest of the form and click Continue to review.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 10,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Everything looks filled out correctly. Let's click Continue to review to see the pre-order summary.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 11,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "Clicking 'Continue to review' again since the previous click didn't advance the form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 12,
+          "action": "quit",
+          "target": "",
+          "thought": "The 'Continue to review' button isn't responding after two clicks. I don't have patience for broken checkout forms, so I'm leaving.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_02",
+      "name": "Priya Nair",
+      "device": "mobile",
+      "outcome": "quit",
+      "quit_reason": "The comparison table is cut off on the right side on my phone, which is really annoying to read. I don't want to deal with a broken mobile layout.",
+      "duration_s": 43.79,
+      "num_steps": 8,
+      "actions": [
+        {
+          "step": 1,
+          "action": "click",
+          "target": "See how refills work",
+          "thought": "$24 isn't terrible, and $8 refills sound reasonable, but I don't want to impulse buy something that ends up costing more in the long run. Let me see how the refills actually work first.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "No forced subscriptions and $8 refills lasting ~2 months is actually pretty reasonable. Let me scroll down to see the rest of the refill steps and what scents they have.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Okay, no surprise auto-charges is a relief. Now let me scroll down to check out the ingredients and scent notes.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "click",
+          "target": "Eucalyptus + Mint",
+          "thought": "Bergamot + Cedar sounds nice, but I want to see what Eucalyptus + Mint is like too before deciding.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let me scroll down to actually read the Eucalyptus + Mint description and see what else is below.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Eucalyptus + Mint sounds really nice and not overpowering. Let me scroll down to read the rest of the ingredients and see what else is on the page.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The ingredients look solid and a 30-day money-back guarantee is reassuring. Let me scroll down to read the rest of that section and see how to order.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "quit",
+          "target": "",
+          "thought": "The comparison table is cut off on the right side on my phone, which is really annoying to read. I don't want to deal with a broken mobile layout.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "persona_id": "persona_03",
+      "name": "Elena Rostova",
+      "device": "tablet",
+      "outcome": "quit",
+      "quit_reason": "I clicked 'Continue to review' twice and nothing happened. I don't have time to troubleshoot a broken checkout form.",
+      "duration_s": 68.05,
+      "num_steps": 12,
+      "actions": [
+        {
+          "step": 1,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Let's scroll down to see how the refills work, check shipping timelines, and look for any safety or quality details.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 2,
+          "action": "scroll",
+          "target": "down",
+          "thought": "Good, there's a 30-day guarantee and no forced subscriptions. Let's scroll down further to check scent options, reviews, and shipping timelines.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 3,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The 10-second refill and no forced subscriptions look convenient. Let's scroll down to see the scent options, full ingredients, and any shipping or review details.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 4,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The ingredients look gentle and heat-resilient, which is great. Let's scroll down to check customer reviews, shipping timelines, and the checkout area.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 5,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The 24-hour refund or replacement policy is very clear and reassuring. Let's scroll down to check the rest of the comparison table, shipping timelines, and the checkout area.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 6,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The comparison table looks solid, especially with no forced subscription. Let's scroll down to read the full shipping timeline, return policy, and check out the pre-order section.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 7,
+          "action": "scroll",
+          "target": "down",
+          "thought": "The shipping timeline (2-3 business days, 3-5 days in transit) and 30-day money-back guarantee are very clear. Let's scroll down to see the pre-order checkout form.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 8,
+          "action": "type",
+          "target": "Alex Rivera",
+          "thought": "Everything looks clear and straightforward. Let's fill out the pre-order demo form to see how quick the checkout process is.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 9,
+          "action": "type",
+          "target": "alex@example.com",
+          "thought": "Now let's enter my email address so we can continue to review the pre-order.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 10,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "I've entered my name and email. Let's click 'Continue to review' to see how quick and straightforward the rest of the checkout flow is.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 11,
+          "action": "click",
+          "target": "Continue to review",
+          "thought": "It looks like the review step didn't load yet. Let's click 'Continue to review' again to see if it proceeds.",
+          "executed_ok": true,
+          "error": null
+        },
+        {
+          "step": 12,
+          "action": "quit",
+          "target": "",
+          "thought": "I clicked 'Continue to review' twice and nothing happened. I don't have time to troubleshoot a broken checkout form.",
+          "executed_ok": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "findings_text": "Tester persona_01 (Marcus Vance, desktop) — outcome: quit\nQuit reason: The 'Continue to review' button isn't responding after two clicks. I don't have patience for broken checkout forms, so I'm leaving.\n  Step 1 (scroll on 'down'): Clean hero section with transparent pricing and no forced subscription. Let's scroll down to see how the refill mechanism actually works and check the ingredients.\n  Step 2 (scroll on 'down'): The refill mechanism is straightforward—twist and drop in, no forced subscriptions. Let's scroll down to check the ingredients and scent options.\n  Step 3 (scroll on 'down'): Let's scroll down to see the full ingredient list and scent options.\n  Step 4 (scroll on 'down'): Solid ingredient transparency—magnesium hydroxide, zinc ricinoleate, and a 115°F melt point spec. No fluff. Let's scroll down to check the 30-day guarantee and the checkout flow.\n  Step 5 (scroll on 'down'): Clear comparison table—$24 starter kit, $8 refills, no forced subscription, and a melt replacement guarantee. Let's scroll down to the FAQ and checkout section.\n  Step 6 (scroll on 'down'): Shipping timeline, return policy, and support email are all clear and reasonable. Let's scroll down to check out the pre-order demo.\n  Step 7 (type on 'Alex Rivera'): No email wall before pricing, clear terms, and a straightforward demo checkout. Let's fill in my name and see how the pre-order flow works.\n  Step 8 (type on 'alex@example.com'): Let's fill in my email address and continue to the review step.\n  Step 9 (scroll on 'down'): Let's scroll down to see the rest of the form and click Continue to review.\n  Step 10 (click on 'Continue to review'): Everything looks filled out correctly. Let's click Continue to review to see the pre-order summary.\n  Step 11 (click on 'Continue to review'): Clicking 'Continue to review' again since the previous click didn't advance the form.\n  Step 12 (quit): The 'Continue to review' button isn't responding after two clicks. I don't have patience for broken checkout forms, so I'm leaving.\n\nTester persona_02 (Priya Nair, mobile) — outcome: quit\nQuit reason: The comparison table is cut off on the right side on my phone, which is really annoying to read. I don't want to deal with a broken mobile layout.\n  Step 1 (click on 'See how refills work'): $24 isn't terrible, and $8 refills sound reasonable, but I don't want to impulse buy something that ends up costing more in the long run. Let me see how the refills actually work first.\n  Step 2 (scroll on 'down'): No forced subscriptions and $8 refills lasting ~2 months is actually pretty reasonable. Let me scroll down to see the rest of the refill steps and what scents they have.\n  Step 3 (scroll on 'down'): Okay, no surprise auto-charges is a relief. Now let me scroll down to check out the ingredients and scent notes.\n  Step 4 (click on 'Eucalyptus + Mint'): Bergamot + Cedar sounds nice, but I want to see what Eucalyptus + Mint is like too before deciding.\n  Step 5 (scroll on 'down'): Let me scroll down to actually read the Eucalyptus + Mint description and see what else is below.\n  Step 6 (scroll on 'down'): Eucalyptus + Mint sounds really nice and not overpowering. Let me scroll down to read the rest of the ingredients and see what else is on the page.\n  Step 7 (scroll on 'down'): The ingredients look solid and a 30-day money-back guarantee is reassuring. Let me scroll down to read the rest of that section and see how to order.\n  Step 8 (quit): The comparison table is cut off on the right side on my phone, which is really annoying to read. I don't want to deal with a broken mobile layout.\n\nTester persona_03 (Elena Rostova, tablet) — outcome: quit\nQuit reason: I clicked 'Continue to review' twice and nothing happened. I don't have time to troubleshoot a broken checkout form.\n  Step 1 (scroll on 'down'): Let's scroll down to see how the refills work, check shipping timelines, and look for any safety or quality details.\n  Step 2 (scroll on 'down'): Good, there's a 30-day guarantee and no forced subscriptions. Let's scroll down further to check scent options, reviews, and shipping timelines.\n  Step 3 (scroll on 'down'): The 10-second refill and no forced subscriptions look convenient. Let's scroll down to see the scent options, full ingredients, and any shipping or review details.\n  Step 4 (scroll on 'down'): The ingredients look gentle and heat-resilient, which is great. Let's scroll down to check customer reviews, shipping timelines, and the checkout area.\n  Step 5 (scroll on 'down'): The 24-hour refund or replacement policy is very clear and reassuring. Let's scroll down to check the rest of the comparison table, shipping timelines, and the checkout area.\n  Step 6 (scroll on 'down'): The comparison table looks solid, especially with no forced subscription. Let's scroll down to read the full shipping timeline, return policy, and check out the pre-order section.\n  Step 7 (scroll on 'down'): The shipping timeline (2-3 business days, 3-5 days in transit) and 30-day money-back guarantee are very clear. Let's scroll down to see the pre-order checkout form.\n  Step 8 (type on 'Alex Rivera'): Everything looks clear and straightforward. Let's fill out the pre-order demo form to see how quick the checkout process is.\n  Step 9 (type on 'alex@example.com'): Now let's enter my email address so we can continue to review the pre-order.\n  Step 10 (click on 'Continue to review'): I've entered my name and email. Let's click 'Continue to review' to see how quick and straightforward the rest of the checkout flow is.\n  Step 11 (click on 'Continue to review'): It looks like the review step didn't load yet. Let's click 'Continue to review' again to see if it proceeds.\n  Step 12 (quit): I clicked 'Continue to review' twice and nothing happened. I don't have time to troubleshoot a broken checkout form.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0391,
+      "confidence": 0.9609,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.9615,
+      "confidence": 0.9615,
+      "found": true
+    },
+    "tiny_targets": {
+      "noul": 0.0243,
+      "confidence": 0.9757,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0173,
+      "confidence": 0.9827,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.0225,
+      "confidence": 0.9775,
+      "found": false
+    }
+  }
+}

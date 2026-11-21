@@ -1,0 +1,37 @@
+{
+  "page": "r_35bf7899",
+  "trap": "dead_cta",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 21.09,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page:\n\n---\n\n### 1. Critical Checkout & Conversion Blockers\n* **The checkout is a dead-end demo:** Every primary CTA on the page says **“Buy now — $29”**, but scrolling down leads to a **“PRE-ORDER DEMO CHECKOUT — NO REAL PAYMENT COLLECTED”** form. A real shopper trying to purchase the product cannot actually buy it.\n* **Missing address and payment fields:** Step 1 (`1. Details`) only asks for **Quantity**, **Full name**, and **Shipping email**. There are no shipping address fields, no shipping cost calculation ($4 flat-rate vs. free for 2+ lights), no tax calculation, and no payment methods (card, Apple Pay, PayPal, etc.).\n* **Multi-pack discount friction:** The shipping section advertises free shipping when you buy 2+ lights, and the email section mentions multi-pack discounts, but the checkout only offers a basic quantity dropdown (`1 × Clip-on Bike Lane Light — $29`) with no visible bundle pricing or shipping threshold indicator.\n\n---\n\n### 2. Major Trust & Credibility Problems\n* **Zero real product photography:** Every single image on the page is a dark-mode vector diagram. There are no photos of the actual light, no photos of it clipped onto a real bike or bike-share, and no real-world photos or video of the laser lines on wet asphalt. For a $29 hardware product, having no real photos is a major red flag.\n* **Contradictory stock/fulfillment status:** The page tells three different stories about availability:\n  1. **In stock:** *“Orders ship within 3–5 business days”* (Shipping section).\n  2. **Out of stock / Waitlist:** *“Get notified about V1 batch restocks”* (Email capture).\n  3. **Not for sale:** *“Reserve your Clip-on Bike Lane Light… demo pre-order checkout”* (Checkout section).\n* **No social proof:** There are zero customer reviews, star ratings, rider testimonials, or third-party validation anywhere on the page.\n* **Implausible technical claims:** Claiming **500 lumens + dual 532nm green lasers** running for **6 hours** on a **1100mAh battery** in a **68 g** housing—while calling them *“Honest, tested numbers”*—will make knowledgeable cyclists skeptical, especially since runtime isn't broken down by mode (steady vs. flash, lasers on vs. off).\n* **Missing legal & company details:** The footer has no registered company name, physical address, Privacy Policy, Terms of Service, or dedicated Returns/Warranty policy links—only a generic `support@cliplanelight.com` email.\n* **No laser safety/compliance info:** For a product using dual 532nm lasers, there is no mention of laser class (e.g., Class 2 / Class 3R) or road legality.\n\n---\n\n### 3. Usability, Visual & Mobile Issues\n* **Mobile navigation is stripped out:** On desktop, the header has anchor links (`Streetlight Demo`, `Bike-Share Mount`, `Tech Specs`, `Shipping & FAQ`). On mobile, all navigation links disappear without a hamburger menu, leaving only the logo and the `Buy now` button.\n* **“Raw Streetlight Visibility Demo” isn’t a raw demo:** The section title and copy promise a realistic comparison against *“harsh streetlights and wet asphalt”*, but the interactive module is just a simple cartoon schematic. This feels misleading and fails to prove visibility in real traffic.\n* **Low-contrast, tiny diagram labels:** In Section 02 (*Quick Clip-on Mount*), labels like `Bulky Rear Fender / Rack` and the sub-labels (`Holds steady over potholes`, `Clears wide bike-share fenders`) are very small and low-contrast against the dark background—especially on mobile where the diagram shrinks.\n* **Low-contrast form placeholders:** In both the email signup (`you@example.com`) and the checkout form (`Alex Rivera`, `alex@example.com`), the placeholder text is very dark gray on a dark background, making it hard to read.\n* **No physical dimensions:** Weight (`68 g`) and clamp range (`22–35mm`) are listed, but actual dimensions of the unit are missing, making it hard to judge how “pocket-sized” it really is.\n\n---\n\n### 4. Geographic & Compatibility Contradictions\n* **Mentions UK bike-shares, but only ships to the US:** Section 02 explicitly markets compatibility with **Santander** (London’s bike-share), yet the shipping card reveals it only offers flat-rate shipping *“anywhere in the US.”* International shoppers won't realize this until two-thirds of the way down the page.\n* **Unproven bike-share compatibility:** Many bike-share bikes (like Citi Bike) have thick rear baskets, shrouded seatposts, or fenders that sit differently than the simplified schematic shown. Without a photo on an actual bike-share, commuters have no proof a `22–35mm` cam clamp will clear the rack or fit the post.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0281,
+      "confidence": 0.9719,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.5195,
+      "confidence": 0.5195,
+      "found": true
+    },
+    "tiny_targets": {
+      "noul": 0.0811,
+      "confidence": 0.9189,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.01,
+      "confidence": 0.99,
+      "found": false
+    }
+  }
+}

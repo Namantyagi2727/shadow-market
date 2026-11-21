@@ -1,0 +1,37 @@
+{
+  "page": "r_35bf7899",
+  "trap": "clean",
+  "method": "baseline",
+  "status": "ok",
+  "model": "gemini-4-hydrogen",
+  "grader_model": "gemini-decision-1",
+  "elapsed_s": 17.97,
+  "findings_text": "Here are the usability, trust, and checkout problems a real shopper would hit on this page, grouped by category:\n\n---\n\n### 1. Checkout & Conversion Blockers\n* **It’s a fake/demo checkout:** Clicking **“Buy now — $29”** scrolls to a section labeled **“PRE-ORDER DEMO CHECKOUT”** with a banner stating *“NO REAL PAYMENT COLLECTED”* and a note saying no credit card information is collected. A real shopper trying to buy the light cannot actually complete a purchase.\n* **Missing shipping address & payment steps:** Step 1 (`Details`) only asks for Quantity, Full Name, and Shipping Email—there are no street address, city, state, or ZIP fields, and no payment step (`2. Review & Confirm` skips payment entirely).\n* **No price breakdown or shipping calculation:** The checkout form doesn’t show the $4 flat-rate shipping fee (or automatically apply free shipping when 2+ lights are selected), estimated tax, or an order total.\n* **No express checkout or payment trust signals:** There are no payment method icons (Visa, Mastercard, Apple Pay, PayPal, Shop Pay) or security assurances.\n* **Email signup competes with checkout:** The *“Not ready to buy tonight?”* email capture sits directly above the checkout form, creating a distraction right before the conversion point.\n\n---\n\n### 2. Trust & Credibility Gaps\n* **Zero real product photos or videos:** Every visual on the page is a dark-mode vector illustration/diagram. There isn’t a single photograph of the physical light, its materials, buttons, USB-C port, or real-world night footage of the lasers on actual wet asphalt.\n* **“Raw Streetlight Visibility Demo” is misleading:** The section promises a *“RAW STREETLIGHT VISIBILITY DEMO”* to show performance against *“harsh streetlights and wet asphalt,”* but the interactive toggle only switches between two cartoon vector diagrams.\n* **Zero social proof:** There are no customer reviews, star ratings, rider testimonials, press mentions, or user-submitted photos anywhere on the page.\n* **Incomplete footer / missing legal pages:** The footer has no company/entity name, no physical business address, and no links to a **Privacy Policy**, **Terms of Service**, or **Return Policy**—all major red flags for first-time buyers.\n\n---\n\n### 3. Product Spec & Copy Contradictions\n* **Questionable battery/lumen math:** The specs claim **“Honest, tested numbers—no inflated lumen claims”** right above **“500 lm”** and **“6 Hours Runtime per Charge”** from a **1100mAh** battery in a 68g housing. A 500-lumen continuous rear light plus dual lasers would typically drain a 1100mAh cell much faster than 6 hours, and it doesn’t clarify whether 6 hours applies to flash mode, low mode, or full brightness with lasers on.\n* **US-only shipping vs. international bike-share claims:** Section 02 specifically calls out **Santander** (London’s bike-share), but the Shipping section later reveals **“$4 flat-rate shipping anywhere in the US”** with no mention of international shipping availability or rates.\n* **Missing physical dimensions:** It states a weight (`68 g`) and calls itself *“pocket-sized,”* but gives no physical dimensions (length, width, height) so shoppers can judge actual size.\n* **Bike-share compatibility risk:** It claims to clip onto *“any bike-share”* using a `22–35mm` cam clamp, yet many city bike-shares have oversized proprietary seatposts (>35mm) or bulky integrated rear racks/fenders, with no compatibility chart or real-world mounting photos to prove it fits.\n\n---\n\n### 4. Usability & Mobile Experience Issues\n* **No mobile navigation:** The desktop header has 4 anchor links (`Streetlight Demo`, `Bike-Share Mount`, `Tech Specs`, `Shipping & FAQ`), all of which disappear on mobile with no hamburger menu or alternative navigation.\n* **Tiny, hard-to-read diagram labels on mobile:** In Section 01 (`VISIBLE PASSING BOUNDARY`, `Car gives space`) and Section 02 (`Anti-Rattle Cam Lock`, `Extended Offset Optics`, `Bulky Rear Fender / Rack`), the text inside the SVG illustrations scales down to a barely legible size on mobile.\n* **Low-contrast / obscured diagram text:** In Section 02’s mount diagram, the `Bulky Rear Fender / Rack` label sits in low-contrast grey right along the fender line, making it easy to miss on both desktop and mobile.\n* **Sparse FAQ:** Only 3 questions are listed (all collapsed by default), leaving common pre-purchase questions unanswered—such as warranty length beyond 30 days, laser eye-safety/legality, aero seatpost compatibility, and international shipping.",
+  "grades": {
+    "hidden_fee": {
+      "noul": 0.0169,
+      "confidence": 0.9831,
+      "found": false
+    },
+    "dead_cta": {
+      "noul": 0.154,
+      "confidence": 0.846,
+      "found": false
+    },
+    "tiny_targets": {
+      "noul": 0.1318,
+      "confidence": 0.8682,
+      "found": false
+    },
+    "price_hidden": {
+      "noul": 0.0249,
+      "confidence": 0.9751,
+      "found": false
+    },
+    "forced_signup": {
+      "noul": 0.016,
+      "confidence": 0.984,
+      "found": false
+    }
+  }
+}
