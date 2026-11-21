@@ -6,8 +6,11 @@ dependencies = [
     "fastapi>=0.165.0",
     "google-genai>=3.2.0",
     "httpx>=0.28.1",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.5",
     "playwright>=1.65.2",
     "python-dotenv>=1.2.4",
     "python-multipart>=0.0.34",
+    "scikit-learn>=1.9.1",
     "uvicorn[standard]>=0.54.0",
 ]

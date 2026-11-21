@@ -215,13 +215,24 @@ def _coerce_probability(val: Any) -> float | None:
         return None
 
 
+_PREFETCH: dict[str, asyncio.Task] = {}
+
+
+def prefetch_personas(ctx: RunContext) -> None:
+    """Start generating the 200 personas right after the pitch, so it overlaps the ~3 min build."""
+    _PREFETCH[ctx.run_id] = asyncio.create_task(
+        asyncio.to_thread(_generate_personas_sync, ctx.pitch or {}, TARGET_PERSONA_COUNT)
+    )
+
+
 async def run(ctx: RunContext, emit: Emit) -> None:
     pitch = ctx.pitch or {}
 
     # 1. Generate 200 compact buyer personas (accept what we get, min 50).
     personas: list[dict[str, str]] = []
     try:
-        personas = await asyncio.to_thread(_generate_personas_sync, pitch, TARGET_PERSONA_COUNT)
+        task = _PREFETCH.pop(ctx.run_id, None)
+        personas = await (task if task else asyncio.to_thread(_generate_personas_sync, pitch, TARGET_PERSONA_COUNT))
     except Exception as exc:
         await emit(
             "error",

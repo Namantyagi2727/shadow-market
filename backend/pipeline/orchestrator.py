@@ -53,6 +53,9 @@ async def run_pipeline(ctx: RunContext, log: EventLog) -> None:
     if not await _run_stage("pitch", pitch.run, "pitch", ctx, log, recoverable=False):
         return
 
+    # Start the 200 swarm personas now; they only need the pitch and overlap boardroom + build.
+    swarm.prefetch_personas(ctx)
+
     # 2. Boardroom debate + Shopify competitors concurrently
     await log.emit("stage_changed", "boardroom", {"stage": "boardroom"})
     await asyncio.gather(
