@@ -45,6 +45,7 @@ interface TopStageBarProps {
   onChangeReplaySpeed: (speed: number) => void;
   onFlushReplay: () => void;
   onNewRun: () => void;
+  presentationMode?: boolean;
   errors: RunErrorEntry[];
   onDismissError: (seq: number) => void;
 }
@@ -74,10 +75,30 @@ export function TopStageBar({
   onChangeReplaySpeed,
   onFlushReplay,
   onNewRun,
+  presentationMode = false,
   errors,
   onDismissError,
 }: TopStageBarProps) {
   const [replayMenuOpen, setReplayMenuOpen] = useState(false);
+
+  const brandContent = (
+    <>
+      <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-emerald-400/40 bg-emerald-500/15 text-emerald-300 shadow-[0_0_18px_rgba(16,185,129,0.22)]">
+        <Radio className="h-4 w-4" />
+      </span>
+      <div>
+        <div
+          className="text-sm font-semibold tracking-tight text-white"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          SHADOW MARKET
+        </div>
+        <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-400">
+          Launch Survival Lab
+        </div>
+      </div>
+    </>
+  );
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#07080d]/92 backdrop-blur-xl">
@@ -85,26 +106,19 @@ export function TopStageBar({
         {/* Top Row: Brand, Mode Status, View Toggle, Actions */}
         <div className="flex h-14 items-center justify-between gap-3">
           <div className="flex items-center gap-2.5 min-w-0">
-            <button
-              onClick={onNewRun}
-              className="group flex items-center gap-2.5 text-left shrink-0"
-              title="Reset to new pitch"
-            >
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-emerald-400/40 bg-emerald-500/15 text-emerald-300 shadow-[0_0_18px_rgba(16,185,129,0.22)]">
-                <Radio className="h-4 w-4" />
-              </span>
-              <div>
-                <div
-                  className="text-sm font-semibold tracking-tight text-white"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  SHADOW MARKET
-                </div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-400">
-                  Launch Survival Lab
-                </div>
+            {presentationMode ? (
+              <div className="flex items-center gap-2.5 text-left shrink-0">
+                {brandContent}
               </div>
-            </button>
+            ) : (
+              <button
+                onClick={onNewRun}
+                className="group flex items-center gap-2.5 text-left shrink-0"
+                title="Reset to new pitch"
+              >
+                {brandContent}
+              </button>
+            )}
 
             {runId && (
               <span className="hidden items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-xs text-zinc-300 xl:inline-flex">
@@ -187,7 +201,11 @@ export function TopStageBar({
             </div>
 
             {mode === "replay" && (
-              <div className="hidden items-center gap-1 rounded-lg border border-amber-400/30 bg-amber-500/10 p-1 lg:flex">
+              <div
+                className={`${
+                  presentationMode ? "flex" : "hidden lg:flex"
+                } items-center gap-1 rounded-lg border border-amber-400/30 bg-amber-500/10 p-1`}
+              >
                 {[1, 2, 4].map((spd) => (
                   <button
                     key={spd}
@@ -209,12 +227,14 @@ export function TopStageBar({
                   <FastForward className="h-3 w-3" />
                   <span>End</span>
                 </button>
-                <button
-                  onClick={onExitReplay}
-                  className="ml-1 rounded px-2 py-0.5 text-xs text-zinc-300 hover:bg-white/10"
-                >
-                  Exit
-                </button>
+                {!presentationMode && (
+                  <button
+                    onClick={onExitReplay}
+                    className="ml-1 rounded px-2 py-0.5 text-xs text-zinc-300 hover:bg-white/10"
+                  >
+                    Exit
+                  </button>
+                )}
               </div>
             )}
 
@@ -227,7 +247,7 @@ export function TopStageBar({
               </button>
             )}
 
-            {runId && (
+            {!presentationMode && runId && (
               <button
                 onClick={onNewRun}
                 className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1.5 text-xs font-medium text-zinc-200 transition hover:border-white/20 hover:bg-white/[0.08]"
@@ -238,88 +258,90 @@ export function TopStageBar({
             )}
 
             {/* Cached Demo Runs Fallback (Explicitly labeled Replay fallback) */}
-            <div className="relative">
-              <button
-                onClick={() => {
-                  const next = !replayMenuOpen;
-                  setReplayMenuOpen(next);
-                  if (next) onRefreshDemoRuns();
-                }}
-                className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1.5 text-xs font-medium text-zinc-200 transition hover:border-amber-400/40 hover:bg-amber-500/10 hover:text-amber-200"
-              >
-                <History className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">Replay Runs</span>
-              </button>
+            {!presentationMode && (
+              <div className="relative">
+                <button
+                  onClick={() => {
+                    const next = !replayMenuOpen;
+                    setReplayMenuOpen(next);
+                    if (next) onRefreshDemoRuns();
+                  }}
+                  className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1.5 text-xs font-medium text-zinc-200 transition hover:border-amber-400/40 hover:bg-amber-500/10 hover:text-amber-200"
+                >
+                  <History className="h-3.5 w-3.5" />
+                  <span className="hidden sm:inline">Replay Runs</span>
+                </button>
 
-              {replayMenuOpen && (
-                <div className="absolute right-0 mt-2 w-72 rounded-xl border border-white/15 bg-[#0f131d] p-2 shadow-2xl">
-                  <div className="flex items-center justify-between border-b border-white/10 px-2 py-1.5">
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
-                      Cached Demo Runs (Fallback)
-                    </span>
-                    <button
-                      onClick={() => setReplayMenuOpen(false)}
-                      className="text-zinc-400 hover:text-white"
-                    >
-                      <X className="h-3.5 w-3.5" />
-                    </button>
-                  </div>
-
-                  {/* Dev-only Sample Run entry (strictly gated on NODE_ENV=development or ?dev=1) */}
-                  {showDevSample && (
-                    <div className="mt-1.5 border-b border-white/10 pb-1.5">
+                {replayMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-72 rounded-xl border border-white/15 bg-[#0f131d] p-2 shadow-2xl">
+                    <div className="flex items-center justify-between border-b border-white/10 px-2 py-1.5">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
+                        Cached Demo Runs (Fallback)
+                      </span>
                       <button
-                        onClick={() => {
-                          setReplayMenuOpen(false);
-                          onStartDevSampleReplay();
-                        }}
-                        className="flex w-full items-start gap-2 rounded-lg border border-purple-400/30 bg-purple-500/10 px-2.5 py-2 text-left transition hover:bg-purple-500/20"
+                        onClick={() => setReplayMenuOpen(false)}
+                        className="text-zinc-400 hover:text-white"
                       >
-                        <FlaskConical className="mt-0.5 h-3.5 w-3.5 shrink-0 text-purple-300" />
-                        <div className="min-w-0">
-                          <div className="text-xs font-semibold text-purple-100">
-                            Sample run (dev)
-                          </div>
-                          <div className="font-mono text-[10px] text-purple-300/80">
-                            All 7 stages • 6 personas • Sample data
-                          </div>
-                        </div>
+                        <X className="h-3.5 w-3.5" />
                       </button>
                     </div>
-                  )}
 
-                  <div className="mt-1.5 max-h-64 space-y-1 overflow-y-auto">
-                    {demoRunsLoading ? (
-                      <div className="px-2 py-4 text-center text-xs text-zinc-400">
-                        Loading cached runs...
-                      </div>
-                    ) : demoRuns.length === 0 ? (
-                      <div className="px-2 py-4 text-center text-xs text-zinc-500">
-                        No cached runs returned by backend (`GET /api/demo-runs`).
-                      </div>
-                    ) : (
-                      demoRuns.map((run) => (
+                    {/* Dev-only Sample Run entry (strictly gated on NODE_ENV=development or ?dev=1) */}
+                    {showDevSample && (
+                      <div className="mt-1.5 border-b border-white/10 pb-1.5">
                         <button
-                          key={run.run_id}
                           onClick={() => {
                             setReplayMenuOpen(false);
-                            onStartReplay(run.run_id);
+                            onStartDevSampleReplay();
                           }}
-                          className="flex w-full flex-col rounded-lg px-2.5 py-2 text-left transition hover:bg-white/[0.06]"
+                          className="flex w-full items-start gap-2 rounded-lg border border-purple-400/30 bg-purple-500/10 px-2.5 py-2 text-left transition hover:bg-purple-500/20"
                         >
-                          <span className="truncate text-xs font-medium text-zinc-100">
-                            {run.title || run.run_id}
-                          </span>
-                          <span className="font-mono text-[10px] text-zinc-500">
-                            {run.run_id}
-                          </span>
+                          <FlaskConical className="mt-0.5 h-3.5 w-3.5 shrink-0 text-purple-300" />
+                          <div className="min-w-0">
+                            <div className="text-xs font-semibold text-purple-100">
+                              Sample run (dev)
+                            </div>
+                            <div className="font-mono text-[10px] text-purple-300/80">
+                              All 7 stages • 6 personas • Sample data
+                            </div>
+                          </div>
                         </button>
-                      ))
+                      </div>
                     )}
+
+                    <div className="mt-1.5 max-h-64 space-y-1 overflow-y-auto">
+                      {demoRunsLoading ? (
+                        <div className="px-2 py-4 text-center text-xs text-zinc-400">
+                          Loading cached runs...
+                        </div>
+                      ) : demoRuns.length === 0 ? (
+                        <div className="px-2 py-4 text-center text-xs text-zinc-500">
+                          No cached runs returned by backend (`GET /api/demo-runs`).
+                        </div>
+                      ) : (
+                        demoRuns.map((run) => (
+                          <button
+                            key={run.run_id}
+                            onClick={() => {
+                              setReplayMenuOpen(false);
+                              onStartReplay(run.run_id);
+                            }}
+                            className="flex w-full flex-col rounded-lg px-2.5 py-2 text-left transition hover:bg-white/[0.06]"
+                          >
+                            <span className="truncate text-xs font-medium text-zinc-100">
+                              {run.title || run.run_id}
+                            </span>
+                            <span className="font-mono text-[10px] text-zinc-500">
+                              {run.run_id}
+                            </span>
+                          </button>
+                        ))
+                      )}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
