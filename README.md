@@ -112,6 +112,6 @@ Try a run without a webcam: `curl -X POST localhost:8000/api/runs -F 'text=A cli
 
 ## Built during the hackathon
 
-Everything in this repository was written on Nov 21, 2026 during the event; see the commit history. No prior code was reused. Code was written by the team with AI coding agents (Gemini CLI and Antigravity on Gemini 4, and Claude Code for review and integration).
+Everything in this repository was written on Nov 21, 2026 during the event; see the commit history. No prior code was reused.
 
 **Data credit:** Kickstarter campaign data from the [Web Robots](https://webrobots.io/kickstarter-datasets/) public crawl, used for evaluation only and not redistributed. Competitor products from Shopify's public catalog search.
