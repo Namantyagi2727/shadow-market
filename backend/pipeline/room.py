@@ -818,6 +818,52 @@ def _gate_utterance_sync(pitch_line: str, utterance: str) -> tuple[float, str]:
     return prob, topic
 
 
+SPEAKER_QUESTION = {
+    "type": "choice",
+    "instructions": (
+        "In a live startup pitch with one founder and one or more judges, who most likely said this utterance? "
+        "The founder pitches the product and answers questions about it; judges ask, challenge, react or comment."
+    ),
+    "criteria": {
+        "founder": "the founder: pitching, describing or defending the product, or answering a question",
+        "judge": "a judge: asking, challenging, reacting to or commenting on the pitch",
+    },
+}
+
+
+def _speaker_gate_sync(
+    pitch_line: str, utterance: str, mic_role: str | None, pitch_done: bool
+) -> tuple[str, float, float, str]:
+    """One Decisions call: who is speaking (by content, mic only as a hint) + is it a real question + topic.
+
+    Both laptops sit in the same room with open mics, so either mic can hear either person first.
+    Returns (speaker, speaker_confidence, is_challenge, topic)."""
+    ctx_lines = [
+        pitch_line,
+        "Stage: the founder has already pitched; this is Q&A." if pitch_done else "Stage: the founder is pitching now.",
+        f"(Heard first by the {mic_role}'s laptop microphone; both microphones are in the same room.)" if mic_role else "",
+        f"Utterance: {utterance}",
+    ]
+    questions = dict(GATE_QUESTIONS)
+    questions["speaker"] = SPEAKER_QUESTION
+    resp = beta().decisions.create(
+        model=MODEL_IDS["decisions"],
+        input=[text_part(chr(10).join(l for l in ctx_lines if l))],
+        questions=questions,
+    )
+    answers = getattr(resp, "answers", None)
+    if answers is None:
+        raise ValueError("Decisions API response missing 'answers'")
+    sp_ans = _get_answer(answers, "speaker")
+    speaker = str(_get_answer_field(sp_ans, "choice") or mic_role or "judge").strip().lower()
+    if speaker not in ("founder", "judge"):
+        speaker = mic_role or "judge"
+    sp_conf = _coerce_prob(_get_answer_field(sp_ans, "confidence")) or 0.0
+    prob = _coerce_prob(_get_answer_field(_get_answer(answers, "is_challenge"), "noul")) or 0.0
+    raw_topic = str(_get_answer_field(_get_answer(answers, "topic"), "choice") or "other").strip().lower()
+    return speaker, sp_conf, prob, (raw_topic if raw_topic in VALID_TOPICS else "other")
+
+
 def _is_recent_duplicate(room: RoomState, text: str) -> bool:
     now = time.monotonic()
     room.recent_utterances = [
@@ -867,6 +913,25 @@ async def handle_utterance(
         t_since_start = round(max(0.0, t_utterance_start - room.room_start), 2)
         speaker = role if role in ("founder", "judge") else "judge"
 
+        # Speaker check: both mics are open in one room, so decide WHO spoke from what was said.
+        # Typed fallbacks (forced) keep the role they were sent with.
+        evidence = build_evidence(room.log.events)
+        pitch_line = _pitch_summary_line(evidence)
+        sess_state = session_mod.get_session(run_id)
+        pitch_done = bool(sess_state and sess_state.research_runs > 0)
+        precomputed_gate: tuple[float, str] | None = None
+        if not forced:
+            t_gate_start = time.monotonic()
+            try:
+                speaker, sp_conf, is_ch, topic_pre = await asyncio.to_thread(
+                    _speaker_gate_sync, pitch_line, cleaned, role, pitch_done
+                )
+                precomputed_gate = (is_ch, topic_pre)
+                print(f"[room] speaker check mic={role} -> {speaker} ({sp_conf:.2f}) "
+                      f"in {int((time.monotonic() - t_gate_start) * 1000)} ms", flush=True)
+            except Exception as exc:  # noqa: BLE001  (fall back to the mic label)
+                print(f"[room] speaker check failed ({type(exc).__name__}); using mic={role}", flush=True)
+
         await room.log.emit(
             "room_utterance",
             "room",
@@ -883,12 +948,12 @@ async def handle_utterance(
             await session_mod.on_founder_utterance(run_id, cleaned, room.log)
             return
 
-        evidence = build_evidence(room.log.events)
-        pitch_line = _pitch_summary_line(evidence)
-
         t_gate_start = time.monotonic()
         try:
-            is_challenge, topic = await asyncio.to_thread(_gate_utterance_sync, pitch_line, cleaned)
+            if precomputed_gate is not None:
+                is_challenge, topic = precomputed_gate
+            else:
+                is_challenge, topic = await asyncio.to_thread(_gate_utterance_sync, pitch_line, cleaned)
         except Exception as exc:  # noqa: BLE001
             await room.log.emit(
                 "error",
