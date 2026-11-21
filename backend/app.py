@@ -191,7 +191,7 @@ async def get_run_events(run_id: str) -> dict[str, list[dict[str, Any]]]:
     return {"events": log.events}
 
 
-@app.get("/api/runs/{run_id}/artifacts/{path:path}")
+@app.api_route("/api/runs/{run_id}/artifacts/{path:path}", methods=["GET", "HEAD"])
 async def get_run_artifact(run_id: str, path: str) -> FileResponse:
     ctx, _, _ = _get_run(run_id)
     run_root = ctx.run_dir.resolve()
