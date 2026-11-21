@@ -8,6 +8,7 @@ import math
 from typing import Any
 
 from pipeline.context import BACKEND_DIR, Emit, RunContext
+from pipeline import analyst
 from pipeline.llm import MODEL_IDS, generate_json, text_part
 
 CALIBRATION_PATH = BACKEND_DIR / "calibration.json"
@@ -76,9 +77,12 @@ def _generate_verdict_copy_sync(
     ]
 
     prompt = f"""You are a blunt launch-viability analyst delivering a final verdict.
-The calibrated launch survival probability has ALREADY been computed from our market swarm:
+The launch probability has ALREADY been computed by our backtested analyst model
+(validated on 120 real 2026 Kickstarter campaigns):
 - launch_probability: {launch_probability:.4f} ({launch_probability * 100:.1f}%)
-- model_confidence: {confidence:.4f}
+- analyst reasoning: {(ctx.verdict or {}).get("analyst_reason", "")}
+Your job is to explain WHY using the evidence below (buyer swarm rubrics, usability lab quits, boardroom risks, competitors)
+and what to fix first.
 
 DO NOT change, dispute, or replace this probability number. Be direct, specific, and blunt—no cheerleading.
 
@@ -126,7 +130,11 @@ async def run(ctx: RunContext, emit: Emit) -> None:
     swarm = ctx.swarm or {}
     raw_intent = swarm.get("intent_mean")
     intent_mean = float(raw_intent) if raw_intent is not None else 0.5
-    launch_probability = _compute_launch_probability(intent_mean)
+    # The number comes from the analyst (backtest winner: AUC 0.88 vs swarm 0.70). The swarm explains.
+    analysis = await analyst.get(ctx)
+    launch_probability = round(float(analysis["probability"]), 4)
+    ctx.verdict = {"analyst_reason": analysis["reason"]}
+    market_intent = round(_compute_launch_probability(intent_mean), 4)
 
     raw_conf = swarm.get("mean_confidence")
     confidence = round(_clamp(float(raw_conf) if raw_conf is not None else 0.5, 0.0, 1.0), 4)
@@ -168,6 +176,9 @@ async def run(ctx: RunContext, emit: Emit) -> None:
         "confidence": confidence,
         "failure_modes": failure_modes,
         "summary": summary,
+        "analyst_reason": analysis["reason"],
+        "market_intent": market_intent,
+        "probability_source": "analyst",
     }
 
     ctx.verdict = verdict_data

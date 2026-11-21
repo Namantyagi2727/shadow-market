@@ -28,6 +28,9 @@ The blueprint has 9 phases. That is ~3 days of work. We build the demo spine fir
 
 ## Proof it works (25% of the score)
 
+**Results so far (eval/RESULTS.md, 120 held-out 2026 Kickstarter campaigns, 50/50 balanced):** single Neon analyst AUC 0.88 / Brier 0.146; buyer swarm AUC 0.70 / Brier 0.232 (calibrated); goal-only 0.71; base rate 0.57; analyst+swarm 0.88 (swarm adds nothing for *funding* prediction). First run leaked outcomes through campaign photos ("FUNDED IN 14 HOURS!" banners, single-model AUC 0.96) — caught from the model's own reasons, images removed (eval/RESULTS_leaky_with_images.md). **Decision (1:00 PM): the verdict number comes from the analyst; swarm, browser lab and boardroom explain why and what to fix.** Do not claim single models are "85% sycophantic" — on this data Neon averaged 0.49 vs 0.50 actual.
+
+
 Rule to respect: *evaluations made up entirely of examples the team wrote are not allowed.*
 
 1. **Main eval: historical backtest on real Kickstarter launches.**

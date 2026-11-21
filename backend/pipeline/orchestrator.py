@@ -7,7 +7,7 @@ import os
 import time
 from typing import Awaitable, Callable
 
-from pipeline import boardroom, build, competitors, lab, pitch, quit_analysis, swarm, verdict
+from pipeline import analyst, boardroom, build, competitors, lab, pitch, quit_analysis, swarm, verdict
 from pipeline.context import Emit, EventLog, RunContext, Stage
 
 StageFn = Callable[[RunContext, Emit], Awaitable[None]]
@@ -55,6 +55,7 @@ async def run_pipeline(ctx: RunContext, log: EventLog) -> None:
 
     # Start the 200 swarm personas now; they only need the pitch and overlap boardroom + build.
     swarm.prefetch_personas(ctx)
+    analyst.prefetch(ctx)
 
     # 2. Boardroom debate + Shopify competitors concurrently
     await log.emit("stage_changed", "boardroom", {"stage": "boardroom"})
