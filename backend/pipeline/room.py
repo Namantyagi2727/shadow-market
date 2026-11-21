@@ -847,6 +847,13 @@ def _speaker_gate_sync(
     ]
     questions = dict(GATE_QUESTIONS)
     questions["speaker"] = SPEAKER_QUESTION
+    questions["pitch_over"] = {
+        "type": "noul",
+        "instructions": (
+            "Is the speaker signalling that the founder's pitch is finished and Q&A can start "
+            "(e.g. 'that's my pitch', 'thank you', 'happy to take questions', 'any questions?')?"
+        ),
+    }
     resp = beta().decisions.create(
         model=MODEL_IDS["decisions"],
         input=[text_part(chr(10).join(l for l in ctx_lines if l))],
@@ -862,7 +869,12 @@ def _speaker_gate_sync(
     sp_conf = _coerce_prob(_get_answer_field(sp_ans, "confidence")) or 0.0
     prob = _coerce_prob(_get_answer_field(_get_answer(answers, "is_challenge"), "noul")) or 0.0
     raw_topic = str(_get_answer_field(_get_answer(answers, "topic"), "choice") or "other").strip().lower()
+    over = _coerce_prob(_get_answer_field(_get_answer(answers, "pitch_over"), "noul")) or 0.0
+    _LAST_PITCH_OVER[utterance] = over
     return speaker, sp_conf, prob, (raw_topic if raw_topic in VALID_TOPICS else "other")
+
+
+_LAST_PITCH_OVER: dict[str, float] = {}
 
 
 def _is_recent_duplicate(room: RoomState, text: str) -> bool:
@@ -961,7 +973,13 @@ async def handle_utterance(
 
         if speaker == "founder":
             await session_mod.on_founder_utterance(run_id, cleaned, room.log)
+            if _LAST_PITCH_OVER.pop(cleaned, 0.0) >= 0.7:
+                session_mod.request_pitch_complete(run_id, "founder signalled the end of the pitch")
             return
+
+        # A judge speaking means the pitch is over: reveal the verified questions on the judge screen.
+        if not forced:
+            session_mod.request_pitch_complete(run_id, "a judge started speaking")
 
         t_gate_start = time.monotonic()
         try:
