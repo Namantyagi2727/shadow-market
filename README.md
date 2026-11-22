@@ -2,6 +2,8 @@
 
 **A live pitch room with two AI assistants.** The founder pitches out loud. The judges' laptop listens, and a team of six AI specialists (market size, competitors, startup history, go-to-market, social, sales) researches the idea in real time with live Google Search, a 200-buyer Decisions API check and a backtested analyst, then suggests the sharpest questions to ask. When a judge asks *anything*, the founder's laptop shows a fact-checked answer in about 5 seconds and updates it with a live web search of that exact question. Behind it, the full pipeline can build the MVP, send browser agents through it, and fix it.
 
+**▶ Demo video (1 min): https://youtu.be/J-CM9RrJbDA**
+
 Built in one day at the **Gemini 4 NYC Hackathon** (Nov 21, 2026) by Naman ([@Namantyagi2727](https://github.com/Namantyagi2727)) and Arnab ([@arnabdas1999](https://github.com/arnabdas1999)).
 Track: **Problem Statement 1 — 5 Sigma** (+ Managed Agents).
 
